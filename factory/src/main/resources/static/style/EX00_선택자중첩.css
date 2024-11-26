@@ -1,0 +1,37 @@
+@charset "UTF-8";
+p {
+  color: lightskyblue;
+  transition: color 0.3s; /* 부드러운 전환 효과 추가 */
+}
+
+img {
+  border-radius: 15px;
+  height: 60px;
+  width: auto;
+}
+
+button {
+  border: none;
+  background-color: lightgray;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.imgBtns {
+  min-height: 70px;
+  min-width: 70px;
+}
+
+#imgBtn {
+  background-color: white;
+}
+#imgBtn:hover {
+  transition: 0.2s; /* 부드러운 전환 효과 추가 */
+  opacity: 0;
+}
+
+#imgBtn_2 {
+  background-color: whitesmoke;
+  border-radius: 10px;
+}/*# sourceMappingURL=EX00_선택자중첩.css.map */
