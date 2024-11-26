@@ -1,0 +1,258 @@
+@charset "UTF-8";
+/* ✨ 'RWD' - 'P04_Monitor' 설정 ✨ */
+/* 💡 '반응형 웹' 실시간 모니터링 */
+/* article과 aside가 각각 main 공간을 나눔 */
+/* ◼️◼️◼️◼️◼️◼️ 깜빡임 효과를 위한 애니메이션 & 화면 수 조절 ◼️◼️◼️◼️◼️◼️ */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* 깜빡임 효과를 적용할 클래스 */
+.blink-effect {
+  animation: blink 0.5s infinite; /* 0.5초 주기로 깜빡임 효과 반복 */
+}
+
+.blink-controls {
+  /* 깜빡임 버튼 스타일 */
+}
+.blink-controls #blink-control {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.blink-controls #blink-control:hover {
+  background-color: #0056b3; /* 호버 시 더 어두운 파란색으로 변경 */
+}
+.blink-controls button,
+.blink-controls #targetId {
+  min-width: 60px;
+  min-height: 50px;
+  height: 50px;
+  width: 110px;
+  overflow: hidden;
+}
+.blink-controls .vertical-line {
+  border: 0.005px solid whitesmoke;
+}
+
+/* ◼️◼️◼️◼️◼️◼️ 메인 컨텐츠 설정 ◼️◼️◼️◼️◼️◼️ */
+main {
+  background-color: gray; /* 메인 배경 설정 */
+  /* ◼️◼️◼️◼️◼️◼️ 실시간 로그 영역 설정 ◼️◼️◼️◼️◼️◼️ */
+  /* 로그 토글 버튼 */
+  /* 로그 사이드바 */
+}
+main .blink-controls {
+  margin: 10px 0;
+  max-height: 50px;
+  display: flex;
+  gap: 10px; /* 버튼 간 간격 */
+}
+main label {
+  font-size: x-small;
+}
+main > article {
+  background-color: gray;
+  border-radius: 3px;
+  padding-left: 0;
+  padding-right: 0;
+  height: 100%;
+  min-width: 80%;
+  width: 100%; /* 버튼 토글 시 부모 요소의 너비를 채움 */
+  overflow: hidden;
+  /* 모니터링 영역 스타일 */
+}
+main > article p {
+  font-weight: 600;
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+main > article #M-area {
+  background-color: #424242;
+  border-radius: 2px;
+  padding: 3px;
+  height: 94%; /* 부모 요소 높이 채움 */
+  width: 99%; /* 부모 요소 너비 채움 */
+  display: grid;
+  gap: 5px;
+  place-items: center; /* 중앙 정렬 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
+  /* 기본 4열 레이아웃 */
+  grid-template-columns: repeat(4, 1fr);
+  /* 특정 CAM-container 확장 시 레이아웃 */
+}
+main > article #M-area.modified-layout {
+  grid-template-columns: 100%; /* 전체 폭을 하나의 열로 사용 */
+}
+main > article #M-area .CAM-container {
+  box-sizing: border-box; /* Border가 요소 크기에 영향을 미치지 않도록 */
+  border: 5px solid #4a4a4a;
+  border-radius: 2px;
+  box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
+  background-color: #4a4a4a;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* 자식 요소의 위치 제어 */
+  overflow: hidden; /* 내부 요소가 컨테이너를 벗어나지 않도록 */
+}
+main > article #M-area .CAM-container.expanded {
+  width: 100%; /* 클릭된 컨테이너가 전체 폭을 차지 */
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+main > article #M-area .CAM-container img,
+main > article #M-area .CAM-container video {
+  background-color: #4a4a4a;
+  border-radius: 1px;
+  border: none;
+  margin: 0;
+  width: 85%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+main > article #M-area .CAM-container img:hover,
+main > article #M-area .CAM-container video:hover {
+  cursor: pointer;
+  transform: scale(1.05); /* 호버 시 약간 확대 */
+}
+main > article #M-area.reset-layout {
+  grid-template-columns: repeat(4, 1fr); /* 4열 초기화 */
+}
+main button[alt="로그 토글 버튼"] {
+  min-height: 50px;
+  min-width: 50px;
+}
+main > aside {
+  background-color: whitesmoke;
+  box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 99%;
+  width: auto; /* 기본 너비 */
+  overflow-y: auto; /* 스크롤 가능 */
+  display: flex;
+  flex-direction: column-reverse; /* 아래에서 위로 쌓임 */
+}
+main > aside .log-toggle {
+  height: 25px;
+  display: flex;
+  flex-direction: row-reverse; /* 버튼이 오른쪽에 정렬 */
+}
+main > aside .log-toggle > button {
+  margin-top: 0;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  font-size: large;
+  border-radius: 20px; /* 둥근 버튼 */
+}
+main > aside .log-toggle span {
+  font-size: xx-large;
+}
+main > aside > article {
+  width: 100%;
+  margin: 0;
+}
+main > aside > article section {
+  background-color: lightgray;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 15px 0;
+  padding: 0 15px;
+  min-height: 50px;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+main > aside > article section p {
+  width: 230px;
+}
+main > aside > article section span {
+  border: none;
+}
+main #on-the-case {
+  margin-left: 20px;
+  width: 180px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ◼️◼️◼️◼️◼️◼️ 화면 제외 버튼 컨테이너 설정 ◼️◼️◼️◼️◼️◼️ */
+top-bar[alt="화면 수 조절 바"] {
+  /* 초기 상태: 투명도 유지 */
+  opacity: 0;
+  transition: opacity 0.5s ease; /* 부드러운 전환 효과 */
+  border-radius: 3px;
+  min-height: 9vh;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  width: 25vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  /* 화면 상단 고정 */
+  position: fixed;
+  top: 0vh;
+  right: 0vh;
+  margin-right: 0;
+  color: white; /* 텍스트 색상 */
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease, opacity 0.5s ease;
+  /* hover 시 투명도 증가 */
+  /* 화면 수 조절 버튼 컨테이너 */
+}
+top-bar[alt="화면 수 조절 바"]:hover, top-bar[alt="화면 수 조절 바"].hover-effect {
+  opacity: 1; /* 투명도 해제 */
+  background-color: rgba(0, 0, 0, 0.8); /* hover 시 불투명하게 */
+}
+top-bar[alt="화면 수 조절 바"]:hover div[alt="화면 수 조절 컨테이너"], top-bar[alt="화면 수 조절 바"].hover-effect div[alt="화면 수 조절 컨테이너"] {
+  opacity: 1; /* hover 시 내부 컨테이너 표시 */
+  transition: opacity 0.5s ease;
+}
+top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] {
+  display: inline-block;
+  height: -moz-fit-content;
+  height: fit-content;
+  /* 버튼 스타일 */
+}
+top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] button {
+  background-color: rgba(218, 165, 32, 0.3); /* 기본 버튼 투명도 */
+  margin-top: 0.5vh;
+  margin-bottom: 0;
+  /* 기본 버튼 투명도 */
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] button:hover {
+  background-color: rgba(250, 200, 100, 0.7); /* hover 시 버튼 불투명도 증가 */
+}
+top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] button[alt="화면 제외 실행"] {
+  background-color: rgba(255, 255, 255, 0.3); /* 기본 버튼 투명도 */
+}
+top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] button[alt="화면 제외 실행"]:hover {
+  background-color: rgba(255, 255, 255, 0.7); /* hover 시 버튼 불투명도 증가 */
+}
+top-bar[alt="화면 수 조절 바"]:hover table div[alt="화면 수 조절 컨테이너"] {
+  opacity: 1; /* hover 시 화면 수 조절 컨테이너 표시 */
+}/*# sourceMappingURL=P04_Monitor.css.map */

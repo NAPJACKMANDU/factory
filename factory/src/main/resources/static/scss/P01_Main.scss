@@ -1,0 +1,95 @@
+/* ✨ 'sendData' - 'P01_Main' 설정 ✨ */
+/* 💡 '데이터 전송' 위주 메인 페이지 */
+
+/* main
+   >article에 div(버튼1), aside(버튼2~3)로 공간 할당 */
+
+/* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+main {
+  //"메인콘텐츠"
+  background-color: whitesmoke;
+  place-items: center;
+  place-content: center;
+
+  * {
+    //main 하위 모든 요소
+    margin: 0;
+    border: none;
+  }
+
+  article {
+    //"페이지 이동 버튼 구역"
+    height: 60%;
+    width: 50%;
+    display: flex;
+
+    div {
+      //"Monitor 버튼(1개) 컨테이너"
+      width: 65%;
+      button {
+        background-color: cornflowerblue;
+      }
+    }
+
+    aside {
+      //"aside 버튼(3개) 컨테이너"
+      width: 35%;
+      display: grid;
+      align-items: center;
+      gap: 1.5%;
+
+      #btn-safetyRules {
+        /* 임의 설정 */
+        background-color: lightcoral;
+        //"안전수칙"
+      }
+
+      #btn-protocol {
+        /* 임의 설정 */
+        background-color: goldenrod;
+        //"비상 시 대응 체계"
+      }
+
+      #btn-protocol {
+        /* 임의 설정 */
+        background-color: lightseagreen;
+        //"연락망"
+      }
+    }
+  }
+}
+
+/* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+
+section {
+  //"location-Btn 컨테이너"
+  height: 100%;
+
+  > button {
+    /* 임의 설정 */
+    background-color: cadetblue;
+    //location 이동 버튼
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    span {
+      /* 폰트 설정 */
+      font-weight: bolder;
+      font-size: medium;
+      color: white;
+      &:hover {
+        transition: color 0.1s; /* 부드러운 전환 효과 추가 */
+        color: goldenrod;
+        font-weight: bolder;
+      }
+    }
+  }
+}

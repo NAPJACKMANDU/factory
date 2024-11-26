@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* ✨ 'RWD' - 'Semantic Tags' 설정 ✨ */
+/* 💡 '시맨틱 태그' footer */
+footer {
+  /* 임의 설정 */
+  background-color: #004c97;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0 !important;
+  padding: 0 2%; /* 푸터 좌우 패딩 */
+  height: 5vh; /* 푸터 높이 10% (적절히 조정 가능) */
+  min-height: 15px;
+  width: 100vw; /* 마진 없는 가로 사이즈 */
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 45%; /* 푸터 요소 간격 */
+  overflow: hidden;
+  left: 0;
+  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+}
+footer * {
+  background-color: #4ec5f1;
+  overflow: hidden;
+  margin-top: 0;
+}
+footer section {
+  /* 임의 설정 */
+  border-radius: 25px;
+  margin-left: 15%;
+  padding: 0;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer section * {
+  margin: 0;
+  padding: 0;
+  border: none;
+  place-items: center;
+}
+footer section *:hover {
+  cursor: pointer;
+}
+footer section button {
+  margin: 0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+footer section button span {
+  width: 100%;
+}/*# sourceMappingURL=footer.css.map */
