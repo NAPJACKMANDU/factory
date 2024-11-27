@@ -1,25 +1,18 @@
+# === HELP.md ===
+# Exclude the HELP.md file from version control
 HELP.md
-target/
+
+# === Build Directories ===
+# Maven 'target' directory - exclude generated build artifacts
+/target/
+# Include specific Maven Wrapper JAR for builds
 !.mvn/wrapper/maven-wrapper.jar
+# Exclude 'target' directories in all main and test source paths
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+# Gradle build directories - NetBeans-specific
+# Exclude all build outputs but allow builds in specific main and test directories
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -29,5 +22,46 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# === IDE Specific Configurations ===
+# Eclipse and Spring Tool Suite (STS)
+# Ignore IDE-specific generated files and caches
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+# Ignore project configuration files and caches
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+# Ignore VS Code settings and workspace files
 .vscode/
+
+# === Logs ===
+# Ignore logs generated during application runtime
+/logs/
+*.log
+
+# === Temporary Files ===
+# Ignore temporary or swap files created by editors or the OS
+*.tmp
+*.swp
+
+# === Operating System Files ===
+# macOS-specific files
+.DS_Store
+# Windows-specific files
+Thumbs.db
+
+# === Environment Files ===
+# Ignore sensitive environment and configuration files
+*.env
+# Exclude specific application properties files
+application.properties
