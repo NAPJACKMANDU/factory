@@ -11,7 +11,5 @@ public interface FactoryRepository extends JpaRepository<FactoryMember, String> 
 
 	public FactoryMember findByIdAndPw(String id, String pw);
 	
-	
 
-public class FactoryRepository {
 }
