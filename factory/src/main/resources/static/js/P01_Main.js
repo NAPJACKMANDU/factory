@@ -36,9 +36,9 @@ $(document).ready(function () {
   initializeHeader(); // 기본 상태 초기화
 
   // 더미 데이터를 사용한 테스트: 로그인 성공 시 상태 전환
-  if (dummyLoginSuccess) {
-    handleLoginSuccess();
-  }
+  // if (dummyLoginSuccess) {
+  //   handleLoginSuccess();
+  // }
 
   // 💡 테스트 후 더미 데이터 코드 제거 안내
   // 아래의 if문 괄호 부분을 수정하고,
