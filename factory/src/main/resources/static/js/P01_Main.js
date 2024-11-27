@@ -1,5 +1,5 @@
 /*
---1 헤더 '팝업로그인 버튼' 클릭 --> 비동기통신 '로그인 팝업' 띄우기 이벤트
+--1 헤더 '로그인 기업명 표시', '로그인 관리자 회원명' --> 로그인 성공 시 기업명과 관리자명 상단바에 노출
 
 --2.1 '#btn-Monitor' 클릭 --> "/Monitor" 페이지로 이동
 --2.2 '#btn-safetyRules' 클릭 --> "/safetyRules" 페이지로 이동
@@ -8,110 +8,42 @@
 */
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --1 ➡️➡️ 헤더 '팝업로그인 버튼' 클릭 --> 비동기통신 '로그인 팝업' 띄우기 이벤트 */
+/*--1 헤더 '로그인 기업명 표시', '로그인 관리자 회원명' --> 로그인 성공 시 기업명과 관리자명 상단바에 노출 */
 
 $(document).ready(function () {
-  // 팝업 설정 객체
-  const popups = {
-    logIn: {
-      button: 'button[alt="팝업로그인 버튼"]',
-      popup: "#popup-logIn",
-      content: "#content-logIn",
-      title: "로그인",
-      endpoint: "/getLoginPopup", // 서버 엔드포인트 (더미 데이터용)
-    },
-  };
+  // 💡 더미 데이터 설정
+  const dummyLoginSuccess = true; // 로그인 성공 여부를 제어하는 더미 데이터
 
-  // 🌟 더미 데이터 객체 추가
-  const dummyData = {
-    "/getLoginPopup": {
-      message: "로그인 페이지입니다. 임의 데이터로 테스트 중.",
-    },
-    "/getSafetyRules": {
-      message: "안전 수칙: 임의 데이터로 테스트 중.",
-    },
-    "/getProtocol": {
-      message: "프로토콜 정보: 임의 데이터로 테스트 중.",
-    },
-    "/getEEIF": {
-      message: "비상 연락망: 임의 데이터로 테스트 중.",
-    },
-  };
-
-  // 🌟 비동기 통신을 대신하여 더미 데이터 반환
-  function fetchDummyData(endpoint) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (dummyData[endpoint]) {
-          resolve(dummyData[endpoint]); // 더미 데이터 반환
-        } else {
-          reject(new Error("해당 엔드포인트에 대한 데이터가 없습니다."));
-        }
-      }, 300); // 300ms의 지연 시간으로 비동기 테스트
-    });
+  // 💡 기본 상태 초기화
+  function initializeHeader() {
+    $('h1[alt="자사 서비스명"]').show(); // 기본 자사 서비스명 표시
+    $('h1[alt="로그인 기업명"]').hide(); // 로그인 후 기업명 숨김
+    $('a[alt="로그인 페이지로 이동"]').show(); // 로그인 링크 표시
+    $('h3[alt="로그인 관리자 회원명"]').hide(); // 관리자명 숨김
+    $('a[alt="로그아웃"]').hide(); // 로그아웃 숨김
   }
 
-  // openPopup 함수 수정: 실제 통신 대신 더미 데이터 사용
-  function openPopup(config) {
-    const { popup, content, title, endpoint } = config;
-
-    fetchDummyData(endpoint)
-      .then((data) => {
-        const message = data.message || "데이터를 불러올 수 없습니다.";
-
-        const dynamicContent = `
-        <h3>${title}</h3>
-        <p>${message}</p>
-        <form id="loginForm">
-          <input type="text" placeholder="아이디" name="username" required />
-          <input type="password" placeholder="비밀번호" name="password" required />
-          <button type="submit">로그인</button>
-        </form>
-      `;
-
-        $(content).html(dynamicContent);
-
-        // 팝업 슬라이드 애니메이션
-        $(popup).css("display", "block").animate(
-          {
-            top: "20%",
-          },
-          500
-        );
-      })
-      .catch((error) => {
-        $(content).html(`<p>${error.message}</p>`);
-        $(popup).css("display", "block").animate({ top: "20%" }, 500);
-      });
+  // 💡 로그인 성공 시 상태 전환
+  function handleLoginSuccess() {
+    $('h1[alt="자사 서비스명"]').hide(); // 자사 서비스명 숨김
+    $('h1[alt="로그인 기업명"]').show(); // 로그인 후 기업명 표시
+    $('a[alt="로그인 페이지로 이동"]').hide(); // 로그인 링크 숨김
+    $('h3[alt="로그인 관리자 회원명"]').show(); // 관리자명 표시
+    $('a[alt="로그아웃"]').show(); // 로그아웃 표시
   }
 
-  // 팝업 닫기 함수
-  function closePopup(popup) {
-    $(popup).animate(
-      {
-        top: "-100%",
-      },
-      500,
-      function () {
-        $(this).css("display", "none");
-      }
-    );
+  // 💡 실행 코드
+  initializeHeader(); // 기본 상태 초기화
+
+  // 더미 데이터를 사용한 테스트: 로그인 성공 시 상태 전환
+  if (dummyLoginSuccess) {
+    handleLoginSuccess();
   }
 
-  // 이벤트 바인딩
-  Object.keys(popups).forEach((key) => {
-    const config = popups[key];
-
-    // 팝업 열기
-    $(config.button).on("click", function () {
-      openPopup(config);
-    });
-
-    // 팝업 닫기
-    $(".closePopup").on("click", function () {
-      closePopup(config.popup);
-    });
-  });
+  // 💡 테스트 후 더미 데이터 코드 제거 안내
+  // 아래의 if문 괄호 부분을 수정하고,
+  // 상수 선언 된 dummyLoginSuccess 변수를 삭제하면
+  // 더미 데이터 코드로 된 테스트는 해제됩니다!
 });
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
@@ -125,7 +57,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   // --2.1 '#btn-Monitor' 클릭 이벤트
   $("#btn-Monitor").on("click", function () {
-    window.location.href = "/monitor"; // 'href' 속성을 통해 URL로 이동
+    window.location.href = "/Monitor"; // 'href' 속성을 통해 URL로 이동
   });
 
   // --2.2 '#btn-safetyRules' 클릭 이벤트

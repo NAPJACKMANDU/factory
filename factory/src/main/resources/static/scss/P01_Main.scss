@@ -1,10 +1,88 @@
 /* ✨ 'sendData' - 'P01_Main' 설정 ✨ */
 /* 💡 '데이터 전송' 위주 메인 페이지 */
 
-/* main
-   >article에 div(버튼1), aside(버튼2~3)로 공간 할당 */
+/* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* header
+   >  section(로고), div(로그인회사명), nav(탭)로 공간 할당 */
+
+header {
+  display: flex; /* 플렉스박스 레이아웃 설정 */
+  justify-content: space-between; /* 로고, 제목, 네비게이션 간 간격 분배 */
+  align-items: center; /* 요소들을 수직 중앙 정렬 */
+
+  section[alt="로고 컨테이너"] {
+    /* 임의 설정 */
+    // background-color: aquamarine;
+    width: 100px;
+
+    form {
+      // background-color: plum;
+      padding: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: left;
+    }
+  }
+
+  > div[alt="로그인 기업명 표시 컨테이너"] {
+    /* 임의 설정 */
+    // background-color: cadetblue;
+    min-width: 450px;
+    max-width: 450px;
+    height: 99%;
+    margin: 0;
+
+    flex: 1; /* 제목 영역이 필요 시 공간을 차지하도록 설정 */
+    text-align: center; /* 제목을 가운데 정렬 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      color: white;
+    }
+  }
+
+  > nav[alt="페이지 이동 탭"] {
+    /* 임의 설정 */
+    // background-color: lightsalmon;
+
+    width: 100px;
+    // position: absolute;
+    // right: 0;
+
+    display: flex; /* 내부 요소 정렬을 위해 플렉스박스 사용 */
+    align-items: center; /* 내부 요소를 수직 중앙 정렬 */
+    justify-content: center;
+    gap: 10px; /* 링크 간 간격 추가 */
+
+    .h-a-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+
+      h3[alt="로그인 관리자 회원명"] {
+        color: white;
+        text-align: center;
+      }
+
+      a[alt="로그아웃"] {
+        > span {
+          text-align: center;
+          font-size: smaller;
+          height: fit-content;
+        }
+      }
+    }
+  }
+}
 
 /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* main
+       >article에 div(버튼1), aside(버튼2~3)로 공간 할당 */
+
 main {
   //"메인콘텐츠"
   background-color: whitesmoke;
