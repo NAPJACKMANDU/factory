@@ -36,7 +36,7 @@
               <!-- <button alt="임의설정"> -->
               <img
                 alt="로고 이미지"
-                src="/src/main/resources/static/imgs/Logo.jpg"
+                src="/imgs/Logo.jpg"
               />
             </button>
           </form>
