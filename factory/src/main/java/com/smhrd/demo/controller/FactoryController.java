@@ -19,5 +19,8 @@ public class FactoryController {
 	public String Login() {
 		return "P02_LogIn";
 	}
-	
+	@GetMapping("/Join")
+	public String Join() {
+		return "P03_Join";
+	}
 }

@@ -2,7 +2,8 @@
 /* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
 /* 💡 '반응형 웹' globals  */
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* ◽🔹 최상위 부모 요소 🔹◽ */
@@ -13,7 +14,9 @@ body {
   height: 100%; /* 전체 브라우저 높이 */
   display: flexbox; /* 자식 요소 top,left 사용 가능하게 */
   place-items: center; /* 수평과 수직 중앙 정렬 */
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   /* 임의 설정 */
   background-color: lightyellow;
 }
@@ -31,8 +34,13 @@ body * {
   padding: 0px;
   height: 100vh; /* 뷰포트 전체 높이 */
   width: 100vw; /* 뷰포트 전체 너비 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column; /* 위아래로 쌓이는 구조 */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; /* 위아래로 쌓이는 구조 */
   position: absolute;
   top: 0; /* 부모의 상단에 붙임 */
   left: 0; /* 부모의 왼쪽에 붙임 */
@@ -45,8 +53,11 @@ body * {
 main {
   /* 임의 설정 */
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap; /* 요소가 한 줄에 고정되도록 설정 */
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; /* 요소가 한 줄에 고정되도록 설정 */
   overflow: hidden; /* 스크롤 없이 화면 고정 */
 }
 main > * {
@@ -61,4 +72,4 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-}/*# sourceMappingURL=globals.css.map */
+}
