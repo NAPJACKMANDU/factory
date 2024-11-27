@@ -16,11 +16,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class FactoryId {
+public class FactoryMember {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; // 회원 아이디
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // 1~ 겹치지 않게
+	private String id; // 회원 아이디
 	private String pw; // 회원 비밀번호
 	private String name; // 회원 이름
 	private String role; // 회원 역할
