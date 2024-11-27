@@ -1,5 +1,6 @@
 package com.smhrd.demo.repo;
 
+ 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +13,5 @@ public interface FactoryRepository extends JpaRepository<FactoryMember, String> 
 	
 	
 
+public class FactoryRepository {
 }
