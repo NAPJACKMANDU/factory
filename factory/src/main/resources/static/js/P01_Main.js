@@ -57,7 +57,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   // --2.1 '#btn-Monitor' 클릭 이벤트
   $("#btn-Monitor").on("click", function () {
-    window.location.href = "/Monitor"; // 'href' 속성을 통해 URL로 이동
+    window.location.href = "/monitor"; // 'href' 속성을 통해 URL로 이동
   });
 
   // --2.2 '#btn-safetyRules' 클릭 이벤트
