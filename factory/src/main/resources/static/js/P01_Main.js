@@ -8,81 +8,48 @@
 */
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --1 ➡️➡️ 헤더 '팝업로그인 버튼' 클릭 --> 비동기통신 '로그인 팝업' 띄우기 이벤트 */
+/* --1 ➡️➡️ 로그인 버튼 클릭 --> 로그인 폼 제출 및 데이터 처리 이벤트 */
 
 $(document).ready(function () {
-  // 팝업 설정 객체
-  const popups = {
-    logIn: {
-      button: 'button[alt="팝업로그인 버튼"]',
-      popup: "#popup-logIn",
-      content: "#content-logIn",
-      title: "로그인",
-      endpoint: "/getLoginPopup", // 서버 엔드포인트 (더미 데이터용)
-    },
-  };
+  // 로그인 버튼 클릭 이벤트 핸들러
+  $("button[alt='로그인on클릭']").on("click", function (e) {
+    e.preventDefault(); // 기본 제출 이벤트를 방지
 
-  // 🌟 더미 데이터 객체 추가
-  const dummyData = {
-    "/getLoginPopup": {
-      message: "로그인 페이지입니다. 임의 데이터로 테스트 중.",
-    },
-    "/getSafetyRules": {
-      message: "안전 수칙: 임의 데이터로 테스트 중.",
-    },
-    "/getProtocol": {
-      message: "프로토콜 정보: 임의 데이터로 테스트 중.",
-    },
-    "/getEEIF": {
-      message: "비상 연락망: 임의 데이터로 테스트 중.",
-    },
-  };
+    // 로그인 폼에서 입력된 값 가져오기
+    const username = $("#id").val();
+    const password = $("#pw").val();
 
-  // 🌟 비동기 통신을 대신하여 더미 데이터 반환
-  function fetchDummyData(endpoint) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (dummyData[endpoint]) {
-          resolve(dummyData[endpoint]); // 더미 데이터 반환
-        } else {
-          reject(new Error("해당 엔드포인트에 대한 데이터가 없습니다."));
-        }
-      }, 300); // 300ms의 지연 시간으로 비동기 테스트
-    });
-  }
+    // 아이디와 비밀번호 입력 값 검증
+    if (!username || !password) {
+      alert("아이디와 비밀번호를 모두 입력해 주세요.");
+      return;
+    }
 
-  // openPopup 함수 수정: 실제 통신 대신 더미 데이터 사용
-  function openPopup(config) {
-    const { popup, content, title, endpoint } = config;
+    // 로그인 데이터 처리 (여기서는 더미 데이터로 처리)
+    const loginData = {
+      username: '#',
+      password: '#',
+    };
 
-    fetchDummyData(endpoint)
-      .then((data) => {
-        const message = data.message || "데이터를 불러올 수 없습니다.";
+    // 로그인 처리 (비동기 통신 예시)
+    loginUser(loginData);
+  });
 
-        const dynamicContent = `
-        <h3>${title}</h3>
-        <p>${message}</p>
-        <form id="loginForm">
-          <input type="text" placeholder="아이디" name="username" required />
-          <input type="password" placeholder="비밀번호" name="password" required />
-          <button type="submit">로그인</button>
-        </form>
-      `;
+  // 🌟 로그인 처리 함수 (여기서 실제 서버와의 통신이 이루어져야 함)
+  function loginUser(data) {
+    // 로그인 데이터 로그로 확인
+    console.log("로그인 시도: ", data);
 
-        $(content).html(dynamicContent);
-
-        // 팝업 슬라이드 애니메이션
-        $(popup).css("display", "block").animate(
-          {
-            top: "20%",
-          },
-          500
-        );
-      })
-      .catch((error) => {
-        $(content).html(`<p>${error.message}</p>`);
-        $(popup).css("display", "block").animate({ top: "20%" }, 500);
-      });
+    // 비동기 통신을 통해 서버로 로그인 정보 전송 (여기서는 더미 응답 사용)
+    // 이 부분은 실제 서버 API로 교체해야 함
+    setTimeout(() => {
+      if (data.username === "#" && data.password === "#") {
+        alert("로그인 성공!");
+        closePopup("#popup-logIn"); // 로그인 성공 시 팝업 닫기
+      } else {
+        alert("아이디 또는 비밀번호가 잘못되었습니다.");
+      }
+    }, 1000); // 1초 후 로그인 처리 결과 확인
   }
 
   // 팝업 닫기 함수
@@ -97,22 +64,8 @@ $(document).ready(function () {
       }
     );
   }
-
-  // 이벤트 바인딩
-  Object.keys(popups).forEach((key) => {
-    const config = popups[key];
-
-    // 팝업 열기
-    $(config.button).on("click", function () {
-      openPopup(config);
-    });
-
-    // 팝업 닫기
-    $(".closePopup").on("click", function () {
-      closePopup(config.popup);
-    });
-  });
 });
+
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* 버튼: '.location' 페이지 이동
