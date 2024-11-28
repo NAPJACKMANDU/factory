@@ -171,6 +171,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   </head>
   <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
@@ -183,7 +187,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </form>
         </section>
       </header>
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
     <div class="signup-container">
       <h1>회원가입</h1>
       <form id="joinForm" action="joinForm" method="post" >
@@ -243,7 +251,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="role-selection">
           <input type="radio" id="admin" name="role" value="admin" />
           <label for="admin" class="role-option"> 관리자 </label>
+<<<<<<< HEAD
 >>>>>>> 22b9fc5e95c2344b7fc52b7ac10f156658eef2bb
+=======
+
+>>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
 
       <!-- main -->
       <main alt="메인콘텐츠">
