@@ -1,5 +1,7 @@
 package com.smhrd.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +25,7 @@ public class CompanyModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer companyIdx; // 회사 식별자
 	@Column(nullable = false)
+	@JsonProperty("companyName") // JSON 키와 매핑
 	private String companyName; // 회사 명
 	@Column(nullable = false)
 	private String companyAddr; // 회사 주소

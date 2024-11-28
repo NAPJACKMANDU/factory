@@ -12,16 +12,15 @@ public class FactoryIdService {
 
 	@Autowired
 	FactoryRepository rep ;
+//
+//	public FactoryMember LoginPopup(FactoryMember member) {
+//		// select* from FactoryMember where id = ? and pw = ?
+//		return rep.findByIdAndPw(member.getId(), member.getPw()) ;
+//	}
 
-	public FactoryMember LoginPopup(FactoryMember member) {
-		// select* from FactoryMember where id = ? and pw = ?
-		return rep.findByIdAndPw(member.getId(), member.getPw()) ;
-	}
-
-	public void joinMember(FactoryMember member) {
+	public FactoryMember joinMember(FactoryMember member) {
 		System.out.println(member);
-		rep.save(member) ;
-		
+		return rep.save(member) ; 
 	}
 	
 	

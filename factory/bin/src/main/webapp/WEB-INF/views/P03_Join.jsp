@@ -198,7 +198,6 @@ select:focus {
 <body>
    <div class="signup-container">
       <h1>회원가입</h1>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <form id="joinForm" action="joinForm" method="post">
          <div class="form-group">
             <label for="id">아이디</label> <input type="text" id="id" name="id"
@@ -220,35 +219,17 @@ select:focus {
             <label for="name">이름</label> <input type="text" id="name"
                name="name" placeholder="이름을 입력해 주세요" required />
          </div>
-       
-   <div class="form-group" id="inputState">
-        <label for="companyName">회사 명</label>
-        <select id="companyName" name="companyName" required>
-            <option value="" disabled selected>회사 명을 선택해 주세요</option>
-        </select>
-    </div>
-
-    <script>
-    $.ajax({
-        url: '/api/companies',
-        method: 'GET',
-        success: function (data) {
-            let dropdown = $('#companyName');
-            dropdown.empty().append('<option value="" disabled selected>회사 명을 선택해 주세요</option>');
+         <div class="form-group" id = "inputState">
+            <label for="companyName">회사 명</label> 
+            <select id="companyName" name="companyName" required>
+               <option value="" disabled selected>회사 명을 선택해 주세요</option>
+               <!-- JSTL로 회사명 동적 렌더링 -->
+               <c:forEach var="c" items="${getCompanyName}">
+                  <option value="${c.companyName}">${c.companyName}</option>
+               </c:forEach>
+            </select>
             
-            // 데이터 순회 시 문제 확인
-            data.forEach(function (company) {
-                // 만약 companyName이 문자열이 아닌 객체라면 오류가 발생할 수 있음
-                dropdown.append('<option value="' + company.companyName + '">' + company.companyName + '</option>');
-            });
-        },
-        error: function () {
-            alert('회사명을 불러오는 데 실패했습니다.');
-        }
-    });
-
-    </script>
-    
+         </div>
          <div class="role-selection">
             <input type="radio" id="admin" name="role" value="admin" /> <label
                for="admin" class="role-option"> 관리자 </label> <input type="radio"

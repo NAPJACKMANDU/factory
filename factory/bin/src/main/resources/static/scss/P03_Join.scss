@@ -1,0 +1,59 @@
+/* ✨ 'dashBoard','postData' - 'P02_Login' 설정 ✨ */
+/* 💡 '❓대시보드','데이터 전송' 위주 로그인 페이지 */
+
+/* "id체크 컨테이너","회원가입 버튼" 버튼 스타일 */
+button {
+  /* 임의 설정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+
+#globals-container {
+  align-items: center;
+
+  * {
+    margin: 0px;
+  }
+
+  main {
+    /* 임의 설정 */
+    border: none;
+    //"메인콘텐츠"
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1%;
+
+    * {
+      //main 하위 모든 요소
+      /* 임의 설정 */
+      border: 1px solid black;
+      // border: none;
+    }
+  }
+}
+
+// /////////////////////////////////////////
+div [alt="회원가입input_선택>직책"],
+div[alt="회원가입input_선택>직무"] {
+  /* 임의 설정 */
+  // background-color: blanchedalmond;
+
+  table {
+    /* 임의 설정 */
+    border: 3px solid black;
+    display: grid;
+    grid-template-columns: repeat(100%);
+    width: 100%;
+  }
+}
+section[alt="회원가입 정보 제출 컨테이너"] {
+  * {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
