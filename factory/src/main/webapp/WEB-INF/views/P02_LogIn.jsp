@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -8,36 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P02_LogIn</title>
     <!-- 지역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/P02_LogIn.css"
-    />
+    <link rel="stylesheet" href="/style/P02_LogIn.css" />
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/globals.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/style/header.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/style/footer.css"
-    />
+    <link rel="stylesheet" href="/style/globals.css" />
+    <link rel="stylesheet" href="/style/header.css" />
+    <link rel="stylesheet" href="/style/footer.css" />
   </head>
   <body>
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
-      <header alt="상단 바">
+      <header alt="헤더">
         <section alt="로고 컨테이너">
-          <form action="/" method="get">
-            <button alt="P001_Main으로 이동" type="submit">
-              <img
-                alt="로고 이미지"
-                src="/imgs/Logo.jpg"
-              />
+          <form action="#" method="get">
+            <button alt="P01_Main으로 이동" type="submit">
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
             </button>
           </form>
         </section>
@@ -92,9 +77,9 @@
 
           <section alt="로그인 페이지 a태그 컨테이너">
             <div>
-              <a href="/P00_findAccount"><span>아이디/비밀번호 찾기</span></a>
+              <a href="#"><span>아이디/비밀번호 찾기</span></a>
               <span> | </span>
-              <a href="/P03_Join"><span>회원가입</span></a>
+              <a href="#"><span>회원가입</span></a>
             </div>
           </section>
         </form>
@@ -102,24 +87,25 @@
 
       <!-- footer -->
       <footer alt="하단 바">
-        <!-- 투명함, 고정됨 -->
+        <!-- 뒤로가기 버튼, 고정됨 -->
         <section alt="뒤로가기 버튼 컨테이너">
-          <button>
-            <span alt="history.back(-1)">⬅️</span>
+          <button id="btn-back">
+            <span alt="뒤로가기 버튼">⬅️</span>
           </button>
         </section>
       </footer>
     </div>
     <!-- jQuery -->
     <script src="/js/jquery-3.6.0.js"></script>
-    <!-- <script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery.scrolly.min.js"></script>
-	<script src="/js/jquery.scrollex.min.js"></script>
-	<script src="/js/skel.min.js"></script>
-	<script src="/js/util.js"></script> -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
 
     <!-- Scripts -->
     <!-- <script src="#"></script> -->
     <script src="/js/P02_Login.js"></script>
+    <script src="/js/globals.js"></script>
   </body>
 </html>

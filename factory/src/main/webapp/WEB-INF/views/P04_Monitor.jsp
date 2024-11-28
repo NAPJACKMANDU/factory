@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,20 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P04_Monitor</title>
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/globals.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/style/header.css"
-    />
+    <link rel="stylesheet" href="/style/globals.css" />
+    <link rel="stylesheet" href="/style/header.css" />
 
     <!-- 지역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/P04_Monitor.css"
-    />
+    <link rel="stylesheet" href="/style/P04_Monitor.css" />
   </head>
    <body>
     <!-- View -->
@@ -29,13 +20,10 @@
       <!-- header -->
       <header alt="헤더">
         <section alt="로고 컨테이너">
-          <form action="/" method="get">
+          <form action="/Main" method="get">
             <button alt="P001_Main으로 이동" type="submit">
               <!-- <button alt="임의설정"> -->
-              <img
-                alt="로고 이미지"
-                src="/imgs/Logo.jpg"
-              />
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
             </button>
           </form>
         </section>
@@ -167,11 +155,7 @@
               <img src="/imgs/c3.jpg" alt="화면3" />
             </section>
             <section id="c4" class="CAM-container" alt="개별 화면 컨테이너">
-              <img
-                alt="화면4"
-                type="video/mp4"
-                src="/imgs/c4.jpg"
-              />
+              <img alt="화면4" type="video/mp4" src="/imgs/c4.jpg" />
             </section>
             <section id="c5" class="CAM-container" alt="개별 화면 컨테이너">
               <img src="/imgs/c5.jpg" alt="화면5" />

@@ -170,6 +170,20 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </style>
   </head>
   <body>
+
+    <!-- View -->
+    <div alt="전역 컨테이너" id="globals-container">
+      <!-- header -->
+      <header alt="헤더">
+        <section alt="로고 컨테이너">
+          <form action="/Main" method="get">
+            <button alt="P001_Main으로 이동" type="submit">
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
+            </button>
+          </form>
+        </section>
+      </header>
+
     <div class="signup-container">
       <h1>회원가입</h1>
       <form id="joinForm" action="joinForm" method="post" >
@@ -230,78 +244,166 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <input type="radio" id="admin" name="role" value="admin" />
           <label for="admin" class="role-option"> 관리자 </label>
 
-          <input type="radio" id="user" name="role" value="user" checked />
-          <label for="user" class="role-option"> 일반 사용자 </label>
-        </div>
-        <button type="submit">가입하기</button>
-      </form>
-      <footer>
-        <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
+
+      <!-- main -->
+      <main alt="메인콘텐츠">
+        <!-- 회원가입 정보 입력 구역 -->
+        <form
+          alt="회원가입 페이지 컨테이너"
+          action="#"
+          method="post"
+          id="joinForm"
+          class="enterForm"
+        >
+          <section alt="회원가입 input_필수">
+            <h4>필수 입력</h4>
+            <input
+              alt="회원가입ID"
+              name="id"
+              id="id"
+              type="text"
+              placeholder="사업자 ID 입력"
+            />
+            <div alt="id체크 컨테이너">
+              <!-- 아이디 중복 체크 -->
+              <span>사용 가능한 ID</span>
+              <!-- <span>중복 ID가 있습니다.</span> -->
+              <button name="id_chk"><span>중복 체크</span></button>
+            </div>
+            <input
+              alt="회원가입PW"
+              name="pw"
+              id="pw"
+              type="password"
+              placeholder="비밀번호 입력"
+            />
+            <input
+              alt="비밀번호 확인"
+              name="pw_chk"
+              id="pw_chk"
+              type="password"
+              placeholder="비밀번호 확인"
+            />
+            <div alt="pw체크 컨테이너">
+              <!-- 비밀번호 일치 체크 -->
+              <span>비밀번호가 일치합니다.</span>
+              <!-- <span>비밀번호가 일치하지 않습니다.</span> -->
+            </div>
+            <p>기업 정보</p>
+            <input
+              alt="회원가입 회사명"
+              name="company_name"
+              id="company_name"
+              type="text"
+              placeholder="기업명"
+            />
+            <input
+              alt="회원가입 회사 주소"
+              name="company_addr"
+              id="company_addr"
+              type="text"
+              placeholder="주소 입력"
+            />
+            <input
+              alt="회원가입 회사 연락처"
+              name="company_tel"
+              id="company_tel"
+              type="tel"
+              placeholder="공식 회선 번호 (예: 02-123-4567)"
+            />
+            <input
+              alt="회원가입 회사 홈페이지 ="
+              name="url"
+              id="url"
+              type="text"
+              placeholder="www.yourCompany.com/"
+            />
+            <p>가입자 정보</p>
+            <input
+              alt="가입자 성명"
+              name="name"
+              id="name"
+              type="text"
+              placeholder="홍길동"
+            />
+            <input
+              alt="가입자 연락처"
+              name="tel"
+              id="tel"
+              type="tel"
+              placeholder="010-1234-5678"
+            />
+            <p>가입 정보 찾기</p>
+            <input
+              alt="회원정보 찾기email"
+              name="email"
+              id="email"
+              type="email"
+              placeholder="yourEmail@email.com"
+            />
+          </section>
+          <hr />
+          <section>
+            <!-- <h4>선택 입력</h4> -->
+            <div alt="회원가입input_선택>직책">
+              <p alt="직책 입력">직책 선택</p>
+              <!-- // value는 예시! -->
+              <table>
+                <td>
+                  <input
+                    name="role"
+                    id="r_admin"
+                    type="radio"
+                    value="admin"
+                  />관리자 회원
+                </td>
+                <td>
+                  <input
+                    name="role"
+                    id="r_norm"
+                    type="radio"
+                    value="norm"
+                  />일반 회원
+                </td>
+              </table>
+            </div>
+          </section>
+
+          <section alt="회원가입 정보 제출 컨테이너">
+            <!-- <input name="agreement" type="checkbox" value="#" />정보제공동의 -->
+            <p>
+              <button alt="회원가입 버튼" type="submit" form="joinForm">
+                <span>가입하기</span>
+              </button>
+            </p>
+          </section>
+        </form>
+      </main>
+
+      <!-- footer -->
+      <footer alt="하단 바">
+        <!-- 뒤로가기 버튼, 고정됨 -->
+        <section alt="뒤로가기 버튼 컨테이너">
+          <button id="btn-back">
+            <span alt="뒤로가기 버튼">⬅️</span>
+          </button>
+        </section>
       </footer>
     </div>
+    <!-- jQuery -->
+    <script src="/js/jquery-3.6.0.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <!-- Scripts -->
+    <!-- <script src="#"></script> -->
+    <script src="/js/P03_Join.js"></script>
+    <script src="/js/globals.js"></script>
 
     <script>
-      // 아이디 중복 확인 기능
-      document
-        .getElementById("idCheckButton")
-        .addEventListener("click", function () {
-          const id = document.getElementById("id").value;
-          if (id.length < 4) {
-            alert("아이디는 최소 4글자 이상이어야 합니다.");
-            return;
-          }
-          // 예제: 중복 확인 API 호출 (AJAX 또는 Fetch 사용)
-          fetch(`/api/check-id?id=${id}`)
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.available) {
-                alert("사용 가능한 아이디입니다.");
-                document.getElementById("idCheckMessage").style.display =
-                  "none";
-              } else {
-                alert("이미 사용 중인 아이디입니다.");
-                document.getElementById("idCheckMessage").style.display =
-                  "block";
-              }
-            })
-            .catch((error) => {
-              console.error("에러:", error);
-            });
-        });
-
-      // 비밀번호 확인 기능
-      document
-        .getElementById("pwConfirm")
-        .addEventListener("input", function () {
-          const pw = document.getElementById("pw").value;
-          const pwConfirm = document.getElementById("pwConfirm").value;
-          const message = document.getElementById("pwCheckMessage");
-
-          if (pw === pwConfirm) {
-            message.style.display = "none";
-          } else {
-            message.style.display = "block";
-          }
-        });
-
-      // 폼 제출 시 유효성 검사
-      document
-        .getElementById("joinForm")
-        .addEventListener("submit", function (event) {
-          const id = document.getElementById("id").value;
-          const pw = document.getElementById("pw").value;
-          const pwConfirm = document.getElementById("pwConfirm").value;
-
-          if (pw !== pwConfirm) {
-            alert("비밀번호가 일치하지 않습니다.");
-            event.preventDefault();
-          }
-
-          if (id.length < 4) {
-            alert("아이디는 최소 4글자 이상이어야 합니다.");
-            event.preventDefault();
-          }
-        });
+      // 이곳에 script를 입력
     </script>
   </body>
 </html>
