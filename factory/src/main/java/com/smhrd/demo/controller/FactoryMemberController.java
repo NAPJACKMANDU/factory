@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.smhrd.demo.model.FactoryMember;
 import com.smhrd.demo.service.FactoryIdService;
@@ -44,25 +45,25 @@ public class FactoryMemberController {
 	public String findAccount() {
 		return "P00_findAccount" ;
 	}
-	
+
+
 	@PostMapping("/joinForm") // 회원가입창
-	public String joinMember(@ModelAttribute FactoryMember member)  {
-		System.out.println("선택한 역할: " + member.getRole());
-		System.out.println("아이디 : " + member.getId());
+	public String joinMember(FactoryMember member)  {
 		service.joinMember(member);
 		return "redirect:/" ;
 	}
-	
-	@PostMapping("/loginForm")
-	public String LoginPopup(FactoryMember member,  HttpSession session ) {
-		FactoryMember loginMember = service.LoginPopup(member);
-		if(loginMember != null) { // 로그인 성공 (세션 - 사용자 정보)
-		session.setAttribute("member", loginMember) ;
-		System.out.println(loginMember.toString());
-				
-		}
-		
-		return "redirect:/";
-		
-	}
 }
+//	
+//	@PostMapping("/loginForm")
+//	public String LoginPopup(FactoryMember member,  HttpSession session ) {
+//		FactoryMember loginMember = service.LoginPopup(member);
+//		if(loginMember != null) { // 로그인 성공 (세션 - 사용자 정보)
+//		session.setAttribute("member", loginMember) ;
+//		System.out.println(loginMember.toString());
+//				
+//		}
+		
+//		return "redirect:/";
+//		
+//	}
+

@@ -1,0 +1,148 @@
+/* ✨ 'postData' - 'P00_findAccount_PW' 설정 ✨ */
+/* 💡 '데이터 전송' 위주 '회원가입 정보 찾기' 페이지 */
+
+#globals-container {
+  align-items: center;
+
+  * {
+    margin: 0px;
+  }
+}
+
+/* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+main {
+  /* 임의 설정 */
+  border: none;
+  //"메인콘텐츠"
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+
+  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+  .enterForm[alt="PW찾기 페이지 컨테이너-form"] {
+    width: 90%;
+
+    section {
+      /* 임의 설정 */
+      border: none;
+      // background-color: lightyellow;
+
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+
+  form {
+    /* 임의 설정 */
+    background-color: lavender;
+    border: none;
+
+    //"PW찾기 페이지 컨테이너-form"
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    section[alt="PW찾기 input 컨테이너"] {
+      // background-color: lightyellow;
+      //"PW찾기 input 컨테이너"
+      padding: 0;
+      width: 460px;
+      max-width: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      input[alt="PW찾기 input"] {
+        min-width: 320px;
+        max-width: 460px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section[alt="PW찾기 버튼 컨테이너"] {
+        /* 임의 설정 */
+        // background-color: beige;
+
+        //"PW찾기 버튼 컨테이너"
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        button[alt="PW찾기submit 컨테이너"] {
+          /* 임의 설정 */
+          border: 0.5px solid lightgrey;
+          //"PW찾기submit" 버튼 스타일
+          padding: 0;
+          // min-width: 380px;
+          width: 100%;
+          height: 33px;
+          border-radius: 3px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+
+          input[alt="PW찾기submit"] {
+            // background-color: antiquewhite;
+            opacity: 1;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+          }
+        }
+
+        * {
+          border: none;
+
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(192, 192, 192);
+            transition: all 150ms linear;
+          }
+        }
+      }
+    }
+
+    section[alt="PW찾기 페이지 a태그 컨테이너"] {
+      /* 임의 설정 */
+      // background-color: beige;
+      * {
+        border: none;
+      }
+
+      //"PW찾기 페이지 a태그 컨테이너"
+      display: flex;
+      align-items: center;
+
+      p {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+
+        span,
+        a {
+          /* 임의설정 */
+          // background-color: azure;
+          //'아이디가 기억나지 않는다면?','아이디 찾기'
+          font-weight: 400;
+          font-size: smaller;
+          color: #4a4a4a;
+        }
+      }
+    }
+  }
+}

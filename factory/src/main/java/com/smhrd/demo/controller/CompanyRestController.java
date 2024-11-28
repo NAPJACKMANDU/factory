@@ -16,18 +16,16 @@ public class CompanyRestController {
 	
 	@Autowired
 	CompanyService service ;
-	
-	@GetMapping("/companies")
-	public String Companies(Model model) {
-	    List<CompanyModel> companyList = service.getCompanyName();
-	    model.addAttribute("companyList", companyList); // JSP 코드와 일치하도록 이름 변경
-	    return "P03_Join"; // 반환할 JSP 페이지 이름
-	}
+
+
+	 // 회사명 목록 가져오기 API
+    @GetMapping("/api/companies") // AJAX URL과 일치하도록 수정
+    public List<CompanyModel> getAllCompanies() {
+        return service.getAllCompanies();
+
 
 	 }
-
-
-
+}
 
 
 			
