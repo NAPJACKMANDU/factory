@@ -274,6 +274,87 @@ select:focus {
             });
         });
 
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <!-- View -->
+    <div alt="전역 컨테이너" id="globals-container">
+      <!-- header -->
+      <header alt="헤더">
+        <section alt="로고 컨테이너">
+          <form action="/Main" method="get">
+            <button alt="P001_Main으로 이동" type="submit">
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
+            </button>
+          </form>
+        </section>
+      </header>
+
+    <div class="signup-container">
+      <h1>회원가입</h1>
+      <form id="joinForm" action="joinForm" method="post" >
+        <div class="form-group">
+          <label for="id">아이디</label>
+          <input
+            type="text"
+            id="id"
+            name="id"
+            placeholder="아이디를 입력하세요"
+            required
+          />
+          <span id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
+          <button type="button" id="idCheckButton">아이디 중복 확인</button>
+        </div>
+        <div class="form-group">
+          <label for="pw">비밀번호</label>
+          <input
+            type="password"
+            id="pw"
+            name="pw"
+            placeholder="비밀번호를 입력하세요"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwConfirm">비밀번호 확인</label>
+          <input
+            type="password"
+            id="pwConfirm"
+            name="pwConfirm"
+            placeholder="비밀번호를 다시 입력하세요"
+            required
+          />
+          <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
+        </div>
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력해 주세요"
+            required
+          />
+        </div>
+             <div class="form-group">
+          <label for="companyName">회사 명</label>
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            placeholder="회사 명을 입력해 주세요"
+            required
+          />
+        </div>
+        <div class="role-selection">
+          <input type="radio" id="admin" name="role" value="admin" />
+          <label for="admin" class="role-option"> 관리자 </label>
+
       // 비밀번호 확인 기능
       document
         .getElementById("pwConfirm")

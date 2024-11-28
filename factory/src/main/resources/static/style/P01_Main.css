@@ -98,7 +98,7 @@ header > nav[alt="페이지 이동 탭"] .h-a-container a[alt=로그아웃] > sp
 
 /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* main
-     >article에 div(버튼1), aside(버튼2~3)로 공간 할당 */
+       >article에 div(버튼1), aside(버튼2~3)로 공간 할당 */
 main {
   background-color: whitesmoke;
   place-items: center;

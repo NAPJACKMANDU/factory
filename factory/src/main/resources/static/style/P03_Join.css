@@ -4,12 +4,15 @@
 /* "id체크 컨테이너","회원가입 버튼" 버튼 스타일 */
 button {
   /* 임의 설정 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
 #globals-container {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 #globals-container * {
   margin: 0px;
@@ -18,7 +21,8 @@ button {
   /* 임의 설정 */
   border: none;
   background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 0;
   width: 60%;
   display: grid;
@@ -44,6 +48,11 @@ div[alt="회원가입input_선택>직무"] table {
 }
 
 section[alt="회원가입 정보 제출 컨테이너"] * {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse;
-}/*# sourceMappingURL=P03_Join.css.map */
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
