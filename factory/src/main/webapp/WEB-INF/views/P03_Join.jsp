@@ -172,7 +172,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <body>
     <div class="signup-container">
       <h1>회원가입</h1>
-      <form id="joinForm">
+      <form id="joinForm" action="joinForm" method="post" >
         <div class="form-group">
           <label for="id">아이디</label>
           <input
@@ -207,12 +207,22 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
         </div>
         <div class="form-group">
-          <label for="email">이메일</label>
+          <label for="name">이름</label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@email.com"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력해 주세요"
+            required
+          />
+        </div>
+             <div class="form-group">
+          <label for="companyName">회사 명</label>
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            placeholder="회사 명을 입력해 주세요"
             required
           />
         </div>

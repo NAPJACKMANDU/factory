@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.smhrd.demo.model.FactoryMember;
 
 @Repository
-public interface FactoryRepository extends JpaRepository<FactoryMember, String> {
+public interface FactoryRepository extends JpaRepository<FactoryMember, Long > {
 
 	public FactoryMember findByIdAndPw(String id, String pw);
 	
