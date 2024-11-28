@@ -6,15 +6,22 @@ header {
   /* 임의 설정 */
   background-color: #004c97;
   border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 0 !important;
   padding: 0 10%; /* 헤더 좌우 패딩 */
   height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
   min-height: 70px;
   width: 100vw; /* 마진 없는 가로 사이즈 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 15%; /* 헤더 요소 간격 */
   overflow: hidden;
   /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
@@ -30,9 +37,15 @@ header section[alt="로고 컨테이너"] {
   min-width: 70px;
   width: 200px;
   max-height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 header section[alt="로고 컨테이너"] * {
   margin: 0;
@@ -47,8 +60,11 @@ header section[alt="로고 컨테이너"] form {
   /* 임의 설정 */
   padding: 0;
   width: 200px;
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   place-items: center;
 }
@@ -72,9 +88,13 @@ header nav {
   margin-top: 10px;
   padding: 0;
   width: 100%; /* 탭 가로 사이즈 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   place-items: center;
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   gap: 5%;
   /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 }
@@ -94,15 +114,22 @@ header nav div span {
   padding-right: 10px;
   width: 100px;
   height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   /* 폰트 설정 */
   font-weight: bolder;
   font-size: medium;
   color: white;
 }
 header nav div span:hover {
+  -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
   color: goldenrod;
   font-weight: bolder;
@@ -120,16 +147,19 @@ header nav .vertical-line {
   border: 1px solid #ccc;
   padding: 20px;
   min-height: 150px;
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   max-height: 400px;
   width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   position: fixed;
   top: -100%; /* 화면 위쪽에 숨겨둠 */
   left: 47%;
-  transform: translate(-50%); /* 화면 밖 위쪽에 숨김 */
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%); /* 화면 밖 위쪽에 숨김 */
   text-align: center;
   z-index: 1000;
 }
@@ -138,12 +168,14 @@ header nav .vertical-line {
   background-color: #4b4b4b;
   border: 1.5px solid #ccc;
   border-radius: 4px;
-  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
   color: #ccc;
   font-size: 17px;
 }
 .popup > button:hover {
-  box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 .popup .popup-content_container {
@@ -161,4 +193,4 @@ header nav .vertical-line {
 /* ◽🔸 Main 페이지 (한정) 🔸◽ */
 .h-a-container a {
   text-decoration-line: none;
-}/*# sourceMappingURL=header.css.map */
+}

@@ -1,6 +1,6 @@
 @charset "UTF-8";
-/* ✨ 'dashBoard','postData' - 'P02_Login' 설정 ✨ */
-/* 💡 '❓대시보드','데이터 전송' 위주 로그인 페이지 */
+/* ✨ 'postData' - 'P00_findAccount_ID' 설정 ✨ */
+/* 💡 '데이터 전송' 위주 '회원가입 정보 찾기' 페이지 */
 #globals-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -19,23 +19,24 @@ main {
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 0;
   width: 60%;
-  display: grid;
-  grid-template-columns: 20% 105%;
-  gap: 1%;
-  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  place-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
   /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 }
-main aside {
-  /* 임의 설정 */
-  background-color: lavender;
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+main .enterForm[alt="ID찾기 페이지 컨테이너-form"] {
+  width: 90%;
 }
-main .enterForm[alt="로그인 페이지 컨테이너-form"] {
-  width: 75%;
-}
-main .enterForm[alt="로그인 페이지 컨테이너-form"] section {
+main .enterForm[alt="ID찾기 페이지 컨테이너-form"] section {
   /* 임의 설정 */
   border: none;
   width: 100%;
@@ -52,6 +53,7 @@ main .enterForm[alt="로그인 페이지 컨테이너-form"] section {
 }
 main form {
   /* 임의 설정 */
+  background-color: aliceblue;
   border: none;
   padding: 15px;
   display: -webkit-box;
@@ -67,9 +69,15 @@ main form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
-main form section[alt="로그인 input 컨테이너"] {
+main form > p {
+  text-align: center;
+}
+main form section[alt="ID찾기 input 컨테이너"] {
+  padding: 0;
+  width: 460px;
+  max-width: 460px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,14 +87,11 @@ main form section[alt="로그인 input 컨테이너"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  min-height: 130px;
-  width: 100%;
   gap: 20px;
 }
-main form section[alt="로그인 input 컨테이너"] * {
-  min-width: 280px;
-  width: auto;
-  max-width: 90%;
+main form section[alt="ID찾기 input 컨테이너"] input[alt="ID찾기 input"] {
+  min-width: 320px;
+  max-width: 460px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -94,7 +99,7 @@ main form section[alt="로그인 input 컨테이너"] * {
       -ms-flex-align: center;
           align-items: center;
 }
-main form section[alt="로그인 버튼 컨테이너"] {
+main form section[alt="ID찾기 input 컨테이너"] section[alt="ID찾기 버튼 컨테이너"] {
   /* 임의 설정 */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -102,20 +107,35 @@ main form section[alt="로그인 버튼 컨테이너"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
-main form section[alt="로그인 버튼 컨테이너"] * {
-  border: none;
-}
-main form section[alt="로그인 버튼 컨테이너"] button {
+main form section[alt="ID찾기 input 컨테이너"] section[alt="ID찾기 버튼 컨테이너"] button[alt="ID찾기submit 컨테이너"] {
   /* 임의 설정 */
   border: 0.5px solid lightgrey;
-  width: 35%;
-  max-width: 100px;
+  padding: 0;
+  width: 100%;
+  height: 33px;
   border-radius: 3px;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
-main form section[alt="로그인 페이지 a태그 컨테이너"] {
+main form section[alt="ID찾기 input 컨테이너"] section[alt="ID찾기 버튼 컨테이너"] button[alt="ID찾기submit 컨테이너"] input[alt=ID찾기submit] {
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+main form section[alt="ID찾기 input 컨테이너"] section[alt="ID찾기 버튼 컨테이너"] * {
+  border: none;
+}
+main form section[alt="ID찾기 input 컨테이너"] section[alt="ID찾기 버튼 컨테이너"] *:hover {
+  cursor: pointer;
+  background-color: rgb(192, 192, 192);
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+main form section[alt="ID찾기 페이지 a태그 컨테이너"] {
   /* 임의 설정 */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,11 +144,27 @@ main form section[alt="로그인 페이지 a태그 컨테이너"] {
       -ms-flex-align: center;
           align-items: center;
 }
-main form section[alt="로그인 페이지 a태그 컨테이너"] * {
+main form section[alt="ID찾기 페이지 a태그 컨테이너"] * {
   border: none;
 }
-main form section[alt="로그인 페이지 a태그 컨테이너"] a {
+main form section[alt="ID찾기 페이지 a태그 컨테이너"] p {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+main form section[alt="ID찾기 페이지 a태그 컨테이너"] p span,
+main form section[alt="ID찾기 페이지 a태그 컨테이너"] p a {
   /* 임의설정 */
   font-weight: 400;
   font-size: smaller;
+  color: #4a4a4a;
 }

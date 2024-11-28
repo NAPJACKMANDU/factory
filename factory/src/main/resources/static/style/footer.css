@@ -4,15 +4,23 @@
 footer {
   /* 임의 설정 */
   background-color: #004c97;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 0 !important;
   padding: 0 2%; /* 푸터 좌우 패딩 */
   height: 5vh; /* 푸터 높이 10% (적절히 조정 가능) */
   min-height: 15px;
   width: 100vw; /* 마진 없는 가로 사이즈 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
   gap: 45%; /* 푸터 요소 간격 */
   overflow: hidden;
   left: 0;
@@ -29,9 +37,15 @@ footer section {
   margin-left: 15%;
   padding: 0;
   width: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 footer section * {
   margin: 0;
@@ -49,4 +63,4 @@ footer section button {
 }
 footer section button span {
   width: 100%;
-}/*# sourceMappingURL=footer.css.map */
+}

@@ -3,6 +3,17 @@
 /* 💡 '반응형 웹' 실시간 모니터링 */
 /* article과 aside가 각각 main 공간을 나눔 */
 /* ◼️◼️◼️◼️◼️◼️ 깜빡임 효과를 위한 애니메이션 & 화면 수 조절 ◼️◼️◼️◼️◼️◼️ */
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes blink {
   0% {
     opacity: 1;
@@ -16,7 +27,8 @@
 }
 /* 깜빡임 효과를 적용할 클래스 */
 .blink-effect {
-  animation: blink 0.5s infinite; /* 0.5초 주기로 깜빡임 효과 반복 */
+  -webkit-animation: blink 0.5s infinite;
+          animation: blink 0.5s infinite; /* 0.5초 주기로 깜빡임 효과 반복 */
 }
 
 .blink-controls {
@@ -56,6 +68,8 @@ main {
 main .blink-controls {
   margin: 10px 0;
   max-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px; /* 버튼 간 간격 */
 }
@@ -86,6 +100,7 @@ main > article #M-area {
   display: grid;
   gap: 5px;
   place-items: center; /* 중앙 정렬 */
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; /* 부드러운 전환 효과 */
   /* 기본 4열 레이아웃 */
   grid-template-columns: repeat(4, 1fr);
@@ -95,23 +110,34 @@ main > article #M-area.modified-layout {
   grid-template-columns: 100%; /* 전체 폭을 하나의 열로 사용 */
 }
 main > article #M-area .CAM-container {
-  box-sizing: border-box; /* Border가 요소 크기에 영향을 미치지 않도록 */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* Border가 요소 크기에 영향을 미치지 않도록 */
   border: 5px solid #4a4a4a;
   border-radius: 2px;
-  box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
   background-color: #4a4a4a;
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative; /* 자식 요소의 위치 제어 */
   overflow: hidden; /* 내부 요소가 컨테이너를 벗어나지 않도록 */
 }
 main > article #M-area .CAM-container.expanded {
   width: 100%; /* 클릭된 컨테이너가 전체 폭을 차지 */
   height: 100%;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 main > article #M-area .CAM-container img,
 main > article #M-area .CAM-container video {
@@ -127,7 +153,8 @@ main > article #M-area .CAM-container video {
 main > article #M-area .CAM-container img:hover,
 main > article #M-area .CAM-container video:hover {
   cursor: pointer;
-  transform: scale(1.05); /* 호버 시 약간 확대 */
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05); /* 호버 시 약간 확대 */
 }
 main > article #M-area.reset-layout {
   grid-template-columns: repeat(4, 1fr); /* 4열 초기화 */
@@ -138,20 +165,31 @@ main button[alt="로그 토글 버튼"] {
 }
 main > aside {
   background-color: whitesmoke;
-  box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2) inset;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
   height: 99%;
   width: auto; /* 기본 너비 */
   overflow-y: auto; /* 스크롤 가능 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column-reverse; /* 아래에서 위로 쌓임 */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; /* 아래에서 위로 쌓임 */
 }
 main > aside .log-toggle {
   height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse; /* 버튼이 오른쪽에 정렬 */
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; /* 버튼이 오른쪽에 정렬 */
 }
 main > aside .log-toggle > button {
   margin-top: 0;
@@ -170,15 +208,22 @@ main > aside > article {
 }
 main > aside > article section {
   background-color: lightgray;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: 15px 0;
   padding: 0 15px;
   min-height: 50px;
   min-width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
 }
 main > aside > article section p {
   width: 230px;
@@ -197,9 +242,11 @@ main #on-the-case {
 top-bar[alt="화면 수 조절 바"] {
   /* 초기 상태: 투명도 유지 */
   opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease; /* 부드러운 전환 효과 */
   border-radius: 3px;
   min-height: 9vh;
+  max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
   max-height: fit-content;
   width: 25vh;
@@ -214,6 +261,7 @@ top-bar[alt="화면 수 조절 바"] {
   color: white; /* 텍스트 색상 */
   padding: 10px 20px;
   text-align: center;
+  -webkit-transition: background-color 0.3s ease, opacity 0.5s ease;
   transition: background-color 0.3s ease, opacity 0.5s ease;
   /* hover 시 투명도 증가 */
   /* 화면 수 조절 버튼 컨테이너 */
@@ -224,10 +272,12 @@ top-bar[alt="화면 수 조절 바"]:hover, top-bar[alt="화면 수 조절 바"]
 }
 top-bar[alt="화면 수 조절 바"]:hover div[alt="화면 수 조절 컨테이너"], top-bar[alt="화면 수 조절 바"].hover-effect div[alt="화면 수 조절 컨테이너"] {
   opacity: 1; /* hover 시 내부 컨테이너 표시 */
+  -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
 top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] {
   display: inline-block;
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   /* 버튼 스타일 */
@@ -242,6 +292,7 @@ top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] but
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
 top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] button:hover {
@@ -255,4 +306,4 @@ top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] but
 }
 top-bar[alt="화면 수 조절 바"]:hover table div[alt="화면 수 조절 컨테이너"] {
   opacity: 1; /* hover 시 화면 수 조절 컨테이너 표시 */
-}/*# sourceMappingURL=P04_Monitor.css.map */
+}
