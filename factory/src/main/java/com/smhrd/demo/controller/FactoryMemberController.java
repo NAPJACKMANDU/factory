@@ -42,7 +42,7 @@ public class FactoryMemberController {
 	
 	@GetMapping("/P00_findAccount") // 아이디/비번 찾기 
 	public String findAccount() {
-		return "/P00_findAccount" ;
+		return "P00_findAccount" ;
 	}
 	
 	@PostMapping("/joinForm") // 회원가입창
