@@ -12,7 +12,8 @@ pageEncoding="UTF-8" isELIgnored="false"%>
     <!-- 지역 style -->
     <link rel="stylesheet" href="/style/P01_Main.css" type="text/css" />
   </heads>
-  <body>
+  
+   <body>
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
@@ -21,7 +22,14 @@ pageEncoding="UTF-8" isELIgnored="false"%>
           <form action="/Main" method="get">
             <button alt="P001_Main으로 이동" type="submit">
               <!-- <button alt="임의설정"> -->
+<<<<<<< HEAD
               <img alt="로고 이미지" src="/imgs/Logo.jpg" />
+=======
+              <img
+                alt="로고 이미지"
+                src="/imgs/Logo.jpg"
+              />
+>>>>>>> 22b9fc5e95c2344b7fc52b7ac10f156658eef2bb
             </button>
           </form>
         </section>
@@ -76,11 +84,19 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 
     <!-- jQuery -->
     <script src="/js/jquery-3.6.0.js"></script>
+<<<<<<< HEAD
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.scrolly.min.js"></script>
     <script src="/js/jquery.scrollex.min.js"></script>
     <script src="/js/skel.min.js"></script>
     <script src="/js/util.js"></script>
+=======
+   <script src="/js/jquery.min.js"></script>
+               <script src="/js/jquery.scrolly.min.js"></script>
+               <script src="/js/jquery.scrollex.min.js"></script>
+               <script src="/js/skel.min.js"></script>
+               <script src="/js/util.js"></script> 
+>>>>>>> 22b9fc5e95c2344b7fc52b7ac10f156658eef2bb
 
     <!-- Scripts -->
     <script src="/js/P01_Main.js"></script>

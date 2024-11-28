@@ -14,7 +14,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- 지역 style -->
     <link rel="stylesheet" href="/style/P04_Monitor.css" />
   </head>
-  <body>
+   <body>
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->

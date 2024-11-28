@@ -55,7 +55,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <!-- 로그인 정보 입력 구역 -->
         <form
           alt="로그인 페이지 컨테이너-form"
-          action="#"
+          action=""
           method="post"
           id="logInForm"
           class="enterForm"
