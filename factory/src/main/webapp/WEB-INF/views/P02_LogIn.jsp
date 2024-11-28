@@ -1,6 +1,6 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -8,17 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P02_LogIn</title>
     <!-- 지역 style -->
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/P02_LogIn.css"
-    />
+    <link rel="stylesheet" href="/style/P02_LogIn.css" />
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/globals.css"
-    />
-    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
-    <link rel="stylesheet" href="/src/main/resources/static/style/footer.css" />
+    <link rel="stylesheet" href="/style/globals.css" />
+    <link rel="stylesheet" href="/style/header.css" />
+    <link rel="stylesheet" href="/style/footer.css" />
   </head>
   <body>
     <!-- View -->
@@ -28,10 +22,7 @@
         <section alt="로고 컨테이너">
           <form action="#" method="get">
             <button alt="P01_Main으로 이동" type="submit">
-              <img
-                alt="로고 이미지"
-                src="/src/main/resources/static/imgs/Logo.jpg"
-              />
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
             </button>
           </form>
         </section>
@@ -105,16 +96,16 @@
       </footer>
     </div>
     <!-- jQuery -->
-    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
-    <!-- <script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery.scrolly.min.js"></script>
-	<script src="/js/jquery.scrollex.min.js"></script>
-	<script src="/js/skel.min.js"></script>
-	<script src="/js/util.js"></script> -->
+    <script src="/js/jquery-3.6.0.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
 
     <!-- Scripts -->
     <!-- <script src="#"></script> -->
-    <script src="/src/main/resources/static/js/P02_Login.js"></script>
-    <script src="/src/main/resources/static/js/globals.js"></script>
+    <script src="/js/P02_Login.js"></script>
+    <script src="/js/globals.js"></script>
   </body>
 </html>

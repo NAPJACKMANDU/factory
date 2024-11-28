@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,22 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P04_Monitor</title>
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/globals.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/style/header.css"
-    />
+    <link rel="stylesheet" href="/style/globals.css" />
+    <link rel="stylesheet" href="/style/header.css" />
 
     <!-- 지역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/P04_Monitor.css"
-    />
+    <link rel="stylesheet" href="/style/P04_Monitor.css" />
   </head>
-   <body>
+  <body>
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
@@ -32,10 +23,7 @@
           <form action="/Main" method="get">
             <button alt="P001_Main으로 이동" type="submit">
               <!-- <button alt="임의설정"> -->
-              <img
-                alt="로고 이미지"
-                src="/src/main/resources/static/imgs/Logo.jpg"
-              />
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
             </button>
           </form>
         </section>
@@ -134,7 +122,7 @@
                 />
                 브라우저가 동영상을 지원하지 않습니다.
               </video> -->
-              <img src="/src/main/resources/static/imgs/c1.jpg" alt="화면1" />
+              <img src="/imgs/c1.jpg" alt="화면1" />
             </section>
             <section id="c2" class="CAM-container" alt="개별 화면 컨테이너">
               <!-- <img
@@ -149,7 +137,7 @@
                 />
                 브라우저가 동영상을 지원하지 않습니다.
               </video> -->
-              <img src="/src/main/resources/static/imgs/c2.jpg" alt="화면2" />
+              <img src="/imgs/c2.jpg" alt="화면2" />
             </section>
             <section id="c3" class="CAM-container" alt="개별 화면 컨테이너">
               <!-- <img
@@ -164,51 +152,47 @@
                 />
                 브라우저가 동영상을 지원하지 않습니다.
               </video> -->
-              <img src="/src/main/resources/static/imgs/c3.jpg" alt="화면3" />
+              <img src="/imgs/c3.jpg" alt="화면3" />
             </section>
             <section id="c4" class="CAM-container" alt="개별 화면 컨테이너">
-              <img
-                alt="화면4"
-                type="video/mp4"
-                src="/src/main/resources/static/imgs/c4.jpg"
-              />
+              <img alt="화면4" type="video/mp4" src="/imgs/c4.jpg" />
             </section>
             <section id="c5" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c5.jpg" alt="화면5" />
+              <img src="/imgs/c5.jpg" alt="화면5" />
             </section>
             <!-- 이상 탐지! -->
             <section id="c6" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c6.jpg" alt="화면6" />
+              <img src="/imgs/c6.jpg" alt="화면6" />
             </section>
             <section id="c7" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c7.jpg" alt="화면7" />
+              <img src="/imgs/c7.jpg" alt="화면7" />
             </section>
             <section id="c8" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c8.jpg" alt="화면8" />
+              <img src="/imgs/c8.jpg" alt="화면8" />
             </section>
             <section id="c9" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c9.jpg" alt="화면9" />
+              <img src="/imgs/c9.jpg" alt="화면9" />
             </section>
             <section id="c10" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c10.jpg" alt="화면10" />
+              <img src="/imgs/c10.jpg" alt="화면10" />
             </section>
             <section id="c11" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c11.jpg" alt="화면11" />
+              <img src="/imgs/c11.jpg" alt="화면11" />
             </section>
             <section id="c12" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c12.jpg" alt="화면12" />
+              <img src="/imgs/c12.jpg" alt="화면12" />
             </section>
             <section id="c13" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c13.jpg" alt="화면13" />
+              <img src="/imgs/c13.jpg" alt="화면13" />
             </section>
             <section id="c14" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c14.jpg" alt="화면14" />
+              <img src="/imgs/c14.jpg" alt="화면14" />
             </section>
             <section id="c15" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c15.jpg" alt="화면15" />
+              <img src="/imgs/c15.jpg" alt="화면15" />
             </section>
             <section id="c16" class="CAM-container" alt="개별 화면 컨테이너">
-              <img src="/src/main/resources/static/imgs/c16.jpg" alt="화면16" />
+              <img src="/imgs/c16.jpg" alt="화면16" />
             </section>
           </div>
         </article>
@@ -264,8 +248,8 @@
     </div>
 
     <!-- jQuery -->
-    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
+    <script src="/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
-    <script src="/src/main/resources/static/js/P04_Monitor.js"></script>
+    <script src="/js/P04_Monitor.js"></script>
   </body>
 </html>

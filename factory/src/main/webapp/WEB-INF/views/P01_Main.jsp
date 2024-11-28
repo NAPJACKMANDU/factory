@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
   <heads>
@@ -7,25 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P01_Main</title>
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/globals.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="/style/header.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="/style/globals.css" type="text/css" />
+    <link rel="stylesheet" href="/style/header.css" type="text/css" />
     <!-- 지역 style -->
-    <link
-      rel="stylesheet"
-      href="/style/P01_Main.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="/style/P01_Main.css" type="text/css" />
   </heads>
   <body>
-   <!-- View -->
+    <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
       <header alt="헤더">
@@ -33,10 +21,7 @@
           <form action="/Main" method="get">
             <button alt="P001_Main으로 이동" type="submit">
               <!-- <button alt="임의설정"> -->
-              <img
-                alt="로고 이미지"
-                src="/src/main/resources/static/imgs/Logo.jpg"
-              />
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
             </button>
           </form>
         </section>
@@ -91,11 +76,11 @@
 
     <!-- jQuery -->
     <script src="/js/jquery-3.6.0.js"></script>
-     <script src="/js/jquery.min.js"></script>
-               <script src="/js/jquery.scrolly.min.js"></script>
-               <script src="/js/jquery.scrollex.min.js"></script>
-               <script src="/js/skel.min.js"></script>
-               <script src="/js/util.js"></script> 
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
 
     <!-- Scripts -->
     <script src="/js/P01_Main.js"></script>

@@ -177,10 +177,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <section alt="로고 컨테이너">
           <form action="/Main" method="get">
             <button alt="P001_Main으로 이동" type="submit">
-              <img
-                alt="로고 이미지"
-                src="/src/main/resources/static/imgs/Logo.jpg"
-              />
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
             </button>
           </form>
         </section>
@@ -333,11 +330,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </div>
     <!-- jQuery -->
     <script src="/js/jquery-3.6.0.js"></script>
-  <script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery.scrolly.min.js"></script>
-	<script src="/js/jquery.scrollex.min.js"></script>
-	<script src="/js/skel.min.js"></script>
-	<script src="/js/util.js"></script> 
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
     <!-- Scripts -->
     <!-- <script src="#"></script> -->
     <script src="/js/P03_Join.js"></script>
