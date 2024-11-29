@@ -2,6 +2,8 @@ package com.smhrd.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.smhrd.demo.model.FactoryMember;
 import com.smhrd.demo.repo.FactoryRepository;
@@ -18,11 +20,13 @@ public class FactoryIdService {
 //		return rep.findByIdAndPw(member.getId(), member.getPw()) ;
 //	}
 
-	public FactoryMember joinMember(FactoryMember member) {
-		System.out.println(member);
-		return rep.save(member) ; 
+
+	public void join(FactoryMember member) {
+		rep.save(member) ;
+	}
+	
 	}
 	
 	
 	
-}
+
