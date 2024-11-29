@@ -79,7 +79,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <div>
               <a href="#"><span>아이디/비밀번호 찾기</span></a>
               <span> | </span>
-              <a href="#"><span>회원가입</span></a>
+              <a href="P03_Join"><span>회원가입</span></a>
             </div>
           </section>
         </form>

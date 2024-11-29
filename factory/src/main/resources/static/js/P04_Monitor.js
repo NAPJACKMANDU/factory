@@ -10,6 +10,7 @@
 --8 제외할 '개별 화면 컨테이너' 선택('화면 제외 실행') && 노출 화면 초기화
 --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)'
 -10 ➡️➡️➡️'저장된 로그' 탭 클릭 시 '녹화•저장된 로그(txt•video)' 조회 : 녹화 영상은 페이지 이동
+-11 드래그 앤 드롭 및 레이아웃 옵션
 */
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
@@ -211,42 +212,40 @@ $(document).ready(function () {
 });
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --3 '헤더 버튼' 클릭 시 팝업 열기/닫기 이벤트 처리 */
+/* --3 '헤더 버튼' 클릭 --> header의 자손 button 클릭 시 팝업창 띄우기 이벤트  */
 
 $(document).ready(function () {
-  // 팝업 구성 객체: 각 팝업과 연결된 버튼, 컨텐츠, 제목, API 엔드포인트를 정의
+  // 팝업 구성 객체
   const popups = {
     safetyRules: {
-      button: "#btn-safetyRules", // 안전수칙 버튼 ID
-      popup: "#modal-safetyRules", // 안전수칙 팝업 ID
-      content: "#content-safetyRules", // 팝업 내부 컨텐츠 ID
-      title: "안전 수칙", // 팝업 제목
-      endpoint: "/getSafetyRules", // 데이터 요청 API 엔드포인트
+      button: "#btn-safetyRules",
+      popup: "#modal-safetyRules",
+      content: "#content-safetyRules",
+      title: "안전 수칙",
+      endpoint: "/getSafetyRules",
     },
     protocol: {
-      button: "#btn-protocol", // 프로토콜 버튼 ID
-      popup: "#modal-protocol", // 프로토콜 팝업 ID
-      content: "#content-protocol", // 팝업 내부 컨텐츠 ID
-      title: "프로토콜", // 팝업 제목
-      endpoint: "/getProtocol", // 데이터 요청 API 엔드포인트
+      button: "#btn-protocol",
+      popup: "#modal-protocol",
+      content: "#content-protocol",
+      title: "프로토콜",
+      endpoint: "/getProtocol",
     },
     EEIF: {
-      button: "#btn-EEIF", // 연락망 버튼 ID
-      popup: "#modal-EEIF", // 연락망 팝업 ID
-      content: "#content-EEIF", // 팝업 내부 컨텐츠 ID
-      title: "연락망", // 팝업 제목
-      endpoint: "/getEEIF", // 데이터 요청 API 엔드포인트
+      button: "#btn-EEIF",
+      popup: "#modal-EEIF",
+      content: "#content-EEIF",
+      title: "연락망",
+      endpoint: "/getEEIF",
     },
     savedLog: {
-      button: "#btn-savedLog", // 저장된 로그 버튼 ID
-      popup: "#modal-savedLog", // 저장된 로그 팝업 ID
-      content: "#content-savedLog", // 팝업 내부 컨텐츠 ID
-      title: "저장된 로그", // 팝업 제목
-      endpoint: "/getSavedLog", // 데이터 요청 API 엔드포인트
+      button: "#btn-savedLog",
+      popup: "#modal-savedLog",
+      content: "#content-savedLog",
+      title: "저장된 로그",
+      endpoint: "/getSavedLog",
     },
   };
-
-  let buttonClickCounts = {}; // 각 버튼의 클릭 횟수를 저장하는 객체
 
   /**
    * 팝업 열기 함수
@@ -257,19 +256,15 @@ $(document).ready(function () {
 
     // 서버로부터 데이터 요청
     $.ajax({
-      url: endpoint, // API 엔드포인트
-      method: "GET", // HTTP GET 요청
+      url: endpoint,
+      method: "GET",
       success: function (data) {
-        // 데이터 요청 성공 시 컨텐츠 업데이트
-        const message = data.message || "데이터를 불러올 수 없습니다."; // 서버에서 받은 메시지
-        const dynamicContent = `<h3>${title}</h3><p>${message}</p>`; // 팝업 컨텐츠 동적 생성
-        $(content).html(dynamicContent); // 컨텐츠 삽입
-        $(popup) // 팝업을 화면에 표시
-          .css("display", "block")
-          .animate({ top: "20%" }, 500); // 애니메이션으로 팝업 등장
+        const message = data.message || "데이터를 불러올 수 없습니다.";
+        const dynamicContent = `<h3>${title}</h3><p>${message}</p>`;
+        $(content).html(dynamicContent);
+        $(popup).css("display", "block").animate({ top: "20%" }, 500);
       },
       error: function () {
-        // 데이터 요청 실패 시 기본 오류 메시지 표시
         $(content).html("<p>서버 연결 오류가 발생했습니다.</p>");
         $(popup).css("display", "block").animate({ top: "20%" }, 500);
       },
@@ -282,32 +277,38 @@ $(document).ready(function () {
    */
   function closePopup(popup) {
     $(popup).animate({ top: "-100%" }, 500, function () {
-      $(this).css("display", "none"); // 애니메이션 완료 후 팝업 숨김
+      $(this).css("display", "none");
     });
   }
 
-  // 팝업 버튼 및 닫기 버튼 이벤트 등록
+  /**
+   * 팝업 열기/닫기 이벤트 등록
+   */
   Object.keys(popups).forEach((key) => {
     const config = popups[key];
 
-    // 팝업 열기 이벤트: 버튼 클릭 시 실행
-    $(config.button).on("click", function () {
-      const buttonId = config.button; // 현재 버튼 ID 가져오기
-      buttonClickCounts[buttonId] = (buttonClickCounts[buttonId] || 0) + 1; // 클릭 횟수 증가
+    // 동적 이벤트 위임 방식으로 버튼 클릭 이벤트 등록
+    $(document).on("click", config.button, function (event) {
+      event.preventDefault(); // 기본 동작 방지 (필요 시)
+      const popupVisible = $(config.popup).css("display") === "block";
 
-      if (buttonClickCounts[buttonId] % 2 === 0) {
-        // 짝수 번째 클릭 시 팝업 닫기
+      if (popupVisible) {
         closePopup(config.popup);
       } else {
-        // 홀수 번째 클릭 시 팝업 열기
         openPopup(config);
       }
     });
 
-    // 팝업 닫기 이벤트: '닫기' 버튼 클릭 시 실행
-    $(".closePopup").on("click", function () {
+    // 닫기 버튼 이벤트 등록
+    $(document).on("click", `${config.popup} .closePopup`, function (event) {
+      event.preventDefault(); // 기본 동작 방지
       closePopup(config.popup);
     });
+  });
+
+  // 부가기능 탭 내부에서 이벤트가 차단되지 않도록 설정
+  $(document).on("click", "nav[alt='부가기능 탭'] button", function (event) {
+    event.stopPropagation(); // 이벤트 전파 차단 방지
   });
 });
 
@@ -351,34 +352,33 @@ function addLog(cameraNumber, status, icon) {
   // 로그 상태에 따라 토글 버튼 상태 변경
   updateLogToggleButton();
 
-// 서버로 로그 데이터 전송
-const logData = {
-  cameraNumber: cameraNumber || "unknown", // 기본값 설정: cameraNumber가 없을 경우 기본값 "unknown" 사용
-  status: status || "undefined", // 기본값 설정: status가 없을 경우 기본값 "undefined" 사용
-  icon: icon || "default", // 기본값 설정: icon이 없을 경우 기본값 "default" 사용
-  timestamp: timestamp || new Date().toISOString(), // 기본값 설정: timestamp가 없을 경우 현재 시간을 ISO 포맷으로 추가
-};
+  // 서버로 로그 데이터 전송
+  const logData = {
+    cameraNumber: cameraNumber || "unknown", // 기본값 설정: cameraNumber가 없을 경우 기본값 "unknown" 사용
+    status: status || "undefined", // 기본값 설정: status가 없을 경우 기본값 "undefined" 사용
+    icon: icon || "default", // 기본값 설정: icon이 없을 경우 기본값 "default" 사용
+    timestamp: timestamp || new Date().toISOString(), // 기본값 설정: timestamp가 없을 경우 현재 시간을 ISO 포맷으로 추가
+  };
 
- // 서버 엔드포인트 설정
- const logEndpoint = "https://api.#.com/saveLog"; // 엔드포인트 URL 수정 필요 ⬅️⬅️⬅️
+  // 서버 엔드포인트 설정
+  const logEndpoint = "https://api.#.com/saveLog"; // 엔드포인트 URL 수정 필요 ⬅️⬅️⬅️
 
-// 데이터 전송
-$.ajax({
-  url: logEndpoint, // 서버의 로그 저장 API 경로
-  method: "POST", // HTTP 메서드: POST를 사용해 데이터를 서버에 전송
-  contentType: "application/json", // 전송 데이터 타입: JSON
-  data: JSON.stringify(logData), // 데이터를 JSON 문자열로 변환
-  success: function (response) {
-    console.log("로그 저장 성공:", response); // 서버 응답 출력
-    // 성공 시 추가 작업을 여기에 작성 가능
-  },
-  error: function (error) {
-    console.error("로그 저장 실패:", error); // 에러 출력
-    // 사용자 친화적인 에러 알림 메시지
-    alert("로그 저장에 실패했습니다. 다시 시도해주세요.");
-  },
-});
-
+  // 데이터 전송
+  $.ajax({
+    url: logEndpoint, // 서버의 로그 저장 API 경로
+    method: "POST", // HTTP 메서드: POST를 사용해 데이터를 서버에 전송
+    contentType: "application/json", // 전송 데이터 타입: JSON
+    data: JSON.stringify(logData), // 데이터를 JSON 문자열로 변환
+    success: function (response) {
+      console.log("로그 저장 성공:", response); // 서버 응답 출력
+      // 성공 시 추가 작업을 여기에 작성 가능
+    },
+    error: function (error) {
+      console.error("로그 저장 실패:", error); // 에러 출력
+      // 사용자 친화적인 에러 알림 메시지
+      alert("로그 저장에 실패했습니다. 다시 시도해주세요.");
+    },
+  });
 }
 
 $(function () {
@@ -428,7 +428,6 @@ $(function () {
   logToggleButton.text("🔕");
   updateLogToggleButton();
 });
-
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --6 이상 탐지 로그 자동 추가 */
@@ -565,7 +564,6 @@ $(document).ready(function () {
         }
       );
     });
-
   });
 
   // 초기 버튼 상태 설정
@@ -747,3 +745,35 @@ $(document).ready(function () {
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)' */
 /* -10 ➡️➡️➡️'저장된 로그' 탭 클릭 시 '녹화•저장된 로그(txt•video)' 조회 : 녹화 영상은 페이지 이동  */
+
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --11 드래그 앤 드롭 및 레이아웃 옵션 */
+$(document).ready(function () {
+  // 드래그 앤 드롭
+  $(".CAM-container").draggable({
+    revert: "invalid",
+    zIndex: 100,
+  });
+
+  $("#category-list .category").droppable({
+    accept: ".CAM-container",
+    drop: function (event, ui) {
+      const droppedItem = ui.draggable;
+      $(this).append(droppedItem);
+    },
+  });
+
+  // 레이아웃 옵션
+  $(".layout-btn").on("click", function () {
+    const layout = $(this).data("layout");
+    const $Marea = $("#M-area");
+
+    if (layout === "grid-4") {
+      $Marea.css("grid-template-columns", "repeat(4, 1fr)");
+    } else if (layout === "grid-2") {
+      $Marea.css("grid-template-columns", "repeat(2, 1fr)");
+    } else if (layout === "grid-1") {
+      $Marea.css("grid-template-columns", "1fr");
+    }
+  });
+});
