@@ -1,15 +1,20 @@
 package com.smhrd.demo.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smhrd.demo.model.FactoryMember;
 import com.smhrd.demo.service.FactoryIdService;
+import com.smhrd.demo.service.FactoryMemberService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.server.PathParam;
@@ -67,6 +72,18 @@ public class FactoryMemberController {
 			return "redirect:/" ;
 		}
 		
+	}
+	@Autowired
+    private FactoryMemberService factoryMemberService;
+
+	@GetMapping("/api/check-id")
+	@ResponseBody
+	public Map<String, Boolean> checkId(@RequestParam String id) {
+	    System.out.println("요청된 아이디: " + id);
+	    Map<String, Boolean> response = new HashMap<>();
+	    boolean isAvailable = !factoryMemberService.isIdTaken(id); // 서비스에서 중복 체크
+	    response.put("available", isAvailable);
+	    return response;
 	}
 	}
 
