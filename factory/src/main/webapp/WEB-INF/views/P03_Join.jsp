@@ -197,6 +197,185 @@ select:focus {
 </head>
 <body>
    <div class="signup-container">
+
+      <h1>회원가입</h1>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <form id="joinForm" action="joinForm" method="post">
+         <div class="form-group">
+            <label for="id">아이디</label> <input type="text" id="id" name="id"
+               placeholder="아이디를 입력하세요" required /> <span
+               id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
+            <button type="button" id="idCheckButton">아이디 중복 확인</button>
+         </div>
+         <div class="form-group">
+            <label for="pw">비밀번호</label> <input type="password" id="pw"
+               name="pw" placeholder="비밀번호를 입력하세요" required />
+         </div>
+         <div class="form-group">
+            <label for="pwConfirm">비밀번호 확인</label> <input type="password"
+               id="pwConfirm" name="pwConfirm" placeholder="비밀번호를 다시 입력하세요"
+               required /> <span id="pwCheckMessage">비밀번호가 일치하지
+               않습니다.</span>
+         </div>
+         <div class="form-group">
+            <label for="name">이름</label> <input type="text" id="name"
+               name="name" placeholder="이름을 입력해 주세요" required />
+         </div>
+       
+   <div class="form-group" id="inputState">
+        <label for="companyName">회사 명</label>
+        <select id="companyName" name="companyName" required>
+            <option value="" disabled selected>회사 명을 선택해 주세요</option>
+        </select>
+    </div>
+
+    <script>
+    $.ajax({
+        url: '/api/companies',
+        method: 'GET',
+        success: function (data) {
+            let dropdown = $('#companyName');
+            dropdown.empty().append('<option value="" disabled selected>회사 명을 선택해 주세요</option>');
+            
+            // 데이터 순회 시 문제 확인
+            data.forEach(function (company) {
+                // 만약 companyName이 문자열이 아닌 객체라면 오류가 발생할 수 있음
+                dropdown.append('<option value="' + company.companyName + '">' + company.companyName + '</option>');
+            });
+        },
+        error: function () {
+            alert('회사명을 불러오는 데 실패했습니다.');
+        }
+    });
+
+    </script>
+    
+         <div class="role-selection">
+            <input type="radio" id="admin" name="role" value="admin" /> <label
+               for="admin" class="role-option"> 관리자 </label> <input type="radio"
+               id="user" name="role" value="user" checked /> <label for="user"
+               class="role-option"> 일반 사용자 </label>
+         </div>
+         <button type="submit">가입하기</button>
+      </form>
+      <footer>
+         <p>
+            이미 계정이 있으신가요? <a href="/login">로그인</a>
+         </p>
+      </footer>
+   </div>
+
+   <script>
+      // 아이디 중복 확인 기능
+      document
+        .getElementById("idCheckButton")
+        .addEventListener("click", function () {
+          const id = document.getElementById("id").value;
+          if (id.length < 4) {
+            alert("아이디는 최소 4글자 이상이어야 합니다.");
+            return;
+          }
+          // 예제: 중복 확인 API 호출 (AJAX 또는 Fetch 사용)
+          fetch(`/api/check-id?id=${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.available) {
+                alert("사용 가능한 아이디입니다.");
+                document.getElementById("idCheckMessage").style.display =
+                  "none";
+              } else{
+                alert("이미 사용 중인 아이디입니다.");
+                document.getElementById("idCheckMessage").style.display =
+                  "block";
+              }
+            })
+            .catch((error) => {
+              console.error("에러:", error);
+            });
+        });
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <!-- View -->
+    <div alt="전역 컨테이너" id="globals-container">
+      <!-- header -->
+      <header alt="헤더">
+        <section alt="로고 컨테이너">
+          <form action="/Main" method="get">
+            <button alt="P001_Main으로 이동" type="submit">
+              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
+            </button>
+          </form>
+        </section>
+      </header>
+
+    <div class="signup-container">
+      <h1>회원가입</h1>
+      <form id="joinForm" action="joinForm" method="post" >
+        <div class="form-group">
+          <label for="id">아이디</label>
+          <input
+            type="text"
+            id="id"
+            name="id"
+            placeholder="아이디를 입력하세요"
+            required
+          />
+          <span id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
+          <button type="button" id="idCheckButton">아이디 중복 확인</button>
+        </div>
+        <div class="form-group">
+          <label for="pw">비밀번호</label>
+          <input
+            type="password"
+            id="pw"
+            name="pw"
+            placeholder="비밀번호를 입력하세요"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwConfirm">비밀번호 확인</label>
+          <input
+            type="password"
+            id="pwConfirm"
+            name="pwConfirm"
+            placeholder="비밀번호를 다시 입력하세요"
+            required
+          />
+          <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
+        </div>
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력해 주세요"
+            required
+          />
+        </div>
+             <div class="form-group">
+          <label for="companyName">회사 명</label>
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            placeholder="회사 명을 입력해 주세요"
+            required
+          />
+        </div>
+        <div class="role-selection">
+          <input type="radio" id="admin" name="role" value="admin" />
+          <label for="admin" class="role-option"> 관리자 </label>
+
+
       <h1>회원가입</h1>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <form id="joinForm" action="joinForm" method="post">
@@ -311,7 +490,7 @@ select:focus {
     });
 });
 
-      
+
       // 비밀번호 확인 기능
       document
         .getElementById("pwConfirm")
@@ -334,7 +513,7 @@ select:focus {
           const id = document.getElementById("id").value;
           const pw = document.getElementById("pw").value;
           const pwConfirm = document.getElementById("pwConfirm").value;
-		 
+
           if (pw !== pwConfirm) {
             alert("비밀번호가 일치하지 않습니다.");
             event.preventDefault();
@@ -346,8 +525,15 @@ select:focus {
           }
         });
       
+
+     
+    </script>
+</body>
+</html>
+
    
       
     </script>
 </body>
 </html>
+
