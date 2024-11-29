@@ -273,36 +273,44 @@ select:focus {
 
    <script>
       // 아이디 중복 확인 기능
-      document
-        .getElementById("idCheckButton")
-        .addEventListener("click", function () {
-          const id = document.getElementById("id").value;
-          if (id.length < 4) {
-            alert("아이디는 최소 4글자 이상이어야 합니다.");
-            return;
-          }
-          // 예제: 중복 확인 API 호출 (AJAX 또는 Fetch 사용)
-          fetch(`/api/check-id?id=${id}`)
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.available) {
-                alert("사용 가능한 아이디입니다.");
-                document.getElementById("idCheckMessage").style.display =
-                  "none";
-              } else{
-                alert("이미 사용 중인 아이디입니다.");
-                document.getElementById("idCheckMessage").style.display =
-                  "block";
-              }
-            })
-            .catch((error) => {
-              console.error("에러:", error);
-            });
-        });
+      document.getElementById("idCheckButton").addEventListener("click", function () {
+    const id = document.getElementById("id").value;
+    const idCheckMessage = document.getElementById("idCheckMessage");
 
-      footer a:hover {
-        text-decoration: underline;
-      }
+    // 아이디 길이 유효성 검사
+    if (id.length < 4) {
+        alert("아이디는 최소 4글자 이상이어야 합니다.");
+        idCheckMessage.textContent = "아이디는 최소 4글자 이상이어야 합니다.";
+        idCheckMessage.style.color = "red";
+        idCheckMessage.style.display = "block";
+        return;
+    }
+
+    // AJAX 요청을 통해 서버와 중복 체크
+    fetch(`/api/check-id?id=${id}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // 반환되는 JSON 확인
+        if (data.available) {
+            alert("사용 가능한 아이디입니다.");
+            idCheckMessage.textContent = "사용 가능한 아이디입니다.";
+            idCheckMessage.style.color = "green";
+            idCheckMessage.style.display = "block";
+        } else {
+            alert("이미 사용 중인 아이디입니다.");
+            idCheckMessage.textContent = "이미 사용 중인 아이디입니다.";
+            idCheckMessage.style.color = "red";
+            idCheckMessage.style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error("아이디 중복 확인 중 오류 발생:", error);
+        idCheckMessage.textContent = "오류가 발생했습니다. 다시 시도해주세요.";
+        idCheckMessage.style.color = "red";
+        idCheckMessage.style.display = "block";
+    });
+});
+
       
       // 비밀번호 확인 기능
       document
