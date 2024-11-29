@@ -22,12 +22,12 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "tb_user")
-@EntityListeners(AuditingEntityListener.class)
 public class FactoryMember {
 
-    @Id
-    @Column(nullable = false, updatable = false)
-    private String id; // 회원 아이디 (고유 식별자)
+    
+	@Id
+	@Column(nullable = false, updatable = false)
+	private String id; // 회원 아이디 (고유 식별자)
 
     @Column(nullable = false)
     private String pw; // 회원 비밀번호
@@ -42,4 +42,6 @@ public class FactoryMember {
     private Timestamp created_at; // 생성 일자
 
     private int companyIdx; // 회사 식별자
+
+	
 }

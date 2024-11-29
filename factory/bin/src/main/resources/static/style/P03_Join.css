@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* ✨ 'dashBoard','postData' - 'P02_Login' 설정 ✨ */
+/* 💡 '❓대시보드','데이터 전송' 위주 로그인 페이지 */
+/* "id체크 컨테이너","회원가입 버튼" 버튼 스타일 */
+button {
+  /* 임의 설정 */
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+#globals-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#globals-container * {
+  margin: 0px;
+}
+#globals-container main {
+  /* 임의 설정 */
+  border: none;
+  background-color: white;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1%;
+}
+#globals-container main * {
+  /* 임의 설정 */
+  border: 1px solid black;
+}
+
+div [alt="회원가입input_선택>직책"],
+div[alt="회원가입input_선택>직무"] {
+  /* 임의 설정 */
+}
+div [alt="회원가입input_선택>직책"] table,
+div[alt="회원가입input_선택>직무"] table {
+  /* 임의 설정 */
+  border: 3px solid black;
+  display: grid;
+  grid-template-columns: repeat(100%);
+  width: 100%;
+}
+
+section[alt="회원가입 정보 제출 컨테이너"] * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}

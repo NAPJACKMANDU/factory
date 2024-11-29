@@ -197,9 +197,7 @@ select:focus {
 </head>
 <body>
    <div class="signup-container">
-
       <h1>회원가입</h1>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <form id="joinForm" action="joinForm" method="post">
          <div class="form-group">
             <label for="id">아이디</label> <input type="text" id="id" name="id"
@@ -221,35 +219,17 @@ select:focus {
             <label for="name">이름</label> <input type="text" id="name"
                name="name" placeholder="이름을 입력해 주세요" required />
          </div>
-       
-   <div class="form-group" id="inputState">
-        <label for="companyName">회사 명</label>
-        <select id="companyName" name="companyName" required>
-            <option value="" disabled selected>회사 명을 선택해 주세요</option>
-        </select>
-    </div>
-
-    <script>
-    $.ajax({
-        url: '/api/companies',
-        method: 'GET',
-        success: function (data) {
-            let dropdown = $('#companyName');
-            dropdown.empty().append('<option value="" disabled selected>회사 명을 선택해 주세요</option>');
+         <div class="form-group" id = "inputState">
+            <label for="companyName">회사 명</label> 
+            <select id="companyName" name="companyName" required>
+               <option value="" disabled selected>회사 명을 선택해 주세요</option>
+               <!-- JSTL로 회사명 동적 렌더링 -->
+               <c:forEach var="c" items="${getCompanyName}">
+                  <option value="${c.companyName}">${c.companyName}</option>
+               </c:forEach>
+            </select>
             
-            // 데이터 순회 시 문제 확인
-            data.forEach(function (company) {
-                // 만약 companyName이 문자열이 아닌 객체라면 오류가 발생할 수 있음
-                dropdown.append('<option value="' + company.companyName + '">' + company.companyName + '</option>');
-            });
-        },
-        error: function () {
-            alert('회사명을 불러오는 데 실패했습니다.');
-        }
-    });
-
-    </script>
-    
+         </div>
          <div class="role-selection">
             <input type="radio" id="admin" name="role" value="admin" /> <label
                for="admin" class="role-option"> 관리자 </label> <input type="radio"
@@ -375,122 +355,6 @@ select:focus {
           <input type="radio" id="admin" name="role" value="admin" />
           <label for="admin" class="role-option"> 관리자 </label>
 
-
-      <h1>회원가입</h1>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <form id="joinForm" action="joinForm" method="post">
-         <div class="form-group">
-            <label for="id">아이디</label> <input type="text" id="id" name="id"
-               placeholder="아이디를 입력하세요" required /> <span
-               id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
-            <button type="button" id="idCheckButton">아이디 중복 확인</button>
-         </div>
-         <div class="form-group">
-            <label for="pw">비밀번호</label> <input type="password" id="pw"
-               name="pw" placeholder="비밀번호를 입력하세요" required />
-         </div>
-         <div class="form-group">
-            <label for="pwConfirm">비밀번호 확인</label> <input type="password"
-               id="pwConfirm" name="pwConfirm" placeholder="비밀번호를 다시 입력하세요"
-               required /> <span id="pwCheckMessage">비밀번호가 일치하지
-               않습니다.</span>
-         </div>
-         <div class="form-group">
-            <label for="name">이름</label> <input type="text" id="name"
-               name="name" placeholder="이름을 입력해 주세요" required />
-         </div>
-       
-   <div class="form-group" id="inputState">
-        <label for="companyName">회사 명</label>
-        <select id="companyName" name="companyIdx" required>
-            <option value="" disabled selected>회사 명을 선택해 주세요</option>
-            
-        </select>
-    </div>
-
-    <script>
-    $.ajax({
-        url: '/api/companies',
-        method: 'GET',
-        success: function (data) {
-            let dropdown = $('#companyName');
-            dropdown.empty().append('<option value="" disabled selected>회사 명을 선택해 주세요</option>');
-
-            // 데이터 순회하여 드롭다운 옵션 추가
-            data.forEach(function (company) {
-                dropdown.append('<option value="' + company.companyIdx + '">' + company.companyName + '</option>');
-            });
-
-            // 드롭다운의 값이 변경될 때 실행되는 이벤트 핸들러 등록
-            $('#companyName').on('change', function() {
-                let selectedValue = $(this).val();
-                console.log('선택된 companyIdx:', selectedValue);
-            });
-        },
-        error: function () {
-            alert('회사명을 불러오는 데 실패했습니다.');
-        }
-    });
-
-   
-    </script>
-    
-         <div class="role-selection">
-            <input type="radio" id="admin" name="role" value="admin" /> <label
-               for="admin" class="role-option"> 관리자 </label> <input type="radio"
-               id="user" name="role" value="user" checked /> <label for="user"
-               class="role-option"> 일반 사용자 </label>
-         </div>
-         <button type="submit" id = "submitButton">가입하기</button>
-      </form>
-      <footer>
-         <p>
-            이미 계정이 있으신가요? <a href="/login">로그인</a>
-         </p>
-      </footer>	
-   </div>
-
-   <script>
-      // 아이디 중복 확인 기능
-      document.getElementById("idCheckButton").addEventListener("click", function () {
-    const id = document.getElementById("id").value;
-    const idCheckMessage = document.getElementById("idCheckMessage");
-
-    // 아이디 길이 유효성 검사
-    if (id.length < 4) {
-        alert("아이디는 최소 4글자 이상이어야 합니다.");
-        idCheckMessage.textContent = "아이디는 최소 4글자 이상이어야 합니다.";
-        idCheckMessage.style.color = "red";
-        idCheckMessage.style.display = "block";
-        return;
-    }
-
-    // AJAX 요청을 통해 서버와 중복 체크
-    fetch(`/api/check-id?id=${id}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data); // 반환되는 JSON 확인
-        if (data.available) {
-            alert("사용 가능한 아이디입니다.");
-            idCheckMessage.textContent = "사용 가능한 아이디입니다.";
-            idCheckMessage.style.color = "green";
-            idCheckMessage.style.display = "block";
-        } else {
-            alert("이미 사용 중인 아이디입니다.");
-            idCheckMessage.textContent = "이미 사용 중인 아이디입니다.";
-            idCheckMessage.style.color = "red";
-            idCheckMessage.style.display = "block";
-        }
-    })
-    .catch(error => {
-        console.error("아이디 중복 확인 중 오류 발생:", error);
-        idCheckMessage.textContent = "오류가 발생했습니다. 다시 시도해주세요.";
-        idCheckMessage.style.color = "red";
-        idCheckMessage.style.display = "block";
-    });
-});
-
-
       // 비밀번호 확인 기능
       document
         .getElementById("pwConfirm")
@@ -525,15 +389,7 @@ select:focus {
           }
         });
       
-
-     
-    </script>
-</body>
-</html>
-
-   
       
     </script>
 </body>
 </html>
-
