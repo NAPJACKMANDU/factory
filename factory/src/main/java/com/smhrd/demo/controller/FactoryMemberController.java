@@ -17,6 +17,7 @@ import com.smhrd.demo.service.FactoryIdService;
 import com.smhrd.demo.service.FactoryMemberService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.server.PathParam;
 
 @Controller
 public class FactoryMemberController {
@@ -53,7 +54,7 @@ public class FactoryMemberController {
 
 
 	@PostMapping("/joinForm")
-	public String joinMember(@ModelAttribute FactoryMember member) {
+	public String joinMember(@ModelAttribute FactoryMember member  ) {
 		service.join(member) ;
 		return "redirect:/" ;
 	}
