@@ -47,9 +47,9 @@ public class FactoryMemberController {
 	}
 
 
-	@PostMapping("/joinForm") // 회원가입창
-	public String joinMember(FactoryMember member)  {
-		service.joinMember(member);
+	@PostMapping("/joinForm")
+	public String joinMember(@ModelAttribute FactoryMember member) {
+		service.join(member) ;
 		return "redirect:/" ;
 	}
 }

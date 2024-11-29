@@ -22,7 +22,6 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "tb_user")
-@EntityListeners(AuditingEntityListener.class)
 public class FactoryMember {
 
     
@@ -39,7 +38,7 @@ public class FactoryMember {
     @Column(nullable = false)
     private String role; // 회원 역할
 
-    @CreationTimestamp
+    @UpdateTimestamp
     private Timestamp created_at; // 생성 일자
 
     private int companyIdx; // 회사 식별자
