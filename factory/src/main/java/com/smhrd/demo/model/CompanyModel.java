@@ -13,7 +13,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -21,6 +20,30 @@ import lombok.ToString;
 @Table(name = "tb_company")
 public class CompanyModel {
 
+	public Integer getCompanyIdx() {
+		return companyIdx;
+	}
+	public void setCompanyIdx(Integer companyIdx) {
+		this.companyIdx = companyIdx;
+	}
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	public String getCompanyAddr() {
+		return companyAddr;
+	}
+	public void setCompanyAddr(String companyAddr) {
+		this.companyAddr = companyAddr;
+	}
+	public String getCompanyTel() {
+		return companyTel;
+	}
+	public void setCompanyTel(String companyTel) {
+		this.companyTel = companyTel;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer companyIdx; // 회사 식별자

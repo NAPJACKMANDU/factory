@@ -87,7 +87,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
               <a href="P03_Join"><span>회원가입</span></a>
 
-              <a href="/P03_Join"><span>회원가입</span></a>
+ 
 
             </div>
           </section>

@@ -54,7 +54,7 @@ public class FactoryMemberController {
 
 
 	@PostMapping("/joinForm")
-	public String joinMember(@ModelAttribute FactoryMember member  ) {
+	public String joinMember(@ModelAttribute FactoryMember member) {
 		service.join(member) ;
 		return "redirect:/" ;
 	}
