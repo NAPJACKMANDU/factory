@@ -32,7 +32,7 @@ public class FactoryMemberController {
 	}
 	
 	@GetMapping("/login") 
-	public String Login() {
+	public String BackLogin() {
 		return "P02_LogIn";
 	}
 	
@@ -52,18 +52,20 @@ public class FactoryMemberController {
 		service.join(member) ;
 		return "redirect:/" ;
 	}
-}
-//	
-//	@PostMapping("/loginForm")
-//	public String LoginPopup(FactoryMember member,  HttpSession session ) {
-//		FactoryMember loginMember = service.LoginPopup(member);
-//		if(loginMember != null) { // 로그인 성공 (세션 - 사용자 정보)
-//		session.setAttribute("member", loginMember) ;
-//		System.out.println(loginMember.toString());
-//				
-//		}
+
+	
+	@PostMapping("/LoginFrom")
+	public String Login(@ModelAttribute FactoryMember member, HttpSession session) {
+		FactoryMember loginMember = service.Login(member) ;
+		if(loginMember != null ) {
+		session.setAttribute("member" ,loginMember) ;
+		System.out.println(loginMember.toString());
+		return "redirect:/monitor" ;
 		
-//		return "redirect:/";
-//		
-//	}
+		} else {
+			return "redirect:/" ;
+		}
+		
+	}
+	}
 
