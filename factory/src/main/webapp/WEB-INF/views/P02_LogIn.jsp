@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.demo.model.FactoryMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,6 +16,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="stylesheet" href="/style/footer.css" />
   </head>
   <body>
+  
+  
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
@@ -53,28 +56,30 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </aside>
 
         <!-- 로그인 정보 입력 구역 -->
+       
         <form
           alt="로그인 페이지 컨테이너-form"
-          action=""
+          action="/LoginFrom"
           method="post"
           id="logInForm"
           class="enterForm"
         >
           <section alt="로그인 input 컨테이너">
-            <input alt="로그인 아이디" type="text" placeholder="아이디 입력" />
+            <input alt="로그인 아이디" name = "id" type="text" placeholder="아이디 입력" />
             <input
               alt="로그인 비밀번호"
               type="password"
+              name="pw"
               placeholder="비밀번호 입력"
             />
           </section>
-
+        
           <section alt="로그인 버튼 컨테이너">
-            <button alt="로그인submit" type="submit">
+            <button alt="로그인submit" type="submit" >
               <span>로그인</span>
             </button>
           </section>
-
+	
           <section alt="로그인 페이지 a태그 컨테이너">
             <div>
               <a href="#"><span>아이디/비밀번호 찾기</span></a>
@@ -84,6 +89,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </section>
         </form>
       </main>
+
 
       <!-- footer -->
       <footer alt="하단 바">
