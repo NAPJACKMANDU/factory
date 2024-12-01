@@ -1,12 +1,10 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>calendar</title>
+    <title>calendar-1</title>
+
     <!-- 지역 style -->
     <link
       rel="stylesheet"
@@ -14,90 +12,43 @@
     />
   </head>
   <body>
-    <!-- View -->
+    <!-- 달력 컨테이너 -->
+    <div class="calendar">
+      <!-- 달력 헤더 -->
+      <div class="calendar-header">
+        <button id="prev-month" class="arrow small-arrow">◀</button>
+        <span id="current-month"></span>
+        <button id="next-month" class="arrow small-arrow">▶</button>
+      </div>
+      <table class="calendar-table">
+        <thead>
+          <!-- 요일 헤더 -->
+          <tr class="calendar-weekdays">
+            <th class="weekend">일</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+            <th class="saturday">토</th>
+          </tr>
+        </thead>
+        <tbody class="calendar-days">
+          <!-- 날짜가 JavaScript로 동적으로 추가됩니다. -->
+        </tbody>
+      </table>
+    </div>
 
-    <table class="calendar calendar-small">
-      <thead>
-        <tr class="calendar-header">
-          <th colspan="7" class="calendar-title">2024년 12월</th>
-        </tr>
-        <tr class="calendar-weekdays">
-          <th class="weekend">일</th>
-          <th>월</th>
-          <th>화</th>
-          <th>수</th>
-          <th>목</th>
-          <th>금</th>
-          <th class="saturday">토</th>
-        </tr>
-      </thead>
-      <tbody class="calendar-days">
-        <!-- 첫째 주 -->
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>1</td>
-          <td class="saturday">2</td>
-        </tr>
-        <!-- 둘째 주 -->
-        <tr>
-          <td class="weekend">3</td>
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-          <td>7</td>
-          <td>8</td>
-          <td class="saturday">9</td>
-        </tr>
-        <!-- 셋째 주 -->
-        <tr>
-          <td class="weekend">10</td>
-          <td>11</td>
-          <td>12</td>
-          <td>13</td>
-          <td>14</td>
-          <td>15</td>
-          <td class="saturday">16</td>
-        </tr>
-        <!-- 넷째 주 -->
-        <tr>
-          <td class="weekend">17</td>
-          <td>18</td>
-          <td>19</td>
-          <td>20</td>
-          <td>21</td>
-          <td>22</td>
-          <td class="saturday">23</td>
-        </tr>
-        <!-- 다섯째 주 -->
-        <tr>
-          <td class="weekend">24</td>
-          <td>25</td>
-          <td>26</td>
-          <td>27</td>
-          <td>28</td>
-          <td>29</td>
-          <td class="saturday">30</td>
-        </tr>
-        <!-- 여섯째 주 -->
-        <tr>
-          <td class="weekend">31</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- 모달 창 -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <!-- 모달 닫기 버튼 -->
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-date">날짜 정보</h2>
+        <div id="modal-data">데이터를 로드 중...</div>
+      </div>
+    </div>
 
-    <!-- jQuery -->
-    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
-    <!-- scripts -->
     <script src="/src/main/resources/static/js/calendar.js"></script>
   </body>
 </html>
