@@ -32,7 +32,7 @@ main {
     font-size: x-small;
   }
 
-  > article {
+  > article[alt="실시간 모니터링 정보&화면 구역"] {
     background-color: gray;
     border-radius: 3px;
     padding-left: 0;
@@ -52,7 +52,7 @@ main {
       background-color: #424242;
       border-radius: 2px;
       padding: 3px;
-      height: 99%; /* 부모 요소 높이 채움 */
+      height: 75%; /* 부모 요소 높이 채움 */
       width: 99%; /* 부모 요소 너비 채움 */
       display: grid;
       gap: 5px;
@@ -107,6 +107,30 @@ main {
       &.reset-layout {
         grid-template-columns: repeat(4, 1fr); /* 4열 초기화 */
       }
+    }
+    footer[alt="저장된 로그 조회 구역-하단바"] {
+      /* 임의 설정 */
+      // background-color: lawngreen;
+      background-color: #191919;
+
+      margin: 0;
+      padding: 5px;
+      margin-left: 5px;
+      height: 22.57%;
+      max-height: 22.57%;
+      width: 90%;
+      border-radius: 10px;
+
+      position: absolute;
+      left: 0;
+      overflow: hidden;
+
+      display: flex; /* 캘린더와 모달을 나란히 정렬 */
+      justify-content: flex-start; /* 좌측 정렬 */
+      align-items: flex-start; /* 세로 정렬을 위쪽으로 고정 */
+      gap: 10px; /* 캘린더와 모달 사이 간격 */
+      flex-wrap: wrap; /* 브라우저 크기가 작아지면 아래로 배치 */
+      padding: 10px; /* 추가적인 내부 여백 */
     }
   }
 
@@ -252,7 +276,7 @@ main {
 
   .aside-A {
     /* 임의 설정 */
-    background-color: #282828;
+    background-color: #191919;
     padding-left: 0;
     padding-right: 0;
 
@@ -286,7 +310,7 @@ main {
       white-space: nowrap;
 
       margin-top: 50px;
-      margin-bottom: 200px;
+      margin-bottom: 350px;
 
       display: flex;
       flex-direction: column;

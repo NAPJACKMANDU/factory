@@ -1,20 +1,33 @@
 @charset "UTF-8";
+table,
+.calendar-days {
+  width: 110px;
+  margin-left: 0;
+}
+
 .calendar {
-  width: 140px; /* 기존 120px에서 가로 사이즈 확대 */
+  background-color: #262626; /* 캘린더 배경색 */
+  margin: 0px;
+  margin-left: 11%;
+  padding: 0.1px 5px;
+  padding-top: 3px;
+  width: 160px; /* 전체 캘린더 컨테이너 너비 */
   height: auto;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-  /* 캘린더의 외부 스타일 */
-  background-color: #262626; /* 배경색 */
-  color: #fff; /* 기본 텍스트 색상 */
   border-radius: 5px; /* 테두리 둥글게 처리 */
-  overflow: hidden; /* 콘텐츠 넘침 숨김 */
+  font-family: Arial, sans-serif;
+  color: #fff; /* 기본 텍스트 색상 */
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
-  /* 헤더 스타일 */
+  overflow: hidden; /* 콘텐츠 넘침 숨김 */
+  /* 캘린더 헤더 스타일 */
   /* 달력 테이블 스타일 */
 }
 .calendar .calendar-header {
+  background-color: #333;
+  padding: 5px;
+  height: 20px;
+  width: 142px;
+  color: #ffa500;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,28 +37,27 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #333;
-  color: #ffa500;
-  font-size: 0.8em; /* 헤더 텍스트 크기 */
-  padding: 5px;
+  font-size: 0.6em; /* 헤더 텍스트 크기 */
 }
 .calendar .calendar-header .arrow {
-  font-size: 0.7em; /* 화살표 크기 */
   background: none;
-  color: #ffa500;
   border: none;
-  cursor: pointer;
   padding: 0;
+  font-size: 0.7em; /* 화살표 크기 */
+  color: #ffa500;
+  cursor: pointer;
 }
 .calendar .calendar-table {
-  width: 100%;
+  width: 100%; /* 테이블 너비를 캘린더 컨테이너 너비에 맞춤 */
+  table-layout: fixed; /* 셀 크기를 고정 크기로 설정 */
   text-align: center;
 }
 .calendar .calendar-table th,
 .calendar .calendar-table td {
-  font-size: 0.5em; /* 날짜와 요일의 텍스트 크기 */
+  font-size: 0.25em; /* 날짜와 요일의 텍스트 크기 */
   padding: 2px; /* 셀 내부 여백 */
   border: 1px solid #333; /* 셀 테두리 */
+  word-wrap: break-word; /* 텍스트가 넘칠 경우 줄바꿈 */
 }
 .calendar .calendar-table th {
   background-color: #444; /* 요일 헤더 배경색 */
@@ -68,36 +80,64 @@
   color: #ffa500; /* 마우스 오버 시 텍스트 색상 */
 }
 
-.modal {
+/* 모달 스타일 */
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /* 캘린더와 모달을 나란히 정렬 */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; /* 부모 컨테이너에서 중앙 정렬 */
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; /* 세로 정렬을 위쪽으로 고정 */
+  gap: 10px; /* 캘린더와 모달 사이 간격 */
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* 브라우저 크기가 작아지면 아래로 배치 */
+}
+footer .modal {
   display: none; /* 초기 상태 숨김 */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0.9);
-          transform: translate(-50%, -50%) scale(0.9); /* 크기 축소 상태 */
-  background-color: #282828;
-  color: #fff;
+  background-color: #282828; /* 모달 배경색 */
+  color: #fff; /* 텍스트 색상 */
   border-radius: 15px; /* 부드러운 테두리 */
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
-  padding: 20px;
+  padding: 15px; /* 내부 여백 줄임 */
   z-index: 1000;
-  opacity: 0; /* 투명도 초기값 */
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9); /* 축소 상태 */
   -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease; /* 부드러운 전환 효과 */
+  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+  /* 모달 크기 조정 */
+  height: 120px; /* 모달 높이 (캘린더보다 작음) */
+  font-size: 0.2em; /* 텍스트 크기 줄임 */
+  /* 반응형 위치 조정 */
 }
-
-.modal.fade-in {
+footer .modal.fade-in {
   display: block;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1); /* 정상 크기로 확대 */
-  opacity: 1; /* 투명도 100% */
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
-
-.modal.fade-out {
-  -webkit-transform: translate(-50%, -50%) scale(0.9);
-          transform: translate(-50%, -50%) scale(0.9); /* 크기 축소 */
-  opacity: 0; /* 투명도 0% */
+footer .modal.fade-out {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+@media (min-width: 600px) {
+  footer .modal {
+    width: 180px; /* 모달 너비 */
+    -ms-flex-item-align: start;
+        align-self: flex-start; /* 캘린더와 동일한 높이로 정렬 */
+  }
+}
+@media (max-width: 599px) {
+  footer .modal {
+    width: 100%; /* 모바일에서 가로 전체 차지 */
+    -ms-flex-item-align: center;
+        align-self: center; /* 세로 정렬 중심 */
+  }
 }

@@ -32,7 +32,7 @@ main .blink-controls {
 main label {
   font-size: x-small;
 }
-main > article {
+main > article[alt="실시간 모니터링 정보&화면 구역"] {
   background-color: gray;
   border-radius: 3px;
   padding-left: 0;
@@ -43,15 +43,15 @@ main > article {
   overflow: hidden;
   /* 모니터링 영역 스타일 */
 }
-main > article p {
+main > article[alt="실시간 모니터링 정보&화면 구역"] p {
   font-weight: 600;
   text-align: center; /* 텍스트 중앙 정렬 */
 }
-main > article #M-area {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area {
   background-color: #424242;
   border-radius: 2px;
   padding: 3px;
-  height: 99%; /* 부모 요소 높이 채움 */
+  height: 75%; /* 부모 요소 높이 채움 */
   width: 99%; /* 부모 요소 너비 채움 */
   display: grid;
   gap: 5px;
@@ -62,10 +62,10 @@ main > article #M-area {
   grid-template-columns: repeat(4, 1fr);
   /* 특정 CAM-container 확장 시 레이아웃 */
 }
-main > article #M-area.modified-layout {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area.modified-layout {
   grid-template-columns: 100%; /* 전체 폭을 하나의 열로 사용 */
 }
-main > article #M-area .CAM-container {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area .CAM-container {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* Border가 요소 크기에 영향을 미치지 않도록 */
   border: 5px solid #4a4a4a;
@@ -87,7 +87,7 @@ main > article #M-area .CAM-container {
   position: relative; /* 자식 요소의 위치 제어 */
   overflow: hidden; /* 내부 요소가 컨테이너를 벗어나지 않도록 */
 }
-main > article #M-area .CAM-container.expanded {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area .CAM-container.expanded {
   width: 100%; /* 클릭된 컨테이너가 전체 폭을 차지 */
   height: 100%;
   -webkit-transition: -webkit-transform 0.3s ease;
@@ -95,8 +95,8 @@ main > article #M-area .CAM-container.expanded {
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
-main > article #M-area .CAM-container img,
-main > article #M-area .CAM-container video {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area .CAM-container img,
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area .CAM-container video {
   background-color: #4a4a4a;
   border-radius: 1px;
   border: none;
@@ -106,14 +106,41 @@ main > article #M-area .CAM-container video {
      object-fit: cover;
   z-index: 1;
 }
-main > article #M-area .CAM-container img:hover,
-main > article #M-area .CAM-container video:hover {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area .CAM-container img:hover,
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area .CAM-container video:hover {
   cursor: pointer;
   -webkit-transform: scale(1.05);
           transform: scale(1.05); /* 호버 시 약간 확대 */
 }
-main > article #M-area.reset-layout {
+main > article[alt="실시간 모니터링 정보&화면 구역"] #M-area.reset-layout {
   grid-template-columns: repeat(4, 1fr); /* 4열 초기화 */
+}
+main > article[alt="실시간 모니터링 정보&화면 구역"] footer[alt="저장된 로그 조회 구역-하단바"] {
+  /* 임의 설정 */
+  background-color: #191919;
+  margin: 0;
+  padding: 5px;
+  margin-left: 5px;
+  height: 22.57%;
+  max-height: 22.57%;
+  width: 90%;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /* 캘린더와 모달을 나란히 정렬 */
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; /* 좌측 정렬 */
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; /* 세로 정렬을 위쪽으로 고정 */
+  gap: 10px; /* 캘린더와 모달 사이 간격 */
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* 브라우저 크기가 작아지면 아래로 배치 */
+  padding: 10px; /* 추가적인 내부 여백 */
 }
 main button[alt="로그 토글 버튼"] {
   min-height: 50px;
@@ -254,7 +281,7 @@ main > aside nav .vertical-line {
 }
 main .aside-A {
   /* 임의 설정 */
-  background-color: #282828;
+  background-color: #191919;
   padding-left: 0;
   padding-right: 0;
   width: 190px;
@@ -298,7 +325,7 @@ main .aside-A .blink-controls {
   text-align: center;
   white-space: nowrap;
   margin-top: 50px;
-  margin-bottom: 200px;
+  margin-bottom: 350px;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
