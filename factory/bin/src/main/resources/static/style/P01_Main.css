@@ -1,0 +1,175 @@
+@charset "UTF-8";
+/* ✨ 'sendData' - 'P01_Main' 설정 ✨ */
+/* 💡 '데이터 전송' 위주 메인 페이지 */
+/* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* header
+   >  section(로고), div(로그인회사명), nav(탭)로 공간 할당 */
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /* 플렉스박스 레이아웃 설정 */
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; /* 로고, 제목, 네비게이션 간 간격 분배 */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; /* 요소들을 수직 중앙 정렬 */
+}
+header section[alt="로고 컨테이너"] {
+  /* 임의 설정 */
+  width: 100px;
+}
+header section[alt="로고 컨테이너"] form {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+header > div[alt="로그인 기업명 표시 컨테이너"] {
+  /* 임의 설정 */
+  min-width: 450px;
+  max-width: 450px;
+  height: 99%;
+  margin: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1; /* 제목 영역이 필요 시 공간을 차지하도록 설정 */
+  text-align: center; /* 제목을 가운데 정렬 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+header > div[alt="로그인 기업명 표시 컨테이너"] h1 {
+  color: white;
+}
+header > nav[alt="페이지 이동 탭"] {
+  /* 임의 설정 */
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /* 내부 요소 정렬을 위해 플렉스박스 사용 */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; /* 내부 요소를 수직 중앙 정렬 */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px; /* 링크 간 간격 추가 */
+}
+header > nav[alt="페이지 이동 탭"] .h-a-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+}
+header > nav[alt="페이지 이동 탭"] .h-a-container h3[alt="로그인 관리자 회원명"] {
+  color: white;
+  text-align: center;
+}
+header > nav[alt="페이지 이동 탭"] .h-a-container a[alt=로그아웃] > span {
+  text-align: center;
+  font-size: smaller;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+/* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* main
+       >article에 div(버튼1), aside(버튼2~3)로 공간 할당 */
+main {
+  background-color: whitesmoke;
+  place-items: center;
+  place-content: center;
+}
+main * {
+  margin: 0;
+  border: none;
+}
+main article {
+  height: 60%;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+main article div {
+  width: 65%;
+}
+main article div button {
+  background-color: cornflowerblue;
+}
+main article aside {
+  width: 35%;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5%;
+}
+main article aside #btn-safetyRules {
+  /* 임의 설정 */
+  background-color: lightcoral;
+}
+main article aside #btn-protocol {
+  /* 임의 설정 */
+  background-color: goldenrod;
+}
+main article aside #btn-protocol {
+  /* 임의 설정 */
+  background-color: lightseagreen;
+}
+
+/* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+section {
+  height: 100%;
+}
+section > button {
+  /* 임의 설정 */
+  background-color: cadetblue;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+section > button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+section > button span {
+  /* 폰트 설정 */
+  font-weight: bolder;
+  font-size: medium;
+  color: white;
+}
+section > button span:hover {
+  -webkit-transition: color 0.1s;
+  transition: color 0.1s; /* 부드러운 전환 효과 추가 */
+  color: goldenrod;
+  font-weight: bolder;
+}

@@ -1,7 +1,6 @@
-<%@page import="com.smhrd.demo.model.FactoryMember"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -9,15 +8,19 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P02_LogIn</title>
     <!-- 지역 style -->
-    <link rel="stylesheet" href="/style/P02_LogIn.css" />
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/P02_LogIn.css"
+    />
     <!-- 전역 style -->
-    <link rel="stylesheet" href="/style/globals.css" />
-    <link rel="stylesheet" href="/style/header.css" />
-    <link rel="stylesheet" href="/style/footer.css" />
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/globals.css"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/style/footer.css" />
   </head>
   <body>
-  
-  
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
       <!-- header -->
@@ -25,7 +28,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <section alt="로고 컨테이너">
           <form action="#" method="get">
             <button alt="P01_Main으로 이동" type="submit">
-              <img alt="로고 이미지" src="/imgs/Logo.jpg" />
+              <img
+                alt="로고 이미지"
+                src="/src/main/resources/static/imgs/Logo.jpg"
+              />
             </button>
           </form>
         </section>
@@ -56,44 +62,37 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </aside>
 
         <!-- 로그인 정보 입력 구역 -->
-       
         <form
           alt="로그인 페이지 컨테이너-form"
-          action="/LoginFrom"
+          action="#"
           method="post"
           id="logInForm"
           class="enterForm"
         >
           <section alt="로그인 input 컨테이너">
-            <input alt="로그인 아이디" name = "id" type="text" placeholder="아이디 입력" />
+            <input alt="로그인 아이디" type="text" placeholder="아이디 입력" />
             <input
               alt="로그인 비밀번호"
               type="password"
-              name="pw"
               placeholder="비밀번호 입력"
             />
           </section>
-        
+
           <section alt="로그인 버튼 컨테이너">
-            <button alt="로그인submit" type="submit" >
+            <button alt="로그인submit" type="submit">
               <span>로그인</span>
             </button>
           </section>
-	
+
           <section alt="로그인 페이지 a태그 컨테이너">
             <div>
               <a href="#"><span>아이디/비밀번호 찾기</span></a>
               <span> | </span>
-
-              <a href="P03_Join"><span>회원가입</span></a>
-
- 
-
+              <a href="#"><span>회원가입</span></a>
             </div>
           </section>
         </form>
       </main>
-
 
       <!-- footer -->
       <footer alt="하단 바">
@@ -106,16 +105,16 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </footer>
     </div>
     <!-- jQuery -->
-    <script src="/js/jquery-3.6.0.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.scrolly.min.js"></script>
-    <script src="/js/jquery.scrollex.min.js"></script>
-    <script src="/js/skel.min.js"></script>
-    <script src="/js/util.js"></script>
+    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
+    <!-- <script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.scrolly.min.js"></script>
+	<script src="/js/jquery.scrollex.min.js"></script>
+	<script src="/js/skel.min.js"></script>
+	<script src="/js/util.js"></script> -->
 
     <!-- Scripts -->
     <!-- <script src="#"></script> -->
-    <script src="/js/P02_Login.js"></script>
-    <script src="/js/globals.js"></script>
+    <script src="/src/main/resources/static/js/P02_Login.js"></script>
+    <script src="/src/main/resources/static/js/globals.js"></script>
   </body>
 </html>
