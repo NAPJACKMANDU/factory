@@ -65,3 +65,7 @@ Thumbs.db
 *.env
 # Exclude specific application properties files
 application.properties
+
+# === SCSS Files in Static Directory ===
+# Ignore the 'scss' folder inside the 'static' directory
+/src/main/resources/static/scss/

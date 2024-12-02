@@ -18,10 +18,17 @@
 
 // AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
 $(document).ready(function () {
-  let blinkInterval = null;
+  let blinkInterval = null; // 깜빡임 제어 변수
+  let warningActive = false; // #blink-start-warning 클릭 상태 확인
 
+  // 초기 CAM-container 테두리 색상 설정
   $(".CAM-container").css({ borderColor: "#4a4a4a" });
 
+  /**
+   * 깜빡임 시작 함수
+   * @param {Array} targets - 대상 CAM-container ID 리스트
+   * @param {string} color - 깜빡임 색상
+   */
   function startBlink(targets, color) {
     blinkInterval = setInterval(() => {
       targets.forEach(({ id }) => {
@@ -42,6 +49,10 @@ $(document).ready(function () {
     }, 350);
   }
 
+  /**
+   * 깜빡임 중지 함수
+   * @param {Array} targets - 대상 CAM-container ID 리스트
+   */
   function stopBlink(targets) {
     clearInterval(blinkInterval);
     targets.forEach(({ id }) => {
@@ -53,19 +64,38 @@ $(document).ready(function () {
     blinkInterval = null;
   }
 
-  $("#blink-start-danger").on("click", function () {
-    const targetId = $("#targetId").val();
-    startBlink([{ id: targetId }], "#8B0000");
-  });
-
+  /**
+   * #blink-start-warning 버튼 클릭 이벤트
+   */
   $("#blink-start-warning").on("click", function () {
     const targetId = $("#targetId").val();
-    startBlink([{ id: targetId }], "#ff8c00");
+    warningActive = true; // #blink-start-warning 활성화 상태
+    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거
+    startBlink([{ id: targetId }], "#ff8c00"); // 주황색 테두리 깜빡임 시작
   });
 
+  /**
+   * #blink-start-danger 버튼 클릭 이벤트
+   */
+  $("#blink-start-danger").on("click", function () {
+    if (!warningActive) {
+      // #blink-start-warning 클릭 선행 조건 확인
+      alert("먼저 '이상 확인 중' 버튼을 클릭하세요."); // 사용자 알림
+      return;
+    }
+    const targetId = $("#targetId").val();
+    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
+    startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
+    warningActive = false; // #blink-start-warning 상태 초기화
+  });
+
+  /**
+   * #stop-blink 버튼 클릭 이벤트
+   */
   $("#stop-blink").on("click", function () {
     const targetId = $("#targetId").val();
-    stopBlink([{ id: targetId }]);
+    stopBlink([{ id: targetId }]); // 깜빡임 제거
+    warningActive = false; // 상태 초기화
   });
 });
 

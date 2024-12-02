@@ -156,3 +156,93 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Toggled"); // 이벤트 발생 확인
   });
 });
+
+// ==============================================
+
+// AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
+$(document).ready(function () {
+  let blinkInterval = null; // 깜빡임 제어 변수
+  let warningTriggered = false; // #btn-warning 클릭 상태 확인
+
+  // 초기 CAM-container 테두리 색상 설정
+  $(".CAM-container").css({ borderColor: "#4a4a4a" });
+
+  /**
+   * 깜빡임 시작 함수
+   * @param {Array} targets - 대상 CAM-container ID 리스트
+   * @param {string} color - 깜빡임 색상
+   */
+  function startBlink(targets, color) {
+    blinkInterval = setInterval(() => {
+      targets.forEach(({ id }) => {
+        const $target = $(id);
+        if ($target.length) {
+          const currentColor = $target.css("border-color");
+          $target.css({
+            borderColor:
+              currentColor === "rgba(0, 0, 0, 0)" ||
+              currentColor === "transparent"
+                ? color
+                : "rgba(0, 0, 0, 0)",
+          });
+        } else {
+          console.warn(`ID: ${id}가 존재하지 않습니다.`);
+        }
+      });
+    }, 350);
+  }
+
+  /**
+   * 깜빡임 중지 함수
+   * @param {Array} targets - 대상 CAM-container ID 리스트
+   */
+  function stopBlink(targets) {
+    clearInterval(blinkInterval);
+    targets.forEach(({ id }) => {
+      const $target = $(id);
+      if ($target.length) {
+        $target.css({ borderColor: "#4a4a4a" });
+      }
+    });
+    blinkInterval = null;
+  }
+
+  /**
+   * #btn-warning 버튼 클릭 이벤트
+   * "이상 확인 중" 상태로 변경하고 주황색 테두리로 깜빡임
+   */
+  $("#btn-warning").on("click", function () {
+    const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
+    warningTriggered = true; // #btn-warning 활성화 상태 설정
+    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거
+    startBlink([{ id: targetId }], "#ff8c00"); // 주황색 테두리 깜빡임 시작
+  });
+
+  /**
+   * #btn-danger 버튼 클릭 이벤트
+   * "이상 발생" 상태로 빨간색 테두리로 깜빡임
+   */
+  $("#btn-danger").on("click", function () {
+    if (!warningTriggered) {
+      // #btn-warning 클릭 선행 조건 확인
+      alert("먼저 '이상 확인 중' 버튼을 클릭하세요."); // 사용자 알림
+      return;
+    }
+    const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
+    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
+    startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
+    warningTriggered = false; // #btn-warning 상태 초기화
+  });
+
+  /**
+   * #btn-stop 버튼 클릭 이벤트
+   * 모든 깜빡임 효과 중지
+   */
+  $("#btn-stop").on("click", function () {
+    const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
+    stopBlink([{ id: targetId }]); // 깜빡임 제거
+    warningTriggered = false; // 상태 초기화
+  });
+});
+
+// ==============================================
