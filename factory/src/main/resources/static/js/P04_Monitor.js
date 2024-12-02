@@ -395,7 +395,6 @@ $(function () {
     $logContainer.children(".log-tuple").animate(
       {
         opacity: 0,
-        height: 0, // 점진적으로 높이를 줄여 사라지는 효과
         margin: 0, // 여백 제거로 완전 축소
       },
       300, // 애니메이션 지속 시간
