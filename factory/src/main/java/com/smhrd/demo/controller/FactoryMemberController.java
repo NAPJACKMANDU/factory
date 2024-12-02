@@ -1,11 +1,13 @@
 package com.smhrd.demo.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,36 +27,9 @@ public class FactoryMemberController {
 	@Autowired
 	FactoryIdService service ;
 	
-	
-	@GetMapping("/") // 로그인 메인페이지
-	public String mainPage()
-	{
-		return "P02_LogIn";
-	}
-	
-	@GetMapping("/monitor") // CCTV
-	public String goMonitor() {
-		return "P04_Monitor";
-	}
-	
-	@GetMapping("/login") 
-	public String BackLogin() {
-		return "P02_LogIn";
-	}
-	
-	@GetMapping("/P03_Join") // 회원가입하는 창
-	public String join() {
-		return "P03_Join" ;
-	}	
-	
-	@GetMapping("/P00_findAccount") // 아이디/비번 찾기 
-	public String findAccount() {
-		return "P00_findAccount" ;
-	}
-
-
 	@PostMapping("/joinForm")
 	public String joinMember(@ModelAttribute FactoryMember member) {
+		System.out.println("전화번호 : "  + member.getPhone());
 		service.join(member) ;
 		return "redirect:/" ;
 	}
@@ -85,5 +60,15 @@ public class FactoryMemberController {
 	    response.put("available", isAvailable);
 	    return response;
 	}
+	
+	
+	@PostMapping("/call")
+	public String AllCallbord(Model model) {
+		List<FactoryMember> allcall = service.allcallbord() ;
+		model.addAttribute("allcall", allcall) ;
+	return "call" ;
+ 
+	}
+	
 	}
 
