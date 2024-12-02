@@ -72,62 +72,78 @@ $(document).ready(function () {
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --1 '로그 토글' 버튼 클릭 --> '.log-tuple이 on/off' 이벤트 */
 
-let clickCount = 0;
-$(function () {
-  // alt 속성이 "로그 토글 버튼"인 특정 버튼에 이벤트 바인딩
-  $('.log-toggle>button[alt="로그 토글 버튼"]').click(function () {
-    clickCount++;
-    if (clickCount % 2 === 0) {
-      // 짝수 번째 클릭: 로그 항목 표시
-      $(".log-tuple").show(350); // show 애니메이션 350ms
-    } else {
-      // 홀수 번째 클릭: 로그 항목 숨기기
-      $(".log-tuple").hide(150); // hide 애니메이션 150ms
-    }
-  });
-});
+// let clickCount = 0;
+// $(function () {
+//   // alt 속성이 "로그 토글 버튼"인 특정 버튼에 이벤트 바인딩
+//   $('.log-toggle>button[alt="로그 토글 버튼"]').click(function () {
+//     clickCount++;
+//     if (clickCount % 2 === 0) {
+//       // 짝수 번째 클릭: 로그 항목 표시
+//       $(".log-tuple").show(350); // show 애니메이션 350ms
+//     } else {
+//       // 홀수 번째 클릭: 로그 항목 숨기기
+//       $(".log-tuple").hide(150); // hide 애니메이션 150ms
+//     }
+//   });
+// });
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --2 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트 */
 
 $(document).ready(function () {
   let isExpanded = false; // 확장 상태 확인
+  let expandedElement = null; // 확대된 CAM-container 추적
   let pressTimer; // 클릭 시간 확인을 위한 타이머 변수
   const excludedCameras = new Set(); // 화면 제외된 CAM-container 저장
   let isCamSelClicked = false; // #cam-sel 버튼 클릭 여부 확인
 
   // CAM-container 확대/축소 이벤트
   $(".CAM-container")
-    .on("mousedown", function () {
+    .on("mousedown", function (event) {
       const $this = $(this);
 
-      // 클릭 시간 측정 시작
-      pressTimer = setTimeout(() => {
-        // 0.3초가 지나면 이벤트 비활성화
-        pressTimer = null;
-      }, 300);
+      // 마우스 좌클릭인지 확인 (event.button === 0)
+      if (event.button === 0) {
+        // 클릭 시간 측정 시작
+        pressTimer = setTimeout(() => {
+          // 0.3초가 지나면 이벤트 비활성화
+          pressTimer = null;
+        }, 300);
+      }
     })
-    .on("mouseup", function () {
+    .on("mouseup", function (event) {
+      // 마우스 좌클릭인지 확인 (event.button === 0)
+      if (event.button !== 0) return; // 좌클릭이 아니면 이벤트 중단
+
       if (pressTimer) {
         clearTimeout(pressTimer); // 타이머 초기화
 
-        const $MArea = $("#M-area"); // 모니터링 영역
+        const $MArea = $(".M-area"); // 모니터링 영역
         const $clickedItem = $(this); // 클릭된 CAM-container
 
         // 확대/축소 동작 처리
         if (!isExpanded) {
           // 🌟 확장 상태로 변경
-          $MArea.css({ display: "block", width: "100%" }); // M-area를 단일 화면으로 확장
+          $MArea.css({ display: "block", width: "100%" }); // .M-area를 단일 화면으로 확장
 
           // 🌟 제외된 화면을 제외하고 클릭된 CAM-container만 표시
           $clickedItem
-            .addClass("expanded")
+            .addClass("expanded") // 클릭된 CAM-container 확대
+            .css({
+              position: "absolute", // 화면 중앙 배치를 위한 절대 위치
+              top: "50%", // 화면의 세로 중앙
+              left: "50%", // 화면의 가로 중앙
+              transform: "translate(-50%, -50%) scale(1.5)", // 중앙 정렬과 확대
+              zIndex: 10, // 우선순위 지정
+            })
             .siblings(".CAM-container")
             .filter(function () {
               const camId = $(this).attr("id");
               return !excludedCameras.has(camId); // 제외되지 않은 CAM만 표시
             })
-            .hide();
+            .hide(); // 다른 CAM-container 숨김
+
+          $("body").css("overflow", "hidden"); // 🌟 스크롤 방지
         } else {
           // 🌟 원래 상태로 복구
           $MArea.css({ display: "grid", width: "99%" }); // 그리드 레이아웃 복원
@@ -136,11 +152,18 @@ $(document).ready(function () {
           $(".CAM-container").each(function () {
             const camId = $(this).attr("id");
             if (!excludedCameras.has(camId)) {
-              $(this).show();
+              $(this).show().css({
+                position: "static", // 기본 위치 복원
+                top: "auto",
+                left: "auto",
+                transform: "scale(1)", // 원래 크기 복원
+                zIndex: 1,
+              });
             }
           });
 
-          $clickedItem.removeClass("expanded");
+          $clickedItem.removeClass("expanded"); // 확대 클래스 제거
+          $("body").css("overflow", ""); // 🌟 스크롤 복원
         }
 
         isExpanded = !isExpanded; // 상태 토글
@@ -151,38 +174,38 @@ $(document).ready(function () {
     });
 
   // #cam-sel 버튼 클릭 시 제외 처리
-  $("#cam-sel").on("click", function () {
-    isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
+  // $("#cam-sel").on("click", function () {
+  //   isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
 
-    // 제외 처리
-    $(".CAM-container").each(function () {
-      const $this = $(this);
-      const camId = $this.attr("id");
+  //   // 제외 처리
+  //   $(".CAM-container").each(function () {
+  //     const $this = $(this);
+  //     const camId = $this.attr("id");
 
-      if ($this.css("border-color") === "rgb(0, 128, 0)") {
-        // 녹색 border인 CAM-container만 제외
-        excludedCameras.add(camId);
-        $this.fadeOut(300, function () {
-          $this.css({
-            border: "5px solid #4a4a4a", // 기본 border 복원
-            display: "none",
-          });
-        });
-      }
-    });
-  });
+  //     if ($this.css("border-color") === "rgb(0, 128, 0)") {
+  //       // 녹색 border인 CAM-container만 제외
+  //       excludedCameras.add(camId);
+  //       $this.fadeOut(300, function () {
+  //         $this.css({
+  //           border: "5px solid #4a4a4a", // 기본 border 복원
+  //           display: "none",
+  //         });
+  //       });
+  //     }
+  //   });
+  // });
 
   // #cam-all 버튼 클릭 시 모든 CAM-container 표시
-  $("#cam-all").on("click", function () {
-    // 🌟 모든 화면 다시 표시
-    excludedCameras.clear(); // 제외된 화면 목록 초기화
-    $(".CAM-container").fadeIn(300, function () {
-      $(this).css({
-        border: "5px solid #4a4a4a", // 기본 border 복원
-      });
-    });
-    isCamSelClicked = false; // 초기 상태로 복구
-  });
+  // $("#cam-all").on("click", function () {
+  //   // 🌟 모든 화면 다시 표시
+  //   excludedCameras.clear(); // 제외된 화면 목록 초기화
+  //   $(".CAM-container").fadeIn(300, function () {
+  //     $(this).css({
+  //       border: "5px solid #4a4a4a", // 기본 border 복원
+  //     });
+  //   });
+  //   isCamSelClicked = false; // 초기 상태로 복구
+  // });
 
   // 새로고침 시 제외 상태 유지
   $(window).on("load", function () {
@@ -395,7 +418,6 @@ $(function () {
     $logContainer.children(".log-tuple").animate(
       {
         opacity: 0,
-        height: 0, // 점진적으로 높이를 줄여 사라지는 효과
         margin: 0, // 여백 제거로 완전 축소
       },
       300, // 애니메이션 지속 시간
@@ -766,7 +788,7 @@ $(document).ready(function () {
   // 레이아웃 옵션
   $(".layout-btn").on("click", function () {
     const layout = $(this).data("layout");
-    const $Marea = $("#M-area");
+    const $Marea = $(".M-area");
 
     if (layout === "grid-4") {
       $Marea.css("grid-template-columns", "repeat(4, 1fr)");
