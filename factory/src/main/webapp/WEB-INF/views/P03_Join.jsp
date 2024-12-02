@@ -160,6 +160,11 @@ footer a:hover {
 				<label for="name">이름</label> <input type="text" id="name"
 					name="name" placeholder="이름을 입력해 주세요" required />
 			</div>
+			
+			<div class="form-group">
+				<label for="phone">전화번호</label> <input type="text" id="phone"
+					name="phone" placeholder="01012345678 형식으로 입력하세요" required />	
+			</div>
 			<div class="form-group" id="inputState">
 				<label for="companyName">회사 명</label> <select id="companyName"
 					name="companyIdx" required>
@@ -168,10 +173,10 @@ footer a:hover {
 				</select>
 			</div>
 			<div class="role-selection">
-				<input type="radio" id="admin" name="role" value="admin" /> <label
-					for="admin" class="role-option">관리자</label> <input type="radio"
-					id="user" name="role" value="user" checked /> <label for="user"
-					class="role-option">일반 사용자</label>
+				<input type="radio" id="admin" name="role" value="관리자	" /> 
+				<label for="admin" class="role-option">관리자</label> 
+				<input type="radio" id="user" name="role" value="일반 사용자" checked /> 
+				<label for="user" class="role-option">일반 사용자</label>
 			</div>
 			<button type="submit">가입하기</button>
 		</form>
