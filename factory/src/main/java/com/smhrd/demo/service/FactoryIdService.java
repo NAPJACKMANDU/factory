@@ -1,5 +1,7 @@
 package com.smhrd.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +29,10 @@ public class FactoryIdService {
 		
 	}
 	
+	
+	public List<FactoryMember> allcallbord() {
+		return rep.findAll() ;
+ 	}
 	
 	
 	}

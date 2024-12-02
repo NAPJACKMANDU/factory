@@ -12,7 +12,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -20,7 +19,30 @@ import lombok.ToString;
 @Table(name = "tb_user")
 public class FactoryMember {
 
-    
+	@Id
+	@Column(nullable = false, updatable = false)
+	private String id; // 회원 아이디 (고유 식별자)
+
+	@Column(nullable = false)
+	private String pw; // 회원 비밀번호
+
+	@Column(nullable = false)
+	private String name; // 회원 이름
+
+	@Column(nullable = false)
+	private String role; // 회원 역할
+
+	@UpdateTimestamp
+	private Timestamp created_at; // 생성 일자S
+
+	private int companyIdx; // 회사 식별자
+
+	@Column(nullable = false)
+	private String phone;
+
+	@Column(nullable = false)
+	private int idx;
+
 	public String getId() {
 		return id;
 	}
@@ -69,26 +91,20 @@ public class FactoryMember {
 		this.companyIdx = companyIdx;
 	}
 
-	@Id
-	@Column(nullable = false, updatable = false)
-	private String id; // 회원 아이디 (고유 식별자)
+	public String getPhone() {
+		return phone;
+	}
 
-    @Column(nullable = false)
-    private String pw; // 회원 비밀번호
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    @Column(nullable = false)
-    private String name; // 회원 이름
+	public int getIdx() {
+		return idx;
+	}
 
-    @Column(nullable = false)
-    private String role; // 회원 역할
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 
-    @UpdateTimestamp
-    private Timestamp created_at; // 생성 일자
-
-    private int companyIdx; // 회사 식별자
-
-
-
-
-	
 }
