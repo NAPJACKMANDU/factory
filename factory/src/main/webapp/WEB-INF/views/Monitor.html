@@ -19,6 +19,10 @@
       rel="stylesheet"
       href="/src/main/resources/static/style/P04_Monitor.css"
     />
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/calendar.css"
+    />
   </head>
   <body>
     <!-- View -->
@@ -234,6 +238,39 @@
               <img src="/src/main/resources/static/imgs/c16.jpg" alt="화면16" />
             </section>
           </div>
+          <!-- 저장된 로그 조회 구역 -->
+          <footer alt="저장된 로그 조회 구역-하단바">
+            <div class="calendar">
+              <div class="calendar-header">
+                <button id="prev-month" class="arrow small-arrow">◀</button>
+                <span id="current-month"></span>
+                <button id="next-month" class="arrow small-arrow">▶</button>
+              </div>
+              <table class="calendar-table">
+                <thead>
+                  <tr class="calendar-weekdays">
+                    <th class="weekend">일</th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th class="saturday">토</th>
+                  </tr>
+                </thead>
+                <tbody class="calendar-days"></tbody>
+              </table>
+            </div>
+
+            <!-- 모달 -->
+            <div id="modal" class="modal hidden">
+              <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modal-date">날짜 정보</h2>
+                <div id="modal-data">데이터를 로드 중...</div>
+              </div>
+            </div>
+          </footer>
         </article>
 
         <!-- 로그 탐지 사이드 바 -->
@@ -319,5 +356,6 @@
     <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
     <script src="/src/main/resources/static/js/P04_Monitor.js"></script>
+    <script src="/src/main/resources/static/js/calendar.js"></script>
   </body>
 </html>
