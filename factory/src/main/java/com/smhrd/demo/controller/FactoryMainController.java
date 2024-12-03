@@ -14,9 +14,9 @@ public class FactoryMainController {
 		return "P02_LogIn";
 	}
 	
-	@GetMapping("/monitor") // CCTV
+	@GetMapping("/CCTV_Monitor") // CCTV
 	public String goMonitor() {
-		return "P04_Monitor";
+		return "CCTV_Monitor";
 	}
 	
 	@GetMapping("/login") 
