@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,26 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CCTV Monitor</title>
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/globals.css"
-    />
-    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
-
+    <%-- <link rel="stylesheet" href="<c:url value='/style/globals.css' />">
+    <link rel="stylesheet" href="<c:url value='/style/header.css'/>">
     <!-- 지역 style -->
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/P04_Monitor.css"
-    />
+    <link rel="stylesheet" href="<c:url value='/style/P04_Monitor.css'/>"> --%>
+    
+    
+    <link rel="stylesheet" href="/style/globals.css" type="text/css" />
+    <link rel="stylesheet" href="/style/P04_Monitor.css" type="text/css" />
+    <link rel="stylesheet" href="/style/header.css" type="text/css" />
+    
+    
     <!-- <link
       rel="stylesheet"
       href="/src/main/resources/static/style/calendar.css"
     /> -->
-
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/CCTV_Monitor.css"
-    />
+     <link rel="stylesheet" href="/style/calendar.css" type="text/css" />
+    <link rel="stylesheet" href="/style/CCTV_Monitor.css" type="text/css" />
+    
   </head>
   <body>
     <div alt="전역 컨테이너" class="container">
@@ -38,13 +38,13 @@
               <ul class="sub-category">
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category1/img1.png"
+                  data-img="/imgs/category1/img1.png"
                 >
                   Camera 1
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category1/img2.png"
+                  data-img="/imgs/category1/img2.png"
                 >
                   Camera 2
                 </li>
@@ -55,13 +55,13 @@
               <ul class="sub-category">
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category2/img3.png"
+                  data-img="/imgs/category2/img3.png"
                 >
                   Camera 3
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category2/img4.png"
+                  data-img="/imgs/category2/img4.png"
                 >
                   Camera 4
                 </li>
@@ -72,19 +72,19 @@
               <ul class="sub-category">
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category3/img5.png"
+                  data-img="/imgs/category3/img5.png"
                 >
                   Camera 5
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category3/img6.png"
+                  data-img="/imgs/category3/img6.png"
                 >
                   Camera 6
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category3/img7.png"
+                  data-img="/imgs/category3/img7.png"
                 >
                   Camera 7
                 </li>
@@ -280,10 +280,10 @@
     </div>
 
     <!-- jQuery -->
-    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
+    <script src="/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
-    <script src="/src/main/resources/static/js/P04_Monitor.js"></script>
-    <script src="/src/main/resources/static/js/calendar.js"></script>
-    <script src="/src/main/resources/static/js/CCTV_Monitor.js"></script>
+    <script src="/js/P04_Monitor.js"></script>
+    <script src="/js/calendar.js"></script>
+    <script src="/js/CCTV_Monitor.js"></script>
   </body>
 </html>

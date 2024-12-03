@@ -29,7 +29,7 @@ public class FactoryMemberController {
 	
 	@PostMapping("/joinForm")
 	public String joinMember(@ModelAttribute FactoryMember member) {
-		System.out.println("전화번호 : "  + member.getPhone());
+		 member.setNote(" "); // note를 명시적으로 null로 설정
 		service.join(member) ;
 		return "redirect:/" ;
 	}
@@ -41,7 +41,7 @@ public class FactoryMemberController {
 		if(loginMember != null ) {
 		session.setAttribute("member" ,loginMember) ;
 		System.out.println(loginMember.toString());
-		return "redirect:/monitor" ;
+		return "redirect:/CCTV_Monitor" ;
 		
 		} else {
 			return "redirect:/" ;

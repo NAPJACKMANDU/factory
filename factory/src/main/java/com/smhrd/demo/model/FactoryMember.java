@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,7 +20,11 @@ import lombok.ToString;
 @Table(name = "tb_user")
 public class FactoryMember {
 
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idx;
+
 	@Column(nullable = false, updatable = false)
 	private String id; // 회원 아이디 (고유 식별자)
 
@@ -40,9 +45,12 @@ public class FactoryMember {
 	@Column(nullable = false)
 	private String phone;
 
-	@Column(nullable = false)
-	private int idx;
+	@Column(nullable = true)
+	private String note;
 
+
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -99,12 +107,20 @@ public class FactoryMember {
 		this.phone = phone;
 	}
 
-	public int getIdx() {
+	public Long getIdx() {
 		return idx;
 	}
 
-	public void setIdx(int idx) {
+	public void setIdx(Long idx) {
 		this.idx = idx;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 }
