@@ -48,7 +48,7 @@ main {
     }
 
     /* 모니터링 영역 스타일 */
-    #M-area {
+    .M-area {
       background-color: #424242;
       border-radius: 2px;
       padding: 3px;
@@ -80,11 +80,16 @@ main {
         align-items: center;
         position: relative; /* 자식 요소의 위치 제어 */
         overflow: hidden; /* 내부 요소가 컨테이너를 벗어나지 않도록 */
+        transition: all 0.3s ease; /* 부드러운 전환 추가 */
 
         &.expanded {
           width: 100%; /* 클릭된 컨테이너가 전체 폭을 차지 */
           height: 100%;
           transition: transform 0.3s ease;
+          transform: scale(1.5); /* 확대 비율 */
+          z-index: 10; /* 확대 시 최상위로 */
+          position: relative; /* 확대 시 위치 조정 */
+          display: block; /* 확장된 요소 유지 */
         }
 
         img,
