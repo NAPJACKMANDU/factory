@@ -1,0 +1,168 @@
+@charset "UTF-8";
+body > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+}
+body * {
+  /* Scrollbar Styling */
+}
+body * ::-webkit-scrollbar {
+  width: 8px;
+  background-color: #34495e;
+}
+body * ::-webkit-scrollbar-thumb {
+  background-color: #1abc9c;
+  border-radius: 4px;
+}
+body nav[alt="부가기능 탭"] {
+  /* 임의 설정 */
+  margin-top: 15px;
+  margin-left: 0;
+  padding: 0;
+  padding-bottom: 0;
+  top: 0;
+  width: 100%; /* 탭 가로 사이즈 */
+  gap: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] {
+  /* 임의 설정 */
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+}
+body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
+  width: 100%;
+  height: 5px;
+  place-items: center;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  padding-right: 10px;
+  width: 100px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* 폰트 설정 */
+  font-weight: bolder;
+  font-size: medium;
+  color: white;
+}
+body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
+  cursor: pointer;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s; /* 부드러운 전환 효과 추가 */
+  color: goldenrod;
+  font-weight: bolder;
+}
+body nav[alt="부가기능 탭"] .vertical-line {
+  border: 0.005px solid darkgray;
+  width: 0.5px;
+  height: 55px;
+}
+
+main[alt="연락망 프로필 컨테이너"] {
+  /* 임의 설정 */
+  background-color: white;
+  max-width: 70%;
+  width: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  padding: 2% 4%;
+  width: 100%; /* 전체 너비 사용 */
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-template-columns: repeat(3, 1fr); /* 세 열로 균등 분할 */
+  grid-template-rows: 1fr; /* 한 행만 사용 */
+  gap: 10px 20px; /* 행 간격 10px, 열 간격 20px */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] {
+  /* 임의 설정 */
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  height: 400px;
+  width: 280px;
+  border: 1.5px solid lightgray;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  place-items: center;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 사진"] {
+  background-color: whitesmoke;
+  border-radius: 2px;
+  width: 95%;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 사진"] img {
+  height: 199px;
+  width: 199px;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] {
+  /* 임의 설정 */
+  width: 95%;
+  height: 80%;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] * {
+  margin-bottom: 0;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] section {
+  /* 임의 설정 */
+}

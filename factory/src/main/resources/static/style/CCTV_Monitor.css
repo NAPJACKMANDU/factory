@@ -207,6 +207,8 @@ section {
   width: 95%;
   height: 95%;
   gap: 10px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .monitor .camera-grid .camera {
   position: relative;
@@ -260,7 +262,10 @@ section {
 .right-sidebar {
   background-color: #243447;
   padding-bottom: 0;
-  width: 7.5%;
+  min-width: 7.5% !important;
+  width: 7.5;
+  width: auto;
+  max-width: 10%;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -274,6 +279,8 @@ section {
           align-items: center;
   padding: 20px;
   border-left: 2px solid #2c3e50;
+  -webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
+  transition: max-height 0.5s ease, opacity 0.5s ease; /* 부드러운 전환 */
   /* ◽🔹◽🔸◽🔹 nav 🔸◽🔹◽🔸◽ */
 }
 .right-sidebar button[alt=레이아웃옵션-토글] {
@@ -303,25 +310,12 @@ section {
 }
 .right-sidebar section[alt=레이아웃옵션-컨테이너] {
   /* 임의 설정 */
-  background-color: #243447;
-  margin-top: 85px;
-  width: 118px;
-  position: fixed;
-  z-index: 1000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 5px;
-  display: none; /* 초기 숨김 */
-  opacity: 0;
-  max-height: 0;
+  margin-top: 0;
+  width: 100%;
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 두 열로 균등하게 나눔 */
+  grid-template-rows: repeat(2, 1fr); /* 두 행으로 균등하게 나눔 */
   overflow: hidden;
   -webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
   transition: max-height 0.5s ease, opacity 0.5s ease;
@@ -343,8 +337,9 @@ section {
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  height: 35px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 10px;
 }
 .right-sidebar section[alt=레이아웃옵션-컨테이너] .layout-btn:hover,
 .right-sidebar section[alt=레이아웃옵션-컨테이너] .reset-btn:hover {
@@ -355,12 +350,15 @@ section {
   margin: 0;
   margin-top: 15px;
   margin-bottom: -15px;
-  height: 110%;
-  width: 155%; /* 기본 너비 */
+  height: 240px;
+  min-width: 100%; /* 기본 너비 */
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #282828;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  height: 99%;
   overflow-y: auto; /* 스크롤 가능 */
   overflow-x: hidden;
   display: -webkit-box;
@@ -370,11 +368,18 @@ section {
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse; /* 아래에서 위로 쌓임 */
+  -webkit-transition: z-index 0.3s ease;
+  transition: z-index 0.3s ease; /* 부드러운 z-index 전환 */
   /* 로그-행 */
   /* 로그 버튼 컨테이너 */
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple {
   height: 30px;
+  width: 140px;
+  position: relative; /* z-index를 위해 relative로 설정 */
+  z-index: 500; /* 초기 z-index 설정 */
+  -webkit-transition: z-index 0.3s ease;
+  transition: z-index 0.3s ease; /* 부드러운 z-index 전환 */
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-toggle {
   margin-top: -20px;
@@ -431,7 +436,7 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section span {
   border: none;
 }
-.right-sidebar nav {
+.right-sidebar nav[alt="부가기능 탭"] {
   /* 임의 설정 */
   margin-top: 15px;
   margin-left: 0;
@@ -454,19 +459,14 @@ section {
   gap: 0px;
   position: relative;
 }
-.right-sidebar nav div button {
-  /* location 이동 없음, show() 스크립트 */
+.right-sidebar nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
+  /* 임의 설정 */
   width: 100%;
   height: 5px;
   place-items: center;
   border: none;
   background: rgba(0, 0, 0, 0);
-}
-.right-sidebar nav div button:hover {
-  cursor: pointer;
-}
-.right-sidebar nav div span {
-  /* 임의 설정 */
+  text-decoration: none;
   padding-right: 10px;
   width: 100px;
   height: 50px;
@@ -479,12 +479,17 @@ section {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   /* 폰트 설정 */
   font-weight: bolder;
   font-size: medium;
   color: white;
 }
-.right-sidebar nav div span:hover {
+.right-sidebar nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
+  cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
   color: goldenrod;
