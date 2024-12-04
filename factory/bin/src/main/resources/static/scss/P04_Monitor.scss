@@ -5,53 +5,16 @@
 // ◽🔸 M : 모니터링 구역
 // ◽🔹 CAM, c : 개별 화면
 
-/* ◼️◼️◼️◼️◼️◼️ 깜빡임 효과를 위한 애니메이션 & 화면 수 조절 ◼️◼️◼️◼️◼️◼️ */
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+/*
+--1 메인 컨텐츠 설정
+--2 실시간 로그 영역 설정
+--3 부가 기능 탭 & 이상탐지 깜빡임 & 화면 수 조절 (사이드바 A)
+--4 팝업 컨테이너
+--5 화면 제외 버튼 컨테이너 설정
+*/
 
-/* 깜빡임 효과를 적용할 클래스 */
-.blink-effect {
-  animation: blink 0.5s infinite; /* 0.5초 주기로 깜빡임 효과 반복 */
-}
-
-.blink-controls {
-  /* 깜빡임 버튼 스타일 */
-
-  #blink-control {
-    margin-bottom: 10px;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #0056b3; /* 호버 시 더 어두운 파란색으로 변경 */
-    }
-  }
-
-  button,
-  #targetId {
-    min-width: 60px;
-    min-height: 50px;
-    height: 50px;
-    width: 110px;
-    overflow: hidden;
-  }
-
-  .vertical-line {
-    border: 0.005px solid whitesmoke;
-  }
+.vertical-line {
+  border: 0.005px solid whitesmoke;
 }
 
 /* ◼️◼️◼️◼️◼️◼️ 메인 컨텐츠 설정 ◼️◼️◼️◼️◼️◼️ */
@@ -69,7 +32,7 @@ main {
     font-size: x-small;
   }
 
-  > article {
+  > article[alt="실시간 모니터링 정보&화면 구역"] {
     background-color: gray;
     border-radius: 3px;
     padding-left: 0;
@@ -85,11 +48,11 @@ main {
     }
 
     /* 모니터링 영역 스타일 */
-    #M-area {
+    .M-area {
       background-color: #424242;
       border-radius: 2px;
       padding: 3px;
-      height: 94%; /* 부모 요소 높이 채움 */
+      height: 75%; /* 부모 요소 높이 채움 */
       width: 99%; /* 부모 요소 너비 채움 */
       display: grid;
       gap: 5px;
@@ -117,11 +80,16 @@ main {
         align-items: center;
         position: relative; /* 자식 요소의 위치 제어 */
         overflow: hidden; /* 내부 요소가 컨테이너를 벗어나지 않도록 */
+        transition: all 0.3s ease; /* 부드러운 전환 추가 */
 
         &.expanded {
           width: 100%; /* 클릭된 컨테이너가 전체 폭을 차지 */
           height: 100%;
           transition: transform 0.3s ease;
+          transform: scale(1.5); /* 확대 비율 */
+          z-index: 10; /* 확대 시 최상위로 */
+          position: relative; /* 확대 시 위치 조정 */
+          display: block; /* 확장된 요소 유지 */
         }
 
         img,
@@ -145,9 +113,33 @@ main {
         grid-template-columns: repeat(4, 1fr); /* 4열 초기화 */
       }
     }
+    footer[alt="저장된 로그 조회 구역-하단바"] {
+      /* 임의 설정 */
+      // background-color: lawngreen;
+      background-color: #191919;
+
+      margin: 0;
+      padding: 5px;
+      margin-left: 5px;
+      height: 22.57%;
+      max-height: 22.57%;
+      width: 90%;
+      border-radius: 10px;
+
+      position: absolute;
+      left: 0;
+      overflow: hidden;
+
+      display: flex; /* 캘린더와 모달을 나란히 정렬 */
+      justify-content: flex-start; /* 좌측 정렬 */
+      align-items: flex-start; /* 세로 정렬을 위쪽으로 고정 */
+      gap: 10px; /* 캘린더와 모달 사이 간격 */
+      flex-wrap: wrap; /* 브라우저 크기가 작아지면 아래로 배치 */
+      padding: 10px; /* 추가적인 내부 여백 */
+    }
   }
 
-  /* ◼️◼️◼️◼️◼️◼️ 실시간 로그 영역 설정 ◼️◼️◼️◼️◼️◼️ */
+  /* ◼️◼️◼️◼️◼️◼️ 실시간 로그 영역 설정 (사이드바 B) ◼️◼️◼️◼️◼️◼️ */
 
   /* 로그 토글 버튼 */
   button[alt="로그 토글 버튼"] {
@@ -157,7 +149,9 @@ main {
 
   /* 로그 사이드바 */
   > aside {
-    background-color: whitesmoke;
+    // [alt="실시간 모니터링 로그 구역-사이드 바"]
+    // background-color: whitesmoke;
+    background-color: #282828;
     box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2) inset;
     border-radius: 5px;
     padding-left: 5px;
@@ -212,18 +206,224 @@ main {
         }
       }
     }
+
+    /* ◽🔹◽🔸◽🔹 nav 🔸◽🔹◽🔸◽ */
+
+    nav {
+      /* 임의 설정 */
+      // background-color: #e59c9c;
+      background-color: #252f15;
+      //"부가기능 탭"
+      margin-top: 15px;
+      margin-left: 0;
+      margin-bottom: 60%;
+      padding: 0;
+      padding-bottom: 10px;
+      top: 0;
+
+      width: 100%; /* 탭 가로 사이즈 */
+      display: flex;
+      place-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 0px;
+
+      div {
+        //"button 컨테이너", "헤더 탭 세로선"
+
+        button {
+          /* location 이동 없음, show() 스크립트 */
+          width: 100%;
+          height: 50px;
+          place-items: center;
+          border: none;
+          background: rgba(
+            /* 내부 요소 제외, 배경만 투명 */ $color: #000000,
+            $alpha: 0
+          );
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        span {
+          /* 임의 설정 */
+          //background-color: lightcyan;
+          // 헤더 탭 버튼 내 span
+          padding-right: 10px;
+          width: 100px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          /* 폰트 설정 */
+          font-weight: bolder;
+          font-size: medium;
+          color: white;
+          &:hover {
+            transition: color 0.2s; /* 부드러운 전환 효과 추가 */
+            color: goldenrod;
+            font-weight: bolder;
+          }
+        }
+      }
+
+      .vertical-line {
+        //"탭 세로선"
+        border: 0.005px solid darkgray;
+        height: 0.5px;
+        width: 55px;
+      }
+    }
   }
 
-  #on-the-case {
-    // background-color: #4a4a4a;
-    // position: relative; /* 혹은 relative, absolute */
-    margin-left: 20px;
-    width: 180px;
-    display: inline-block;
-    white-space: nowrap;
-  }
-  
+  /* ◼️◼️◼️◼️◼️◼️ 부가 기능 탭 & 이상탐지 깜빡임 & 화면 수 조절 (사이드바 A) ◼️◼️◼️◼️◼️◼️ */
 
+  .aside-A {
+    /* 임의 설정 */
+    background-color: #191919;
+    padding-left: 0;
+    padding-right: 0;
+
+    width: 190px;
+    overflow: hidden;
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* 깜빡임 효과를 적용할 클래스 */
+    .blink-effect {
+      animation: blink 0.5s infinite; /* 0.5초 주기로 깜빡임 효과 반복 */
+    }
+
+    .blink-controls {
+      /* 임의 지정 */
+      background-color: chartreuse;
+      width: 100%;
+      height: 35px;
+      display: flex;
+      text-align: center;
+      white-space: nowrap;
+
+      margin-top: 50px;
+      margin-bottom: 350px;
+
+      display: flex;
+      flex-direction: column;
+
+      // "탐지 대상 지정"
+
+      #blink-control {
+        // div[alt="탐지대상드롭다운"]
+        /* 깜빡임 버튼 스타일 */
+        margin-bottom: 10px;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0056b3; /* 호버 시 더 어두운 파란색으로 변경 */
+        }
+      }
+
+      button,
+      #targetId {
+        padding: 0;
+        min-width: 30px;
+        min-height: 30px;
+        height: 50px;
+        width: 110px;
+        overflow: hidden;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/* ◼️◼️◼️◼️◼️◼️ 팝업 컨테이너 ◼️◼️◼️◼️◼️◼️ */
+
+// "안전수칙•프로토콜•연락망 팝업" , "로그인 팝업"
+.popup {
+  background-color: #262626; /* 배경색 강제 적용 */
+  color: #fff; /* 텍스트 색상 강제 적용 */
+  border: 1px solid #ccc;
+  padding: 20px;
+  min-height: 150px;
+  height: fit-content;
+  max-height: 400px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  position: fixed;
+  top: -100%; /* 화면 위쪽에 숨겨둠 */
+  left: 47%;
+  transform: translate(-50%); /* 화면 밖 위쪽에 숨김 */
+  text-align: center;
+  z-index: 1200;
+
+  > button {
+    // .closePopup, '로그인' 버튼.
+    margin-bottom: 15px;
+    background-color: #4b4b4b;
+    border: 1.5px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
+    color: #ccc;
+    font-size: 17px;
+    &:hover {
+      box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+  }
+
+  .popup-content_container {
+    /* 임의 설정 */
+    padding-top: 3%;
+    text-align: center;
+
+    border-radius: 15px;
+    height: 33px;
+
+    > article {
+      /* 임의 설정 */
+      background-color: #4a4a4a;
+    }
+  }
+}
+
+/* ◽🔸 Main 페이지 (한정) 🔸◽ */
+.h-a-container {
+  //"헤더 a태그 컨테이너"
+  a {
+    text-decoration-line: none;
+  }
+}
+
+#on-the-case {
+  // "프로토콜 버튼 컨테이너"
+
+  // background-color: #4a4a4a;
+  // position: relative; /* 혹은 relative, absolute */
+  margin-left: 20px;
+  width: 180px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 /* ◼️◼️◼️◼️◼️◼️ 화면 제외 버튼 컨테이너 설정 ◼️◼️◼️◼️◼️◼️ */
@@ -254,6 +454,7 @@ top-bar[alt="화면 수 조절 바"] {
   padding: 10px 20px;
   text-align: center;
   transition: background-color 0.3s ease, opacity 0.5s ease;
+  z-index: 1000;
 
   /* hover 시 투명도 증가 */
   &:hover,
@@ -313,3 +514,5 @@ top-bar[alt="화면 수 조절 바"] {
     opacity: 1; /* hover 시 화면 수 조절 컨테이너 표시 */
   }
 }
+
+// ==================================================

@@ -25,6 +25,15 @@
      <link rel="stylesheet" href="/style/calendar.css" type="text/css" />
     <link rel="stylesheet" href="/style/CCTV_Monitor.css" type="text/css" />
     
+
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/P04_Monitor.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/CCTV_Monitor.css"
+    />
   </head>
   <body>
     <div alt="전역 컨테이너" class="container">
@@ -186,27 +195,27 @@
             <span class="camera-number">16번</span>
           </div>
         </div>
-        <temp class="temp">
-          <!-- 탐지 대상 지정 -->
+        <!-- <temp class="temp">
+          //탐지 대상 지정
           <div alt="탐지대상드롭다운" class="blink-controls">
             <label for="targetId">이상 탐지 대상 선택</label>
             <select id="targetId">
-              <option value="#c1">카메라 1</option>
-              <option value="#c2">카메라 2</option>
-              <option value="#c3">카메라 3</option>
-              <option value="#c4">카메라 4</option>
-              <option value="#c5">카메라 5</option>
-              <option value="#c6">카메라 6</option>
-              <option value="#c7">카메라 7</option>
-              <option value="#c8">카메라 8</option>
-              <option value="#c9">카메라 9</option>
-              <option value="#c10">카메라 10</option>
-              <option value="#c11">카메라 11</option>
-              <option value="#c12">카메라 12</option>
-              <option value="#c13">카메라 13</option>
-              <option value="#c14">카메라 14</option>
-              <option value="#c15">카메라 15</option>
-              <option value="#c16">카메라 16</option>
+              <option value="#cam1">카메라 1</option>
+              <option value="#cam2">카메라 2</option>
+              <option value="#cam3">카메라 3</option>
+              <option value="#cam4">카메라 4</option>
+              <option value="#cam5">카메라 5</option>
+              <option value="#cam6">카메라 6</option>
+              <option value="#cam7">카메라 7</option>
+              <option value="#cam8">카메라 8</option>
+              <option value="#cam9">카메라 9</option>
+              <option value="#cam10">카메라 10</option>
+              <option value="#cam11">카메라 11</option>
+              <option value="#cam12">카메라 12</option>
+              <option value="#cam13">카메라 13</option>
+              <option value="#cam14">카메라 14</option>
+              <option value="#cam15">카메라 15</option>
+              <option value="#cam16">카메라 16</option>
             </select>
             <div alt="탭 세로선" class="vertical-line"></div>
             <button id="blink-start-warning" class="btn-onTheCase">
@@ -216,20 +225,18 @@
               이상 발생
             </button>
           </div>
-        </temp>
+        </temp> -->
       </main>
 
       <!-- 우측 사이드바 -->
       <aside class="right-sidebar">
         <!-- 레이아웃 옵션 -->
-        <button alt="레이아웃옵션-토글">
-          <h2>Layout Options</h2>
-        </button>
+        <h2>Layout<br />Options</h2>
         <section alt="레이아웃옵션-컨테이너">
-          <button class="layout-btn" data-layout="16">16 Screens</button>
-          <button class="layout-btn" data-layout="4">4 Screens</button>
-          <button class="layout-btn" data-layout="1">1 Screen</button>
-          <button class="reset-btn">Reset All</button>
+          <button class="layout-btn" data-layout="16">16</button>
+          <button class="layout-btn" data-layout="4">4</button>
+          <button class="layout-btn" data-layout="1">1</button>
+          <button class="reset-btn">Reset</button>
         </section>
 
         <!-- 로그 탐지 사이드 바 -->
@@ -244,9 +251,6 @@
           </div>
           <br />
           <!-- 로그 토글 -->
-          <!-- <div alt="로그 토글 컨테이너" class="log-toggle">
-            <button alt="로그 토글 버튼">🔕</button>
-          </div> -->
           <article alt="로그 컨테이너" id="log-tuple-container">
             <!-- 기록이 발생할 때마다 .log-tuple 추가 -->
           </article>
@@ -255,25 +259,17 @@
         <!-- 부가기능 탭 -->
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
-          <div alt="button 컨테이너">
-            <button alt="연락망" id="btn-EEIF" href="#">
-              <span>연락망</span>
-            </button>
+          <div alt="a 컨테이너">
+            <a href="#">연락망</a>
           </div>
-          <div alt="button 컨테이너">
-            <button alt="저장된 로그" id="btn-savedLog" href="#">
-              <span>저장 로그</span>
-            </button>
+          <div alt="a 컨테이너">
+            <a href="#">저장 로그</a>
           </div>
-          <div alt="button 컨테이너">
-            <button alt="프로토콜" id="btn-protocol" href="#">
-              <span>프로토콜</span>
-            </button>
+          <div alt="a 컨테이너">
+            <a href="#">프로토콜</a>
           </div>
-          <div alt="button 컨테이너">
-            <button alt="안전수칙" id="btn-safetyRules" href="#">
-              <span>안전수칙</span>
-            </button>
+          <div alt="a 컨테이너">
+            <a href="#">안전수칙</a>
           </div>
         </nav>
       </aside>

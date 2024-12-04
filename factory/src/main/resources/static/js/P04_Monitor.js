@@ -18,10 +18,17 @@
 
 // AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
 $(document).ready(function () {
-  let blinkInterval = null;
+  let blinkInterval = null; // 깜빡임 제어 변수
+  let warningActive = false; // #blink-start-warning 클릭 상태 확인
 
+  // 초기 CAM-container 테두리 색상 설정
   $(".CAM-container").css({ borderColor: "#4a4a4a" });
 
+  /**
+   * 깜빡임 시작 함수
+   * @param {Array} targets - 대상 CAM-container ID 리스트
+   * @param {string} color - 깜빡임 색상
+   */
   function startBlink(targets, color) {
     blinkInterval = setInterval(() => {
       targets.forEach(({ id }) => {
@@ -42,6 +49,10 @@ $(document).ready(function () {
     }, 350);
   }
 
+  /**
+   * 깜빡임 중지 함수
+   * @param {Array} targets - 대상 CAM-container ID 리스트
+   */
   function stopBlink(targets) {
     clearInterval(blinkInterval);
     targets.forEach(({ id }) => {
@@ -53,19 +64,38 @@ $(document).ready(function () {
     blinkInterval = null;
   }
 
-  $("#blink-start-danger").on("click", function () {
-    const targetId = $("#targetId").val();
-    startBlink([{ id: targetId }], "#8B0000");
-  });
-
+  /**
+   * #blink-start-warning 버튼 클릭 이벤트
+   */
   $("#blink-start-warning").on("click", function () {
     const targetId = $("#targetId").val();
-    startBlink([{ id: targetId }], "#ff8c00");
+    warningActive = true; // #blink-start-warning 활성화 상태
+    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거
+    startBlink([{ id: targetId }], "#ff8c00"); // 주황색 테두리 깜빡임 시작
   });
 
+  /**
+   * #blink-start-danger 버튼 클릭 이벤트
+   */
+  $("#blink-start-danger").on("click", function () {
+    if (!warningActive) {
+      // #blink-start-warning 클릭 선행 조건 확인
+      alert("먼저 '이상 확인 중' 버튼을 클릭하세요."); // 사용자 알림
+      return;
+    }
+    const targetId = $("#targetId").val();
+    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
+    startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
+    warningActive = false; // #blink-start-warning 상태 초기화
+  });
+
+  /**
+   * #stop-blink 버튼 클릭 이벤트
+   */
   $("#stop-blink").on("click", function () {
     const targetId = $("#targetId").val();
-    stopBlink([{ id: targetId }]);
+    stopBlink([{ id: targetId }]); // 깜빡임 제거
+    warningActive = false; // 상태 초기화
   });
 });
 
@@ -375,6 +405,9 @@ function addLog(cameraNumber, status, icon) {
   // 로그 상태에 따라 토글 버튼 상태 변경
   updateLogToggleButton();
 
+  // 🌟 addLog 실행 시 휴지통 버튼 표시
+  $('button[alt="로그 비우기 버튼"]').fadeIn(300);
+
   // 서버로 로그 데이터 전송
   const logData = {
     cameraNumber: cameraNumber || "unknown", // 기본값 설정: cameraNumber가 없을 경우 기본값 "unknown" 사용
@@ -406,12 +439,16 @@ function addLog(cameraNumber, status, icon) {
 
 $(function () {
   const logToggleButton = $('button[alt="로그 토글 버튼"]'); // 로그 토글 버튼
+  const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
   const $protocolContainer = $("#on-the-case"); // 프로토콜 버튼 컨테이너
   const $stopBlinkButton = $("#stop-blink"); // 상황 종료 버튼
   const $reportButton = $("#report"); // 119 신고 버튼
 
+  // 🌟 초기 상태에서 휴지통 버튼 숨김
+  $trashButton.hide();
+
   // 🗑️ 버튼 클릭 시 모든 로그 비우기
-  $('button[alt="로그 비우기 버튼"]').click(function () {
+  $trashButton.click(function () {
     const $logContainer = $("#log-tuple-container");
 
     // 로그 전체에 페이드 아웃 애니메이션 적용
@@ -430,6 +467,11 @@ $(function () {
     // 애니메이션 완료 후 로그 상태 업데이트
     setTimeout(() => {
       updateLogToggleButton(); // 버튼 이모지 업데이트
+
+      // 🌟 모든 로그 제거 후 휴지통 버튼 숨김
+      if ($(".log-tuple").length === 0) {
+        $trashButton.fadeOut(300);
+      }
     }, 50); // 애니메이션 시간보다 빠르게 설정
   });
 
@@ -448,147 +490,6 @@ $(function () {
 
   // 초기 상태 설정
   logToggleButton.text("🔕");
-  updateLogToggleButton();
-});
-
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --6 이상 탐지 로그 자동 추가 */
-/* --7 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
-
-$(document).ready(function () {
-  /**
-   * 현재 시각을 YYYY-MM-DD HH24:MI:SS 형식으로 반환
-   * @returns {string} - 포맷된 타임스탬프
-   */
-  function getFormattedTimestamp() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-
-    return `[${hours}:${minutes}]<br>${year}-${month}-${day}`;
-  }
-
-  /**
-   * 로그를 추가하고 부드러운 전환 애니메이션 적용
-   * @param {string} cameraLabel - 카메라 라벨 (예: 카메라 1)
-   * @param {string} status - '경고' 또는 '위험'
-   * @param {string} icon - 상태 아이콘
-   */
-  function addLog(cameraLabel, status, icon) {
-    const timestamp = getFormattedTimestamp();
-    const newLog = $(`
-      <section alt="로그-튜플" class="log-tuple" style="opacity: 0; transform: translateY(-10px);">
-      <p class="log-timestamp">${timestamp}</p>
-      <p alt="로그 콘텐츠" class="log-content">${cameraLabel}</p>
-      <span class="log-content">${icon}</span>
-      </section>
-    `);
-
-    $("#log-tuple-container").prepend(newLog);
-
-    // 부드러운 전환 애니메이션 적용
-    newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
-
-    // 로그 상태에 따라 토글 버튼 상태 변경
-    updateLogToggleButton();
-
-    // 서버로 로그 데이터 전송
-    const logData = {
-      cameraLabel,
-      status,
-      icon,
-      timestamp,
-    };
-
-    $.ajax({
-      url: "/saveLog",
-      method: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(logData),
-      success: function (response) {
-        console.log("로그 저장 성공:", response);
-      },
-      error: function (error) {
-        console.error("로그 저장 실패:", error);
-      },
-    });
-  }
-
-  /**
-   * 로그 상태에 따라 로그 토글 버튼 이모지 변경
-   */
-  function updateLogToggleButton() {
-    const logCount = $(".log-tuple").length;
-    const newEmoji = logCount > 0 ? "✅" : "🔕";
-    $('button[alt="로그 토글 버튼"]')
-      .fadeOut(200, function () {
-        $(this).text(newEmoji);
-      })
-      .fadeIn(200);
-  }
-
-  // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
-  $("#blink-start-warning").on("click", function () {
-    const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
-    addLog(cameraLabel, "경고", "⚠️");
-  });
-
-  // 🚨 '이상 발생' 버튼 클릭 시 위험 로그 추가
-  $("#blink-start-danger").on("click", function () {
-    const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
-    addLog(cameraLabel, "위험", "🚨");
-  });
-
-  $(document).ready(function () {
-    const $protocolContainer = $("#on-the-case");
-    let pressTimer; // CAM-container 꾹 누르기 타이머
-
-    // 초기 상태에서 프로토콜 버튼 컨테이너 숨기기
-    $protocolContainer.hide().css({
-      opacity: 0,
-      transform: "translateY(-10px)",
-      borderColor: "transparent", // 초기 borderColor 설정
-    });
-
-    /**
-     * 프로토콜 버튼 컨테이너를 부드럽게 나타내기
-     */
-    function showProtocolContainer() {
-      if ($protocolContainer.is(":hidden")) {
-        $protocolContainer.stop(true, true).show().animate(
-          {
-            opacity: 1,
-            transform: "translateY(0)",
-          },
-          150
-        );
-      }
-    }
-
-    // ⚠️🚨 '.btn-onTheCase' 버튼 클릭 시 프로토콜 버튼 컨테이너 표시 🌟🌟🌟🌟🌟➡️➡️➡️ 추후 통신 이벤트로 변경
-    $(".btn-onTheCase").on("click", function () {
-      showProtocolContainer();
-    });
-
-    // 상황 종료 버튼 클릭 시 프로토콜 버튼 컨테이너 숨기기
-    $("#stop-blink").on("click", function () {
-      $protocolContainer.stop(true, true).animate(
-        {
-          opacity: 0,
-          transform: "translateY(-10px)",
-        },
-        350,
-        function () {
-          $(this).hide(); // 애니메이션 완료 후 숨기기
-        }
-      );
-    });
-  });
-
-  // 초기 버튼 상태 설정
   updateLogToggleButton();
 });
 
@@ -768,34 +669,3 @@ $(document).ready(function () {
 /* --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)' */
 /* -10 ➡️➡️➡️'저장된 로그' 탭 클릭 시 '녹화•저장된 로그(txt•video)' 조회 : 녹화 영상은 페이지 이동  */
 
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --11 드래그 앤 드롭 및 레이아웃 옵션 */
-$(document).ready(function () {
-  // 드래그 앤 드롭
-  $(".CAM-container").draggable({
-    revert: "invalid",
-    zIndex: 100,
-  });
-
-  $("#category-list .category").droppable({
-    accept: ".CAM-container",
-    drop: function (event, ui) {
-      const droppedItem = ui.draggable;
-      $(this).append(droppedItem);
-    },
-  });
-
-  // 레이아웃 옵션
-  $(".layout-btn").on("click", function () {
-    const layout = $(this).data("layout");
-    const $Marea = $(".M-area");
-
-    if (layout === "grid-4") {
-      $Marea.css("grid-template-columns", "repeat(4, 1fr)");
-    } else if (layout === "grid-2") {
-      $Marea.css("grid-template-columns", "repeat(2, 1fr)");
-    } else if (layout === "grid-1") {
-      $Marea.css("grid-template-columns", "1fr");
-    }
-  });
-});
