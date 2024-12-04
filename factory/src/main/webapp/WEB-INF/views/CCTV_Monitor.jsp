@@ -195,7 +195,7 @@
             <span class="camera-number">16번</span>
           </div>
         </div>
-        <!-- <temp class="temp">
+        <temp class="temp">
           //탐지 대상 지정
           <div alt="탐지대상드롭다운" class="blink-controls">
             <label for="targetId">이상 탐지 대상 선택</label>
@@ -225,7 +225,7 @@
               이상 발생
             </button>
           </div>
-        </temp> -->
+        </temp>
       </main>
 
       <!-- 우측 사이드바 -->
@@ -254,7 +254,6 @@
           <article alt="로그 컨테이너" id="log-tuple-container">
             <!-- 기록이 발생할 때마다 .log-tuple 추가 -->
           </article>
-          <!-- 부가기능 탭 -->
         </aside>
         <!-- 부가기능 탭 -->
         <nav alt="부가기능 탭">

@@ -207,6 +207,8 @@ section {
   width: 95%;
   height: 95%;
   gap: 10px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .monitor .camera-grid .camera {
   position: relative;
@@ -434,7 +436,7 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section span {
   border: none;
 }
-.right-sidebar nav {
+.right-sidebar nav[alt="부가기능 탭"] {
   /* 임의 설정 */
   margin-top: 15px;
   margin-left: 0;
@@ -457,7 +459,7 @@ section {
   gap: 0px;
   position: relative;
 }
-.right-sidebar nav div[alt="a 컨테이너"] a {
+.right-sidebar nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
   /* 임의 설정 */
   width: 100%;
   height: 5px;
@@ -486,7 +488,7 @@ section {
   font-size: medium;
   color: white;
 }
-.right-sidebar nav div[alt="a 컨테이너"] a:hover {
+.right-sidebar nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
   cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
