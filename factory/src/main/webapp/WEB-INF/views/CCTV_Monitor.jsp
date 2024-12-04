@@ -260,7 +260,7 @@
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
           <div alt="a 컨테이너">
-            <a href="#">연락망</a>
+            <a href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
             <a href="#">저장 로그</a>

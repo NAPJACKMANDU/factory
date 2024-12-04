@@ -117,7 +117,7 @@ tbody tr:hover {
 </style>
 </head>
 <body>
-    <form id = "call_frm" action="/call" method="post" style="display: inline;">
+    <form id = "call_frm" action="/call" method="Get" style="display: inline;">
         <div class="contact-table-container">
             <h1>비상연락망</h1>
             <table>
@@ -174,8 +174,9 @@ tbody tr:hover {
      function printList(data) {
          var code = "";
          for (var i = 0; i < data.length; i++) {
+         if (data[i].companyIdx == ${member.companyIdx}) {
              code += "<tr style='background-color: #f9f9f9;'>";
-             code += "<td>" + i+ "</td>";
+             code += "<td>" +  i + "</td>";
              code += "<td>" + data[i].name + "</td>";
              code += "<td>" + data[i].role + "</td>";
              code += "<td>" + data[i].phone + "</td>";
@@ -188,9 +189,11 @@ tbody tr:hover {
              code += "</td>";
              code += "</tr>";
          }
+         }
          $("#list").html(code); // tbody에 새 코드 삽입
      }
-
+     
+     
      // 수정 함수
      function callbyupdate(event) {
          let target = $(event.target).closest("tr");
