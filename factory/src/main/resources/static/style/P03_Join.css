@@ -15,26 +15,32 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-
-.signup-container {
-  background: #34495e;
-  border: 2px solid rgba(26, 188, 156, 0.6862745098);
-  border-radius: 15px;
-  -webkit-box-shadow: 1 6px 12px rgba(0, 0, 0, 0.1);
-          box-shadow: 1 6px 12px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) inset;
-  width: 100%;
-  height: 100%;
-  max-width: 450px;
-  padding: 30px 25px;
+body input {
+  font-size: 14px;
+  border: 1px solid #7f8c8d;
+  background-color: #34495e;
+  color: white;
 }
 
-h1 {
-  font-size: 26px;
+.signup-container {
+  background: #2c3e50;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 25px 0;
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+}
+
+h2 {
   color: white;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
 }
 
 .form-group {
@@ -44,7 +50,6 @@ h1 {
 label {
   display: block;
   font-size: 14px;
-  font-weight: bold;
   margin-bottom: 8px;
   color: whitesmoke;
 }
@@ -78,6 +83,7 @@ button {
   padding: 15px;
   font-size: 16px;
   color: white;
+  font-weight: bold;
   background-color: rgba(11, 12, 12, 0.8470588235);
   border: none;
   border-radius: 6px;
@@ -88,6 +94,11 @@ button {
 
 button:hover {
   background-color: #1abc9c;
+}
+
+#idCheckButton {
+  width: 45%;
+  margin-left: 54%;
 }
 
 /* 관리자 및 일반 사용자 선택 디자인 */
@@ -117,7 +128,7 @@ button:hover {
   width: 40%;
   padding: 20px;
   border-radius: 10px;
-  background-color: #cbc8c8;
+  background-color: #a4a1a1;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -128,7 +139,7 @@ input[type=radio] {
 }
 
 input[type=radio]:checked + .role-option {
-  background-color: #1c4b62;
+  background-color: #1abc9c;
   color: whitesmoke;
   font-weight: bold;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
