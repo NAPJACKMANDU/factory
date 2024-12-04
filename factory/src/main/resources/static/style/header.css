@@ -4,7 +4,7 @@
 /* ◼️◼️◼️◼️◼️◼️ 헤더 설정 ◼️◼️◼️◼️◼️◼️ */
 header {
   /* 임의 설정 */
-  background-color: #004c97;
+  background-color: rgba(11, 12, 12, 0.8470588235);
   border: none;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
