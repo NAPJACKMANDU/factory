@@ -34,6 +34,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div alt="a 컨테이너">
             <a href="#">안전수칙</a>
           </div>
+          <div class="vertical-line"></div>
+
+          <div alt="a 컨테이너">
+            <a href="#">내 정보</a>
+          </div>
         </nav>
       </header>
 

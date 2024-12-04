@@ -512,7 +512,7 @@ section {
   cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-  color: goldenrod;
+  color: #48f1cf;
   font-weight: bolder;
 }
 

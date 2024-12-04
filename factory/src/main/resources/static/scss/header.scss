@@ -10,7 +10,7 @@ header {
   //"헤더"
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 0 !important;
-  padding: 0 10%; /* 헤더 좌우 패딩 */
+  padding: 0 8%; /* 헤더 좌우 패딩 */
 
   height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
   min-height: 70px;
@@ -117,7 +117,7 @@ header {
 
       span {
         /* 임의 설정 */
-        //background-color: lightcyan;
+        // background-color: lightcyan;
         // 헤더 탭 버튼 내 span
         padding-right: 10px;
         width: 100px;
@@ -131,7 +131,8 @@ header {
         color: white;
         &:hover {
           transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-          color: goldenrod;
+          color: #1abc9c;
+          // color: goldenrod;
           font-weight: bolder;
         }
       }

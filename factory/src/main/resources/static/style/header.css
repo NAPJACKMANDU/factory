@@ -9,7 +9,7 @@ header {
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 0 !important;
-  padding: 0 10%; /* 헤더 좌우 패딩 */
+  padding: 0 8%; /* 헤더 좌우 패딩 */
   height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
   min-height: 70px;
   width: 100vw; /* 마진 없는 가로 사이즈 */
@@ -131,7 +131,7 @@ header nav div span {
 header nav div span:hover {
   -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-  color: goldenrod;
+  color: #1abc9c;
   font-weight: bolder;
 }
 header nav .vertical-line {

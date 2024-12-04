@@ -79,7 +79,7 @@ body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
   cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-  color: goldenrod;
+  color: #2ae7c1;
   font-weight: bolder;
 }
 body nav[alt="부가기능 탭"] .vertical-line {
@@ -120,7 +120,7 @@ main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] 
   height: 400px;
   width: 280px;
   border: 2.5px solid rgba(26, 188, 156, 0.4078431373);
-  border-radius: 1.5px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   -webkit-box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2) inset;
@@ -136,11 +136,10 @@ main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] 
 }
 main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 사진"] {
   background-color: #243447;
-  border-radius: 2px;
   margin: 0;
   width: 100%;
   height: 200px;
-  border-radius: 1.5px;
+  border-radius: 8px 8px 0 0;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   -webkit-box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1) inset;
