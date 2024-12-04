@@ -26,15 +26,11 @@
 						id="password" name="pw" placeholder="Enter password" required>
 				</div>
 				<button type="submit" class="login-btn">Login</button>
+					
 			</form>
 			<button>
 				<a href="P03_Join" class="login-btn"><span>회원가입</span></a>
-				<button>
-					<form action="/call" method="post" style="display: inline;">
-						<button type="submit" class="login-btn">
-							<span>비상연락망</span>
-						</button>
-					</form>
+				</button>
 		</div>
 	</div>
 	<script src="<c:url value='/js/login-scripts.js' />"></script>

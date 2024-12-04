@@ -48,21 +48,9 @@ public class FactoryMemberController {
 		}
 		
 	}
-	@Autowired
-    private FactoryMemberService factoryMemberService;
 
-	@GetMapping("/api/check-id")
-	@ResponseBody
-	public Map<String, Boolean> checkId(@RequestParam String id) {
-	    System.out.println("요청된 아이디: " + id);
-	    Map<String, Boolean> response = new HashMap<>();
-	    boolean isAvailable = !factoryMemberService.isIdTaken(id); // 서비스에서 중복 체크
-	    response.put("available", isAvailable);
-	    return response;
-	}
 	
-	
-	@PostMapping("/call")
+	@GetMapping("/call")
 	public String AllCallbord(Model model) {
 		List<FactoryMember> allcall = service.allcallbord() ;
 		model.addAttribute("allcall", allcall) ;

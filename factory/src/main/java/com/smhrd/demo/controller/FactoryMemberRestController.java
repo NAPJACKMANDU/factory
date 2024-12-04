@@ -1,6 +1,8 @@
 package com.smhrd.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.demo.model.FactoryMember;
@@ -43,4 +47,15 @@ public class FactoryMemberRestController {
 		service.callbydelete(idx) ;
 		return "sussess" ;
 	}
+
+	@GetMapping("/api/check-id")
+	@ResponseBody
+	public Map<String, Boolean> checkId(@RequestParam String id) {
+	    System.out.println("요청된 아이디: " + id);
+	    Map<String, Boolean> response = new HashMap<>();
+	    boolean isAvailable = !service.isIdTaken(id); // 서비스에서 중복 체크
+	    response.put("available", isAvailable);
+	    return response;
+	}
+	
 }
