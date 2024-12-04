@@ -1,6 +1,6 @@
 package com.smhrd.demo.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,7 +22,6 @@ import lombok.ToString;
 
 
 public class ClipModel {
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +29,44 @@ public class ClipModel {
 	@Column(nullable = false)
     private String clipName; // 클립 이름
 	@Column(nullable = false)
-    private int clipSize;     // 클립 사이즈 
-    private String clipExt;     // 클립 확장자 
+	private String  clipPath ;
+	@Column(nullable = true)
     private int cameraIdx; // 카메라 식별자 
     @UpdateTimestamp
     private Timestamp createdAt;  // 등록 일자 
+    
+    
+    
+	public Long getClipIdx() {
+		return clipIdx;
+	}
+	public void setClipIdx(Long clipIdx) {
+		this.clipIdx = clipIdx;
+	}
+	public String getClipName() {
+		return clipName;
+	}
+	public void setClipName(String clipName) {
+		this.clipName = clipName;
+	}
+	public int getCameraIdx() {
+		return cameraIdx;
+	}
+	public void setCameraIdx(int cameraIdx) {
+		this.cameraIdx = cameraIdx;
+	}
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+	public String getClipPath() {
+		return clipPath;
+	}
+	public void setClipPath(String clipPath) {
+		this.clipPath = clipPath;
+	}
     
 
 }

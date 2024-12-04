@@ -92,12 +92,14 @@
                   Camera 6
                 </li>
                 <li
+                  class="video-item"
                   draggable="true"
                   data-video="/video/TN1.mp4"
                 >
                   Camera 7
                 </li>
                 <li
+                  class="video-item"
                   draggable="true"
                   data-video="/video/TN2.mp4"
                 >
