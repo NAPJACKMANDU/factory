@@ -93,16 +93,16 @@
                 </li>
                 <li
                   draggable="true"
-                  data-img="/imgs/category3/img7.png"
+                  data-video="/video/TN1.mp4"
                 >
                   Camera 7
                 </li>
-                <!-- <li
+                <li
                   draggable="true"
-                  data-video="E:/교재(보관)/.Front-end_개인공부/BackUp/.Demo/src/main/resources/static/videos/#"
+                  data-video="/video/TN2.mp4"
                 >
                   Camera 8
-                </li> -->
+                </li>
               </ul>
             </li>
           </ul>

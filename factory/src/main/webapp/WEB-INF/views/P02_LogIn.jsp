@@ -30,7 +30,7 @@
 			</form>
 			<button>
 				<a href="P03_Join" class="login-btn"><span>회원가입</span></a>
-				<button>
+				</button>
 		</div>
 	</div>
 	<script src="<c:url value='/js/login-scripts.js' />"></script>
