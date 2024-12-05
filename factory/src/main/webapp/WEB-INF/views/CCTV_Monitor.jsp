@@ -141,6 +141,59 @@
               <div id="modal-data">데이터를 로드 중...</div>
             </div>
           </div>
+
+          <!-- 2차 모달 -->
+          <div id="secondary-modal" class="secondary-modal hidden">
+            <div class="secondary-modal-content">
+              <span class="close-secondary-modal">&times;</span>
+              <h2>${2024}년 ${12}월 ${06}일</h2>
+              <br />
+              <article alt="2차 모달 스크롤 발생">
+                <table>
+                  <tr alt="탐지로그 조회 테이블 헤더">
+                    <td class="th">
+                      <span>시간</span>
+                    </td>
+                    <td class="th">
+                      <span>탐지 내용</span>
+                    </td>
+                  </tr>
+                  <tr alt="탐지로그 조회 테이블 컨텐츠">
+                    <td class="content">
+                      <span> [${21:31}]</span>
+                    </td>
+                    <td class="content">
+                      <span>${낙상}</span>
+                    </td>
+                  </tr>
+                  <tr alt="탐지로그 조회 테이블 컨텐츠">
+                    <td class="content">
+                      <span> [${21:31}]</span>
+                    </td>
+                    <td class="content">
+                      <span>${낙상}</span>
+                    </td>
+                  </tr>
+                  <tr alt="탐지로그 조회 테이블 컨텐츠">
+                    <td class="content">
+                      <span> [${21:31}]</span>
+                    </td>
+                    <td class="content">
+                      <span>${낙상}</span>
+                    </td>
+                  </tr>
+                  <tr alt="탐지로그 조회 테이블 컨텐츠">
+                    <td class="content">
+                      <span> [${21:31}]</span>
+                    </td>
+                    <td class="content">
+                      <span>${낙상}</span>
+                    </td>
+                  </tr>
+                </table>
+              </article>
+            </div>
+          </div>
         </footer>
       </aside>
 
@@ -165,7 +218,7 @@
           </div>
           <div class="CAM-container camera dropzone" id="cam6">
             <span class="camera-number">6번</span>
-          </div>
+          </div>	
           <div class="CAM-container camera dropzone" id="cam7">
             <span class="camera-number">7번</span>
           </div>
@@ -202,22 +255,22 @@
           <div alt="탐지대상드롭다운" class="blink-controls">
             <label for="targetId">이상 탐지 대상 선택</label>
             <select id="targetId">
-              <option value="#cam1">카메라 1</option>
-              <option value="#cam2">카메라 2</option>
-              <option value="#cam3">카메라 3</option>
-              <option value="#cam4">카메라 4</option>
-              <option value="#cam5">카메라 5</option>
-              <option value="#cam6">카메라 6</option>
-              <option value="#cam7">카메라 7</option>
-              <option value="#cam8">카메라 8</option>
-              <option value="#cam9">카메라 9</option>
-              <option value="#cam10">카메라 10</option>
-              <option value="#cam11">카메라 11</option>
-              <option value="#cam12">카메라 12</option>
-              <option value="#cam13">카메라 13</option>
-              <option value="#cam14">카메라 14</option>
-              <option value="#cam15">카메라 15</option>
-              <option value="#cam16">카메라 16</option>
+              <option value="#cam1">1</option>
+              <option value="#cam2">2</option>
+              <option value="#cam3">3</option>
+              <option value="#cam4">4</option>
+              <option value="#cam5">5</option>
+              <option value="#cam6">6</option>
+              <option value="#cam7">7</option>
+              <option value="#cam8">8</option>
+              <option value="#cam9">9</option>
+              <option value="#cam10">10</option>
+              <option value="#cam11">11</option>
+              <option value="#cam12">12</option>
+              <option value="#cam13">13</option>
+              <option value="#cam14">14</option>
+              <option value="#cam15">15</option>
+              <option value="#cam16">16</option>
             </select>
             <div alt="탭 세로선" class="vertical-line"></div>
             <button id="blink-start-warning" class="btn-onTheCase">
@@ -264,13 +317,13 @@
             <a href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">저장 로그</a>
-          </div>
-          <div alt="a 컨테이너">
             <a href="#">프로토콜</a>
           </div>
           <div alt="a 컨테이너">
             <a href="#">안전수칙</a>
+          </div>
+          <div alt="a 컨테이너">
+            <a href="#">내 정보</a>
           </div>
         </nav>
       </aside>

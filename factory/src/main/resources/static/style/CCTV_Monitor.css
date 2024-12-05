@@ -13,12 +13,29 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+body #globals-container {
+  background-color: #1d2b36 !important; /* 배경색 기본 */
+  margin: 0; /* 여백 제거 */
+  padding: 0px;
+  height: 100vh; /* 뷰포트 전체 높이 */
+  width: 100vw; /* 뷰포트 전체 너비 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; /* 위아래로 쌓이는 구조 */
+  position: absolute;
+  top: 0; /* 부모의 상단에 붙임 */
+  left: 0; /* 부모의 왼쪽에 붙임 */
+}
 body *::-webkit-scrollbar {
   width: 8px;
   background-color: #34495e;
 }
 body *::-webkit-scrollbar-thumb {
-  background-color: #1abc9c;
+  background-color: rgba(26, 188, 156, 0.6862745098);
   border-radius: 4px;
 }
 body *::-webkit-scrollbar-track {
@@ -37,11 +54,13 @@ body *::-webkit-scrollbar-track {
 /* 이상탐지 드롭다운 */
 .temp {
   /* 임의 설정 */
-  margin-top: -5%;
+  margin-top: 43%;
   margin-bottom: 10px;
   padding-left: 0;
   padding-right: 0;
-  z-index: 1000;
+  max-width: 1154px;
+  position: fixed;
+  z-index: 5000;
   width: 100%;
   overflow: hidden;
   /* 깜빡임 효과를 적용할 클래스 */
@@ -120,6 +139,8 @@ section {
 
 /* Left Sidebar */
 .left-sidebar {
+  margin-top: 30px;
+  height: 105vh;
   width: 12.5%;
   background-color: #243447;
   color: white;
@@ -129,6 +150,7 @@ section {
 }
 .left-sidebar section[alt=카테고리-컨테이너] {
   /* 임의 설정 */
+  margin-bottom: 35px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -181,6 +203,8 @@ section {
 
 /* Monitor Section */
 .monitor {
+  margin-top: 25px;
+  height: 105vh;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -262,6 +286,8 @@ section {
 .right-sidebar {
   background-color: #243447;
   padding-bottom: 0;
+  margin-top: 20px;
+  height: 105vh;
   min-width: 7.5% !important;
   width: 7.5;
   width: auto;
@@ -352,10 +378,8 @@ section {
   margin-bottom: -15px;
   height: 240px;
   min-width: 100%; /* 기본 너비 */
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  background-color: #282828;
+  width: 133%;
+  background-color: rgba(11, 12, 12, 0.8470588235);
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -412,9 +436,11 @@ section {
   margin: 0;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section {
-  background-color: lightgray;
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+  -webkit-box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.1) inset;
+          box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.2) inset;
   border-radius: 5px;
   margin: 15px 0;
   padding: 0 15px;
@@ -435,6 +461,9 @@ section {
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section span {
   border: none;
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section * {
+  color: #201f1f;
 }
 .right-sidebar nav[alt="부가기능 탭"] {
   /* 임의 설정 */
@@ -492,7 +521,7 @@ section {
   cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-  color: goldenrod;
+  color: #48f1cf;
   font-weight: bolder;
 }
 
@@ -614,9 +643,9 @@ footer {
 }
 footer .modal {
   /* 모달 크기 조정 */
-  margin-top: -2px;
+  margin-top: -20px;
   margin-left: -3%;
-  height: 175px; /* 모달 높이 (캘린더보다 작음) */
+  height: 110px; /* 모달 높이 (캘린더보다 작음) */
   font-size: 0.2em; /* 텍스트 크기 줄임 */
   display: none; /* 초기 상태 숨김 */
   background-color: #282828; /* 모달 배경색 */
@@ -633,6 +662,7 @@ footer .modal {
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+  cursor: pointer;
   /* 반응형 위치 조정 */
 }
 footer .modal.fade-in {
@@ -658,5 +688,131 @@ footer .modal.fade-out {
     width: 100%; /* 모바일에서 가로 전체 차지 */
     -ms-flex-item-align: center;
         align-self: center; /* 세로 정렬 중심 */
+  }
+}
+
+/* 두 번째 모달 스타일 */
+.secondary-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.42); /* 배경 반투명 */
+  z-index: 2000; /* 기존 모달 위에 표시 */
+}
+.secondary-modal.hidden {
+  display: none; /* 초기 상태 숨김 */
+}
+.secondary-modal h2 {
+  margin-bottom: 7px;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
+  width: 80%;
+}
+.secondary-modal .secondary-modal-content {
+  background-color: rgba(52, 73, 94, 0.862745098); /* 모달 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 20px;
+  border-radius: 10px; /* 부드러운 테두리 */
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  min-width: 600px;
+  max-width: 600px;
+  height: 300px;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s ease;
+          animation: fadeIn 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table {
+  margin-top: 20px;
+  margin-bottom: 0;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  width: 65%;
+  text-align: center;
+}
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table .th {
+  background-color: #243447;
+  border-radius: 3px;
+  padding: 10px;
+  height: 25px;
+}
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table .content {
+  height: 35px;
+}
+.secondary-modal .secondary-modal-content .close-secondary-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }

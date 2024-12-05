@@ -69,10 +69,10 @@ main {
 
       .CAM-container {
         box-sizing: border-box; /* Border가 요소 크기에 영향을 미치지 않도록 */
-        border: 5px solid #4a4a4a;
+        border: 5px solid #34495e;
         border-radius: 2px;
         box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
-        background-color: #4a4a4a;
+        background-color: #34495e;
         height: 100%;
         width: 100%;
         display: flex;
@@ -115,10 +115,11 @@ main {
     }
     footer[alt="저장된 로그 조회 구역-하단바"] {
       /* 임의 설정 */
-      // background-color: lawngreen;
+      background-color: lawngreen;
       background-color: #191919;
 
       margin: 0;
+      margin-top: 20px;
       padding: 5px;
       margin-left: 5px;
       height: 22.57%;

@@ -22,7 +22,7 @@ $(document).ready(function () {
   let warningActive = false; // #blink-start-warning 클릭 상태 확인
 
   // 초기 CAM-container 테두리 색상 설정
-  $(".CAM-container").css({ borderColor: "#4a4a4a" });
+  $(".CAM-container").css({ borderColor: "#34495e" });
 
   /**
    * 깜빡임 시작 함수
@@ -58,7 +58,7 @@ $(document).ready(function () {
     targets.forEach(({ id }) => {
       const $target = $(id);
       if ($target.length) {
-        $target.css({ borderColor: "#4a4a4a" });
+        $target.css({ borderColor: "#34495e" });
       }
     });
     blinkInterval = null;
@@ -699,7 +699,7 @@ $(document).ready(function () {
 
       // 🌟 새로고침 시 모든 CAM-container의 border 초기화
       $(".CAM-container").css({
-        border: "6px solid #4a4a4a",
+        border: "6px solid #34495e",
         transition: "border-color 0.3s ease",
       });
       clearedHiddenCameras = []; // 선택된 카메라 초기화
@@ -728,4 +728,3 @@ $(document).ready(function () {
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)' */
 /* -10 ➡️➡️➡️'저장된 로그' 탭 클릭 시 '녹화•저장된 로그(txt•video)' 조회 : 녹화 영상은 페이지 이동  */
-
