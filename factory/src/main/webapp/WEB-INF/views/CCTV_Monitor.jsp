@@ -195,7 +195,7 @@ pageEncoding="UTF-8"%>
           </div>
           <div class="CAM-container camera dropzone" id="cam6">
             <span class="camera-number">6번</span>
-          </div>
+          </div>	
           <div class="CAM-container camera dropzone" id="cam7">
             <span class="camera-number">7번</span>
           </div>

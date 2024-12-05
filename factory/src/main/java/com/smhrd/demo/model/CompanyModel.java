@@ -20,6 +20,19 @@ import lombok.ToString;
 @Table(name = "tb_company")
 public class CompanyModel {
 
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer companyIdx; // 회사 식별자
+	@Column(nullable = false)
+	@JsonProperty("companyName") // JSON 키와 매핑
+	private String companyName; // 회사 명
+	@Column(nullable = false)
+	private String companyAddr; // 회사 주소
+	@Column(nullable = false)
+	private String companyTel; // 회사 연락처
+
+	
 	public Integer getCompanyIdx() {
 		return companyIdx;
 	}
@@ -44,15 +57,4 @@ public class CompanyModel {
 	public void setCompanyTel(String companyTel) {
 		this.companyTel = companyTel;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer companyIdx; // 회사 식별자
-	@Column(nullable = false)
-	@JsonProperty("companyName") // JSON 키와 매핑
-	private String companyName; // 회사 명
-	@Column(nullable = false)
-	private String companyAddr; // 회사 주소
-	@Column(nullable = false)
-	private String companyTel; // 회사 연락처
-
 }
