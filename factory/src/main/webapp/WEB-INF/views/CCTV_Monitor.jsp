@@ -47,6 +47,7 @@ pageEncoding="UTF-8"%>
                 <li
                   class="video-item"
                   draggable="true"
+                  value="1"
                   data-video="/video/TN1.mp4"
                 >
                   Camera 1
@@ -54,6 +55,7 @@ pageEncoding="UTF-8"%>
                 <li
                   class="video-item"
                   draggable="true"
+                  value="2"
                   data-video="/video/TN2.mp4"
                 >
                   Camera 2
@@ -140,7 +142,7 @@ pageEncoding="UTF-8"%>
             <div class="secondary-modal-content">
               <span class="close-secondary-modal">&times;</span>
               <h2>2024년 12월 06일</h2>
-              <h2>${2024}년 ${12}월 ${06}일</h2>
+              <h2> 2024 년  12 월  06 일</h2>
               <br />
               <article alt="2차 모달 스크롤 발생">
                 <table>
@@ -160,10 +162,10 @@ pageEncoding="UTF-8"%>
                     <td class="content">
                       <span>낙상</span>
 
-                      <span> [${21:31}]</span>
+                      <span> [ 21:31 ]</span>
                     </td>
                     <td class="content">
-                      <span>${낙상}</span>
+                      <span> 낙상 </span>
 
                     </td>
                   </tr>
@@ -175,26 +177,26 @@ pageEncoding="UTF-8"%>
                     <td class="content">
                       <span>낙상</span>
 
-                      <span> [${21:31}]</span>
+                      <span> [ 21:31 ]</span>
                     </td>
                     <td class="content">
-                      <span>${낙상}</span>
-                    </td>
-                  </tr>
-                  <tr alt="탐지로그 조회 테이블 컨텐츠">
-                    <td class="content">
-                      <span> [${21:31}]</span>
-                    </td>
-                    <td class="content">
-                      <span>${낙상}</span>
+                      <span> 낙상 </span>
                     </td>
                   </tr>
                   <tr alt="탐지로그 조회 테이블 컨텐츠">
                     <td class="content">
-                      <span> [${21:31}]</span>
+                      <span> [ 21:31 ]</span>
                     </td>
                     <td class="content">
-                      <span>${낙상}</span>
+                      <span> 낙상 </span>
+                    </td>
+                  </tr>
+                  <tr alt="탐지로그 조회 테이블 컨텐츠">
+                    <td class="content">
+                      <span> [ 21:31 ]</span>
+                    </td>
+                    <td class="content">
+                      <span> 낙상 </span>
                     </td>
                   </tr>
                 </table>
@@ -319,7 +321,7 @@ pageEncoding="UTF-8"%>
         </aside>
         <!-- 부가기능 탭 -->
         <nav alt="부가기능 탭">
-          <!-- 팝업 animate() Script {location 이동 없음!} -->
+          <!-- 팝업 animate() Script {location 이동 없음!  -->
           <div alt="a 컨테이너">
             <a href="/call">연락망</a>
           </div>

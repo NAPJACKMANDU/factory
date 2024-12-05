@@ -25,7 +25,7 @@ public class ClipService {
 	   @Value("${video.storage.path}") // application.properties 파일에서 경로 가져오기
 	    private String videoStoragePath; // 동영상 파일을 저장할 경로
 	   
-	   public void saveVideo(MultipartFile file) throws IOException {
+	   public void saveVideo(MultipartFile file, int cameraIndex) throws IOException {
 	        System.out.println("Received file: " + file);
 	        System.out.println("File size: " + file.getSize());
 
@@ -49,11 +49,12 @@ public class ClipService {
 	            System.out.println("Error saving file: " + e.getMessage());
 	            e.printStackTrace();
 	        }
-	        // 데이터베이스에 비디오 클립 정보 저장
+	        // 데이터베이스에 비디오 클립 정보 저장 
 	        ClipModel clip = new ClipModel();
 	        clip.setClipName(clipName); // 클립 이름 설정
 	        clip.setClipPath(clipPath.toString()); // 카메라 식별자 설정
 	        clip.setClipSize(file.getSize()) ;
+	        clip.setCameraIdx(cameraIndex);
 	        clip.setCreatedAt(new Timestamp(System.currentTimeMillis())); // 현재 시간으로 생성 일자 설정
 	        rep.save(clip); // 데이터베이스에 저장
 	    }
