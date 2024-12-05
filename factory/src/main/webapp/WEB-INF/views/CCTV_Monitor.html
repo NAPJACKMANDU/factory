@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,24 +5,13 @@ pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CCTV Monitor</title>
     <!-- 전역 style -->
-    <%--
-    <link rel="stylesheet" href="<c:url value='/style/globals.css' />" />
-    <link rel="stylesheet" href="<c:url value='/style/header.css'/>" />
-    <!-- 지역 style -->
-    <link rel="stylesheet" href="<c:url value='/style/P04_Monitor.css'/>" />
-    --%>
-
-    <link rel="stylesheet" href="/style/globals.css" type="text/css" />
-    <link rel="stylesheet" href="/style/P04_Monitor.css" type="text/css" />
-    <link rel="stylesheet" href="/style/header.css" type="text/css" />
-
-    <!-- <link
+    <link
       rel="stylesheet"
-      href="/src/main/resources/static/style/calendar.css"
-    /> -->
-    <link rel="stylesheet" href="/style/calendar.css" type="text/css" />
-    <link rel="stylesheet" href="/style/CCTV_Monitor.css" type="text/css" />
+      href="/src/main/resources/static/style/globals.css"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
 
+    <!-- 지역 style -->
     <link
       rel="stylesheet"
       href="/src/main/resources/static/style/P04_Monitor.css"
@@ -45,23 +32,27 @@ pageEncoding="UTF-8"%>
               <span>Category 1</span>
               <ul class="sub-category">
                 <li
-                  class="video-item"
                   draggable="true"
-                  data-video="/video/TN1.mp4"
+                  data-img="/src/main/resources/static/imgs/category1/img1.png"
                 >
                   Camera 1
                 </li>
                 <li
-                  class="video-item"
                   draggable="true"
-                  data-video="/video/TN2.mp4"
+                  data-img="/src/main/resources/static/imgs/category1/img2.png"
                 >
                   Camera 2
                 </li>
-                <li draggable="true" data-img="/imgs/category2/img3.png">
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category2/img3.png"
+                >
                   Camera 3
                 </li>
-                <li draggable="true" data-img="/imgs/category2/img4.png">
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category2/img4.png"
+                >
                   Camera 4
                 </li>
               </ul>
@@ -69,35 +60,89 @@ pageEncoding="UTF-8"%>
             <li class="category">
               <span>Category 2</span>
               <ul class="sub-category">
-                <li draggable="true" data-img="/imgs/category3/img5.png">
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img5.png"
+                >
                   Camera 5
                 </li>
-                <li draggable="true" data-img="/imgs/category3/img6.png">
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img6.png"
+                >
                   Camera 6
                 </li>
-                <li draggable="true" data-img="/imgs/category3/img7.png">
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img7.png"
+                >
                   Camera 7
                 </li>
-                <li draggable="true" data-img="/imgs/c12.jpg">Camera 8</li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/c16.jpg"
+                >
+                  Camera 8
+                </li>
               </ul>
             </li>
 
             <li class="category">
               <span>Category 3</span>
               <ul class="sub-category">
-                <li draggable="true" data-img="/imgs/c13.jpg">Camera 9</li>
-                <li draggable="true" data-img="/imgs/c14.jpg">Camera 10</li>
-                <li draggable="true" data-img="/imgs/c15.jpg">Camera 11</li>
-                <li draggable="true" data-img="/imgs/c16.jpg">Camera 12</li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img5.png"
+                >
+                  Camera 9
+                </li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img6.png"
+                >
+                  Camera 10
+                </li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img7.png"
+                >
+                  Camera 11
+                </li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/c16.jpg"
+                >
+                  Camera 12
+                </li>
               </ul>
             </li>
             <li class="category">
               <span>Category 4</span>
               <ul class="sub-category">
-                <li draggable="true" data-img="/imgs/c12.jpg">Camera 13</li>
-                <li draggable="true" data-img="/imgs/c11.jpg">Camera 14</li>
-                <li draggable="true" data-img="/imgs/c10.jpg">Camera 15</li>
-                <li draggable="true" data-img="/imgs/c9.jpg">Camera 16</li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img5.png"
+                >
+                  Camera 13
+                </li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img6.png"
+                >
+                  Camera 14
+                </li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/category3/img7.png"
+                >
+                  Camera 15
+                </li>
+                <li
+                  draggable="true"
+                  data-img="/src/main/resources/static/imgs/c16.jpg"
+                >
+                  Camera 16
+                </li>
               </ul>
             </li>
           </ul>
@@ -140,7 +185,6 @@ pageEncoding="UTF-8"%>
             <div class="secondary-modal-content">
               <span class="close-secondary-modal">&times;</span>
               <h2>2024년 12월 06일</h2>
-              <h2>${2024}년 ${12}월 ${06}일</h2>
               <br />
               <article alt="2차 모달 스크롤 발생">
                 <table>
@@ -154,47 +198,26 @@ pageEncoding="UTF-8"%>
                   </tr>
                   <tr alt="탐지로그 조회 테이블 컨텐츠">
                     <td class="content">
-
                       <span> [21:31]</span>
                     </td>
                     <td class="content">
                       <span>낙상</span>
-
-                      <span> [${21:31}]</span>
-                    </td>
-                    <td class="content">
-                      <span>${낙상}</span>
-
                     </td>
                   </tr>
                   <tr alt="탐지로그 조회 테이블 컨텐츠">
                     <td class="content">
-
                       <span> [21:31]</span>
                     </td>
                     <td class="content">
                       <span>낙상</span>
-
-                      <span> [${21:31}]</span>
-                    </td>
-                    <td class="content">
-                      <span>${낙상}</span>
                     </td>
                   </tr>
                   <tr alt="탐지로그 조회 테이블 컨텐츠">
                     <td class="content">
-                      <span> [${21:31}]</span>
+                      <span> [21:31]</span>
                     </td>
                     <td class="content">
-                      <span>${낙상}</span>
-                    </td>
-                  </tr>
-                  <tr alt="탐지로그 조회 테이블 컨텐츠">
-                    <td class="content">
-                      <span> [${21:31}]</span>
-                    </td>
-                    <td class="content">
-                      <span>${낙상}</span>
+                      <span>낙상</span>
                     </td>
                   </tr>
                 </table>
@@ -225,7 +248,7 @@ pageEncoding="UTF-8"%>
           </div>
           <div class="CAM-container camera dropzone" id="cam6">
             <span class="camera-number">6번</span>
-          </div>	
+          </div>
           <div class="CAM-container camera dropzone" id="cam7">
             <span class="camera-number">7번</span>
           </div>
@@ -321,7 +344,7 @@ pageEncoding="UTF-8"%>
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
           <div alt="a 컨테이너">
-            <a href="/call">연락망</a>
+            <a href="#">연락망</a>
           </div>
           <div alt="a 컨테이너">
             <a href="#">프로토콜</a>
@@ -337,10 +360,10 @@ pageEncoding="UTF-8"%>
     </div>
 
     <!-- jQuery -->
-    <script src="/js/jquery-3.6.0.js"></script>
+    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
-    <script src="/js/P04_Monitor.js"></script>
-    <script src="/js/calendar.js"></script>
-    <script src="/js/CCTV_Monitor.js"></script>
+    <script src="/src/main/resources/static/js/P04_Monitor.js"></script>
+    <script src="/src/main/resources/static/js/calendar.js"></script>
+    <script src="/src/main/resources/static/js/CCTV_Monitor.js"></script>
   </body>
 </html>
