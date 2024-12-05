@@ -32,6 +32,8 @@ public class ClipModel {
 	private String  clipPath ;
 	@Column(nullable = true)
     private int cameraIdx; // 카메라 식별자 
+	@Column(nullable = true)
+	private Long clipSize ;
     @UpdateTimestamp
     private Timestamp createdAt;  // 등록 일자 
     
@@ -67,6 +69,11 @@ public class ClipModel {
 	public void setClipPath(String clipPath) {
 		this.clipPath = clipPath;
 	}
-    
+	public Long getClipSize() {
+		return clipSize;
+	}
+	public void setClipSize(Long clipSize) {
+		this.clipSize = clipSize;
+	}
 
 }
