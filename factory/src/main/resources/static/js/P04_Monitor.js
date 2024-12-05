@@ -120,88 +120,148 @@ $(document).ready(function () {
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --2 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트 */
 
+let selectedVideoElement = null; // 현재 선택된 비디오 요소
+let mediaRecorder;
+let recordedChunks = [];
+let isRecording = false; // 녹화 상태 확인
+
 $(document).ready(function () {
   let isExpanded = false; // 확장 상태 확인
   let expandedElement = null; // 확대된 CAM-container 추적
   let pressTimer; // 클릭 시간 확인을 위한 타이머 변수
   const excludedCameras = new Set(); // 화면 제외된 CAM-container 저장
-  let isCamSelClicked = false; // #cam-sel 버튼 클릭 여부 확인
 
-  // CAM-container 확대/축소 이벤트
   $(".CAM-container")
     .on("mousedown", function (event) {
       const $this = $(this);
 
       // 마우스 좌클릭인지 확인 (event.button === 0)
       if (event.button === 0) {
-        // 클릭 시간 측정 시작
         pressTimer = setTimeout(() => {
-          // 0.3초가 지나면 이벤트 비활성화
           pressTimer = null;
         }, 300);
       }
     })
     .on("mouseup", function (event) {
-      // 마우스 좌클릭인지 확인 (event.button === 0)
-      if (event.button !== 0) return; // 좌클릭이 아니면 이벤트 중단
+      if (event.button !== 0) return;
 
       if (pressTimer) {
-        clearTimeout(pressTimer); // 타이머 초기화
+        clearTimeout(pressTimer);
 
-        const $MArea = $(".M-area"); // 모니터링 영역
-        const $clickedItem = $(this); // 클릭된 CAM-container
+        const $MArea = $(".M-area");
+        const $clickedItem = $(this);
 
-        // 확대/축소 동작 처리
         if (!isExpanded) {
-          // 🌟 확장 상태로 변경
-          $MArea.css({ display: "block", width: "100%" }); // .M-area를 단일 화면으로 확장
+          $MArea.css({ display: "block", width: "100%" });
 
-          // 🌟 제외된 화면을 제외하고 클릭된 CAM-container만 표시
           $clickedItem
-            .addClass("expanded") // 클릭된 CAM-container 확대
+            .addClass("expanded")
             .css({
-              position: "absolute", // 화면 중앙 배치를 위한 절대 위치
-              top: "50%", // 화면의 세로 중앙
-              left: "50%", // 화면의 가로 중앙
-              transform: "translate(-50%, -50%) scale(1.5)", // 중앙 정렬과 확대
-              zIndex: 10, // 우선순위 지정
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%) scale(1.5)",
+              zIndex: 10,
             })
             .siblings(".CAM-container")
             .filter(function () {
               const camId = $(this).attr("id");
-              return !excludedCameras.has(camId); // 제외되지 않은 CAM만 표시
+              return !excludedCameras.has(camId);
             })
-            .hide(); // 다른 CAM-container 숨김
+            .hide();
 
-          $("body").css("overflow", "hidden"); // 🌟 스크롤 방지
+          $("body").css("overflow", "hidden");
+
+          // 클릭된 CAM-container에서 기존 비디오 요소를 참조
+          selectedVideoElement = $clickedItem.find("video")[0];
+          if (selectedVideoElement) {
+            const stream = selectedVideoElement.captureStream();
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (e) => {
+              if (e.data.size > 0) {
+                recordedChunks.push(e.data);
+              }
+            };
+          } else {
+            console.error("비디오 요소를 찾을 수 없습니다.");
+          }
+
+          isExpanded = !isExpanded;
         } else {
-          // 🌟 원래 상태로 복구
-          $MArea.css({ display: "grid", width: "99%" }); // 그리드 레이아웃 복원
+          $MArea.css({ display: "grid", width: "99%" });
 
-          // 🌟 제외된 화면을 제외한 CAM-container 다시 표시
           $(".CAM-container").each(function () {
             const camId = $(this).attr("id");
             if (!excludedCameras.has(camId)) {
               $(this).show().css({
-                position: "static", // 기본 위치 복원
+                position: "static",
                 top: "auto",
                 left: "auto",
-                transform: "scale(1)", // 원래 크기 복원
+                transform: "scale(1)",
                 zIndex: 1,
               });
             }
           });
 
-          $clickedItem.removeClass("expanded"); // 확대 클래스 제거
-          $("body").css("overflow", ""); // 🌟 스크롤 복원
+          $clickedItem.removeClass("expanded");
+          $("body").css("overflow", "");
+          isExpanded = !isExpanded;
         }
-
-        isExpanded = !isExpanded; // 상태 토글
       }
     })
     .on("mouseleave", function () {
-      clearTimeout(pressTimer); // 클릭 영역을 벗어나면 타이머 취소
+      clearTimeout(pressTimer);
     });
+
+  // 's' 키로 녹화 시작
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "s" && selectedVideoElement && !isRecording) {
+      if (!mediaRecorder) {
+        console.error("미디어 녹화기가 초기화되지 않았습니다.");
+        return;
+      }
+      mediaRecorder.start();
+      isRecording = true;
+      console.log("녹화가 시작되었습니다.");
+      console.log(mediaRecorder)
+    }
+  });
+
+  // 'e' 키로 녹화 종료 및 업로드
+  document.addEventListener("keydown", async (event) => {
+    if (event.key === "e" && mediaRecorder && isRecording) {
+      mediaRecorder.stop();
+      mediaRecorder.onstop = async () => {
+        console.log("녹화가 종료되었습니다.");
+
+        const blob = new Blob(recordedChunks, { type: "video/webm" });
+        const formData = new FormData();
+        formData.append("file", blob, "recorded-video.webm");
+
+        try {
+        	console.log("고고");
+          const response = await fetch("/videos/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            console.log("동영상이 성공적으로 업로드되었습니다.");
+          } else {
+            console.error("동영상 업로드에 실패했습니다.");
+          }
+        } catch (error) {
+          console.error("동영상 업로드 중 오류가 발생했습니다:", error);
+        }
+
+        recordedChunks = [];
+        isRecording = false;
+      };
+    }
+  });
+
+
 
   // #cam-sel 버튼 클릭 시 제외 처리
   // $("#cam-sel").on("click", function () {

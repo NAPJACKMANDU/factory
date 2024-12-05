@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,13 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CCTV Monitor</title>
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/globals.css"
-    />
-    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
-
+    <%-- <link rel="stylesheet" href="<c:url value='/style/globals.css' />">
+    <link rel="stylesheet" href="<c:url value='/style/header.css'/>">
     <!-- 지역 style -->
+    <link rel="stylesheet" href="<c:url value='/style/P04_Monitor.css'/>"> --%>
+    
+    
+    <link rel="stylesheet" href="/style/globals.css" type="text/css" />
+    <link rel="stylesheet" href="/style/P04_Monitor.css" type="text/css" />
+    <link rel="stylesheet" href="/style/header.css" type="text/css" />
+    
+    
+    <!-- <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/calendar.css"
+    /> -->
+     <link rel="stylesheet" href="/style/calendar.css" type="text/css" />
+    <link rel="stylesheet" href="/style/CCTV_Monitor.css" type="text/css" />
+    
+
     <link
       rel="stylesheet"
       href="/src/main/resources/static/style/P04_Monitor.css"
@@ -33,13 +47,13 @@
               <ul class="sub-category">
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category1/img1.png"
+                  data-img="/imgs/category1/img1.png"
                 >
                   Camera 1
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category1/img2.png"
+                  data-img="/imgs/category1/img2.png"
                 >
                   Camera 2
                 </li>
@@ -50,13 +64,13 @@
               <ul class="sub-category">
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category2/img3.png"
+                  data-img="/imgs/category2/img3.png"
                 >
                   Camera 3
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category2/img4.png"
+                  data-img="/imgs/category2/img4.png"
                 >
                   Camera 4
                 </li>
@@ -67,28 +81,30 @@
               <ul class="sub-category">
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category3/img5.png"
+                  data-img="/imgs/category3/img5.png"
                 >
                   Camera 5
                 </li>
                 <li
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category3/img6.png"
+                  data-img="/imgs/category3/img6.png"
                 >
                   Camera 6
                 </li>
                 <li
+                  class="video-item"
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category3/img7.png"
+                  data-video="/video/TN1.mp4"
                 >
                   Camera 7
                 </li>
-                <!-- <li
+                <li
+                  class="video-item"
                   draggable="true"
-                  data-video="E:/교재(보관)/.Front-end_개인공부/BackUp/.Demo/src/main/resources/static/videos/#"
+                  data-video="/video/TN2.mp4"
                 >
                   Camera 8
-                </li> -->
+                </li>
               </ul>
             </li>
           </ul>
@@ -298,7 +314,7 @@
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
           <div alt="a 컨테이너">
-            <a href="#">연락망</a>
+            <a href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
             <a href="#">프로토콜</a>
@@ -314,10 +330,10 @@
     </div>
 
     <!-- jQuery -->
-    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
+    <script src="/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
-    <script src="/src/main/resources/static/js/P04_Monitor.js"></script>
-    <script src="/src/main/resources/static/js/calendar.js"></script>
-    <script src="/src/main/resources/static/js/CCTV_Monitor.js"></script>
+    <script src="/js/P04_Monitor.js"></script>
+    <script src="/js/calendar.js"></script>
+    <script src="/js/CCTV_Monitor.js"></script>
   </body>
 </html>

@@ -29,7 +29,7 @@ public class FactoryMemberController {
 	
 	@PostMapping("/joinForm")
 	public String joinMember(@ModelAttribute FactoryMember member) {
-		System.out.println("전화번호 : "  + member.getPhone());
+		 member.setNote(" "); // note를 명시적으로 null로 설정
 		service.join(member) ;
 		return "redirect:/" ;
 	}
@@ -41,28 +41,16 @@ public class FactoryMemberController {
 		if(loginMember != null ) {
 		session.setAttribute("member" ,loginMember) ;
 		System.out.println(loginMember.toString());
-		return "redirect:/monitor" ;
+		return "redirect:/CCTV_Monitor" ;
 		
 		} else {
 			return "redirect:/" ;
 		}
 		
 	}
-	@Autowired
-    private FactoryMemberService factoryMemberService;
 
-	@GetMapping("/api/check-id")
-	@ResponseBody
-	public Map<String, Boolean> checkId(@RequestParam String id) {
-	    System.out.println("요청된 아이디: " + id);
-	    Map<String, Boolean> response = new HashMap<>();
-	    boolean isAvailable = !factoryMemberService.isIdTaken(id); // 서비스에서 중복 체크
-	    response.put("available", isAvailable);
-	    return response;
-	}
 	
-	
-	@PostMapping("/call")
+	@GetMapping("/call")
 	public String AllCallbord(Model model) {
 		List<FactoryMember> allcall = service.allcallbord() ;
 		model.addAttribute("allcall", allcall) ;
