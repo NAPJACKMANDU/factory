@@ -7,7 +7,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P05_비상 연락망</title>
+    <title>P05_비상연락망</title>
     <!-- 전역 style -->
     <link rel="stylesheet" href="/style/globals.css" />
     <link rel="stylesheet" href="/style/header.css" />
@@ -33,6 +33,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
           <div alt="a 컨테이너">
             <a href="#">안전수칙</a>
+          </div>
+          <div class="vertical-line"></div>
+
+          <div alt="a 컨테이너">
+            <a href="#">내 정보</a>
           </div>
         </nav>
       </header>
