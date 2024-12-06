@@ -39,7 +39,7 @@ public class FactoryMemberRestController {
 	public ResponseEntity<FactoryMember> callbyupdate(@PathVariable Long idx, @RequestBody FactoryMember member) {
 	    member.setIdx(idx);
 	    service.callbyupdate(member);
-	    return ResponseEntity.ok(member); // 수정된 데이터를 반환
+	    return ResponseEntity.ok(member); 	// 수정된 데이터를 반환
 	}
 
 	@DeleteMapping("call/{idx}")

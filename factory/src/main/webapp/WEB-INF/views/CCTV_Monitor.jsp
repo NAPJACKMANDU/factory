@@ -142,7 +142,6 @@ pageEncoding="UTF-8"%>
             <div class="secondary-modal-content">
               <span class="close-secondary-modal">&times;</span>
               <h2>2024년 12월 06일</h2>
-              <h2> 2024 년  12 월  06 일</h2>
               <br />
               <article alt="2차 모달 스크롤 발생">
                 <table>

@@ -29,61 +29,140 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300); // CSS 애니메이션 지속 시간 (300ms)과 동일
   }
 
-  // 날짜별 데이터를 서버에서 받아오는 함수 (백엔드 API 호출)
-  async function fetchDayData(year, month, day) {
-    try {
-      // 11월 30일 클릭 시 특정 메시지 처리
-      if (year === 2024 && month === 11 && day === 6) {
-        modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
-        modalData.textContent = "총 1건의 데이터가 조회 되었습니다.";
-        showModal();
-        return;
-      }
 
+
+//  // 날짜 클릭 처리 함수
+//  function handleDateClick(year, month, day) {
+//	    // 클릭된 날짜를 문자열로 저장
+//	    const dateString = `${year}-${month+1}-${day}`;
+//	    console.log(dateString)
+//    if (lastClickedDate === `${year}-${month + 1}-${day}`) {
+//      // 같은 날짜를 클릭했을 때
+//      clickCount++;
+//      if (clickCount % 2 === 0) {
+//        hideModal(); // 짝수 번째 클릭 시 모달 닫기
+//        lastClickedDate = null; // 마지막 클릭한 날짜 초기화
+//      } else {
+//        fetchDayData(year, month, day); // 홀수 번째 클릭 시 데이터 갱신
+//      }
+//    } else {
+//      // 다른 날짜를 클릭했을 때
+//      lastClickedDate = `${year}-${month + 1}-${day}`;
+//      clickCount = 1; // 클릭 횟수 초기화
+//      fetchDayData(year, month, day); // 데이터 가져오기
+//    }
+//  }
+//  
+//  
+//날짜 클릭 처리 함수에서 변수 생성 예시
+  async function handleDateClick(year, month, day) {
+    const selectedYear = year; // 필요한 경우 추가적인 변수 생성
+    const selectedMonth = month + 1; // 월을 표시할 때는 1월이 1이 되도록 조정
+    const selectedDay = day;
+
+    console.log(selectedYear);
+    console.log(selectedMonth);
+    console.log(selectedDay);
+
+//    // 11월 30일 클릭 시 특정 메시지 처리 (테스트용)
+//    if (selectedYear === 2024 && selectedMonth === 11 && selectedDay === 6) {
+//      modalDate.textContent = `${selectedYear}년 ${selectedMonth}월 ${selectedDay}일`;
+//      modalData.textContent = "총 1건의 데이터가 조회 되었습니다.";
+//      showModal();
+//      return; // 특정 날짜일 경우 함수 종료
+//    }
+
+    // JSON 객체 생성
+    const requestBody = {
+      year: selectedYear,
+      month: selectedMonth,
+      day: selectedDay
+    };
+
+    console.log(requestBody);
+
+    try {
       // 서버에 데이터 요청
-      const response = await fetch(`/api/calendar/${year}/${month + 1}/${day}`);
+      const response = await fetch("/calendar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // JSON 데이터 전송을 알림
+        },
+        body: JSON.stringify(requestBody) // JSON으로 데이터 전송
+      });
+
       if (!response.ok) throw new Error("데이터를 찾을 수 없습니다.");
 
       // 응답 데이터 가져오기
       const data = await response.json();
-
+      console.log(data)
+      	
       // 모달에 데이터 표시
-      modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
+      modalDate.textContent = `${selectedYear}년 ${selectedMonth}월 ${selectedDay}일`;
       modalData.textContent = data.details || "데이터가 없습니다.";
       showModal(); // 모달 표시
     } catch (error) {
-      modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
+      modalDate.textContent = `${selectedYear}년 ${selectedMonth}월 ${selectedDay}일`;
       modalData.textContent = error.message; // 오류 메시지 표시
       showModal(); // 모달 표시
     }
-  }
 
-  // 모달 닫기 이벤트 등록
-  document.querySelector(".close-modal").addEventListener("click", () => {
-    hideModal(); // 모달 숨기기
-    lastClickedDate = null; // 마지막 클릭한 날짜 초기화
-    clickCount = 0; // 클릭 횟수 초기화
-  });
+    // 클릭된 날짜를 문자열로 저장
+    const dateString = `${selectedYear}-${selectedMonth}-${selectedDay}`;
+    console.log(dateString);
 
-  // 날짜 클릭 처리 함수
-  function handleDateClick(year, month, day) {
-    if (lastClickedDate === `${year}-${month + 1}-${day}`) {
-      // 같은 날짜를 클릭했을 때
+    if (lastClickedDate === dateString) {
       clickCount++;
       if (clickCount % 2 === 0) {
-        hideModal(); // 짝수 번째 클릭 시 모달 닫기
-        lastClickedDate = null; // 마지막 클릭한 날짜 초기화
+        hideModal();
+        lastClickedDate = null;
       } else {
-        fetchDayData(year, month, day); // 홀수 번째 클릭 시 데이터 갱신
+        // 이미 클릭된 날짜면 데이터 요청
+        fetchDayData(selectedYear, selectedMonth, selectedDay);
       }
     } else {
-      // 다른 날짜를 클릭했을 때
-      lastClickedDate = `${year}-${month + 1}-${day}`;
-      clickCount = 1; // 클릭 횟수 초기화
-      fetchDayData(year, month, day); // 데이터 가져오기
+      lastClickedDate = dateString;
+      clickCount = 1; // 새로운 날짜 클릭 시 클릭 횟수 초기화
+      fetchDayData(selectedYear, selectedMonth, selectedDay);
     }
   }
-
+//
+//  
+//  function getAllIncident() {
+//	  console.log("데이터 가져오기 시작") ;
+//	  $.ajax({
+//		  url : "/allinsident",
+//		  type : "Post",
+//		  success : printList,
+//		  error : function() {
+//			  alert("통신 실패");
+//		  }
+//	  });
+//  }
+//  
+//  
+//  function printList(data) {
+//	  var code = "" ;
+//	  for(var i = 0 ; i < data.lenght ; i++) {
+//		  if(data[i].companyIdx == ${member.companyIdx}) {
+//	            code += "<tr style='background-color: #f9f9f9;'>";
+//	             code += "<td>" +  i + "</td>";
+//	             code += "<td>" + data[i].name + "</td>";
+//	             code += "<td>" + data[i].role + "</td>";
+//	             code += "<td>" + data[i].phone + "</td>";
+//	             code += "<td class='editable' contenteditable='true' data-id='" + data[i].idx + "' data-field='note'>" + data[i].note + "</td>";
+//	             code += "<td class='button-cell'>";
+//	             code += "<button type='button' class='add-contact' onclick='callbyupdate(event)'>수정</button>";
+//	             code += "</td>";
+//	             code += "<td class='button-cell'>";
+//	             code += "<button type='button' class='delete-button' onclick='callbydelete(" + data[i].idx + ")'>삭제</button>";
+//	             code += "</td>";
+//	             code += "</tr>";
+//	         }
+//	         }
+//	         $("#list").html(code); // tbody에 새 코드 삽입
+//	     }
+//	     
   // 달력을 동적으로 렌더링하는 함수
   function renderCalendar() {
     // 달력 클리어
