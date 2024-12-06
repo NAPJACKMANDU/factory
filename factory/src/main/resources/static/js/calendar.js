@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 11월 30일 클릭 시 특정 메시지 처리
       if (year === 2024 && month === 11 && day === 6) {
         modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
-        modalData.textContent = "총 1건의 데이터가 조회 되었습니다.";
+        modalData.textContent = "총 3건의 데이터가 조회 되었습니다.";
         showModal();
         return;
       }

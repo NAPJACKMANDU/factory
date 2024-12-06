@@ -90,79 +90,79 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     // --------------------------------------------------------------
-//    
-//    let selectedVideoElement = null; // 현재 선택된 비디오 요소
-//    let mediaRecorder;
-//    let recordedChunks = [];
-//
-//    document.querySelectorAll('.video-item').forEach((item) => {
-//      item.addEventListener('click', (event) => {
-//        // 클릭한 항목의 비디오 경로 가져오기
-//        const videoPath = event.target.getAttribute('data-video');
-//
-//        // 선택된 비디오를 표시하거나 처리할 수 있는 로직을 추가하세요.
-//        if (selectedVideoElement) {
-//          selectedVideoElement.srcObject.getTracks().forEach(track => track.stop()); // 이전 비디오 스트림 중지
-//        }
-//
-//        // 새로운 비디오 요소 생성
-//        selectedVideoElement = document.createElement('video');
-//        selectedVideoElement.src = videoPath;
-//        selectedVideoElement.controls = true;
-//        selectedVideoElement.autoplay = true;
-//        selectedVideoElement.loop = true;
-//
-//        document.body.appendChild(selectedVideoElement); // 비디오를 화면에 추가
-//
-//        // 선택된 비디오의 스트림을 캡처
-//        const stream = selectedVideoElement.captureStream();
-//        mediaRecorder = new MediaRecorder(stream);
-//
-//        mediaRecorder.ondataavailable = (e) => {
-//          if (e.data.size > 0) {
-//            recordedChunks.push(e.data);
-//          }
-//        };
-//      });
-//    });
-//
-//    // 's' 키를 눌렀을 때 녹화 시작
-//    document.addEventListener("keydown", (event) => {
-//      if (event.key === "s" && selectedVideoElement) {
-//        mediaRecorder.start();
-//        console.log("녹화가 시작되었습니다.");
-//      }
-//    });
-//
-//    // 'e' 키를 눌렀을 때 녹화 종료
-//    document.addEventListener("keydown", (event) => {
-//      if (event.key === "e" && mediaRecorder) {
-//        mediaRecorder.stop();
-//        mediaRecorder.onstop = async () => {
-//          console.log("녹화가 종료되었습니다.");
-//
-//          const blob = new Blob(recordedChunks, { type: "video/webm" });
-//          const formData = new FormData();
-//          formData.append("file", blob, "recorded-video.webm");
-//
-//          try {
-//            const response = await fetch("/videos/upload", {
-//              method: "POST",
-//              body: formData,
-//            });
-//            if (response.ok) {
-//              console.log("동영상이 성공적으로 업로드되었습니다.");
-//            } else {
-//              console.error("동영상 업로드에 실패했습니다.");
-//            }
-//          } catch (error) {
-//            console.error("동영상 업로드 중 오류가 발생했습니다:", error);
-//          }
-//        };
-//      }
-//    });
+    //
+    //    let selectedVideoElement = null; // 현재 선택된 비디오 요소
+    //    let mediaRecorder;
+    //    let recordedChunks = [];
+    //
+    //    document.querySelectorAll('.video-item').forEach((item) => {
+    //      item.addEventListener('click', (event) => {
+    //        // 클릭한 항목의 비디오 경로 가져오기
+    //        const videoPath = event.target.getAttribute('data-video');
+    //
+    //        // 선택된 비디오를 표시하거나 처리할 수 있는 로직을 추가하세요.
+    //        if (selectedVideoElement) {
+    //          selectedVideoElement.srcObject.getTracks().forEach(track => track.stop()); // 이전 비디오 스트림 중지
+    //        }
+    //
+    //        // 새로운 비디오 요소 생성
+    //        selectedVideoElement = document.createElement('video');
+    //        selectedVideoElement.src = videoPath;
+    //        selectedVideoElement.controls = true;
+    //        selectedVideoElement.autoplay = true;
+    //        selectedVideoElement.loop = true;
+    //
+    //        document.body.appendChild(selectedVideoElement); // 비디오를 화면에 추가
+    //
+    //        // 선택된 비디오의 스트림을 캡처
+    //        const stream = selectedVideoElement.captureStream();
+    //        mediaRecorder = new MediaRecorder(stream);
+    //
+    //        mediaRecorder.ondataavailable = (e) => {
+    //          if (e.data.size > 0) {
+    //            recordedChunks.push(e.data);
+    //          }
+    //        };
+    //      });
+    //    });
+    //
+    //    // 's' 키를 눌렀을 때 녹화 시작
+    //    document.addEventListener("keydown", (event) => {
+    //      if (event.key === "s" && selectedVideoElement) {
+    //        mediaRecorder.start();
+    //        console.log("녹화가 시작되었습니다.");
+    //      }
+    //    });
+    //
+    //    // 'e' 키를 눌렀을 때 녹화 종료
+    //    document.addEventListener("keydown", (event) => {
+    //      if (event.key === "e" && mediaRecorder) {
+    //        mediaRecorder.stop();
+    //        mediaRecorder.onstop = async () => {
+    //          console.log("녹화가 종료되었습니다.");
+    //
+    //          const blob = new Blob(recordedChunks, { type: "video/webm" });
+    //          const formData = new FormData();
+    //          formData.append("file", blob, "recorded-video.webm");
+    //
+    //          try {
+    //            const response = await fetch("/videos/upload", {
+    //              method: "POST",
+    //              body: formData,
+    //            });
+    //            if (response.ok) {
+    //              console.log("동영상이 성공적으로 업로드되었습니다.");
+    //            } else {
+    //              console.error("동영상 업로드에 실패했습니다.");
+    //            }
+    //          } catch (error) {
+    //            console.error("동영상 업로드 중 오류가 발생했습니다:", error);
+    //          }
+    //        };
+    //      }
+    //    });
     // --------------------------------------------------------------
-    
+
     // 우클릭 시 드롭존 초기화
     zone.addEventListener("contextmenu", (e) => {
       e.preventDefault(); // 기본 우클릭 메뉴 방지
@@ -251,19 +251,20 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   /**
-   * 현재 시각을 YYYY-MM-DD HH24:MI:SS 형식으로 반환
+   * 현재 시각을 YY-MM-DD HH24:MI:SS 형식으로 반환
    * @returns {string} - 포맷된 타임스탬프
    */
   function getFormattedTimestamp() {
     const now = new Date();
-    const year = now.getFullYear();
+    const year = String(now.getFullYear()).slice(-2);
     const month = String(now.getMonth() + 1).padStart(2, "0");
     const day = String(now.getDate()).padStart(2, "0");
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
 
-    return `[${hours}:${minutes}]<br>${year}-${month}-${day}`;
+    return `[${hours}:${minutes}]<br><span class="small-font">${year}-${month}-${day}</span>`;
   }
+
   const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
 
   // 🌟 초기 상태에서 휴지통 버튼 숨김
@@ -482,3 +483,152 @@ $(document).ready(function () {
 });
 
 // ==============================================
+
+$(document).ready(function () {
+  const $reportContainer = $(".report-container"); // 신고 컨테이너
+  const $protocolContainer = $(".sb-container"); // 상황 종료 컨테이너
+
+  // 초기 상태에서 .report-container 숨기기
+  $reportContainer.hide().css({
+    opacity: 0,
+    transform: "translateY(-10px)",
+  });
+
+  /**
+   * .report-container를 부드럽게 나타내기
+   */
+  function showReportContainer() {
+    if ($reportContainer.is(":hidden")) {
+      $reportContainer.stop(true, true).show().animate(
+        {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+        150
+      );
+    }
+  }
+
+  /**
+   * .report-container를 숨기기
+   */
+  function hideReportContainer() {
+    $reportContainer.stop(true, true).animate(
+      {
+        opacity: 0,
+        transform: "translateY(-10px)",
+      },
+      350,
+      function () {
+        $(this).hide(); // 애니메이션 완료 후 숨기기
+      }
+    );
+  }
+
+  /**
+   * blink 이벤트 트리거 시 .report-container 표시
+   */
+  $("#blink-start-warning, #blink-start-danger").on("click", function () {
+    showReportContainer(); // 신고 컨테이너 표시
+  });
+
+  /**
+   * #stop-blink 버튼 클릭 시 .report-container와 .sb-container 숨기기
+   */
+  $("#stop-blink").on("click", function () {
+    hideReportContainer(); // 신고 컨테이너 숨기기
+    $protocolContainer.stop(true, true).animate(
+      {
+        opacity: 0,
+        transform: "translateY(-10px)",
+      },
+      350,
+      function () {
+        $(this).hide(); // 애니메이션 완료 후 숨기기
+      }
+    );
+  });
+});
+
+// ==============================================
+
+$(document).ready(function () {
+  const $protocolModal = $("#protocol-modal"); // Protocol modal
+  const $closeProtocolModal = $(".close-protocol-modal"); // 닫기 버튼
+
+  // Protocol modal 열기 함수
+  function showProtocolModal() {
+    $protocolModal.removeClass("hidden").fadeIn(300);
+  }
+
+  // Protocol modal 닫기 함수
+  function hideProtocolModal() {
+    $protocolModal.fadeOut(300, function () {
+      $protocolModal.addClass("hidden");
+    });
+  }
+
+  // #blink-start-danger 버튼 클릭 시 Protocol modal 표시
+  $("#blink-start-danger").on("click", function () {
+    showProtocolModal();
+  });
+
+  // Protocol modal 닫기 버튼 클릭 이벤트
+  $closeProtocolModal.on("click", function () {
+    hideProtocolModal();
+  });
+
+  // Protocol modal 외부 영역 클릭 시 닫기
+  $protocolModal.on("click", function (event) {
+    if ($(event.target).is("#protocol-modal")) {
+      hideProtocolModal();
+    }
+  });
+});
+
+// ===============================================
+
+$(document).ready(function () {
+  /**
+   * 새로운 브라우저 팝업 열기 함수
+   * - 팝업 URL, 이름, 창 특성을 설정하고 동적으로 HTML 콘텐츠를 로드합니다.
+   */
+  function openProtocolPopup() {
+    const popupUrl = "about:blank"; // 팝업 URL, 초기값 설정 (동적 로드 전)
+    const popupName = "ProtocolPopup"; // 팝업 창 이름 (고유)
+    const popupFeatures = "width=800,height=600,scrollbars=yes,resizable=yes"; // 팝업 창 특성
+
+    // 팝업 창 열기
+    const popupWindow = window.open(popupUrl, popupName, popupFeatures);
+
+    // 팝업이 정상적으로 열렸는지 확인
+    if (popupWindow) {
+      // AJAX를 통해 외부 HTML 파일 로드
+      $.get("protocol-popup.html")
+        .done(function (htmlContent) {
+          // HTML 콘텐츠를 팝업 창에 삽입
+          popupWindow.document.open(); // 팝업 창의 문서 초기화
+          popupWindow.document.write(htmlContent); // 외부 HTML 삽입
+          popupWindow.document.close(); // 문서 작성 완료
+
+          // 스타일 및 스크립트 적용 확인 (예: CSS 파일 경로)
+          const styleLink = popupWindow.document.createElement("link");
+          styleLink.rel = "stylesheet";
+          styleLink.href = "protocol-popup.css"; // CSS 파일 경로
+          popupWindow.document.head.appendChild(styleLink);
+        })
+        .fail(function () {
+          // HTML 파일 로드 실패 시 경고
+          alert("팝업 콘텐츠를 로드하지 못했습니다. 경로를 확인하세요.");
+        });
+    } else {
+      // 팝업 차단 경고
+      alert("팝업이 차단되었습니다. 팝업 차단 설정을 확인해주세요.");
+    }
+  }
+
+  // 이벤트 등록: 특정 버튼 클릭 시 팝업 열기
+  $("#blink-start-danger").on("click", function () {
+    openProtocolPopup(); // 팝업 열기 함수 호출
+  });
+});
