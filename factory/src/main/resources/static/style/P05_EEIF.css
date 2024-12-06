@@ -223,7 +223,6 @@ main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] 
 }
 main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] section:nth-child(2) {
   margin-bottom: 15px;
-
 }
 
 /* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
@@ -438,5 +437,84 @@ main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] 
 }
 * .h-a-container a {
   text-decoration-line: none;
+}
 
+#contact-add-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.42); /* 배경 반투명 */
+  z-index: 2000; /* 기존 모달 위에 표시 */
+}
+#contact-add-modal.hidden {
+  display: none; /* 초기 상태 숨김 */
+}
+#contact-add-modal .secondary-modal-content {
+  background-color: rgba(52, 73, 94, 0.862745098); /* 모달 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  text-align: left;
+  position: relative;
+  -webkit-animation: fadeIn 0.5s ease;
+          animation: fadeIn 0.5s ease;
+}
+#contact-add-modal .secondary-modal-content h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
+}
+#contact-add-modal .secondary-modal-content .close-contact-add-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+#contact-add-modal .secondary-modal-content form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+#contact-add-modal .secondary-modal-content form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#contact-add-modal .secondary-modal-content form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+#contact-add-modal .secondary-modal-content form .save-contact-button {
+  background-color: #1abc9c;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#contact-add-modal .secondary-modal-content form .save-contact-button:hover {
+  background-color: #16a085;
 }

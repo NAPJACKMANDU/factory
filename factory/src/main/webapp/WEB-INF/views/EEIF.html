@@ -14,12 +14,6 @@
       href="/src/main/resources/static/style/P04_Monitor.css"
     />
     <!-- 전역 style -->
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/style/globals.css"
-    />
-    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
-  </head>
   <body>
     <!-- View -->
     <div alt="전역 컨테이너" id="globals-container">
@@ -156,6 +150,33 @@
           </button>
         </article>
 
+<!-- 연락망 추가 입력 모달 -->
+<div id="contact-add-modal" class="secondary-modal hidden">
+  <div class="secondary-modal-content">
+    <span class="close-contact-add-modal">&times;</span>
+    <h2>연락망 정보 추가</h2>
+    <form id="contact-add-form">
+      <label for="contact-name">이름:</label>
+      <input type="text" id="contact-name" name="contactName" placeholder="담당자 이름" required />
+
+      <label for="contact-department">부서/직책:</label>
+      <input type="text" id="contact-department" name="contactDepartment" placeholder="부서/직책" required />
+
+      <label for="contact-phone">연락처:</label>
+      <input type="text" id="contact-phone" name="contactPhone" placeholder="연락처" required />
+
+      <label for="contact-hours">근무시간:</label>
+      <input type="text" id="contact-hours" name="contactHours" placeholder="근무시간" required />
+
+      <label for="contact-location">근무위치:</label>
+      <input type="text" id="contact-location" name="contactLocation" placeholder="근무위치" required />
+
+      <button type="submit" class="save-contact-button">저장</button>
+    </form>
+  </div>
+</div>
+
+
         <!-- </div> -->
         <!-- <button class="next">Next</button> -->
       </main>
@@ -164,6 +185,6 @@
     <!-- jQuery -->
     <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
-    <!-- <script src="/src/main/resources/static/js/P05_EEIF.js"></script> -->
+    <script src="/src/main/resources/static/js/P05_EEIF.js"></script>
   </body>
 </html>
