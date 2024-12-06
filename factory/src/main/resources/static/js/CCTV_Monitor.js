@@ -245,6 +245,10 @@ $(document).ready(function () {
 
 // ==========================================================
 
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --6 이상 탐지 로그 자동 추가 */
+/* --7 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
+
 $(document).ready(function () {
   /**
    * 현재 시각을 YY-MM-DD HH24:MI:SS 형식으로 반환
@@ -258,18 +262,13 @@ $(document).ready(function () {
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
 
-    return `[ ${hours}:${minutes} ]<br><span class="small-font">${year}-${month}-${day}</span>`;
+    return `[${hours}:${minutes}]<br><span class="small-font">${year}-${month}-${day}</span>`;
   }
 
-  /** 🌟 휴지통 버튼 */
-  const $trashButton = $('button[alt="로그 비우기 버튼"]');
-  const $reportButton = $("#report"); // 신고 버튼
-  const $stopBlinkButton = $("#stop-blink"); // 상황 종료 버튼
+  const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
 
-  // 🌟 초기 상태에서 버튼 숨김
+  // 🌟 초기 상태에서 휴지통 버튼 숨김
   $trashButton.hide();
-  $reportButton.hide();
-  $stopBlinkButton.hide();
 
   /**
    * 로그를 추가하고 부드러운 전환 애니메이션 적용
@@ -291,6 +290,9 @@ $(document).ready(function () {
 
     // 부드러운 전환 애니메이션 적용
     newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
+
+    // 로그 상태에 따라 토글 버튼 상태 변경
+    updateLogToggleButton();
 
     // 🌟 addLog 실행 시 휴지통 버튼 표시
     $trashButton.fadeIn(300);
@@ -318,34 +320,33 @@ $(document).ready(function () {
   }
 
   /**
-   * 버튼 상태를 업데이트 (출현/숨김)
+   * 로그 상태에 따라 로그 토글 버튼 이모지 변경
    */
-  function showProtocolButtons() {
-    $reportButton.fadeIn(300); // 신고 버튼 표시
-    $stopBlinkButton.fadeIn(300); // 상황 종료 버튼 표시
-  }
-
-  function hideProtocolButtons() {
-    $reportButton.fadeOut(300); // 신고 버튼 숨김
-    $stopBlinkButton.fadeOut(300); // 상황 종료 버튼 숨김
+  function updateLogToggleButton() {
+    const logCount = $(".log-tuple").length;
+    const newEmoji = logCount > 0 ? "✅" : "🔕";
+    $('button[alt="로그 토글 버튼"]')
+      .fadeOut(200, function () {
+        $(this).text(newEmoji);
+      })
+      .fadeIn(200);
   }
 
   // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
   $("#blink-start-warning").on("click", function () {
     const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
     addLog(cameraLabel, "경고", "⚠️");
-    showProtocolButtons(); // 프로토콜 버튼 표시
   });
 
   // 🚨 '이상 발생' 버튼 클릭 시 위험 로그 추가
   $("#blink-start-danger").on("click", function () {
     const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
     addLog(cameraLabel, "위험", "🚨");
-    showProtocolButtons(); // 프로토콜 버튼 표시
   });
 
   $(document).ready(function () {
     const $protocolContainer = $("#on-the-case");
+    let pressTimer; // CAM-container 꾹 누르기 타이머
 
     // 초기 상태에서 프로토콜 버튼 컨테이너 숨기기
     $protocolContainer.hide().css({
@@ -369,13 +370,13 @@ $(document).ready(function () {
       }
     }
 
-    // ⚠️🚨 '.btn-onTheCase' 버튼 클릭 시 프로토콜 버튼 컨테이너 표시
+    // ⚠️🚨 '.btn-onTheCase' 버튼 클릭 시 프로토콜 버튼 컨테이너 표시 🌟🌟🌟🌟🌟➡️➡️➡️ 추후 통신 이벤트로 변경
     $(".btn-onTheCase").on("click", function () {
       showProtocolContainer();
     });
 
-    // 상황 종료 버튼 클릭 시 프로토콜 버튼 컨테이너와 관련 버튼 숨기기
-    $stopBlinkButton.on("click", function () {
+    // 상황 종료 버튼 클릭 시 프로토콜 버튼 컨테이너 숨기기
+    $("#stop-blink").on("click", function () {
       $protocolContainer.stop(true, true).animate(
         {
           opacity: 0,
@@ -386,9 +387,11 @@ $(document).ready(function () {
           $(this).hide(); // 애니메이션 완료 후 숨기기
         }
       );
-      hideProtocolButtons(); // 관련 버튼 숨김
     });
   });
+
+  // 초기 버튼 상태 설정
+  updateLogToggleButton();
 });
 
 // ==============================================
@@ -480,3 +483,105 @@ $(document).ready(function () {
 });
 
 // ==============================================
+
+$(document).ready(function () {
+  const $reportContainer = $(".report-container"); // 신고 컨테이너
+  const $protocolContainer = $(".sb-container"); // 상황 종료 컨테이너
+
+  // 초기 상태에서 .report-container 숨기기
+  $reportContainer.hide().css({
+    opacity: 0,
+    transform: "translateY(-10px)",
+  });
+
+  /**
+   * .report-container를 부드럽게 나타내기
+   */
+  function showReportContainer() {
+    if ($reportContainer.is(":hidden")) {
+      $reportContainer.stop(true, true).show().animate(
+        {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+        150
+      );
+    }
+  }
+
+  /**
+   * .report-container를 숨기기
+   */
+  function hideReportContainer() {
+    $reportContainer.stop(true, true).animate(
+      {
+        opacity: 0,
+        transform: "translateY(-10px)",
+      },
+      350,
+      function () {
+        $(this).hide(); // 애니메이션 완료 후 숨기기
+      }
+    );
+  }
+
+  /**
+   * blink 이벤트 트리거 시 .report-container 표시
+   */
+  $("#blink-start-warning, #blink-start-danger").on("click", function () {
+    showReportContainer(); // 신고 컨테이너 표시
+  });
+
+  /**
+   * #stop-blink 버튼 클릭 시 .report-container와 .sb-container 숨기기
+   */
+  $("#stop-blink").on("click", function () {
+    hideReportContainer(); // 신고 컨테이너 숨기기
+    $protocolContainer.stop(true, true).animate(
+      {
+        opacity: 0,
+        transform: "translateY(-10px)",
+      },
+      350,
+      function () {
+        $(this).hide(); // 애니메이션 완료 후 숨기기
+      }
+    );
+  });
+});
+
+// ==============================================
+
+$(document).ready(function () {
+  const $protocolModal = $("#protocol-modal"); // Protocol modal
+  const $closeProtocolModal = $(".close-protocol-modal"); // 닫기 버튼
+
+  // Protocol modal 열기 함수
+  function showProtocolModal() {
+    $protocolModal.removeClass("hidden").fadeIn(300);
+  }
+
+  // Protocol modal 닫기 함수
+  function hideProtocolModal() {
+    $protocolModal.fadeOut(300, function () {
+      $protocolModal.addClass("hidden");
+    });
+  }
+
+  // #blink-start-danger 버튼 클릭 시 Protocol modal 표시
+  $("#blink-start-danger").on("click", function () {
+    showProtocolModal();
+  });
+
+  // Protocol modal 닫기 버튼 클릭 이벤트
+  $closeProtocolModal.on("click", function () {
+    hideProtocolModal();
+  });
+
+  // Protocol modal 외부 영역 클릭 시 닫기
+  $protocolModal.on("click", function (event) {
+    if ($(event.target).is("#protocol-modal")) {
+      hideProtocolModal();
+    }
+  });
+});
