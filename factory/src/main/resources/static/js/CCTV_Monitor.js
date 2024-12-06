@@ -90,79 +90,79 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     // --------------------------------------------------------------
-//    
-//    let selectedVideoElement = null; // 현재 선택된 비디오 요소
-//    let mediaRecorder;
-//    let recordedChunks = [];
-//
-//    document.querySelectorAll('.video-item').forEach((item) => {
-//      item.addEventListener('click', (event) => {
-//        // 클릭한 항목의 비디오 경로 가져오기
-//        const videoPath = event.target.getAttribute('data-video');
-//
-//        // 선택된 비디오를 표시하거나 처리할 수 있는 로직을 추가하세요.
-//        if (selectedVideoElement) {
-//          selectedVideoElement.srcObject.getTracks().forEach(track => track.stop()); // 이전 비디오 스트림 중지
-//        }
-//
-//        // 새로운 비디오 요소 생성
-//        selectedVideoElement = document.createElement('video');
-//        selectedVideoElement.src = videoPath;
-//        selectedVideoElement.controls = true;
-//        selectedVideoElement.autoplay = true;
-//        selectedVideoElement.loop = true;
-//
-//        document.body.appendChild(selectedVideoElement); // 비디오를 화면에 추가
-//
-//        // 선택된 비디오의 스트림을 캡처
-//        const stream = selectedVideoElement.captureStream();
-//        mediaRecorder = new MediaRecorder(stream);
-//
-//        mediaRecorder.ondataavailable = (e) => {
-//          if (e.data.size > 0) {
-//            recordedChunks.push(e.data);
-//          }
-//        };
-//      });
-//    });
-//
-//    // 's' 키를 눌렀을 때 녹화 시작
-//    document.addEventListener("keydown", (event) => {
-//      if (event.key === "s" && selectedVideoElement) {
-//        mediaRecorder.start();
-//        console.log("녹화가 시작되었습니다.");
-//      }
-//    });
-//
-//    // 'e' 키를 눌렀을 때 녹화 종료
-//    document.addEventListener("keydown", (event) => {
-//      if (event.key === "e" && mediaRecorder) {
-//        mediaRecorder.stop();
-//        mediaRecorder.onstop = async () => {
-//          console.log("녹화가 종료되었습니다.");
-//
-//          const blob = new Blob(recordedChunks, { type: "video/webm" });
-//          const formData = new FormData();
-//          formData.append("file", blob, "recorded-video.webm");
-//
-//          try {
-//            const response = await fetch("/videos/upload", {
-//              method: "POST",
-//              body: formData,
-//            });
-//            if (response.ok) {
-//              console.log("동영상이 성공적으로 업로드되었습니다.");
-//            } else {
-//              console.error("동영상 업로드에 실패했습니다.");
-//            }
-//          } catch (error) {
-//            console.error("동영상 업로드 중 오류가 발생했습니다:", error);
-//          }
-//        };
-//      }
-//    });
+    //
+    //    let selectedVideoElement = null; // 현재 선택된 비디오 요소
+    //    let mediaRecorder;
+    //    let recordedChunks = [];
+    //
+    //    document.querySelectorAll('.video-item').forEach((item) => {
+    //      item.addEventListener('click', (event) => {
+    //        // 클릭한 항목의 비디오 경로 가져오기
+    //        const videoPath = event.target.getAttribute('data-video');
+    //
+    //        // 선택된 비디오를 표시하거나 처리할 수 있는 로직을 추가하세요.
+    //        if (selectedVideoElement) {
+    //          selectedVideoElement.srcObject.getTracks().forEach(track => track.stop()); // 이전 비디오 스트림 중지
+    //        }
+    //
+    //        // 새로운 비디오 요소 생성
+    //        selectedVideoElement = document.createElement('video');
+    //        selectedVideoElement.src = videoPath;
+    //        selectedVideoElement.controls = true;
+    //        selectedVideoElement.autoplay = true;
+    //        selectedVideoElement.loop = true;
+    //
+    //        document.body.appendChild(selectedVideoElement); // 비디오를 화면에 추가
+    //
+    //        // 선택된 비디오의 스트림을 캡처
+    //        const stream = selectedVideoElement.captureStream();
+    //        mediaRecorder = new MediaRecorder(stream);
+    //
+    //        mediaRecorder.ondataavailable = (e) => {
+    //          if (e.data.size > 0) {
+    //            recordedChunks.push(e.data);
+    //          }
+    //        };
+    //      });
+    //    });
+    //
+    //    // 's' 키를 눌렀을 때 녹화 시작
+    //    document.addEventListener("keydown", (event) => {
+    //      if (event.key === "s" && selectedVideoElement) {
+    //        mediaRecorder.start();
+    //        console.log("녹화가 시작되었습니다.");
+    //      }
+    //    });
+    //
+    //    // 'e' 키를 눌렀을 때 녹화 종료
+    //    document.addEventListener("keydown", (event) => {
+    //      if (event.key === "e" && mediaRecorder) {
+    //        mediaRecorder.stop();
+    //        mediaRecorder.onstop = async () => {
+    //          console.log("녹화가 종료되었습니다.");
+    //
+    //          const blob = new Blob(recordedChunks, { type: "video/webm" });
+    //          const formData = new FormData();
+    //          formData.append("file", blob, "recorded-video.webm");
+    //
+    //          try {
+    //            const response = await fetch("/videos/upload", {
+    //              method: "POST",
+    //              body: formData,
+    //            });
+    //            if (response.ok) {
+    //              console.log("동영상이 성공적으로 업로드되었습니다.");
+    //            } else {
+    //              console.error("동영상 업로드에 실패했습니다.");
+    //            }
+    //          } catch (error) {
+    //            console.error("동영상 업로드 중 오류가 발생했습니다:", error);
+    //          }
+    //        };
+    //      }
+    //    });
     // --------------------------------------------------------------
-    
+
     // 우클릭 시 드롭존 초기화
     zone.addEventListener("contextmenu", (e) => {
       e.preventDefault(); // 기본 우클릭 메뉴 방지
@@ -245,29 +245,31 @@ $(document).ready(function () {
 
 // ==========================================================
 
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --6 이상 탐지 로그 자동 추가 */
-/* --7 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
-
 $(document).ready(function () {
   /**
-   * 현재 시각을 YYYY-MM-DD HH24:MI:SS 형식으로 반환
+   * 현재 시각을 YY-MM-DD HH24:MI:SS 형식으로 반환
    * @returns {string} - 포맷된 타임스탬프
    */
   function getFormattedTimestamp() {
     const now = new Date();
-    const year = now.getFullYear();
+    const year = String(now.getFullYear()).slice(-2);
     const month = String(now.getMonth() + 1).padStart(2, "0");
     const day = String(now.getDate()).padStart(2, "0");
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
 
-    return `[${hours}:${minutes}]<br>${year}-${month}-${day}`;
+    return `[ ${hours}:${minutes} ]<br><span class="small-font">${year}-${month}-${day}</span>`;
   }
-  const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
 
-  // 🌟 초기 상태에서 휴지통 버튼 숨김
+  /** 🌟 휴지통 버튼 */
+  const $trashButton = $('button[alt="로그 비우기 버튼"]');
+  const $reportButton = $("#report"); // 신고 버튼
+  const $stopBlinkButton = $("#stop-blink"); // 상황 종료 버튼
+
+  // 🌟 초기 상태에서 버튼 숨김
   $trashButton.hide();
+  $reportButton.hide();
+  $stopBlinkButton.hide();
 
   /**
    * 로그를 추가하고 부드러운 전환 애니메이션 적용
@@ -289,9 +291,6 @@ $(document).ready(function () {
 
     // 부드러운 전환 애니메이션 적용
     newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
-
-    // 로그 상태에 따라 토글 버튼 상태 변경
-    updateLogToggleButton();
 
     // 🌟 addLog 실행 시 휴지통 버튼 표시
     $trashButton.fadeIn(300);
@@ -319,33 +318,34 @@ $(document).ready(function () {
   }
 
   /**
-   * 로그 상태에 따라 로그 토글 버튼 이모지 변경
+   * 버튼 상태를 업데이트 (출현/숨김)
    */
-  function updateLogToggleButton() {
-    const logCount = $(".log-tuple").length;
-    const newEmoji = logCount > 0 ? "✅" : "🔕";
-    $('button[alt="로그 토글 버튼"]')
-      .fadeOut(200, function () {
-        $(this).text(newEmoji);
-      })
-      .fadeIn(200);
+  function showProtocolButtons() {
+    $reportButton.fadeIn(300); // 신고 버튼 표시
+    $stopBlinkButton.fadeIn(300); // 상황 종료 버튼 표시
+  }
+
+  function hideProtocolButtons() {
+    $reportButton.fadeOut(300); // 신고 버튼 숨김
+    $stopBlinkButton.fadeOut(300); // 상황 종료 버튼 숨김
   }
 
   // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
   $("#blink-start-warning").on("click", function () {
     const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
     addLog(cameraLabel, "경고", "⚠️");
+    showProtocolButtons(); // 프로토콜 버튼 표시
   });
 
   // 🚨 '이상 발생' 버튼 클릭 시 위험 로그 추가
   $("#blink-start-danger").on("click", function () {
     const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
     addLog(cameraLabel, "위험", "🚨");
+    showProtocolButtons(); // 프로토콜 버튼 표시
   });
 
   $(document).ready(function () {
     const $protocolContainer = $("#on-the-case");
-    let pressTimer; // CAM-container 꾹 누르기 타이머
 
     // 초기 상태에서 프로토콜 버튼 컨테이너 숨기기
     $protocolContainer.hide().css({
@@ -369,13 +369,13 @@ $(document).ready(function () {
       }
     }
 
-    // ⚠️🚨 '.btn-onTheCase' 버튼 클릭 시 프로토콜 버튼 컨테이너 표시 🌟🌟🌟🌟🌟➡️➡️➡️ 추후 통신 이벤트로 변경
+    // ⚠️🚨 '.btn-onTheCase' 버튼 클릭 시 프로토콜 버튼 컨테이너 표시
     $(".btn-onTheCase").on("click", function () {
       showProtocolContainer();
     });
 
-    // 상황 종료 버튼 클릭 시 프로토콜 버튼 컨테이너 숨기기
-    $("#stop-blink").on("click", function () {
+    // 상황 종료 버튼 클릭 시 프로토콜 버튼 컨테이너와 관련 버튼 숨기기
+    $stopBlinkButton.on("click", function () {
       $protocolContainer.stop(true, true).animate(
         {
           opacity: 0,
@@ -386,11 +386,9 @@ $(document).ready(function () {
           $(this).hide(); // 애니메이션 완료 후 숨기기
         }
       );
+      hideProtocolButtons(); // 관련 버튼 숨김
     });
   });
-
-  // 초기 버튼 상태 설정
-  updateLogToggleButton();
 });
 
 // ==============================================

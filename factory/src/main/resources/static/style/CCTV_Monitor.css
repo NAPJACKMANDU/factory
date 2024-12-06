@@ -376,7 +376,7 @@ section {
   margin: 0;
   margin-top: 15px;
   margin-bottom: -15px;
-  height: 240px;
+  height: 420px;
   min-width: 100%; /* 기본 너비 */
   width: 133%;
   background-color: rgba(11, 12, 12, 0.8470588235);
@@ -398,6 +398,11 @@ section {
   /* 로그 버튼 컨테이너 */
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple {
+  color: rgba(11, 12, 12, 0.8470588235);
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  gap: 0;
   height: 30px;
   width: 140px;
   position: relative; /* z-index를 위해 relative로 설정 */
@@ -405,11 +410,21 @@ section {
   -webkit-transition: z-index 0.3s ease;
   transition: z-index 0.3s ease; /* 부드러운 z-index 전환 */
 }
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple .log-timestamp {
+  padding-top: 3px;
+  min-width: 60px;
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple .small-font {
+  font-size: 0.7em; /* 원하는 크기로 조정 */
+  color: gray; /* 색상 변경 (선택 사항) */
+}
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-toggle {
-  margin-top: -20px;
-  margin-left: 70%;
-  height: 25px;
-  width: 30px;
+  margin-top: -40px;
+  margin-left: -8%;
+  margin-bottom: 40px;
+  padding-top: 5px;
+  height: 35px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -419,14 +434,16 @@ section {
           flex-direction: row-reverse; /* 버튼이 오른쪽에 정렬 */
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-toggle > button[alt="로그 비우기 버튼"] {
-  background-color: none;
+  background-color: #232323;
   border: none;
-  margin-top: 0;
-  padding: 0;
-  height: 30px;
-  width: 30px;
+  margin-top: 0px;
+  margin-right: -10px;
+  padding: 2px;
+  min-height: 34px;
+  min-width: 30px;
   font-size: large;
-  border-radius: 20px; /* 둥근 버튼 */
+  border-radius: 10px; /* 둥근 버튼 */
+  cursor: pointer;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-toggle span {
   font-size: xx-large;
@@ -465,11 +482,74 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section * {
   color: #201f1f;
 }
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .report-container {
+  background-color: darkred;
+  max-width: 150px;
+  position: absolute;
+  top: 65.5vh;
+  right: 0.5px;
+  -webkit-box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 0 0 5px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2000;
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .report-container button {
+  background-color: rgba(211, 6, 6, 0.61);
+  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.1) inset;
+  border: none;
+  border-radius: 15px;
+  color: whitesmoke;
+  margin: 5px;
+  margin-left: 18.5%;
+  padding-top: 2.5px;
+  padding-bottom: 5px;
+  width: 63.5%;
+  height: 25px;
+  cursor: pointer;
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .report-container button:hover {
+  background-color: rgba(193, 155, 5, 0.755);
+  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.15) inset;
+          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.15) inset;
+  -webkit-transition: background-color 0.25s;
+  transition: background-color 0.25s; /* 부드러운 전환 효과 추가 */
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container button {
+  background-color: #1abc9c;
+  -webkit-box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
+          box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
+  border: none;
+  border-radius: 15px;
+  color: whitesmoke;
+  margin-top: -5%;
+  margin-right: -5%;
+  width: 90px;
+  height: 34px;
+  text-align: center;
+  text-justify: center;
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container button:hover {
+  background-color: rgba(218, 165, 32, 0.823);
+  -webkit-box-shadow: 2px -6px 6px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 2px -6px 6px rgba(0, 0, 0, 0.2) inset;
+  -webkit-transition: background-color 0.25s;
+  transition: background-color 0.25s; /* 부드러운 전환 효과 추가 */
+}
 .right-sidebar nav[alt="부가기능 탭"] {
   /* 임의 설정 */
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 0;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
   padding: 0;
   padding-bottom: 0;
   top: 0;

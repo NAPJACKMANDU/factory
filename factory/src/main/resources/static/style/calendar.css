@@ -6,7 +6,7 @@ table,
 }
 
 .calendar {
-  background-color: rgba(11, 12, 12, 0.8470588235); /* 캘린더 배경색 */
+  background-color: #262626; /* 캘린더 배경색 */
   margin: 0px;
   margin-left: 11%;
   padding: 0.1px 5px;
@@ -26,7 +26,7 @@ table,
   background-color: #333;
   padding: 5px;
   height: 20px;
-  min-width: 150px;
+  width: 142px;
   color: #ffa500;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -139,5 +139,7 @@ footer .modal.fade-out {
     width: 100%; /* 모바일에서 가로 전체 차지 */
     -ms-flex-item-align: center;
         align-self: center; /* 세로 정렬 중심 */
+  }
+}�로 정렬 중심 */
   }
 }

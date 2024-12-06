@@ -224,7 +224,7 @@ $(document).ready(function () {
       mediaRecorder.start();
       isRecording = true;
       console.log("녹화가 시작되었습니다.");
-      console.log(mediaRecorder)
+      console.log(mediaRecorder);
     }
   });
 
@@ -240,7 +240,7 @@ $(document).ready(function () {
         formData.append("file", blob, "recorded-video.webm");
 
         try {
-        	console.log("고고");
+          console.log("고고");
           const response = await fetch("/videos/upload", {
             method: "POST",
             body: formData,
@@ -260,8 +260,6 @@ $(document).ready(function () {
       };
     }
   });
-
-
 
   // #cam-sel 버튼 클릭 시 제외 처리
   // $("#cam-sel").on("click", function () {
