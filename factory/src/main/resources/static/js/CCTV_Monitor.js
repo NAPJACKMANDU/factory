@@ -585,3 +585,50 @@ $(document).ready(function () {
     }
   });
 });
+
+// ===============================================
+
+$(document).ready(function () {
+  /**
+   * 새로운 브라우저 팝업 열기 함수
+   * - 팝업 URL, 이름, 창 특성을 설정하고 동적으로 HTML 콘텐츠를 로드합니다.
+   */
+  function openProtocolPopup() {
+    const popupUrl = "about:blank"; // 팝업 URL, 초기값 설정 (동적 로드 전)
+    const popupName = "ProtocolPopup"; // 팝업 창 이름 (고유)
+    const popupFeatures = "width=800,height=600,scrollbars=yes,resizable=yes"; // 팝업 창 특성
+
+    // 팝업 창 열기
+    const popupWindow = window.open(popupUrl, popupName, popupFeatures);
+
+    // 팝업이 정상적으로 열렸는지 확인
+    if (popupWindow) {
+      // AJAX를 통해 외부 HTML 파일 로드
+      $.get("protocol-popup.html")
+        .done(function (htmlContent) {
+          // HTML 콘텐츠를 팝업 창에 삽입
+          popupWindow.document.open(); // 팝업 창의 문서 초기화
+          popupWindow.document.write(htmlContent); // 외부 HTML 삽입
+          popupWindow.document.close(); // 문서 작성 완료
+
+          // 스타일 및 스크립트 적용 확인 (예: CSS 파일 경로)
+          const styleLink = popupWindow.document.createElement("link");
+          styleLink.rel = "stylesheet";
+          styleLink.href = "protocol-popup.css"; // CSS 파일 경로
+          popupWindow.document.head.appendChild(styleLink);
+        })
+        .fail(function () {
+          // HTML 파일 로드 실패 시 경고
+          alert("팝업 콘텐츠를 로드하지 못했습니다. 경로를 확인하세요.");
+        });
+    } else {
+      // 팝업 차단 경고
+      alert("팝업이 차단되었습니다. 팝업 차단 설정을 확인해주세요.");
+    }
+  }
+
+  // 이벤트 등록: 특정 버튼 클릭 시 팝업 열기
+  $("#blink-start-danger").on("click", function () {
+    openProtocolPopup(); // 팝업 열기 함수 호출
+  });
+});

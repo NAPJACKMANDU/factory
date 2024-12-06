@@ -421,7 +421,7 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-toggle {
   margin-top: -40px;
   margin-left: -8%;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
   padding-top: 5px;
   height: 35px;
   width: 100%;
@@ -482,48 +482,6 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section * {
   color: #201f1f;
 }
-.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .report-container {
-  background-color: darkred;
-  max-width: 150px;
-  position: absolute;
-  top: 67vh;
-  right: 0.5px;
-  -webkit-box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2) inset;
-          box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2) inset;
-  border-radius: 0 0 5px 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  z-index: 2000;
-}
-.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .report-container button {
-  background-color: rgba(211, 6, 6, 0.61);
-  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.1) inset;
-  border: none;
-  border-radius: 15px;
-  color: whitesmoke;
-  margin: 5px;
-  margin-left: 18.5%;
-  padding-top: 2.5px;
-  padding-bottom: 5px;
-  width: 63.5%;
-  height: 25px;
-  cursor: pointer;
-}
-.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .report-container button:hover {
-  background-color: rgba(193, 155, 5, 0.755);
-  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.15) inset;
-          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.15) inset;
-  -webkit-transition: background-color 0.25s;
-  transition: background-color 0.25s; /* 부드러운 전환 효과 추가 */
-}
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container {
   margin-top: 15px;
 }
@@ -532,7 +490,7 @@ section {
   -webkit-box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
           box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   color: whitesmoke;
   margin-top: -5%;
   margin-right: -5%;
@@ -900,6 +858,56 @@ footer .modal.fade-out {
   }
 }
 
+/* 119 신고 버튼 컨테이너 */
+.report-container {
+  position: absolute;
+  top: 27.3%;
+  right: 0.5%;
+  z-index: 2000;
+  background-color: darkred;
+  -webkit-box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 15px;
+  padding: 0;
+  margin-top: 7px;
+  min-width: 5%;
+  min-height: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-animation: fadeIn 0.3s ease;
+          animation: fadeIn 0.3s ease; /* 모달 등장 애니메이션 */
+}
+.report-container button {
+  background-color: darkred;
+  border: none;
+  border-radius: 15px;
+  color: whitesmoke;
+  margin: 0;
+  padding-top: 2.5px;
+  padding-bottom: 5px;
+  width: 100%;
+  min-height: 65px;
+  cursor: pointer;
+}
+.report-container button:hover {
+  background-color: rgba(211, 6, 6, 0.61);
+  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.15) inset;
+          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.15) inset;
+  -webkit-transition: background-color 0.25s;
+  transition: background-color 0.25s; /* 부드러운 전환 효과 추가 */
+}
+
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --Protocol Modal 스타일 정의 */
 /* --ID: #protocol-modal */
@@ -921,6 +929,10 @@ footer .modal.fade-out {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; /* 세로 중앙 정렬 */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
   z-index: 2000; /* 다른 요소 위에 배치 */
   /* 모달 콘텐츠 */

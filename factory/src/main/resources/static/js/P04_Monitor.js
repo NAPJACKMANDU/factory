@@ -124,7 +124,7 @@ let selectedVideoElement = null; // 현재 선택된 비디오 요소
 let mediaRecorder;
 let recordedChunks = [];
 let isRecording = false; // 녹화 상태 확인
-let selectedCameraIdx = null ;
+let selectedCameraIdx = null;
 
 $(document).ready(function () {
   let isExpanded = false; // 확장 상태 확인
@@ -132,7 +132,7 @@ $(document).ready(function () {
   let pressTimer; // 클릭 시간 확인을 위한 타이머 변수
   const excludedCameras = new Set(); // 화면 제외된 CAM-container 저장
 
-//드래그 이벤트로 카메라 선택
+  //드래그 이벤트로 카메라 선택
   $(".video-item").on("dragstart", function (e) {
     // 드래그된 요소의 value 속성 값을 가져옴
     selectedCameraIndex = $(this).attr("value");
@@ -140,7 +140,6 @@ $(document).ready(function () {
     console.log("카메라 :", selectedCameraIndex);
   });
 
-  
   $(".CAM-container")
     .on("mousedown", function (event) {
       const $this = $(this);
@@ -223,9 +222,6 @@ $(document).ready(function () {
     .on("mouseleave", function () {
       clearTimeout(pressTimer);
     });
-  
-  
-
 
   // 's' 키로 녹화 시작
   document.addEventListener("keydown", (event) => {
@@ -236,14 +232,9 @@ $(document).ready(function () {
       }
       mediaRecorder.start();
       isRecording = true;
-<<<<<<< HEAD
-      console.log("녹화가 시작되었습니다.");
-      console.log(mediaRecorder);
-=======
-      
+
       console.log("녹화가 시작되었습니다. 선택된 카메라:", selectedCameraIndex);
-      console.log(mediaRecorder)
->>>>>>> main
+      console.log(mediaRecorder);
     }
   });
 
@@ -256,10 +247,9 @@ $(document).ready(function () {
 
         const blob = new Blob(recordedChunks, { type: "video/webm" });
         const formData = new FormData();
-        
+
         formData.append("file", blob, "recorded-video.webm");
-        
-        
+
         // 카메라 인덱스도 함께 전송
         if (selectedCameraIndex) {
           formData.append("cameraIndex", selectedCameraIndex);
@@ -267,19 +257,13 @@ $(document).ready(function () {
           console.error("선택된 카메라 인덱스가 없습니다.");
           return;
         }
-        
+
         try {
-<<<<<<< HEAD
-          console.log("고고");
-=======
->>>>>>> main
           const response = await fetch("/videos/upload", {
             method: "POST",
             body: formData,
-            
           });
 
-          
           if (response.ok) {
             console.log("동영상이 성공적으로 업로드되었습니다.");
           } else {
@@ -291,16 +275,12 @@ $(document).ready(function () {
 
         recordedChunks = [];
         isRecording = false;
-      }
-    };
-    
+      };
+    }
   });
 
-<<<<<<< HEAD
-=======
   selectedCameraIndex = null; // 업로드 후 선택 초기화
 
->>>>>>> main
   // #cam-sel 버튼 클릭 시 제외 처리
   // $("#cam-sel").on("click", function () {
   //   isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
