@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background-color: rgba(52, 73, 94, 0.862745098);
+}
+body *::-webkit-scrollbar {
+  width: 8px;
+  background-color: #34495e;
+}
+body *::-webkit-scrollbar-thumb {
+  background-color: rgba(26, 188, 156, 0.6862745098);
+  border-radius: 4px;
+}
+body *::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.protocol-content {
+  background-color: whitesmoke;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 700px;
+  height: 450px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.protocol-content h2 {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
+  width: 80%;
+}
+
+.protocol-innercontainer {
+  margin-top: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.protocol-content img {
+  margin-top: 0px;
+  margin-right: 5px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  /* object-fit: contain; */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #1abc9c;
+}
