@@ -223,6 +223,7 @@ main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] 
 }
 main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] section:nth-child(2) {
   margin-bottom: 15px;
+
 }
 
 /* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
@@ -437,4 +438,5 @@ main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] 
 }
 * .h-a-container a {
   text-decoration-line: none;
+
 }
