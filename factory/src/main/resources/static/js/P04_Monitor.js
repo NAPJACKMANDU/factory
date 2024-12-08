@@ -238,7 +238,6 @@ $(document).ready(function () {
     }
   });
 
-  // 'e' 키로 녹화 종료 및 업로드
   document.addEventListener("keydown", async (event) => {
     if (event.key === "e" && mediaRecorder && isRecording) {
       mediaRecorder.stop();
@@ -250,7 +249,7 @@ $(document).ready(function () {
 
         formData.append("file", blob, "recorded-video.webm");
 
-        // 카메라 인덱스도 함께 전송
+        // 선택된 카메라 인덱스를 추가
         if (selectedCameraIndex) {
           formData.append("cameraIndex", selectedCameraIndex);
         } else {
@@ -261,13 +260,13 @@ $(document).ready(function () {
         try {
           const response = await fetch("/videos/upload", {
             method: "POST",
-            body: formData,
+            body: formData, 
           });
 
           if (response.ok) {
             console.log("동영상이 성공적으로 업로드되었습니다.");
           } else {
-            console.error("동영상 업로드에 실패했습니다.");
+            console.error("동영상 업로드에 실패했습니다.", response.statusText);
           }
         } catch (error) {
           console.error("동영상 업로드 중 오류가 발생했습니다:", error);
@@ -278,7 +277,6 @@ $(document).ready(function () {
       };
     }
   });
-
   selectedCameraIndex = null; // 업로드 후 선택 초기화
 
   // #cam-sel 버튼 클릭 시 제외 처리
@@ -449,11 +447,13 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", function () {
   const videos = document.querySelectorAll("video");
   videos.forEach((video) => {
+    video.muted = true; // 소리 없음으로 자동 재생 허용
     video.play().catch((error) => {
       console.error("자동 재생이 차단되었습니다:", error);
     });
   });
 });
+;
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --5 'addLog' --> '.log-tuple이 append 되는 이벤트' / 'logData' --> 발생한 로그를 서버에 전송 */
@@ -735,13 +735,15 @@ $(document).ready(function () {
     $targetDisplay.text(cameraLabels.join(", "));
   }
 
-  // 동영상 자동 재생 유지
-  $("video").each(function () {
-    this.play().catch((error) => {
-      console.error("자동 재생이 차단되었습니다:", error);
-    });
+    // 동영상 자동 재생 유지
+	$("video").each(function () {
+	  this.muted = true; // 비디오의 소리 제거
+	  this.play().catch((error) => {
+	    console.error("자동 재생이 차단되었습니다:", error);
+	  });
+	});
+
   });
-});
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)' */

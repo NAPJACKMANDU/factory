@@ -497,4 +497,5 @@ top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] but
 }
 top-bar[alt="화면 수 조절 바"]:hover table div[alt="화면 수 조절 컨테이너"] {
   opacity: 1; /* hover 시 화면 수 조절 컨테이너 표시 */
+}over 시 화면 수 조절 컨테이너 표시 */
 }

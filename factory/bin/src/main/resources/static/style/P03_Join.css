@@ -55,4 +55,137 @@ section[alt="회원가입 정보 제출 컨테이너"] * {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+}none;
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1abc9c;
+}
+
+#idCheckButton {
+  width: 45%;
+  margin-left: 54%;
+}
+
+/* 관리자 및 일반 사용자 선택 디자인 */
+.role-selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 20px;
+}
+
+.role-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #a4a1a1;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]:checked + .role-option {
+  background-color: #1abc9c;
+  color: whitesmoke;
+  font-weight: bold;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: whitesmoke;
+}
+
+footer a {
+  color: #1abc9c;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ✨ 'dashBoard','postData' - 'P02_Login' 설정 ✨ */
+/* 💡 '❓대시보드','데이터 전송' 위주 로그인 페이지 */
+/* "id체크 컨테이너","회원가입 버튼" 버튼 스타일 */
+button {
+  /* 임의 설정 */
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+#globals-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#globals-container * {
+  margin: 0px;
+}
+#globals-container main {
+  /* 임의 설정 */
+  border: none;
+  background-color: white;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1%;
+}
+#globals-container main * {
+  /* 임의 설정 */
+  border: 1px solid black;
+}
+
+div [alt="회원가입input_선택>직책"],
+div[alt="회원가입input_선택>직무"] {
+  /* 임의 설정 */
+}
+div [alt="회원가입input_선택>직책"] table,
+div[alt="회원가입input_선택>직무"] table {
+  /* 임의 설정 */
+  border: 3px solid black;
+  display: grid;
+  grid-template-columns: repeat(100%);
+  width: 100%;
+}
+
+section[alt="회원가입 정보 제출 컨테이너"] * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
