@@ -1,0 +1,520 @@
+@charset "UTF-8";
+body > div[alt="전역 컨테이너"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  background-color: #34495e;
+}
+body * {
+  /* Scrollbar Styling */
+}
+body * ::-webkit-scrollbar {
+  width: 8px;
+  background-color: #34495e;
+}
+body * ::-webkit-scrollbar-thumb {
+  background-color: rgba(26, 188, 156, 0.6862745098);
+  border-radius: 4px;
+}
+body nav[alt="부가기능 탭"] {
+  /* 임의 설정 */
+  margin-top: 15px;
+  margin-left: 0;
+  padding: 0;
+  padding-bottom: 0;
+  top: 0;
+  width: 100%; /* 탭 가로 사이즈 */
+  gap: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] {
+  /* 임의 설정 */
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+}
+body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
+  width: 100%;
+  height: 5px;
+  place-items: center;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  padding-right: 10px;
+  width: 100px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* 폰트 설정 */
+  font-weight: bolder;
+  font-size: medium;
+  color: white;
+}
+body nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
+  cursor: pointer;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s; /* 부드러운 전환 효과 추가 */
+  color: #2ae7c1;
+  font-weight: bolder;
+}
+body nav[alt="부가기능 탭"] .vertical-line {
+  border: 0.005px solid darkgray;
+  width: 0.5px;
+  height: 55px;
+}
+
+article[alt="연락망 프로필 추가"] {
+  /* 임의 설정 */
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  height: 400px;
+  width: 280px;
+  background: #34495e;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+article[alt="연락망 프로필 추가"] button {
+  width: 99%;
+  height: 99%;
+  background-color: #34495e;
+  border: none;
+  cursor: pointer;
+  color: whitesmoke;
+  font-size: xx-large;
+}
+
+main[alt="연락망 프로필 컨테이너"] {
+  /* 임의 설정 */
+  background-color: #2c3e50;
+  -webkit-box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
+  border-left: 2px solid #1abc9c;
+  border-right: 2px solid #1abc9c;
+  padding: 2% 4%;
+  max-width: 70%;
+  width: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-template-columns: repeat(3, 1fr); /* 세 열로 균등 분할 */
+  grid-template-rows: 1fr; /* 한 행만 사용 */
+  gap: 10px 20px; /* 행 간격 10px, 열 간격 20px */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] {
+  /* 임의 설정 */
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  height: 400px;
+  width: 280px;
+  background: #243447;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  place-items: center;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 사진"] {
+  background-color: #243447;
+  margin: 0;
+  width: 100%;
+  height: 200px;
+  border-radius: 8px 8px 0 0;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  -webkit-box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1) inset; /* 그림자 효과 */
+  -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.05) inset;
+          box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.05) inset; /* 그림자 효과 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 사진"] img {
+  height: 199px;
+  width: 100%;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  -webkit-box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1) inset; /* 그림자 효과 */
+  -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.05) inset;
+          box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.05) inset; /* 그림자 효과 */
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] {
+  /* 임의 설정 */
+  color: whitesmoke;
+  width: 95%;
+  height: 80%;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] * {
+  margin-bottom: 0;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] section {
+  /* 임의 설정 */
+  color: white;
+}
+main[alt="연락망 프로필 컨테이너"] article[alt="연락망 프로필"] div[alt="연락망 정보"] section:nth-child(2) {
+  margin-bottom: 15px;
+}
+
+/* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
+/* 💡 '반응형 웹' globals  */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* ◽🔹 최상위 부모 요소 🔹◽ */
+  /* ◽🔸 첫째 자식 요소 🔸◽ */
+  /* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+  /* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+  /* ✨ 'RWD' - 'Semantic Tags' 설정 ✨ */
+  /* 💡 '시맨틱 태그' header */
+  /* ◼️◼️◼️◼️◼️◼️ 헤더 설정 ◼️◼️◼️◼️◼️◼️ */
+  /* ◽🔸 Main 페이지 (한정) 🔸◽ */
+}
+* html,
+* body {
+  margin: 0 !important; /* 여백 제거 */
+  padding: 0 !important;
+  height: 100%; /* 전체 브라우저 높이 */
+  display: flexbox; /* 자식 요소 top,left 사용 가능하게 */
+  place-items: center; /* 수평과 수직 중앙 정렬 */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* 임의 설정 */
+}
+* html *,
+* body * {
+  /* 임의 설정 */
+  margin: 5px;
+}
+* #globals-container {
+  /* 임의 설정 */
+  background-color: #1d2b36; /* 배경색 기본 */
+  margin: 0; /* 여백 제거 */
+  padding: 0px;
+  height: 100vh; /* 뷰포트 전체 높이 */
+  width: 100vw; /* 뷰포트 전체 너비 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; /* 위아래로 쌓이는 구조 */
+  position: absolute;
+  top: 0; /* 부모의 상단에 붙임 */
+  left: 0; /* 부모의 왼쪽에 붙임 */
+}
+* #globals-container > * {
+  margin: 0;
+}
+* main {
+  /* 임의 설정 */
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; /* 요소가 한 줄에 고정되도록 설정 */
+  overflow: hidden; /* 스크롤 없이 화면 고정 */
+}
+* main > * {
+  gap: 5px;
+}
+* input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+* header {
+  /* 임의 설정 */
+  background-color: rgba(11, 12, 12, 0.8470588235);
+  border: none;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 0 !important;
+  padding: 0 8%; /* 헤더 좌우 패딩 */
+  height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
+  min-height: 70px;
+  width: 100vw; /* 마진 없는 가로 사이즈 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15%; /* 헤더 요소 간격 */
+  overflow: hidden;
+  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+}
+* header * {
+  overflow: hidden;
+  margin-top: 0;
+}
+* header section[alt="로고 컨테이너"] {
+  /* 임의 설정 */
+  padding: 1%;
+  min-width: 70px;
+  width: 200px;
+  max-height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+* header section[alt="로고 컨테이너"] * {
+  margin: 0;
+  padding: 0;
+  border: none;
+  place-items: center;
+}
+* header section[alt="로고 컨테이너"] *:hover {
+  cursor: pointer;
+}
+* header section[alt="로고 컨테이너"] form {
+  /* 임의 설정 */
+  padding: 0;
+  width: 200px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+}
+* header section[alt="로고 컨테이너"] form button {
+  padding: 0;
+  margin-top: 3%;
+  margin-left: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  place-items: center;
+}
+* header section[alt="로고 컨테이너"] form button img {
+  margin: 0;
+  height: 65px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+* header nav {
+  /* 임의 설정 */
+  margin-top: 10px;
+  padding: 0;
+  width: 100%; /* 탭 가로 사이즈 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 5%;
+  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+}
+* header nav div button {
+  /* location 이동 없음, show() 스크립트 */
+  width: 100%;
+  height: 50px;
+  place-items: center;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+}
+* header nav div button:hover {
+  cursor: pointer;
+}
+* header nav div span {
+  /* 임의 설정 */
+  padding-right: 10px;
+  width: 100px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* 폰트 설정 */
+  font-weight: bolder;
+  font-size: medium;
+  color: white;
+}
+* header nav div span:hover {
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s; /* 부드러운 전환 효과 추가 */
+  color: #1abc9c;
+  font-weight: bolder;
+}
+* header nav .vertical-line {
+  border: 0.005px solid darkgray;
+  height: 55px;
+  width: 0.5px;
+}
+* .h-a-container a {
+  text-decoration-line: none;
+}
+
+#contact-add-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.42); /* 배경 반투명 */
+  z-index: 2000; /* 기존 모달 위에 표시 */
+}
+#contact-add-modal.hidden {
+  display: none; /* 초기 상태 숨김 */
+}
+#contact-add-modal .secondary-modal-content {
+  background-color: rgba(52, 73, 94, 0.862745098); /* 모달 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  text-align: left;
+  position: relative;
+  -webkit-animation: fadeIn 0.5s ease;
+          animation: fadeIn 0.5s ease;
+}
+#contact-add-modal .secondary-modal-content h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
+}
+#contact-add-modal .secondary-modal-content .close-contact-add-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+#contact-add-modal .secondary-modal-content form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+#contact-add-modal .secondary-modal-content form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#contact-add-modal .secondary-modal-content form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+#contact-add-modal .secondary-modal-content form .save-contact-button {
+  background-color: #1abc9c;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#contact-add-modal .secondary-modal-content form .save-contact-button:hover {
+  background-color: #16a085;
+}

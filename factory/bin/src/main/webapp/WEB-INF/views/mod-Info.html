@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P06_정보등록</title>
+    <!-- 전역 style -->
+    <!-- 지역 style -->
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/P06_mod-Info.css"
+    />
+  </head>
+  <body>
+    <!-- View -->
+    <div alt="mod-container" id="globals-container">
+      <!-- header -->
+      <header alt="헤더">
+        <!-- 부가기능 탭 -->
+        <nav alt="부가기능 탭">
+          <div alt="a 컨테이너">
+            <a href="#" style="font-size: 11.8pt">CCTV모니터</a>
+          </div>
+          <div class="vertical-line"></div>
+          <div alt="a 컨테이너">
+            <a href="#" style="font-size: 11.8pt">안전수칙</a>
+          </div>
+          <div class="vertical-line"></div>
+
+          <div alt="a 컨테이너">
+            <a href="#" style="font-size: 11.8pt">연락망</a>
+          </div>
+        </nav>
+      </header>
+
+      <main alt="정보 등록 수정 컨테이너">
+        <!-- 회원 정보 변경 -->
+        <div class="mod-container">
+          <h2>내 정보 변경</h2>
+          <form id="joinForm" action="/joinForm" method="post">
+            <div class="form-group">
+              <label for="id">아이디</label>
+              <input
+                type="text"
+                id="id"
+                name="id"
+                placeholder="아이디를 입력하세요"
+                required
+              />
+              <span id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
+              <button type="button" id="idCheckButton">아이디 중복 확인</button>
+            </div>
+            <div class="form-group">
+              <label for="pw">비밀번호</label>
+              <input
+                type="password"
+                id="pw"
+                name="pw"
+                placeholder="비밀번호를 입력하세요"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="pwConfirm">비밀번호 확인</label>
+              <input
+                type="password"
+                id="pwConfirm"
+                name="pwConfirm"
+                placeholder="비밀번호를 다시 입력하세요"
+                required
+              />
+              <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
+            </div>
+            <div class="form-group">
+              <label for="name">이름</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="이름을 입력해 주세요"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">전화번호</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="01012345678 형식으로 입력하세요"
+                required
+              />
+            </div>
+            <div class="form-group" id="inputState">
+              <label for="companyName">회사 명</label>
+              <select id="companyName" name="companyIdx" required>
+                <option value="" disabled selected>
+                  회사 명을 선택해 주세요
+                </option>
+              </select>
+            </div>
+            <div class="role-selection">
+              <input type="radio" id="admin" name="role" value="관리자	" />
+              <label for="admin" class="role-option">관리자</label>
+              <input
+                type="radio"
+                id="user"
+                name="role"
+                value="일반 사용자"
+                checked
+              />
+              <label for="user" class="role-option">일반 사용자</label>
+            </div>
+            <button type="submit">가입하기</button>
+          </form>
+          <footer>
+            <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
+          </footer>
+        </div>
+
+        <!-- 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟 -->
+
+        <!-- 안전사고 대응책 등록 -->
+        <div class="mod-container">
+          <h2>안전 사고 대응책</h2>
+          <!-- ✅ 자료등록 ✅ -->
+          <form id="#_Form" action="#" method="post">
+            <div class="form-group">
+              <label for="#">안전수칙</label>
+              <input type="file" id="#" name="#" />
+              <!-- 버튼 id 수정 예정 -->
+              <button type="button" id="idCheckButton">pdf 미리보기</button>
+            </div>
+            <div class="form-group">
+              <label for="#">비상 시 초동 대응 절차</label>
+              <input type="file" id="#" name="#" />
+              <!-- 버튼 id 수정 예정 -->
+              <button type="button" id="idCheckButton">pdf 미리보기</button>
+            </div>
+            <!-- 여기부터 주석 -->
+            <!-- <div class="form-group">
+              <label for="pw">비밀번호</label>
+              <input
+                type="password"
+                id="pw"
+                name="pw"
+                placeholder="비밀번호를 입력하세요"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="pwConfirm">비밀번호 확인</label>
+              <input
+                type="password"
+                id="pwConfirm"
+                name="pwConfirm"
+                placeholder="비밀번호를 다시 입력하세요"
+                required
+              />
+              <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
+            </div>
+            <div class="form-group">
+              <label for="name">이름</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="이름을 입력해 주세요"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">전화번호</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="01012345678 형식으로 입력하세요"
+                required
+                />
+              </div> -->
+            <!-- 여기까지 주석 -->
+          </form>
+
+          <!-- ✅ 연락망 정보 ✅ -->
+          <form id="#_Form" action="#" method="post">
+            <section>
+              <div class="form-group">
+                <label for="pw">연락망 등록 정보</label>
+                <input type="text" id="#" name="#" placeholder="성명" />
+                <div class="role-selection">
+                  <input type="radio" id="admin" name="role" value="관리자	" />
+                  <label for="admin" class="role-option">관리자</label>
+                  <input
+                    type="radio"
+                    id="user"
+                    name="role"
+                    value="일반 사용자"
+                    checked
+                  />
+                  <label for="user" class="role-option">일반 사용자</label>
+                </div>
+              </div>
+              <!-- 예시입니다 -->
+              <div class="form-group" id="#">
+                <label for="#">부서</label>
+                <select id="#" name="#" required>
+                  <option value="" disabled selected>부서명</option>
+                </select>
+              </div>
+              <button type="submit">가입하기</button>
+            </section>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <!-- jQuery -->
+    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
+    <!-- scripts -->
+    <script src="/src/main/resources/static/js/P06_mod-Info.js"></script>
+  </body>
+</html>
