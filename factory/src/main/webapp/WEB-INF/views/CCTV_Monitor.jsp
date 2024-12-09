@@ -126,18 +126,18 @@
 						</ul></li>
 					<li class="category"><span>Category 2</span>
 						<ul class="sub-category">
-							<li class="video-item" draggable="true" value="3"
-								data-video="/video/TN3.mp4">Camera 3</li>
-							<li class="video-item" draggable="true" value="4"
-								data-video="/video/TARO.mp4">Camera 4</li>
+							<li class="video-item" draggable="true" value="5"
+								data-video="/video/TN3.mp4">Camera 5</li>
+							<li class="video-item" draggable="true" value="6"
+								data-video="/video/TARO1.mp4">Camera 6</li>
 							<li draggable="true" data-img="/imgs/category3/img7.png">
 								Camera 7</li>
 							<li draggable="true" data-img="/imgs/c12.jpg">Camera 8</li>
 						</ul></li>
-
 					<li class="category"><span>Category 3</span>
 						<ul class="sub-category">
-							<li draggable="true" data-img="/imgs/c13.jpg">Camera 9</li>
+						<li class="video-item" draggable="true" value="9"
+								data-video="/video/thon5.mp4">Camera 9</li>
 							<li draggable="true" data-img="/imgs/c14.jpg">Camera 10</li>
 							<li draggable="true" data-img="/imgs/c15.jpg">Camera 11</li>
 							<li draggable="true" data-img="/imgs/c16.jpg">Camera 12</li>

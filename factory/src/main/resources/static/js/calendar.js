@@ -209,7 +209,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	// 데이터 출력 함수
 	function printList(data) {
 	    var code = "";
+	    // code += "<h2> "+ `${year}-${month + 1}-${day}` + "</h2>";
 	    for (var i = 0; i < data.length; i++) {
+	     
 		var date = data[i].year + '-'+ data[i].month +'-'+ data[i].day;
 						console.log(date) ;
 		if( date == `${year}-${month + 1}-${day}`){
@@ -230,16 +232,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			    second: '2-digit',
 			    hour12: false // 24시간 형식
 			});
-
-		
-
+			
 	        code += "<tr style='background-color: #f9f9f9;'>";
 	        code += "<td>" + i + "</td>";
 	        code += "<td class='video_name'  data-incident-idx='" + data[i].incidentIdx + "' style='cursor: pointer;'>" + data[i].year + data[i].month + data[i].day + "_" + newName + "</td>";
 	        code += "<td>" + data[i].cameraIdx + "</td>";
 	        code += "<td>" + formattedTime + "</td>";
 	        code += "</tr>";
-	    }
+		}
 		}
 	    $("#list").html(code); // tbody에 새 코드 삽입
 
