@@ -1,61 +1,91 @@
 @charset "UTF-8";
-/* ✨ 'dashBoard','postData' - 'P02_Login' 설정 ✨ */
-/* 💡 '❓대시보드','데이터 전송' 위주 로그인 페이지 */
-/* "id체크 컨테이너","회원가입 버튼" 버튼 스타일 */
-button {
-  /* 임의 설정 */
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
-#globals-container {
+/* 전체 레이아웃 */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #1d2b36;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-#globals-container * {
-  margin: 0px;
-}
-#globals-container main {
-  /* 임의 설정 */
-  border: none;
-  background-color: white;
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 0;
-  width: 60%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1%;
-}
-#globals-container main * {
-  /* 임의 설정 */
-  border: 1px solid black;
+body input {
+  font-size: 14px;
+  border: 1px solid #7f8c8d;
+  background-color: #34495e;
+  color: white;
 }
 
-div [alt="회원가입input_선택>직책"],
-div[alt="회원가입input_선택>직무"] {
-  /* 임의 설정 */
-}
-div [alt="회원가입input_선택>직책"] table,
-div[alt="회원가입input_선택>직무"] table {
-  /* 임의 설정 */
-  border: 3px solid black;
-  display: grid;
-  grid-template-columns: repeat(100%);
+.signup-container {
+  background: #2c3e50;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 25px 0;
+  padding: 30px 25px;
   width: 100%;
+  max-width: 400px;
+  height: 100%;
 }
 
-section[alt="회원가입 정보 제출 컨테이너"] * {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}none;
+h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: whitesmoke;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.form-group span {
+  font-size: 12px;
+  color: goldenrod;
+  margin-top: 5px;
+  display: block;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(11, 12, 12, 0.8470588235);
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s ease;
