@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P06_정보등록</title>
+    <title>P06_Info</title>
     <!-- 전역 style -->
     <!-- 지역 style -->
     <link
@@ -37,40 +37,7 @@
         <!-- 회원 정보 변경 -->
         <div class="mod-container">
           <h2>내 정보 변경</h2>
-          <form id="joinForm" action="/joinForm" method="post">
-            <div class="form-group">
-              <label for="id">아이디</label>
-              <input
-                type="text"
-                id="id"
-                name="id"
-                placeholder="아이디를 입력하세요"
-                required
-              />
-              <span id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
-              <button type="button" id="idCheckButton">아이디 중복 확인</button>
-            </div>
-            <div class="form-group">
-              <label for="pw">비밀번호</label>
-              <input
-                type="password"
-                id="pw"
-                name="pw"
-                placeholder="비밀번호를 입력하세요"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="pwConfirm">비밀번호 확인</label>
-              <input
-                type="password"
-                id="pwConfirm"
-                name="pwConfirm"
-                placeholder="비밀번호를 다시 입력하세요"
-                required
-              />
-              <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
-            </div>
+          <form id="#" action="#" method="post">
             <div class="form-group">
               <label for="name">이름</label>
               <input
@@ -80,6 +47,16 @@
                 placeholder="이름을 입력해 주세요"
                 required
               />
+            </div>
+
+            <div class="form-group">
+              <label for="#">직위</label>
+              <select id="emergencySelect" name="emergencyType" required>
+                <option value="" disabled selected>직위를 선택하세요</option>
+                <option value="#">직위1</option>
+                <option value="#">직위2</option>
+                <option value="#">직위3</option>
+              </select>
             </div>
 
             <div class="form-group">
@@ -100,23 +77,14 @@
                 </option>
               </select>
             </div>
-            <div class="role-selection">
-              <input type="radio" id="admin" name="role" value="관리자	" />
-              <label for="admin" class="role-option">관리자</label>
-              <input
-                type="radio"
-                id="user"
-                name="role"
-                value="일반 사용자"
-                checked
-              />
-              <label for="user" class="role-option">일반 사용자</label>
+
+            <div class="form-group">
+              <label for="#">비고</label>
+              <input type="text" id="#" name="#" placeholder="비고" required />
             </div>
-            <button type="submit">가입하기</button>
+
+            <button type="submit">등록하기</button>
           </form>
-          <footer>
-            <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
-          </footer>
         </div>
 
         <!-- 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟 -->
@@ -125,94 +93,63 @@
         <div class="mod-container">
           <h2>안전 사고 대응책</h2>
           <!-- ✅ 자료등록 ✅ -->
-          <form id="#_Form" action="#" method="post">
+          <!--  📢 일반 안전수칙 등록 -->
+          <form id="safetyRuleForm" action="#" method="post">
             <div class="form-group">
               <label for="#">안전수칙</label>
-              <input type="file" id="#" name="#" />
-              <!-- 버튼 id 수정 예정 -->
-              <button type="button" id="idCheckButton">pdf 미리보기</button>
+              <input type="file" id="safetyRuleFile" name="safetyRuleFile" />
+              <div alt="프로토콜 자료 등록 버튼 컨테이너">
+                <button type="button" id="addSafetyRuleButton">
+                  자료 추가
+                </button>
+                <button type="button" id="previewButton_1">pdf 미리보기</button>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="#">비상 시 초동 대응 절차</label>
-              <input type="file" id="#" name="#" />
-              <!-- 버튼 id 수정 예정 -->
-              <button type="button" id="idCheckButton">pdf 미리보기</button>
-            </div>
-            <!-- 여기부터 주석 -->
-            <!-- <div class="form-group">
-              <label for="pw">비밀번호</label>
-              <input
-                type="password"
-                id="pw"
-                name="pw"
-                placeholder="비밀번호를 입력하세요"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="pwConfirm">비밀번호 확인</label>
-              <input
-                type="password"
-                id="pwConfirm"
-                name="pwConfirm"
-                placeholder="비밀번호를 다시 입력하세요"
-                required
-              />
-              <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
-            </div>
-            <div class="form-group">
-              <label for="name">이름</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="이름을 입력해 주세요"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="phone">전화번호</label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                placeholder="01012345678 형식으로 입력하세요"
-                required
-                />
-              </div> -->
-            <!-- 여기까지 주석 -->
           </form>
 
-          <!-- ✅ 연락망 정보 ✅ -->
-          <form id="#_Form" action="#" method="post">
-            <section>
-              <div class="form-group">
-                <label for="pw">연락망 등록 정보</label>
-                <input type="text" id="#" name="#" placeholder="성명" />
-                <div class="role-selection">
-                  <input type="radio" id="admin" name="role" value="관리자	" />
-                  <label for="admin" class="role-option">관리자</label>
-                  <input
-                    type="radio"
-                    id="user"
-                    name="role"
-                    value="일반 사용자"
-                    checked
-                  />
-                  <label for="user" class="role-option">일반 사용자</label>
-                </div>
+          <!-- 📢 상황별 비상 대응 절차 등록 -->
+          <form id="emergencyForm" action="#" method="post">
+            <div class="form-group">
+              <label for="emergencySelect">비상 시 초동 대응 절차</label>
+              <select id="emergencySelect" name="emergencyType" required>
+                <option value="" disabled selected>비상 상황 선택</option>
+                <option value="fire">화재</option>
+                <option value="fall">낙상</option>
+                <option value="faint">실신</option>
+              </select>
+
+              <input type="file" id="emergencyFile" name="emergencyFile" />
+              <div alt="프로토콜 자료 등록 버튼 컨테이너">
+                <button type="button" id="addEmergencyButton">자료 추가</button>
+                <button type="button" id="previewButton_2">pdf 미리보기</button>
               </div>
-              <!-- 예시입니다 -->
-              <div class="form-group" id="#">
-                <label for="#">부서</label>
-                <select id="#" name="#" required>
-                  <option value="" disabled selected>부서명</option>
-                </select>
-              </div>
-              <button type="submit">가입하기</button>
-            </section>
+            </div>
           </form>
+
+          <!-- ✅ 추가된 자료 비동기 조회 ✅ -->
+          <div id="emergencyListContainer">
+            <h3>추가된 자료 목록</h3>
+            <table>
+              <th class="safetyRule">안전수칙</th>
+              <tr>
+                <td>
+                  <span id="f_safetyRule">(사)smhrd_B공장_안전수칙.pdf</span>
+                </td>
+              </tr>
+              <th class="fire">비상 상황_화재</th>
+              <tr>
+                <td><span id="f_fire"></span></td>
+              </tr>
+              <th class="fall">비상 상황_낙상</th>
+              <tr>
+                <td><span id="f_fall">추락_전도_낙상_대응지침.pdf</span></td>
+              </tr>
+              <th class="faint">비상 상황_실신</th>
+              <tr>
+                <td><span id="f_faint">실신사고_대응지침.pdf</span></td>
+              </tr>
+            </table>
+          </div>
         </div>
       </main>
     </div>

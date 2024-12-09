@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCTV Monitor</title>
+    <title>P03_CCTV Monitor</title>
     <!-- 전역 style -->
     <link
       rel="stylesheet"
@@ -20,71 +20,97 @@
       rel="stylesheet"
       href="/src/main/resources/static/style/CCTV_Monitor.css"
     />
-    <style type="text/css">
-      #secondary-modal {
-        color: black; /* 기본 글씨 색상을 검정으로 설정 */
+
+    <style>
+      .secondary-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.42);
+        z-index: 2000;
       }
 
-      .secondary-modal-content {
-        padding: 20px;
-        background-color: #222; /* 내용 영역 배경 색상 */
-        border-radius: 8px;
-        overflow-y: auto;
-      }
-
-      #secondary-modal table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      #secondary-modal th,
-      #secondary-modal td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-        color: black; /* 테이블 내 글씨 색상을 검정으로 설정 */
-      }
-
-      #secondary-modal th {
-        background-color: #444; /* 테이블 헤더 배경 색상 */
-        color: white; /* 테이블 헤더 글씨 색상 */
-      }
-
-      #secondary-modal .close-secondary-modal #secondary-modal-video {
-        color: black; /* 닫기 버튼 글씨 색상 */
-        font-size: 1.5em;
-        cursor: pointer;
-      }
-
-      .hidden {
+      .secondary-modal.hidden {
         display: none;
       }
 
-      #secondary-modal-video {
-        position: fixed; /* 화면을 기준으로 위치 */
-        top: 50%; /* 화면의 세로 중간 */
-        left: 50%; /* 화면의 가로 중간 */
-        transform: translate(-50%, -50%); /* 중심을 맞추기 위해 이동 */
-        z-index: 9999; /* 다른 요소들보다 위에 위치하도록 더 높은 값으로 설정 */
-        padding: 20px; /* 여백 */
-        width: 100%; /* 모달의 너비를 화면의 %로 설정 (필요에 따라 조정) */
-        max-width: 1000px; /* 최대 너비 설정 */
-      }
-
-      .modal-contents {
+      .secondary-modal .secondary-modal-content {
+        background-color: #34495edc;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        min-width: 700px;
+        max-width: 700px;
+        height: 450px;
         display: flex;
         flex-direction: column;
-        align-items: center; /* 자식 요소를 중앙 정렬 */
         justify-content: center;
-        overflow: hidden; /* 비디오가 모달 영역을 넘어가지 않도록 */
-        position: relative; /* 비디오 위치 조정을 위해 */
-        height: 550px; /* 고정된 높이 설정 (필요에 따라 조정) */
+        align-items: center;
+        animation: fadeIn 0.3s ease;
       }
 
-      #video-player {
-        width: 100%; /* 비디오의 너비를 사각형의 너비에 맞춤 */
-        height: 100%; /* 비디오의 높이를 사각형의 높이에 맞춤 */
-        object-fit: cover; /* 비디오가 영역을 완전히 채우도록 설정 */
+      .secondary-modal .secondary-modal-content h2 {
+        margin-bottom: 7px;
+        border-bottom: 2px solid #1abc9c;
+        padding-bottom: 10px;
+        width: 80%;
+      }
+
+      .secondary-modal
+        .secondary-modal-content
+        article[alt="2차 모달 스크롤 발생"] {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .secondary-modal .secondary-modal-content article table {
+        width: 80%;
+        border: 1px solid whitesmoke;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .secondary-modal .secondary-modal-content article table .th {
+        background-color: #243447;
+        padding: 10px;
+        height: 25px;
+        color: white;
+      }
+
+      .secondary-modal .secondary-modal-content article table .content {
+        height: 35px;
+        color: white;
+      }
+
+      .secondary-modal .secondary-modal-content .close-secondary-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
     </style>
   </head>
@@ -248,7 +274,7 @@
           </div>
 
           <!-- 2차 모달 -->
-          <div id="secondary-modal" class="secondary-modal hidden">
+          <!-- <div id="secondary-modal" class="secondary-modal hidden">
             <div class="secondary-modal-content">
               <span class="close-secondary-modal">&times;</span>
               <h2>2024년 12월 06일</h2>
@@ -287,6 +313,29 @@
                       <span>낙상</span>
                     </td>
                   </tr>
+                </table>
+              </article>
+            </div>
+          </div> -->
+          <!-- =================== 구분선 =================== -->
+          <!-- 2차 모달 -->
+          <div id="secondary-modal" class="secondary-modal hidden">
+            <div class="secondary-modal-content">
+              <span class="close-secondary-modal">&times;</span>
+              <h2 id="modal-title">2024년 12월 06일</h2>
+              <article alt="2차 모달 스크롤 발생">
+                <table>
+                  <thead>
+                    <tr alt="탐지로그 조회 테이블 헤더">
+                      <td class="th">번호</td>
+                      <td class="th">영상 제목</td>
+                      <td class="th">카메라 번호</td>
+                      <td class="th">시간</td>
+                    </tr>
+                  </thead>
+                  <tbody id="list">
+                    <!-- 데이터가 여기에 동적으로 추가됩니다. -->
+                  </tbody>
                 </table>
               </article>
             </div>

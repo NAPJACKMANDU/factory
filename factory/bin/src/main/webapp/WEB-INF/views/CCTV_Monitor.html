@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCTV Monitor</title>
+    <title>P03_CCTV Monitor</title>
     <!-- 전역 style -->
     <link
       rel="stylesheet"
@@ -224,6 +224,26 @@
               </article>
             </div>
           </div>
+          <!-- =================== 구분선 =================== -->
+          <!-- 2차 모달 -->
+          <div id="secondary-modal" class="secondary-modal hidden">
+            <div class="secondary-modal-content">
+              <span class="close-secondary-modal">&times;</span>
+              <table>
+                <thead>
+                  <tr alt="탐지로그 조회 테이블 헤더">
+                    <th class="th">번호</th>
+                    <th class="th">영상 제목</th>
+                    <th class="th">카메라 번호</th>
+                    <th class="th">시간</th>
+                  </tr>
+                </thead>
+                <tbody id="list">
+                  <!-- 여기서 행들이 추가될 예정입니다. -->
+                </tbody>
+              </table>
+            </div>
+          </div>
         </footer>
       </aside>
 
@@ -349,7 +369,7 @@
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
           <div alt="a 컨테이너">
-            <a href="#">연락망</a>
+            <a alt="연락망" href="#">연락망</a>
           </div>
           <div alt="a 컨테이너">
             <a href="#">안전수칙</a>
