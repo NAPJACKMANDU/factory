@@ -1,21 +1,159 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>P02_Join</title>
+    <link rel="stylesheet" href="/style/P03_Join.css" />
+    <style>
+      /* 전체 레이아웃 */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f7f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .signup-container {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+        padding: 30px 25px;
+      }
+
+      h1 {
+        font-size: 26px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #333;
+        outline: none;
+      }
+
+      .form-group span {
+        font-size: 12px;
+        color: red;
+        margin-top: 5px;
+        display: block;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        color: white;
+        background-color: #333;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #000;
+      }
+
+      /* 관리자 및 일반 사용자 선택 디자인 */
+      .role-selection {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+
+      .role-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+        padding: 20px;
+        border: 2px solid #b0b0b0;
+        border-radius: 10px;
+        background-color: #d9d9d9;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"]:checked + .role-option {
+        border-color: #4a4a4a;
+        background-color: #4a4a4a;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 14px;
+        color: #555;
+      }
+
+      footer a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+=======
     <title>회원가입</title>
     <link
       rel="stylesheet"
       href="/style/P03_Join.css"
     />
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div class="signup-container">
+
+      <h1>회원가입</h1>
+
       <h2>Join to SSCC</h2>
+
       <form id="joinForm" action="/joinForm" method="post">
         <div class="form-group">
           <label for="id">아이디</label>
@@ -126,7 +264,31 @@
           });
         },
         error: function () {
-          // alert("회사명을 불러오는 데 실패했습니다.");
+          alert("회사명을 불러오는 데 실패했습니다.");
+        },
+      });
+
+      //아이디 중복 확인
+      document
+        .getElementById("idCheckButton")
+        .addEventListener("click", function () {
+          const id = document.getElementById("id").value;
+          const idCheckMessage = document.getElementById("idCheckMessage");
+
+          if (id.length < 4) {
+            alert("아이디는 최소 4글자 이상이어야 합니다.");
+            idCheckMessage.textContent =
+              "아이디는 최소 4글자 이상이어야 합니다.";
+            idCheckMessage.style.color = "red";
+            return;
+          }
+
+          $.ajax({
+            url: "/api/check-id?id=" + encodeURIComponent(id),
+            method: "GET",
+            success: function (data) {
+
+              // alert("회사명을 불러오는 데 실패했습니다.");
         },
       });
 
@@ -146,7 +308,8 @@
           fetch(`/api/check-id?id=${id}`)
             .then((response) => response.json())
             .then((data) => {
-              if (data.available) {
+
+            if (data.available) {
                 alert("사용 가능한 아이디입니다.");
                 idCheckMessage.textContent = "사용 가능한 아이디입니다.";
                 idCheckMessage.style.color = "green";
@@ -155,13 +318,23 @@
                 idCheckMessage.textContent = "이미 사용 중인 아이디입니다.";
                 idCheckMessage.style.color = "red";
               }
-            })
+
+          },
+            error: function () {
+              alert("아이디 중복 확인 요청에 실패했습니다. 다시 시도해주세요.");
+              idCheckMessage.textContent = "오류가 발생했습니다.";
+              idCheckMessage.style.color = "red";
+            },
+          });
+
+      })
             .catch(() => {
               idCheckMessage.textContent =
                 "오류가 발생했습니다. 다시 시도해주세요.";
               idCheckMessage.style.color = "red";
             });
-        });
+
+      });
 
       // 비밀번호 확인
       document
