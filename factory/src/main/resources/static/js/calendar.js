@@ -298,14 +298,14 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("모달 표시됨"); // 디버그용 로그
   }
 }
-   // 외부 클릭 시 모달 닫기
+/*   // 외부 클릭 시 모달 닫기
       $(document).on("click", function(e) {
           if (!$(e.target).closest("#secondary-modal-video").length) {
               $("#secondary-modal-video").addClass("hidden").removeClass("fade-in");
               $("#video-player")[0].pause(); // 비디오 멈춤
               console.log("외부 클릭으로 모달 닫힘");
           }
-      });
+      });*/
 	  
 	  document.addEventListener("keydown", async (event) => {
 	      if (event.key === "Escape" && event.target.closest("#secondary-modal-video")) {
