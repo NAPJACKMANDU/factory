@@ -225,7 +225,7 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
 								data-video="/video/TN1.mp4">Camera 1</li>
 							<li class="video-item" draggable="true" value="2"
 								data-video="/video/TN2.mp4">Camera 2</li>
-							<li draggable="true" data-img="/imgs/c12.jpg">Camera 8</li>
+							<li draggable="true" data-img="/imgs/c12.jpg">Camera 3</li>
 							<li draggable="true" data-img="/imgs/c12.jpg">Camera 4</li>
 						</ul></li>
 					<li class="category"><span>Category 2</span>
@@ -242,7 +242,8 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
 						<ul class="sub-category">
 						<li class="video-item" draggable="true" value="9"
 								data-video="/video/thon5.mp4">Camera 9</li>
-							<li draggable="true" data-img="/imgs/c15.jpg">Camera 10</li>
+							<li class="video-item" draggable="true" value="10"
+								data-video="/video/thon2.mp4">Camera 10</li>
 							<li draggable="true" data-img="/imgs/c15.jpg">Camera 11</li>
 							<li draggable="true" data-img="/imgs/c16.jpg">Camera 12</li>
 						</ul></li>
