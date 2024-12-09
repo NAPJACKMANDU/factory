@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P06_정보등록</title>
+    <title>P06_Info</title>
     <!-- 전역 style -->
     <!-- 지역 style -->
     <link
@@ -37,7 +37,7 @@
         <!-- 회원 정보 변경 -->
         <div class="mod-container">
           <h2>내 정보 변경</h2>
-          <form id="joinForm" action="/joinForm" method="post">
+          <form id="#" action="#" method="post">
             <div class="form-group">
               <label for="name">이름</label>
               <input
@@ -47,6 +47,16 @@
                 placeholder="이름을 입력해 주세요"
                 required
               />
+            </div>
+
+            <div class="form-group">
+              <label for="#">직위</label>
+              <select id="emergencySelect" name="emergencyType" required>
+                <option value="" disabled selected>직위를 선택하세요</option>
+                <option value="#">직위1</option>
+                <option value="#">직위2</option>
+                <option value="#">직위3</option>
+              </select>
             </div>
 
             <div class="form-group">
@@ -67,23 +77,14 @@
                 </option>
               </select>
             </div>
-            <div class="role-selection">
-              <input type="radio" id="admin" name="role" value="관리자	" />
-              <label for="admin" class="role-option">관리자</label>
-              <input
-                type="radio"
-                id="user"
-                name="role"
-                value="일반 사용자"
-                checked
-              />
-              <label for="user" class="role-option">일반 사용자</label>
+
+            <div class="form-group">
+              <label for="#">비고</label>
+              <input type="text" id="#" name="#" placeholder="비고" required />
             </div>
-            <button type="submit">가입하기</button>
+
+            <button type="submit">등록하기</button>
           </form>
-          <footer>
-            <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
-          </footer>
         </div>
 
         <!-- 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟 -->
@@ -93,14 +94,19 @@
           <h2>안전 사고 대응책</h2>
           <!-- ✅ 자료등록 ✅ -->
           <!--  📢 일반 안전수칙 등록 -->
-          <form id="#_Form" action="#" method="post">
+          <form id="safetyRuleForm" action="#" method="post">
             <div class="form-group">
               <label for="#">안전수칙</label>
-              <input type="file" id="#" name="#" />
-              <!-- 버튼 id 수정 예정 -->
-              <button type="button" id="idCheckButton">pdf 미리보기</button>
+              <input type="file" id="safetyRuleFile" name="safetyRuleFile" />
+              <div alt="프로토콜 자료 등록 버튼 컨테이너">
+                <button type="button" id="addSafetyRuleButton">
+                  자료 추가
+                </button>
+                <button type="button" id="previewButton_1">pdf 미리보기</button>
+              </div>
             </div>
           </form>
+
           <!-- 📢 상황별 비상 대응 절차 등록 -->
           <form id="emergencyForm" action="#" method="post">
             <div class="form-group">
@@ -108,73 +114,46 @@
               <select id="emergencySelect" name="emergencyType" required>
                 <option value="" disabled selected>비상 상황 선택</option>
                 <option value="fire">화재</option>
-                <option value="earthquake">낙상</option>
-                <option value="flood">실신</option>
+                <option value="fall">낙상</option>
+                <option value="faint">실신</option>
               </select>
+
               <input type="file" id="emergencyFile" name="emergencyFile" />
-              <button type="button" id="previewButton">pdf 미리보기</button>
-              <button type="button" id="addEmergencyButton">자료 추가</button>
+              <div alt="프로토콜 자료 등록 버튼 컨테이너">
+                <button type="button" id="addEmergencyButton">자료 추가</button>
+                <button type="button" id="previewButton_2">pdf 미리보기</button>
+              </div>
             </div>
           </form>
 
           <!-- ✅ 추가된 자료 비동기 조회 ✅ -->
           <div id="emergencyListContainer">
             <h3>추가된 자료 목록</h3>
-            <ul id="emergencyList">
-              <!-- 비동기적으로 추가된 자료가 여기에 표시됩니다 -->
-            </ul>
+            <table>
+              <th class="safetyRule">안전수칙</th>
+              <tr>
+                <td>
+                  <span id="f_safetyRule">(사)smhrd_B공장_안전수칙.pdf</span>
+                </td>
+              </tr>
+              <th class="fire">비상 상황_화재</th>
+              <tr>
+                <td><span id="f_fire"></span></td>
+              </tr>
+              <th class="fall">비상 상황_낙상</th>
+              <tr>
+                <td><span id="f_fall">추락_전도_낙상_대응지침.pdf</span></td>
+              </tr>
+              <th class="faint">비상 상황_실신</th>
+              <tr>
+                <td><span id="f_faint">실신사고_대응지침.pdf</span></td>
+              </tr>
+            </table>
           </div>
         </div>
       </main>
     </div>
 
-    <script>
-      $(document).ready(function () {
-        // 비상 대응 절차 자료 추가 버튼 클릭 이벤트
-        $("#addEmergencyButton").on("click", function () {
-          const selectedType = $("#emergencySelect").val();
-          const fileInput = $("#emergencyFile");
-          const file = fileInput.prop("files")[0];
-
-          if (!selectedType || !file) {
-            alert("상황을 선택하고 파일을 업로드해 주세요.");
-            return;
-          }
-
-          // FormData를 사용해 비동기적으로 파일 업로드 처리
-          const formData = new FormData();
-          formData.append("emergencyType", selectedType);
-          formData.append("emergencyFile", file);
-
-          $.ajax({
-            url: "/addEmergencyData", // 서버 업로드 API 경로
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-              // 서버 응답 데이터를 기반으로 목록 업데이트
-              appendEmergencyData(response);
-              alert("자료가 추가되었습니다.");
-            },
-            error: function () {
-              alert("자료 추가에 실패했습니다. 다시 시도해 주세요.");
-            },
-          });
-        });
-
-        // 자료 목록에 새 항목 추가
-        function appendEmergencyData(data) {
-          const listItem = `
-      <li>
-        <strong>상황:</strong> ${data.type}
-        <a href="${data.fileUrl}" target="_blank">파일 다운로드</a>
-      </li>
-    `;
-          $("#emergencyList").append(listItem);
-        }
-      });
-    </script>
     <!-- jQuery -->
     <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
     <!-- scripts -->

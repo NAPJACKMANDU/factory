@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f7f9;
+  background-color: #1d2b36;
   margin: 0;
   padding: 0;
   display: -webkit-box;
@@ -13,34 +13,56 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
 }
 
 .contact-table-container {
   width: 100%;
   max-width: 1200px;
-  background: #ffffff;
+  background: #2c3e50;
   border-radius: 15px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 h1 {
+  color: white;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  width: 65%;
   text-align: center;
-  font-size: 28px;
-  color: #333;
-  margin: 20px 0;
+  border-bottom: 2px solid #1abc9c;
+  font-size: 24px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  border-radius: 5px;
 }
 
 thead {
-  background-color: #4a4a4a;
+  background-color: rgba(11, 12, 12, 0.8470588235);
   color: white;
+  border-radius: 5px;
 }
 
 th,
@@ -48,7 +70,12 @@ td {
   text-align: center;
   padding: 15px;
   font-size: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid #7f8c8d;
+}
+
+td {
+  color: #ddd;
+  background-color: #34495e;
 }
 
 tbody tr:nth-child(even) {
@@ -75,7 +102,7 @@ tbody tr:hover {
   font-size: 14px;
   text-align: center;
   color: white;
-  background-color: #4a4a4a; /* 수정 버튼 기본 색상 */
+  background-color: #1abc9c; /* 수정 버튼 기본 색상 */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -85,7 +112,7 @@ tbody tr:hover {
 }
 
 .add-contact:hover {
-  background-color: #333;
+  background-color: rgba(11, 12, 12, 0.8470588235);
 }
 
 .delete-button {
@@ -94,7 +121,7 @@ tbody tr:hover {
   font-size: 14px;
   text-align: center;
   color: white;
-  background-color: #4a4a4a; /* 삭제 버튼 기본 색상 */
+  background-color: rgba(11, 12, 12, 0.8470588235); /* 삭제 버튼 기본 색상 */
   border: none;
   border-radius: 5px;
   cursor: pointer;
