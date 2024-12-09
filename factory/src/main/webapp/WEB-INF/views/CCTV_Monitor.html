@@ -20,6 +20,73 @@
       rel="stylesheet"
       href="/src/main/resources/static/style/CCTV_Monitor.css"
     />
+    <style type="text/css">
+      #secondary-modal {
+        color: black; /* 기본 글씨 색상을 검정으로 설정 */
+      }
+
+      .secondary-modal-content {
+        padding: 20px;
+        background-color: #222; /* 내용 영역 배경 색상 */
+        border-radius: 8px;
+        overflow-y: auto;
+      }
+
+      #secondary-modal table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      #secondary-modal th,
+      #secondary-modal td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        color: black; /* 테이블 내 글씨 색상을 검정으로 설정 */
+      }
+
+      #secondary-modal th {
+        background-color: #444; /* 테이블 헤더 배경 색상 */
+        color: white; /* 테이블 헤더 글씨 색상 */
+      }
+
+      #secondary-modal .close-secondary-modal #secondary-modal-video {
+        color: black; /* 닫기 버튼 글씨 색상 */
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #secondary-modal-video {
+        position: fixed; /* 화면을 기준으로 위치 */
+        top: 50%; /* 화면의 세로 중간 */
+        left: 50%; /* 화면의 가로 중간 */
+        transform: translate(-50%, -50%); /* 중심을 맞추기 위해 이동 */
+        z-index: 9999; /* 다른 요소들보다 위에 위치하도록 더 높은 값으로 설정 */
+        padding: 20px; /* 여백 */
+        width: 100%; /* 모달의 너비를 화면의 %로 설정 (필요에 따라 조정) */
+        max-width: 1000px; /* 최대 너비 설정 */
+      }
+
+      .modal-contents {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 자식 요소를 중앙 정렬 */
+        justify-content: center;
+        overflow: hidden; /* 비디오가 모달 영역을 넘어가지 않도록 */
+        position: relative; /* 비디오 위치 조정을 위해 */
+        height: 550px; /* 고정된 높이 설정 (필요에 따라 조정) */
+      }
+
+      #video-player {
+        width: 100%; /* 비디오의 너비를 사각형의 너비에 맞춤 */
+        height: 100%; /* 비디오의 높이를 사각형의 높이에 맞춤 */
+        object-fit: cover; /* 비디오가 영역을 완전히 채우도록 설정 */
+      }
+    </style>
   </head>
   <body>
     <div alt="전역 컨테이너" class="container">

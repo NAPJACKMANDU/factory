@@ -68,11 +68,11 @@ main > article[alt="실시간 모니터링 정보&화면 구역"] .M-area.modifi
 main > article[alt="실시간 모니터링 정보&화면 구역"] .M-area .CAM-container {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* Border가 요소 크기에 영향을 미치지 않도록 */
-  border: 5px solid #4a4a4a;
+  border: 5px solid #34495e;
   border-radius: 2px;
   -webkit-box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
           box-shadow: 0 -8px 6px rgba(0, 0, 0, 0.2);
-  background-color: #4a4a4a;
+  background-color: #34495e;
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -124,8 +124,10 @@ main > article[alt="실시간 모니터링 정보&화면 구역"] .M-area.reset-
 }
 main > article[alt="실시간 모니터링 정보&화면 구역"] footer[alt="저장된 로그 조회 구역-하단바"] {
   /* 임의 설정 */
+  background-color: lawngreen;
   background-color: #191919;
   margin: 0;
+  margin-top: 20px;
   padding: 5px;
   margin-left: 5px;
   height: 22.57%;
@@ -497,5 +499,4 @@ top-bar[alt="화면 수 조절 바"] section[alt="화면 수 조절 버튼"] but
 }
 top-bar[alt="화면 수 조절 바"]:hover table div[alt="화면 수 조절 컨테이너"] {
   opacity: 1; /* hover 시 화면 수 조절 컨테이너 표시 */
-}over 시 화면 수 조절 컨테이너 표시 */
 }
