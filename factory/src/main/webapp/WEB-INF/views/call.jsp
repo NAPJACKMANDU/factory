@@ -8,6 +8,8 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P04_Call</title>
+    <link rel="stylesheet" href="/call.css" />
     <title>비상연락망</title>
     <link rel="stylesheet" href="/style/call.css" />
   </head>
