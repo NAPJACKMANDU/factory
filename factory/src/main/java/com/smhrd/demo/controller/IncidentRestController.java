@@ -35,7 +35,6 @@ public class IncidentRestController {
        List<IncidentModel> incident = service.getIncidentDetailsByDate(year, month, day);
        
        session.setAttribute("incident", incident);
-  
        return incident;
    }
    
@@ -46,7 +45,6 @@ public class IncidentRestController {
 	  
 	  List<IncidentModel> incidents =   (List<IncidentModel>) session.getAttribute("incident") ;
 	  FactoryMember member = (FactoryMember) session.getAttribute("member") ;
-	   
 	   
 	  for (IncidentModel incident : incidents) {
 		  if(incident.getCompanyIdx() == member.getCompanyIdx() ) {
@@ -60,7 +58,6 @@ public class IncidentRestController {
   
   @PostMapping("/getVideoPath")
   public ResponseEntity<Map<String, String>> getVideoPath(@RequestParam("incidentIdx") Long incidentiIdx) {
-	  System.out.println("여긴 오나?");
       String videoPath = service.getVideoPathById(incidentiIdx); // ID에 맞는 비디오 경로를 가져오는 서비스 메서드
       Map<String, String> response = new HashMap<>();
       response.put("videoPath", videoPath);
