@@ -1,0 +1,39 @@
+@charset "UTF-8";
+p {
+  color: lightskyblue;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s; /* 부드러운 전환 효과 추가 */
+}
+
+img {
+  border-radius: 15px;
+  height: 60px;
+  width: auto;
+}
+
+button {
+  border: none;
+  background-color: lightgray;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.imgBtns {
+  min-height: 70px;
+  min-width: 70px;
+}
+
+#imgBtn {
+  background-color: white;
+}
+#imgBtn:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s; /* 부드러운 전환 효과 추가 */
+  opacity: 0;
+}
+
+#imgBtn_2 {
+  background-color: whitesmoke;
+  border-radius: 10px;
+}

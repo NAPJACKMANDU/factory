@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCTV Monitor</title>
+    <title>P03_CCTV Monitor</title>
     <!-- 전역 style -->
     <link
       rel="stylesheet"
@@ -20,6 +20,99 @@
       rel="stylesheet"
       href="/src/main/resources/static/style/CCTV_Monitor.css"
     />
+
+    <style>
+      .secondary-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.42);
+        z-index: 2000;
+      }
+
+      .secondary-modal.hidden {
+        display: none;
+      }
+
+      .secondary-modal .secondary-modal-content {
+        background-color: #34495edc;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        min-width: 700px;
+        max-width: 700px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .secondary-modal .secondary-modal-content h2 {
+        margin-bottom: 7px;
+        border-bottom: 2px solid #1abc9c;
+        padding-bottom: 10px;
+        width: 80%;
+      }
+
+      .secondary-modal
+        .secondary-modal-content
+        article[alt="2차 모달 스크롤 발생"] {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .secondary-modal .secondary-modal-content article table {
+        width: 80%;
+        border: 1px solid whitesmoke;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .secondary-modal .secondary-modal-content article table .th {
+        background-color: #243447;
+        padding: 10px;
+        height: 25px;
+        color: white;
+      }
+
+      .secondary-modal .secondary-modal-content article table .content {
+        height: 35px;
+        color: white;
+      }
+
+      .secondary-modal .secondary-modal-content .close-secondary-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
   </head>
   <body>
     <div alt="전역 컨테이너" class="container">
@@ -181,7 +274,7 @@
           </div>
 
           <!-- 2차 모달 -->
-          <div id="secondary-modal" class="secondary-modal hidden">
+          <!-- <div id="secondary-modal" class="secondary-modal hidden">
             <div class="secondary-modal-content">
               <span class="close-secondary-modal">&times;</span>
               <h2>2024년 12월 06일</h2>
@@ -220,6 +313,29 @@
                       <span>낙상</span>
                     </td>
                   </tr>
+                </table>
+              </article>
+            </div>
+          </div> -->
+          <!-- =================== 구분선 =================== -->
+          <!-- 2차 모달 -->
+          <div id="secondary-modal" class="secondary-modal hidden">
+            <div class="secondary-modal-content">
+              <span class="close-secondary-modal">&times;</span>
+              <h2 id="modal-title">2024년 12월 06일</h2>
+              <article alt="2차 모달 스크롤 발생">
+                <table>
+                  <thead>
+                    <tr alt="탐지로그 조회 테이블 헤더">
+                      <td class="th">번호</td>
+                      <td class="th">영상 제목</td>
+                      <td class="th">카메라 번호</td>
+                      <td class="th">시간</td>
+                    </tr>
+                  </thead>
+                  <tbody id="list">
+                    <!-- 데이터가 여기에 동적으로 추가됩니다. -->
+                  </tbody>
                 </table>
               </article>
             </div>
@@ -349,7 +465,7 @@
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
           <div alt="a 컨테이너">
-            <a href="#">연락망</a>
+            <a alt="연락망" href="#">연락망</a>
           </div>
           <div alt="a 컨테이너">
             <a href="#">안전수칙</a>
