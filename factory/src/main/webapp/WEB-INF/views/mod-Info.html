@@ -39,39 +39,6 @@
           <h2>내 정보 변경</h2>
           <form id="joinForm" action="/joinForm" method="post">
             <div class="form-group">
-              <label for="id">아이디</label>
-              <input
-                type="text"
-                id="id"
-                name="id"
-                placeholder="아이디를 입력하세요"
-                required
-              />
-              <span id="idCheckMessage">아이디 중복 확인이 필요합니다.</span>
-              <button type="button" id="idCheckButton">아이디 중복 확인</button>
-            </div>
-            <div class="form-group">
-              <label for="pw">비밀번호</label>
-              <input
-                type="password"
-                id="pw"
-                name="pw"
-                placeholder="비밀번호를 입력하세요"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="pwConfirm">비밀번호 확인</label>
-              <input
-                type="password"
-                id="pwConfirm"
-                name="pwConfirm"
-                placeholder="비밀번호를 다시 입력하세요"
-                required
-              />
-              <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
-            </div>
-            <div class="form-group">
               <label for="name">이름</label>
               <input
                 type="text"
@@ -125,6 +92,7 @@
         <div class="mod-container">
           <h2>안전 사고 대응책</h2>
           <!-- ✅ 자료등록 ✅ -->
+          <!--  📢 일반 안전수칙 등록 -->
           <form id="#_Form" action="#" method="post">
             <div class="form-group">
               <label for="#">안전수칙</label>
@@ -132,91 +100,81 @@
               <!-- 버튼 id 수정 예정 -->
               <button type="button" id="idCheckButton">pdf 미리보기</button>
             </div>
+          </form>
+          <!-- 📢 상황별 비상 대응 절차 등록 -->
+          <form id="emergencyForm" action="#" method="post">
             <div class="form-group">
-              <label for="#">비상 시 초동 대응 절차</label>
-              <input type="file" id="#" name="#" />
-              <!-- 버튼 id 수정 예정 -->
-              <button type="button" id="idCheckButton">pdf 미리보기</button>
+              <label for="emergencySelect">비상 시 초동 대응 절차</label>
+              <select id="emergencySelect" name="emergencyType" required>
+                <option value="" disabled selected>비상 상황 선택</option>
+                <option value="fire">화재</option>
+                <option value="earthquake">낙상</option>
+                <option value="flood">실신</option>
+              </select>
+              <input type="file" id="emergencyFile" name="emergencyFile" />
+              <button type="button" id="previewButton">pdf 미리보기</button>
+              <button type="button" id="addEmergencyButton">자료 추가</button>
             </div>
-            <!-- 여기부터 주석 -->
-            <!-- <div class="form-group">
-              <label for="pw">비밀번호</label>
-              <input
-                type="password"
-                id="pw"
-                name="pw"
-                placeholder="비밀번호를 입력하세요"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="pwConfirm">비밀번호 확인</label>
-              <input
-                type="password"
-                id="pwConfirm"
-                name="pwConfirm"
-                placeholder="비밀번호를 다시 입력하세요"
-                required
-              />
-              <span id="pwCheckMessage">비밀번호가 일치하지 않습니다.</span>
-            </div>
-            <div class="form-group">
-              <label for="name">이름</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="이름을 입력해 주세요"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="phone">전화번호</label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                placeholder="01012345678 형식으로 입력하세요"
-                required
-                />
-              </div> -->
-            <!-- 여기까지 주석 -->
           </form>
 
-          <!-- ✅ 연락망 정보 ✅ -->
-          <form id="#_Form" action="#" method="post">
-            <section>
-              <div class="form-group">
-                <label for="pw">연락망 등록 정보</label>
-                <input type="text" id="#" name="#" placeholder="성명" />
-                <div class="role-selection">
-                  <input type="radio" id="admin" name="role" value="관리자	" />
-                  <label for="admin" class="role-option">관리자</label>
-                  <input
-                    type="radio"
-                    id="user"
-                    name="role"
-                    value="일반 사용자"
-                    checked
-                  />
-                  <label for="user" class="role-option">일반 사용자</label>
-                </div>
-              </div>
-              <!-- 예시입니다 -->
-              <div class="form-group" id="#">
-                <label for="#">부서</label>
-                <select id="#" name="#" required>
-                  <option value="" disabled selected>부서명</option>
-                </select>
-              </div>
-              <button type="submit">가입하기</button>
-            </section>
-          </form>
+          <!-- ✅ 추가된 자료 비동기 조회 ✅ -->
+          <div id="emergencyListContainer">
+            <h3>추가된 자료 목록</h3>
+            <ul id="emergencyList">
+              <!-- 비동기적으로 추가된 자료가 여기에 표시됩니다 -->
+            </ul>
+          </div>
         </div>
       </main>
     </div>
 
+    <script>
+      $(document).ready(function () {
+        // 비상 대응 절차 자료 추가 버튼 클릭 이벤트
+        $("#addEmergencyButton").on("click", function () {
+          const selectedType = $("#emergencySelect").val();
+          const fileInput = $("#emergencyFile");
+          const file = fileInput.prop("files")[0];
+
+          if (!selectedType || !file) {
+            alert("상황을 선택하고 파일을 업로드해 주세요.");
+            return;
+          }
+
+          // FormData를 사용해 비동기적으로 파일 업로드 처리
+          const formData = new FormData();
+          formData.append("emergencyType", selectedType);
+          formData.append("emergencyFile", file);
+
+          $.ajax({
+            url: "/addEmergencyData", // 서버 업로드 API 경로
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              // 서버 응답 데이터를 기반으로 목록 업데이트
+              appendEmergencyData(response);
+              alert("자료가 추가되었습니다.");
+            },
+            error: function () {
+              alert("자료 추가에 실패했습니다. 다시 시도해 주세요.");
+            },
+          });
+        });
+
+        // 자료 목록에 새 항목 추가
+        function appendEmergencyData(data) {
+          const listItem = `
+      <li>
+        <strong>상황:</strong> ${data.type}
+        <a href="${data.fileUrl}" target="_blank">파일 다운로드</a>
+      </li>
+    `;
+          $("#emergencyList").append(listItem);
+        }
+      });
+    </script>
     <!-- jQuery -->
     <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
     <!-- scripts -->
