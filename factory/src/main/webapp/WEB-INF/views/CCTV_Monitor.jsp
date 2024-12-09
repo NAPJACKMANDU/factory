@@ -213,6 +213,81 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
             </table>
           </div>
 
+          <div alt="전역 컨테이너" class="container">
+		<!-- 좌측 사이드바 -->
+		<aside class="left-sidebar">
+			<section alt="카테고리-컨테이너">
+				<h2>Camera Categories</h2>
+				<ul>
+					<li class="category"><span>Category 1</span>
+						<ul class="sub-category">
+							<li class="video-item" draggable="true" value="1"
+								data-video="/video/TN1.mp4">Camera 1</li>
+							<li class="video-item" draggable="true" value="2"
+								data-video="/video/TN2.mp4">Camera 2</li>
+							<li draggable="true" data-img="/imgs/c12.jpg">Camera 8</li>
+							<li draggable="true" data-img="/imgs/c12.jpg">Camera 4</li>
+						</ul></li>
+					<li class="category"><span>Category 2</span>
+						<ul class="sub-category">
+							<li class="video-item" draggable="true" value="5"
+								data-video="/video/TN3.mp4">Camera 5</li>
+							<li class="video-item" draggable="true" value="6"
+								data-video="/video/TARO1.mp4">Camera 6</li>
+							<li draggable="true" data-img="/imgs/category3/img7.png">
+								Camera 7</li>
+							<li draggable="true" data-img="/imgs/c12.jpg">Camera 8</li>
+						</ul></li>
+					<li class="category"><span>Category 3</span>
+						<ul class="sub-category">
+						<li class="video-item" draggable="true" value="9"
+								data-video="/video/thon5.mp4">Camera 9</li>
+							<li draggable="true" data-img="/imgs/c15.jpg">Camera 10</li>
+							<li draggable="true" data-img="/imgs/c15.jpg">Camera 11</li>
+							<li draggable="true" data-img="/imgs/c16.jpg">Camera 12</li>
+						</ul></li>
+					<li class="category"><span>Category 4</span>
+						<ul class="sub-category">
+							<li draggable="true" data-img="/imgs/c12.jpg">Camera 13</li>
+							<li draggable="true" data-img="/imgs/c11.jpg">Camera 14</li>
+							<li draggable="true" data-img="/imgs/c10.jpg">Camera 15</li>
+							<li draggable="true" data-img="/imgs/c9.jpg">Camera 16</li>
+						</ul></li>
+				</ul>
+			</section>
+			<!-- 저장된 로그 조회 구역 -->
+			<footer alt="저장된 로그 조회 구역-하단바">
+				<div class="calendar">
+					<div class="calendar-header">
+						<button id="prev-month" class="arrow small-arrow">◀</button>
+						<span id="current-month"></span>
+						<button id="next-month" class="arrow small-arrow">▶</button>
+					</div>
+					<table class="calendar-table">
+						<thead>
+							<tr class="calendar-weekdays">
+								<th class="weekend">일</th>
+								<th>월</th>
+								<th>화</th>
+								<th>수</th>
+								<th>목</th>
+								<th>금</th>
+								<th class="saturday">토</th>
+							</tr>
+						</thead>
+						<tbody class="calendar-days"></tbody>
+					</table>
+				</div>
+
+				<!-- 모달 -->
+				<div id="modal" class="modal hidden">
+					<div class="modal-content">
+						<span class="close-modal">&times;</span>
+						<h2 id="modal-date">날짜 정보</h2>
+						<div id="modal-data">데이터를 로드 중...</div>
+					</div>
+				</div>
+
           <!-- 모달 -->
           <div id="modal" class="modal hidden">
             <div class="modal-content">
@@ -357,12 +432,19 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
         </section>
 
         <!-- 로그 탐지 사이드 바 -->
+			 <!-- 로그 탐지 사이드 바 -->
         <aside alt="실시간 모니터링 로그 구역-사이드 바">
           <!-- 로그 비우기 -->
           <div alt="로그 비우기 컨테이너" class="log-toggle">
             <button alt="로그 비우기 버튼">🗑️</button>
             <div alt="프로토콜 버튼 컨테이너" id="on-the-case">
               <button alt="신고 문자 발송" id="report">119 신고</button>
+            <!-- 프로토콜 버튼(1) : 상황 종료 -->
+            <div
+              alt="프로토콜 버튼 컨테이너"
+              class="sb-container"
+              id="on-the-case"
+            >
               <button alt="상황 종료" id="stop-blink">상황 종료</button>
             </div>
           </div>
@@ -375,6 +457,12 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
         <!-- 부가기능 탭 -->
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!  -->
+          <!-- 프로토콜 버튼(2) : 119신고 -->
+        </aside>
+        <!-- 부가기능 탭 -->
+        <nav alt="부가기능 탭">
+          <!-- 팝업 animate() Script {location 이동 없음!} -->
+          
           <div alt="a 컨테이너">
             <a href="/call">연락망</a>
           </div>
@@ -386,9 +474,93 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
           </div>
           <div alt="a 컨테이너">
             <a href="#">내 정보</a>
+
+            <a href="#">안전수칙</a>
+          </div>
+          <div alt="a 컨테이너">
+            <a href="#">정보 등록</a>
+
           </div>
         </nav>
       </aside>
+    </div>
+
+    <!-- Protocol modal -->
+    <!-- <div id="protocol-modal" class="secondary-modal hidden">
+      <div class="secondary-modal-content">
+        <span class="close-protocol-modal">&times;</span>
+        <h2><span class="detected">화재</span> 초동 대응 지침</h2>
+        <br />
+        <article alt="프로토콜 모달 스크롤 발생">
+          <table>
+            <tr alt="프로토콜 조회 테이블 헤더">
+              <td class="th"><span>단계</span></td>
+              <td class="th"><span>주요 조치 및 행동 요령</span></td>
+            </tr>
+            <tr alt="프로토콜 조회 테이블 컨텐츠">
+              <td class="content"><span>1단계: 화재 신고</span></td>
+              <td class="content">
+                <span
+                  >- 화재 발생 장소 및 종류를 상세히 119에 신고<br />- 유관기관,
+                  협력업체 등에도 화재 사실 전파</span
+                >
+              </td>
+            </tr>
+            <tr alt="프로토콜 조회 테이블 컨텐츠">
+              <td class="content"><span>2단계: 초기 대응</span></td>
+              <td class="content">
+                <span
+                  >- 자위소방대 운영: 팀별 업무 지시, 초기소화<br />- 화재 사실
+                  전파 및 대피 유도</span
+                >
+              </td>
+            </tr>
+            <tr alt="프로토콜 조회 테이블 컨텐츠">
+              <td class="content"><span>3단계: 피난 유도</span></td>
+              <td class="content">
+                <span
+                  >- 1차 수평대피, 2차 수직대피 원칙<br />- 엘리베이터 금지,
+                  계단 이용 권장<br />- 연기 속 대피 시 낮은 자세 유지</span
+                >
+              </td>
+            </tr>
+            <tr alt="프로토콜 조회 테이블 컨텐츠">
+              <td class="content"><span>4단계: 피난 시 주의사항</span></td>
+              <td class="content">
+                <span
+                  >- 문 닫아 화재 확산 방지<br />- 불길 통과 시 물에 적신 옷,
+                  담요 사용<br />- 대피 중 불안감 최소화 위해 침착하게
+                  행동</span
+                >
+              </td>
+            </tr>
+            <tr alt="프로토콜 조회 테이블 컨텐츠">
+              <td class="content"><span>5단계: 금지 행위</span></td>
+              <td class="content">
+                <span>- 피난 후 건물 재진입 금지<br />- 승강기 사용 금지</span>
+              </td>
+            </tr>
+          </table>
+        </article>
+      </div>
+    </div> -->
+    <!-- <div id="protocol-modal" class="secondary-modal hidden">
+      <div class="secondary-modal-content">
+        <span class="close-protocol-modal">&times;</span>
+        <h2><span class="detected">낙상 초동 대응 지침</h2>
+        <br />
+        <article alt="프로토콜 모달 스크롤 발생">
+          <img
+            src="/src/main/resources/static/imgs/추락 전도 낙상 대응 지침.png"
+            alt=""
+          />
+        </article>
+      </div>
+    </div> -->
+
+    <!-- 119 신고 버튼 -->
+    <div alt="프로토콜 버튼 컨테이너" class="report-container">
+      <button alt="신고 문자 발송" id="report">119 신고</button>
     </div>
 
     <!-- jQuery -->

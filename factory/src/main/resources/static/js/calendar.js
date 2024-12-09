@@ -402,24 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCalendar();
   });
 
-  async function handleDateClick(year, month, day) {
-    const selectedDate = `${year}-${month + 1}-${day}`;
-    if (lastClickedDate === selectedDate) {
-      clickCount++;
-      if (clickCount % 2 === 0) hideModal();
-    } else {
-      lastClickedDate = selectedDate;
-      clickCount = 1;
-      fetchIncidentData();
-    }
-    modalTitle.textContent = `${year}년 ${month + 1}월 ${day}일`;
-    showModal();
-  }
 
-  function showModal() {
-    modal.classList.remove("hidden");
-    modal.classList.add("fade-in");
-  }
 
   function hideModal() {
     modal.classList.add("hidden");
@@ -516,6 +499,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const secondaryModal = document.getElementById("secondary-modal"); // 두 번째 모달
   const closeSecondaryModalButton = document.querySelector(
     ".close-secondary-modal"
+	
   ); // 두 번째 모달 닫기 버튼
 
   // 기존 모달을 클릭하면 두 번째 모달 열기
