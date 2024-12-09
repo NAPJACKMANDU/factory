@@ -1,3 +1,8 @@
+/**
+ * 1. 안전수칙a/대응지침popup 파일 등록
+ * 2. PDF의 url 추출 --> a, popup
+ */
+
 $(document).ready(function () {
   // 비상 대응 안내 문서의 파일명을 출력하는 기능
   $("#addEmergencyButton").click(function () {
@@ -27,9 +32,8 @@ $(document).ready(function () {
   let safetyRuleUrl = null;
   let emergencyFileUrl = null;
 
-  // PDF 파일 URL 추출
+  // PDF 파일 URL 추출 🌟🌟🌟 --> 📢서버엔드포인트 : CCTV모니터 'nav > div > a[alt="연락망"]'의 하이퍼링크에 담길 값!
   $("#addSafetyRuleButton, #addEmergencyButton").click(function () {
-    // 안전수칙 파일 URL 추출
     const safetyRuleFileInput = $("#safetyRuleFile")[0];
     const safetyRuleFile =
       safetyRuleFileInput && safetyRuleFileInput.files
