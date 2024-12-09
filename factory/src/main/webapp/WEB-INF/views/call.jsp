@@ -9,12 +9,23 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>비상연락망</title>
-    <link rel="stylesheet" href="/call.css" />
+    <link rel="stylesheet" href="/style/call.css" />
   </head>
   <body>
+    <!-- <div class="input-form-container">
+      <h2>새 연락처 추가</h2>
+      <div class="input-group">
+        <input type="text" id="name" placeholder="이름" required />
+        <input type="text" id="role" placeholder="직위" required />
+        <input type="text" id="phone" placeholder="전화번호" required />
+        <input type="text" id="note" placeholder="비고" />
+        <button type="button" id="add-contact-btn">추가</button>
+      </div>
+    </div> -->
+
     <form id="call_frm" action="/call" method="Get" style="display: inline">
       <div class="contact-table-container">
-        <h1>비상연락망</h1>
+        <h1>보안팀 비상연락망</h1>
         <table>
           <thead>
             <tr>
@@ -28,45 +39,46 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
             </tr>
           </thead>
           <tbody id="list">
-            <%--
-            <c:forEach items="${allcall}" var="a">
-              <tr id="callall" style="background-color: #f9f9f9">
-                <td>${a.idx}</td>
-                <td>${a.name}</td>
-                <td>${a.role}</td>
-                <td>${a.phone}</td>
-                <td
-                  class="editable"
-                  contenteditable="true"
-                  data-id="${a.idx}"
-                  data-field="note"
+           <c:forEach items="${allcall}" var="a">
+            <tr id="callall" style="background-color: #f9f9f9">
+              <td>${a.idx}</td>
+              <td  class="editable"
+                contenteditable="true"
+                data-id="${a.idx}"
+                data-field="name">${a.name}</td>
+              <td >${a.role}</td>
+              <td  class="editable"
+                contenteditable="true"
+                data-id="${a.idx}"
+                data-field="phone" >${a.phone}</td>
+              <td
+                class="editable"
+                contenteditable="true"
+                data-id="${a.idx}"
+                data-field="note"
+              >
+                ${a.note}
+              </td>
+              <td class="button-cell">
+                <button
+                  type="button"
+                  class="add-contact"
+                  onclick="callbyupdate('${a.idx}')"
                 >
-                  ${a.note}
-                </td>
-                <td class="button-cell">
-                  <button
-                    type="button"
-                    class="add-contact"
-                    onclick="callbyupdate('${a.idx}')"
-                  >
-                    수정
-                  </button>
-                  <button class="add-contact" onclick="callbyupdate(event)">
-                    수정
-                  </button>
-                </td>
-                <td class="button-cell">
-                  <button
-                    type="button"
-                    class="delete-button"
-                    onclick="callbydelete('${a.idx}')"
-                  >
-                    삭제
-                  </button>
-                </td>
-              </tr>
-            </c:forEach>
-            --%>
+                  수정
+                </button>
+              </td>
+              <td class="button-cell">
+                <button
+                  type="button"
+                  class="delete-button"
+                  onclick="callbydelete('${a.idx}')"
+                >
+                  삭제
+                </button>
+              </td>
+            </tr>
+             </c:forEach>
           </tbody>
         </table>
       </div>
