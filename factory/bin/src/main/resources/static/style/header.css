@@ -140,57 +140,8 @@ header nav .vertical-line {
   width: 0.5px;
 }
 
-/* ◼️◼️◼️◼️◼️◼️ 헤더>nav 팝업 컨테이너 ◽🔸 Monitor 페이지, Main 페이지 🔸◽ ◼️◼️◼️◼️◼️◼️ */
-.popup {
-  background-color: #262626; /* 배경색 강제 적용 */
-  color: #fff; /* 텍스트 색상 강제 적용 */
-  border: 1px solid #ccc;
-  padding: 20px;
-  min-height: 150px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  max-height: 400px;
-  width: 350px;
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  position: fixed;
-  top: -100%; /* 화면 위쪽에 숨겨둠 */
-  left: 47%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%); /* 화면 밖 위쪽에 숨김 */
-  text-align: center;
-  z-index: 1000;
-}
-.popup > button {
-  margin-bottom: 15px;
-  background-color: #4b4b4b;
-  border: 1.5px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
-  color: #ccc;
-  font-size: 17px;
-}
-.popup > button:hover {
-  -webkit-box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-.popup .popup-content_container {
-  /* 임의 설정 */
-  padding-top: 3%;
-  text-align: center;
-  border-radius: 15px;
-  height: 33px;
-}
-.popup .popup-content_container > article {
-  /* 임의 설정 */
-  background-color: #4a4a4a;
-}
-
 /* ◽🔸 Main 페이지 (한정) 🔸◽ */
 .h-a-container a {
   text-decoration-line: none;
+}ration-line: none;
 }

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f9;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.contact-table-container {
+  width: 100%;
+  max-width: 1200px;
+  background: #ffffff;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #4a4a4a;
+  color: white;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.editable {
+  cursor: pointer;
+}
+
+.editable:focus {
+  outline: none;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+.add-contact {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  background-color: #4a4a4a; /* 수정 버튼 기본 색상 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.add-contact:hover {
+  background-color: #333;
+}
+
+.delete-button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  background-color: #4a4a4a; /* 삭제 버튼 기본 색상 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c0392b; /* hover 시 어두운 빨간색 */
+}
+
+.button-cell {
+  text-align: center;
+  padding: 10px 0;
+}

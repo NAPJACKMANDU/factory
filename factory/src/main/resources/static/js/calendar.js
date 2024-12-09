@@ -12,78 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastClickedDate = null; // 마지막으로 클릭한 날짜 저장
   let clickCount = 0; // 클릭 횟수 저장
 
-  // 모달을 표시하는 함수 (애니메이션 포함)
-  function showModal() {
-    modal.classList.remove("hidden"); // 모달을 표시 (display: block)
-    modal.classList.add("fade-in"); // 부드러운 등장 애니메이션 추가
-    modal.classList.remove("fade-out"); // 사라짐 애니메이션 제거
-  }
-
-  // 모달을 숨기는 함수 (애니메이션 포함)
-  function hideModal() {
-    modal.classList.add("fade-out"); // 부드러운 사라짐 애니메이션 추가
-    modal.classList.remove("fade-in"); // 등장 애니메이션 제거
-    // 애니메이션 종료 후 숨기기
-    setTimeout(() => {
-      modal.classList.add("hidden"); // display: none 설정
-    }, 300); // CSS 애니메이션 지속 시간 (300ms)과 동일
-  }
-
-  // 날짜별 데이터를 서버에서 받아오는 함수 (백엔드 API 호출)
-  async function fetchDayData(year, month, day) {
-    try {
-      // 11월 30일 클릭 시 특정 메시지 처리
-      if (year === 2024 && month === 11 && day === 6) {
-        modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
-        modalData.textContent = "총 3건의 데이터가 조회 되었습니다.";
-        showModal();
-        return;
-      }
-
-      // 서버에 데이터 요청
-      const response = await fetch(`/api/calendar/${year}/${month + 1}/${day}`);
-      if (!response.ok) throw new Error("데이터를 찾을 수 없습니다.");
-
-      // 응답 데이터 가져오기
-      const data = await response.json();
-
-      // 모달에 데이터 표시
-      modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
-      modalData.textContent = data.details || "데이터가 없습니다.";
-      showModal(); // 모달 표시
-    } catch (error) {
-      modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
-      modalData.textContent = error.message; // 오류 메시지 표시
-      showModal(); // 모달 표시
-    }
-  }
-
-  // 모달 닫기 이벤트 등록
-  document.querySelector(".close-modal").addEventListener("click", () => {
-    hideModal(); // 모달 숨기기
-    lastClickedDate = null; // 마지막 클릭한 날짜 초기화
-    clickCount = 0; // 클릭 횟수 초기화
-  });
-
-  // 날짜 클릭 처리 함수
-  function handleDateClick(year, month, day) {
-    if (lastClickedDate === `${year}-${month + 1}-${day}`) {
-      // 같은 날짜를 클릭했을 때
-      clickCount++;
-      if (clickCount % 2 === 0) {
-        hideModal(); // 짝수 번째 클릭 시 모달 닫기
-        lastClickedDate = null; // 마지막 클릭한 날짜 초기화
-      } else {
-        fetchDayData(year, month, day); // 홀수 번째 클릭 시 데이터 갱신
-      }
-    } else {
-      // 다른 날짜를 클릭했을 때
-      lastClickedDate = `${year}-${month + 1}-${day}`;
-      clickCount = 1; // 클릭 횟수 초기화
-      fetchDayData(year, month, day); // 데이터 가져오기
-    }
-  }
-
+  
   // 달력을 동적으로 렌더링하는 함수
   function renderCalendar() {
     // 달력 클리어
@@ -160,9 +89,251 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCalendar(); // 달력 다시 렌더링
   });
 
+  
+  // 날짜 클릭 처리 함수
+  async function handleDateClick(year, month, day) {
+	
+    const selectedYear = year; // 필요한 경우 추가적인 변수 생성
+	const selectedMonth = month + 1; // 월을 표시할 때는 1월이 1이 되도록 조정
+	const selectedDay = day;
+
+	console.log(selectedYear);
+	console.log(selectedMonth);
+	console.log(selectedDay);
+
+	// JSON 객체 생성
+	const requestBody = {
+	  year: selectedYear,
+	  month: selectedMonth,
+	  day: selectedDay
+	};
+
+	console.log(requestBody);
+	  
+	  // 모달을 표시하는 함수 (애니메이션 포함)
+	  	function showModal() {
+	  	  modal.classList.remove("hidden"); // 모달을 표시 (display: block)
+	  	  modal.classList.add("fade-in"); // 부드러운 등장 애니메이션 추가
+	  	  modal.classList.remove("fade-out"); // 사라짐 애니메이션 제거
+	  	}
+
+	  	// 모달을 숨기는 함수 (애니메이션 포함)
+	  	function hideModal() {
+	  	  modal.classList.add("fade-out"); // 부드러운 사라짐 애니메이션 추가
+	  	  modal.classList.remove("fade-in"); // 등장 애니메이션 제거
+	  	  // 애니메이션 종료 후 숨기기
+	  	  setTimeout(() => {
+	  	    modal.classList.add("hidden"); // display: none 설정
+	  	  }, 300); // CSS 애니메이션 지속 시간 (300ms)과 동일
+	  	}
+
+		async function fetchDayData(year, month, day) {
+		  try {
+		    // 데이터 서버에서 가져오기
+		    const response = await fetch("/calendar", {
+		      method: "POST",
+		      headers: {
+		        "Content-Type": "application/json"
+		      },
+		      body: JSON.stringify({
+		        year: year,
+		        month: month + 1, // 월을 올바르게 처리
+		        day: day
+		      })
+		    });
+
+		    if (!response.ok) {
+		      throw new Error("데이터를 찾을 수 없습니다.");
+		    }
+
+		    const data = await response.json();
+		    console.log("서버에서 받은 데이터:", data);
+
+		   getAllIncident();
+		
+		    // 응답 데이터를 사용하여 모달 데이터 설정
+		    modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
+			if(data != null){
+			modalData.textContent = `${data.length}의 데이터가 있습니다.`
+			console.log(data.detilas)
+			showModal();
+			} else {
+		    modalData.textContent = data.details || "데이터가 없습니다.";
+		    showModal();
+			}
+		  } catch (error) {
+		    modalDate.textContent = `${year}년 ${month + 1}월 ${day}일`;
+		    modalData.textContent = error.message; // 오류 메시지 표시
+		    showModal();
+		  }
+		}
+		
+	  	// 모달 닫기 이벤트 등록
+	  	document.querySelector(".close-modal").addEventListener("click", () => {
+	  	  hideModal(); // 모달 숨기기
+	  	  lastClickedDate = null; // 마지막 클릭한 날짜 초기화
+	  	  clickCount = 0; // 클릭 횟수 초기화
+	  	});
+
+	
+    if (lastClickedDate === `${year}-${month + 1}-${day}`) {
+      // 같은 날짜를 클릭했을 때
+      clickCount++;
+      if (clickCount % 2 === 0) {
+        hideModal(); // 짝수 번째 클릭 시 모달 닫기
+        lastClickedDate = null; // 마지막 클릭한 날짜 초기화
+      } else {
+        fetchDayData(year, month, day); // 홀수 번째 클릭 시 데이터 갱신
+      }
+    } else {
+      // 다른 날짜를 클릭했을 때
+      lastClickedDate = `${year}-${month + 1}-${day}`;
+      clickCount = 1; // 클릭 횟수 초기화
+      fetchDayData(year, month, day); // 데이터 가져오기
+    }
+
+	 
+	function getAllIncident() {
+	   console.log("데이터 가져오기 시작") ;
+	   $.ajax({
+	      url : "/allinsident",
+	      type : "Post",
+	      success : printList,
+	      error : function() {
+	         alert("통신 실패");
+	      }
+	   });
+	}
+
+	
+	// 데이터 출력 함수
+	function printList(data) {
+	    var code = "";
+	    // code += "<h2> "+ `${year}-${month + 1}-${day}` + "</h2>";
+	    for (var i = 0; i < data.length; i++) {
+	     
+		var date = data[i].year + '-'+ data[i].month +'-'+ data[i].day;
+						console.log(date) ;
+		if( date == `${year}-${month + 1}-${day}`){
+	        // 영상 이름 처리
+	        var fullName = data[i].incidentName; // 예: "1733573900572_recorded-video.webm"
+	        var nameParts = fullName.split('_'); // "_"을 기준으로 나누기
+	        var newName = nameParts.length > 1 ? nameParts[1] : fullName; // 이름 변환
+	        newName = newName.replace(/^\d+_/, ''); // 숫자와 밑줄 제거
+	        newName = newName.replace('recorded-', ''); // 'recorded-' 제거
+
+			var createdAt = new Date(data[i].createdAt);
+			var formattedTime = createdAt.toLocaleString('ko-KR', {
+			    year: 'numeric',
+			    month: '2-digit',
+			    day: '2-digit',
+			    hour: '2-digit',
+			    minute: '2-digit',
+			    second: '2-digit',
+			    hour12: false // 24시간 형식
+			});
+			
+	        code += "<tr style='background-color: #f9f9f9;'>";
+	        code += "<td>" + i + "</td>";
+	        code += "<td class='video_name'  data-incident-idx='" + data[i].incidentIdx + "' style='cursor: pointer;'>" + data[i].year + data[i].month + data[i].day + "_" + newName + "</td>";
+	        code += "<td>" + data[i].cameraIdx + "</td>";
+	        code += "<td>" + formattedTime + "</td>";
+	        code += "</tr>";
+		}
+		}
+	    $("#list").html(code); // tbody에 새 코드 삽입
+
+	    // 클릭 이벤트 추가
+		$(".video_name").on("click", function() {
+		    var incidentIdx = $(this).data("incident-idx"); // data-incident-idx 속성 값 가져오기
+		    console.log(incidentIdx); // 콘솔에 incidentIdx 출력
+		    fetchVideoPath(incidentIdx); // 비디오 경로를 가져오는 함수 호출
+		});
+	
+	}
+
+	// 비디오 경로를 서버에서 가져오는 함수
+	function fetchVideoPath(incidentIdx) {
+	    $.ajax({
+	        url: "/getVideoPath",
+	        type: "POST",
+	        data: { incidentIdx: incidentIdx },
+	        success: function(response) {
+				console.log("서버 응답:", response);
+				 console.log(response.videoPath);
+
+				 // 파일 경로에서 파일 이름만 추출 (예: '1733573900572_recorded-video.webm')
+				 const fileName = response.videoPath.split('\\').pop();
+				 const webPath = `/videos/${fileName}`; // 적절한 웹 경로 생성
+
+				 console.log("웹 경로:", webPath); // 디버그용 로그
+				 showVideoModal(webPath); // 웹 경로로 비디오 표시
+	        },
+	        error: function() {
+	            alert("비디오 경로를 가져오는 데 실패했습니다.");
+	        }
+	    });
+	}
+
+
+  function showVideoModal(incidentPath) {
+      console.log(incidentPath); // 디버그용 로그
+
+      // 비디오 컨텐츠 HTML 생성
+      var modalContent = `
+          <div class="video-container">
+              <video id="video-player" controls width="600">
+                  <source id="video-source" src="${incidentPath}" type="video/webm">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+      `;
+
+      // 모달 컨텐츠 삽입
+      $("#secondary-modal-video .modal-contents").html(modalContent);
+      console.log($("#secondary-modal-video .modal-contents").html()); // 삽입된 내용 확인
+
+      // 모달 표시
+      $("#secondary-modal-video").removeClass("hidden").addClass("fade-in");
+      console.log("모달 표시됨"); // 디버그용 로그
+  }
+}
+   // 외부 클릭 시 모달 닫기
+      $(document).on("click", function(e) {
+          if (!$(e.target).closest("#secondary-modal-video").length) {
+              $("#secondary-modal-video").addClass("hidden").removeClass("fade-in");
+              $("#video-player")[0].pause(); // 비디오 멈춤
+              console.log("외부 클릭으로 모달 닫힘");
+          }
+      });
+	  
+	  document.addEventListener("keydown", async (event) => {
+	      if (event.key === "Escape" && event.target.closest("#secondary-modal-video")) {
+	          $("#secondary-modal-video").addClass("hidden").removeClass("fade-in");
+	          $("#video-player")[0].pause(); // 비디오 멈춤
+	          console.log("비디오가 종료되었습니다.");
+	      }
+	  });
+
+
+      // 모달 닫기 버튼 클릭 시 닫기
+      $(".close-secondary-modals").on("click", function() {
+          $("#secondary-modal-video").addClass("hidden").removeClass("fade-in");
+          $("#video-player")[0].pause(); // 비디오 멈춤
+          console.log("모달 닫기 버튼 클릭됨");
+      });
+  
+  
+
+
   // 초기 달력 렌더링
   renderCalendar();
 });
+
+
+
+
+
 
 // ===============================================================
 
@@ -171,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const secondaryModal = document.getElementById("secondary-modal"); // 두 번째 모달
   const closeSecondaryModalButton = document.querySelector(
     ".close-secondary-modal"
+	
   ); // 두 번째 모달 닫기 버튼
 
   // 기존 모달을 클릭하면 두 번째 모달 열기
