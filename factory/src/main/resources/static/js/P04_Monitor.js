@@ -224,59 +224,53 @@ $(document).ready(function () {
     });
 
   // 's' 키로 녹화 시작
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "s" && selectedVideoElement && !isRecording) {
-      if (!mediaRecorder) {
-        console.error("미디어 녹화기가 초기화되지 않았습니다.");
-        return;
-      }
-      mediaRecorder.start();
-      isRecording = true;
-
-      console.log("녹화가 시작되었습니다. 선택된 카메라:", selectedCameraIndex);
-      console.log(mediaRecorder);
-    }
-  });
-
   document.addEventListener("keydown", async (event) => {
-    if (event.key === "e" && mediaRecorder && isRecording) {
-      mediaRecorder.stop();
-      mediaRecorder.onstop = async () => {
-        console.log("녹화가 종료되었습니다.");
+	    if (event.key === "e" && mediaRecorder && isRecording) {
+	      mediaRecorder.stop();
+	      
+	      // 먼저 recordedChunks가 비어 있지 않은지 확인
+	      if (recordedChunks.length === 0) {
+	        console.error("녹화된 데이터가 없습니다.");
+	        return;
+	      }
 
-        const blob = new Blob(recordedChunks, { type: "video/webm" });
-        const formData = new FormData();
+	      mediaRecorder.onstop = async () => {
+	        console.log("녹화가 종료되었습니다.");
 
-        formData.append("file", blob, "recorded-video.webm");
+	        const blob = new Blob(recordedChunks, { type: "video/webm" });
+	        const formData = new FormData();
 
-        // 선택된 카메라 인덱스를 추가
-        if (selectedCameraIndex) {
-          formData.append("cameraIndex", selectedCameraIndex);
-        } else {
-          console.error("선택된 카메라 인덱스가 없습니다.");
-          return;
-        }
+	        formData.append("file", blob, "recorded-video.webm");
 
-        try {
-          const response = await fetch("/videos/upload", {
-            method: "POST",
-            body: formData, 
-          });
+	        // 선택된 카메라 인덱스를 추가
+	        if (selectedCameraIndex) {
+	          formData.append("cameraIndex", selectedCameraIndex);
+	        } else {
+	          console.error("선택된 카메라 인덱스가 없습니다.");
+	          return;
+	        }
 
-          if (response.ok) {
-            console.log("동영상이 성공적으로 업로드되었습니다.");
-          } else {
-            console.error("동영상 업로드에 실패했습니다.", response.statusText);
-          }
-        } catch (error) {
-          console.error("동영상 업로드 중 오류가 발생했습니다:", error);
-        }
+	        try {
+	          const response = await fetch("/videos/upload", {
+	            method: "POST",
+	            body: formData,
+	          });
 
-        recordedChunks = [];
-        isRecording = false;
-      };
-    }
-  });
+	          if (response.ok) {
+	            console.log("동영상이 성공적으로 업로드되었습니다.");
+	          } else {
+	            console.error("동영상 업로드에 실패했습니다.", response.statusText);
+	          }
+	        } catch (error) {
+	          console.error("동영상 업로드 중 오류가 발생했습니다:", error);
+	        }
+
+	        recordedChunks = [];
+	        isRecording = false;
+	      };
+	    }
+	});
+
   selectedCameraIndex = null; // 업로드 후 선택 초기화
 
   // #cam-sel 버튼 클릭 시 제외 처리

@@ -1,4 +1,3 @@
-/*
 document.addEventListener("DOMContentLoaded", () => {
   const calendarDays = document.querySelector(".calendar-days"); // 날짜를 표시할 tbody
   const modal = document.getElementById("modal"); // 모달 창
@@ -331,185 +330,10 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCalendar();
 });
 
-*/
 
-document.addEventListener("DOMContentLoaded", () => {
-  const calendarDays = document.querySelector(".calendar-days");
-  const modal = document.getElementById("secondary-modal");
-  const closeModalButton = document.querySelector(".close-secondary-modal");
-  const listContainer = document.getElementById("list");
-  const modalTitle = document.getElementById("modal-title");
-  const currentMonthElement = document.getElementById("current-month");
-  const prevMonthButton = document.getElementById("prev-month");
-  const nextMonthButton = document.getElementById("next-month");
 
-  let currentYear = 2024;
-  let currentMonth = 11;
-  let lastClickedDate = null;
-  let clickCount = 0;
 
-  // 달력을 렌더링하는 함수
-  function renderCalendar() {
-    calendarDays.innerHTML = "";
-    currentMonthElement.textContent = `${currentYear}년 ${currentMonth + 1}월`;
 
-    const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-    let dayOfWeek = firstDayOfMonth;
-    let row = document.createElement("tr");
-
-    for (let i = 0; i < dayOfWeek; i++) {
-      const emptyCell = document.createElement("td");
-      row.appendChild(emptyCell);
-    }
-
-    for (let day = 1; day <= daysInMonth; day++) {
-      const cell = document.createElement("td");
-      cell.textContent = day;
-      if (dayOfWeek % 7 === 0) cell.classList.add("weekend");
-      if (dayOfWeek % 7 === 6) cell.classList.add("saturday");
-
-      cell.addEventListener("click", () =>
-        handleDateClick(currentYear, currentMonth, day)
-      );
-      row.appendChild(cell);
-      dayOfWeek++;
-
-      if (dayOfWeek % 7 === 0) {
-        calendarDays.appendChild(row);
-        row = document.createElement("tr");
-      }
-    }
-
-    if (row.children.length > 0) calendarDays.appendChild(row);
-  }
-
-  prevMonthButton.addEventListener("click", () => {
-    if (currentMonth === 0) {
-      currentMonth = 11;
-      currentYear--;
-    } else {
-      currentMonth--;
-    }
-    renderCalendar();
-  });
-
-  nextMonthButton.addEventListener("click", () => {
-    if (currentMonth === 11) {
-      currentMonth = 0;
-      currentYear++;
-    } else {
-      currentMonth++;
-    }
-    renderCalendar();
-  });
-
-  async function handleDateClick(year, month, day) {
-    const selectedDate = `${year}-${month + 1}-${day}`;
-    if (lastClickedDate === selectedDate) {
-      clickCount++;
-      if (clickCount % 2 === 0) hideModal();
-    } else {
-      lastClickedDate = selectedDate;
-      clickCount = 1;
-      fetchIncidentData();
-    }
-    modalTitle.textContent = `${year}년 ${month + 1}월 ${day}일`;
-    showModal();
-  }
-
-  function showModal() {
-    modal.classList.remove("hidden");
-    modal.classList.add("fade-in");
-  }
-
-  function hideModal() {
-    modal.classList.add("hidden");
-    modal.classList.remove("fade-in");
-  }
-
-  async function fetchIncidentData() {
-    try {
-      const response = await fetch("/allinsident", { method: "POST" });
-      if (!response.ok) throw new Error("데이터 로드 실패");
-      const data = await response.json();
-      updateTable(data);
-    } catch (error) {
-      console.error("에러 발생:", error.message);
-    }
-  }
-
-  function updateTable(data) {
-    let tableRows = "";
-    data.forEach((incident, index) => {
-      const formattedDate = new Date(incident.createdAt).toLocaleString(
-        "ko-KR",
-        {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        }
-      );
-
-      tableRows += `
-        <tr class="content">
-          <td>${index + 1}</td>
-          <td class="video_name" data-incident-idx="${
-            incident.incidentIdx
-          }" style="cursor: pointer;">
-            ${incident.incidentName}
-          </td>
-          <td>${incident.cameraIdx}</td>
-          <td>${formattedDate}</td>
-        </tr>`;
-    });
-    listContainer.innerHTML = tableRows;
-
-    document.querySelectorAll(".video_name").forEach((element) => {
-      element.addEventListener("click", () => {
-        const incidentIdx = element.dataset.incidentIdx;
-        fetchVideoPath(incidentIdx);
-      });
-    });
-  }
-
-  async function fetchVideoPath(incidentIdx) {
-    try {
-      const response = await fetch("/getVideoPath", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ incidentIdx }),
-      });
-
-      if (!response.ok) throw new Error("비디오 경로 로드 실패");
-      const { videoPath } = await response.json();
-      showVideoModal(videoPath);
-    } catch (error) {
-      console.error("비디오 경로 에러:", error.message);
-    }
-  }
-
-  function showVideoModal(videoPath) {
-    const modalContent = `
-      <div class="video-container">
-        <video id="video-player" controls width="600">
-          <source src="${videoPath}" type="video/webm" />
-          브라우저가 비디오 태그를 지원하지 않습니다.
-        </video>
-      </div>`;
-    document.querySelector("#secondary-modal-video .modal-contents").innerHTML =
-      modalContent;
-    document.querySelector("#secondary-modal-video").classList.remove("hidden");
-  }
-
-  closeModalButton.addEventListener("click", hideModal);
-  renderCalendar();
-});
 
 // ===============================================================
 
@@ -518,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const secondaryModal = document.getElementById("secondary-modal"); // 두 번째 모달
   const closeSecondaryModalButton = document.querySelector(
     ".close-secondary-modal"
+	
   ); // 두 번째 모달 닫기 버튼
 
   // 기존 모달을 클릭하면 두 번째 모달 열기

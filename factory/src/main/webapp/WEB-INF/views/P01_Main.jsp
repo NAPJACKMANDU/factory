@@ -22,24 +22,16 @@ pageEncoding="UTF-8" isELIgnored="false"%>
           <form action="/Main" method="get">
             <button alt="P001_Main으로 이동" type="submit">
               <!-- <button alt="임의설정"> -->
-<<<<<<< HEAD
-<<<<<<< HEAD
               <img alt="로고 이미지" src="/imgs/Logo.jpg" />
-=======
-=======
+
 
               <img alt="로고 이미지" src="/imgs/Logo.jpg" />
 
->>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
               <img
                 alt="로고 이미지"
                 src="/imgs/Logo.jpg"
               />
-<<<<<<< HEAD
->>>>>>> 22b9fc5e95c2344b7fc52b7ac10f156658eef2bb
-=======
 
->>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
             </button>
           </form>
         </section>
@@ -94,30 +86,16 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 
     <!-- jQuery -->
     <script src="/js/jquery-3.6.0.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.scrolly.min.js"></script>
     <script src="/js/jquery.scrollex.min.js"></script>
     <script src="/js/skel.min.js"></script>
     <script src="/js/util.js"></script>
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
    <script src="/js/jquery.min.js"></script>
                <script src="/js/jquery.scrolly.min.js"></script>
                <script src="/js/jquery.scrollex.min.js"></script>
                <script src="/js/skel.min.js"></script>
                <script src="/js/util.js"></script> 
-<<<<<<< HEAD
->>>>>>> 22b9fc5e95c2344b7fc52b7ac10f156658eef2bb
-=======
->>>>>>> 9839deea048ffee172ac97bbb79f8f574bffccbf
 
     <!-- Scripts -->
     <script src="/js/P01_Main.js"></script>
