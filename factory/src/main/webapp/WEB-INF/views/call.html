@@ -8,7 +8,27 @@
     <link rel="stylesheet" href="/src/main/resources/static/style/call.css" />
   </head>
   <body>
-    <!-- <div class="input-form-container">
+    <!-- view -->
+    <div alt="call-container" id="globals-container">
+      <!-- header -->
+      <header alt="헤더">
+        <!-- 부가기능 탭 -->
+        <nav alt="부가기능 탭">
+          <div alt="a 컨테이너">
+            <a href="#" style="font-size: 11.8pt">CCTV모니터</a>
+          </div>
+          <div class="vertical-line"></div>
+          <div alt="a 컨테이너">
+            <a href="#" style="font-size: 11.8pt">안전수칙</a>
+          </div>
+          <div class="vertical-line"></div>
+
+          <div alt="a 컨테이너">
+            <a href="#" style="font-size: 11.8pt">정보 등록</a>
+          </div>
+        </nav>
+      </header>
+      <!-- <div class="input-form-container">
       <h2>새 연락처 추가</h2>
       <div class="input-group">
         <input type="text" id="name" placeholder="이름" required />
@@ -19,58 +39,60 @@
       </div>
     </div> -->
 
-    <form id="call_frm" action="/call" method="Get" style="display: inline">
-      <div class="contact-table-container">
-        <h1>보안팀 비상연락망</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>이름</th>
-              <th>직위</th>
-              <th>전화번호</th>
-              <th>비고</th>
-              <th>수정</th>
-              <th>삭제</th>
-            </tr>
-          </thead>
-          <tbody id="list">
-            <tr id="callall" style="background-color: #f9f9f9">
-              <td>${a.idx}</td>
-              <td>${a.name}</td>
-              <td>${a.role}</td>
-              <td>${a.phone}</td>
-              <td
-                class="editable"
-                contenteditable="true"
-                data-id="${a.idx}"
-                data-field="note"
-              >
-                ${a.note}
-              </td>
-              <td class="button-cell">
-                <button
-                  type="button"
-                  class="add-contact"
-                  onclick="callbyupdate('${a.idx}')"
+      <form id="call_frm" action="/call" method="Get" style="display: inline">
+        <div class="contact-table-container">
+          <h1>보안팀 비상연락망</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>직위</th>
+                <th>전화번호</th>
+                <th>비고</th>
+                <th>수정</th>
+                <th>삭제</th>
+              </tr>
+            </thead>
+            <tbody id="list">
+              <tr id="callall" style="background-color: #f9f9f9">
+                <td>${a.idx}</td>
+                <td>${a.name}</td>
+                <td>${a.role}</td>
+                <td>${a.phone}</td>
+                <td
+                  class="editable"
+                  contenteditable="true"
+                  data-id="${a.idx}"
+                  data-field="note"
                 >
-                  수정
-                </button>
-              </td>
-              <td class="button-cell">
-                <button
-                  type="button"
-                  class="delete-button"
-                  onclick="callbydelete('${a.idx}')"
-                >
-                  삭제
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </form>
+                  ${a.note}
+                </td>
+                <td class="button-cell">
+                  <button
+                    type="button"
+                    class="add-contact"
+                    onclick="callbyupdate('${a.idx}')"
+                  >
+                    수정
+                  </button>
+                </td>
+                <td class="button-cell">
+                  <button
+                    type="button"
+                    class="delete-button"
+                    onclick="callbydelete('${a.idx}')"
+                  >
+                    삭제
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+
     <script src="/src/main/resources/static/js/call.js"></script>
   </body>
 </html>

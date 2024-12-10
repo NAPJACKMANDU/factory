@@ -117,6 +117,8 @@ main form section[alt="로그인 버튼 컨테이너"] button {
 }
 main form section[alt="로그인 페이지 a태그 컨테이너"] {
   /* 임의 설정 */
+  background-color: aqua;
+  margin-top: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -129,9 +131,6 @@ main form section[alt="로그인 페이지 a태그 컨테이너"] * {
 }
 main form section[alt="로그인 페이지 a태그 컨테이너"] a {
   /* 임의설정 */
-  font-weight: 400;
-  font-size: smaller;
-}*/
   font-weight: 400;
   font-size: smaller;
 }
