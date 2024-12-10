@@ -46,9 +46,8 @@ public class FactoryMemberController {
 		} else {
 			return "redirect:/" ;
 		}
-		
+	
 	}
-
 	
 	@GetMapping("/call")
 	public String AllCallbord(Model model) {

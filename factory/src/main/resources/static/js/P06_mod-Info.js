@@ -3,6 +3,39 @@
  * 2. PDF의 url 추출 --> a, popup
  */
 
+
+ // 비밀번호 확인
+      document
+        .getElementById("pwConfirm")
+        .addEventListener("input", function () {
+          const pw = document.getElementById("if_pw").value;
+          const pwConfirm = document.getElementById("pwConfirm").value;
+          const message = document.getElementById("pwCheckMessage");
+          message.style.display = pw === pwConfirm ? "none" : "block";
+        });
+
+
+function update(event) {
+    event.preventDefault(); // 기본 폼 제출 방지
+
+    let infofrm = $('#info_frm').serialize(); // 폼 데이터 직렬화
+    let idx = $('#info_idx').val(); // hidden input에서 idx 가져오기
+    console.log(infofrm);
+
+    $.ajax({
+        url: "update/" + idx,
+        type: "PATCH",
+        data: infofrm,
+        success: function(response) {
+            console.log(response); // 성공 메시지 출력
+            window.location.href = "/CCTV_Monitor"; // 성공 시 페이지 이동
+        },
+        error: function() {
+            alert("통신 실패");
+        }
+    });
+}
+   
 $(document).ready(function () {
   // 비상 대응 안내 문서의 파일명을 출력하는 기능
   $("#addEmergencyButton").click(function () {

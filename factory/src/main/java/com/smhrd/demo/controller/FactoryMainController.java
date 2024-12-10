@@ -35,4 +35,9 @@ public class FactoryMainController {
 		return "P00_findAccount" ;
 	}
 	
+	@GetMapping("/modInfo")
+	public String modInfo() {
+		return "/mod_Info" ;
+	}
+	
 }
