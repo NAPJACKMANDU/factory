@@ -6,6 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>P02_Join</title>
     <link rel="stylesheet" href="/style/P03_Join.css" />
     <style>
@@ -137,11 +138,22 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         text-decoration: underline;
       }
     </style>
+=======
+    <title>회원가입</title>
+    <link
+      rel="stylesheet"
+      href="/style/P03_Join.css"
+    />
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div class="signup-container">
+
       <h1>회원가입</h1>
+
+      <h2>Join to SSCC</h2>
+
       <form id="joinForm" action="/joinForm" method="post">
         <div class="form-group">
           <label for="id">아이디</label>
@@ -275,7 +287,29 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             url: "/api/check-id?id=" + encodeURIComponent(id),
             method: "GET",
             success: function (data) {
-              if (data.available) {
+
+              // alert("회사명을 불러오는 데 실패했습니다.");
+        },
+      });
+
+      // 아이디 중복 확인
+      document
+        .getElementById("idCheckButton")
+        .addEventListener("click", function () {
+          const id = document.getElementById("id").value;
+          const idCheckMessage = document.getElementById("idCheckMessage");
+          if (id.length < 4) {
+            alert("아이디는 최소 4글자 이상이어야 합니다.");
+            idCheckMessage.textContent =
+              "아이디는 최소 4글자 이상이어야 합니다.";
+            idCheckMessage.style.color = "red";
+            return;
+          }
+          fetch(`/api/check-id?id=${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+
+            if (data.available) {
                 alert("사용 가능한 아이디입니다.");
                 idCheckMessage.textContent = "사용 가능한 아이디입니다.";
                 idCheckMessage.style.color = "green";
@@ -284,14 +318,23 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 idCheckMessage.textContent = "이미 사용 중인 아이디입니다.";
                 idCheckMessage.style.color = "red";
               }
-            },
+
+          },
             error: function () {
               alert("아이디 중복 확인 요청에 실패했습니다. 다시 시도해주세요.");
               idCheckMessage.textContent = "오류가 발생했습니다.";
               idCheckMessage.style.color = "red";
             },
           });
-        });
+
+      })
+            .catch(() => {
+              idCheckMessage.textContent =
+                "오류가 발생했습니다. 다시 시도해주세요.";
+              idCheckMessage.style.color = "red";
+            });
+
+      });
 
       // 비밀번호 확인
       document

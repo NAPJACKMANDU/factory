@@ -93,7 +93,7 @@ tbody tr:hover {
 .editable:focus {
   outline: none;
   border: 1px solid #000;
-  background-color: #fff;
+  background-color: rgb(64, 128, 128);
 }
 
 .add-contact {

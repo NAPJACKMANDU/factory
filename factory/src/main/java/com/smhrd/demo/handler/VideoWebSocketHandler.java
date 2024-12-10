@@ -33,13 +33,14 @@ public class VideoWebSocketHandler extends BinaryWebSocketHandler {
             if (!s.getId().equals(session.getId())) {
             	try {
             		s.sendMessage(new BinaryMessage(imageData));  // 다른 클라이언트로 비디오 데이터 전송
-                    System.out.println("청크를 보내는 세션 및 크기: " + s.getId()+ "," +imageData.length);
+                    //System.out.println("청크를 보내는 세션 및 크기: " + s.getId()+ "," +imageData.length);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
+    
 
     // WebSocket 연결이 닫힐 때
     @Override
