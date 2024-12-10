@@ -44,15 +44,9 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
            <c:forEach items="${allcall}" var="a">
             <tr id="callall" style="background-color: #f9f9f9">
               <td>${a.idx}</td>
-              <td  class="editable"
-                contenteditable="true"
-                data-id="${a.idx}"
-                data-field="name">${a.name}</td>
-              <td >${a.role}</td>
-              <td  class="editable"
-                contenteditable="true"
-                data-id="${a.idx}"
-                data-field="phone" >${a.phone}</td>
+              <td>${a.name}</td>
+              <td>${a.role}</td>
+              <td>${a.phone}</td>
               <td
                 class="editable"
                 contenteditable="true"

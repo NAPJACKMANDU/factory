@@ -403,7 +403,7 @@
             <a href="#">안전수칙</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">정보 등록</a>
+            <a href="/modInfo">정보 등록</a>
           </div>
         </nav>
       </aside>
