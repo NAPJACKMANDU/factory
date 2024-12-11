@@ -22,7 +22,7 @@
     />
 
     <style>
-      .secondary-modal {
+      /* .secondary-modal {
         position: fixed;
         top: 0;
         left: 0;
@@ -111,7 +111,7 @@
           opacity: 1;
           transform: scale(1);
         }
-      }
+      } */
     </style>
   </head>
   <body>
@@ -124,12 +124,24 @@
             <li class="category">
               <span>Category 1</span>
               <ul class="sub-category">
+                <!-- 비디오 -->
                 <li
+                  class="video-item"
                   draggable="true"
-                  data-img="/src/main/resources/static/imgs/category1/img1.png"
+                  value="1"
+                  data-video="C:\Users\smhrd\Desktop\fall.mp4"
                 >
                   Camera 1
                 </li>
+                <li
+                  class="video-item"
+                  draggable="true"
+                  value="2"
+                  data-video="/video/TN1.mp4"
+                >
+                  Camera 2*
+                </li>
+                <!-- 비디오 -->
                 <li
                   draggable="true"
                   data-img="/src/main/resources/static/imgs/category1/img2.png"
@@ -274,51 +286,6 @@
           </div>
 
           <!-- 2차 모달 -->
-          <!-- <div id="secondary-modal" class="secondary-modal hidden">
-            <div class="secondary-modal-content">
-              <span class="close-secondary-modal">&times;</span>
-              <h2>2024년 12월 06일</h2>
-              <br />
-              <article alt="2차 모달 스크롤 발생">
-                <table>
-                  <tr alt="탐지로그 조회 테이블 헤더">
-                    <td class="th">
-                      <span>시간</span>
-                    </td>
-                    <td class="th">
-                      <span>탐지 내용</span>
-                    </td>
-                  </tr>
-                  <tr alt="탐지로그 조회 테이블 컨텐츠">
-                    <td class="content">
-                      <span> [21:31]</span>
-                    </td>
-                    <td class="content">
-                      <span>낙상</span>
-                    </td>
-                  </tr>
-                  <tr alt="탐지로그 조회 테이블 컨텐츠">
-                    <td class="content">
-                      <span> [21:31]</span>
-                    </td>
-                    <td class="content">
-                      <span>낙상</span>
-                    </td>
-                  </tr>
-                  <tr alt="탐지로그 조회 테이블 컨텐츠">
-                    <td class="content">
-                      <span> [21:31]</span>
-                    </td>
-                    <td class="content">
-                      <span>낙상</span>
-                    </td>
-                  </tr>
-                </table>
-              </article>
-            </div>
-          </div> -->
-          <!-- =================== 구분선 =================== -->
-          <!-- 2차 모달 -->
           <div id="secondary-modal" class="secondary-modal hidden">
             <div class="secondary-modal-content">
               <span class="close-secondary-modal">&times;</span>
@@ -335,6 +302,7 @@
                   </thead>
                   <tbody id="list">
                     <!-- 데이터가 여기에 동적으로 추가됩니다. -->
+                     
                   </tbody>
                 </table>
               </article>
@@ -396,7 +364,7 @@
             <span class="camera-number">16번</span>
           </div>
         </div>
-        <!-- <temp class="temp">
+        <temp class="temp">
           //탐지 대상 지정
           <div alt="탐지대상드롭다운" class="blink-controls">
             <label for="targetId">이상 탐지 대상 선택</label>
@@ -426,7 +394,7 @@
               이상 발생
             </button>
           </div>
-        </temp> -->
+        </temp>
       </main>
 
       <!-- 우측 사이드바 -->
