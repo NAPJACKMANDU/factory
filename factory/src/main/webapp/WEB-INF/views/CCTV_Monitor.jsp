@@ -400,7 +400,7 @@
             <a alt="연락망" href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">안전수칙</a>
+            <a href="/SaftyRules">안전수칙</a>
           </div>
           <div alt="a 컨테이너">
             <a href="/modInfo">정보 등록</a>

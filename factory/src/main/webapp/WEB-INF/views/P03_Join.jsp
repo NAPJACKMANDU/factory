@@ -215,7 +215,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </select>
         </div>
         <div class="role-selection">
-          <input type="radio" id="admin" name="role" value="관리자	" />
+          <input type="radio" id="admin" name="role" value="관리자" />
           <label for="admin" class="role-option">관리자</label>
           <input
             type="radio"

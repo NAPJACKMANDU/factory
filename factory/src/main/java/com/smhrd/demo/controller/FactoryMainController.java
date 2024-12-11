@@ -39,5 +39,7 @@ public class FactoryMainController {
 	public String modInfo() {
 		return "/mod_Info" ;
 	}
+
+	
 	
 }
