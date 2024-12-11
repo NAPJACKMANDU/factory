@@ -817,13 +817,20 @@ footer .modal.fade-out {
   width: 80%;
   text-align: center;
 }
-.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table .th {
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table #list {
+  /* 임의 설정 */
+}
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table #list .th {
   background-color: #243447;
   border-radius: 3px;
   padding: 10px;
   height: 25px;
 }
-.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table .content {
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table #list tr,
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table #list td {
+  /* 임의 설정 */
+}
+.secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table #list .content {
   height: 35px;
 }
 .secondary-modal .secondary-modal-content .close-secondary-modal {

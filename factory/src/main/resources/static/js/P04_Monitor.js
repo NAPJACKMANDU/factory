@@ -125,6 +125,7 @@ let mediaRecorder;
 let recordedChunks = [];
 let isRecording = false; // 녹화 상태 확인
 let selectedCameraIdx = null;
+let maxCount;
 
 $(document).ready(function () {
   let isExpanded = false; // 확장 상태 확인
@@ -202,6 +203,8 @@ $(document).ready(function () {
 
           $(".CAM-container").each(function () {
             const camId = $(this).attr("id");
+            console.log("camId  :  " + camId);
+
             if (!excludedCameras.has(camId)) {
               $(this).show().css({
                 position: "static",
@@ -260,7 +263,7 @@ $(document).ready(function () {
         try {
           const response = await fetch("/videos/upload", {
             method: "POST",
-            body: formData, 
+            body: formData,
           });
 
           if (response.ok) {
@@ -453,8 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-;
-
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --5 'addLog' --> '.log-tuple이 append 되는 이벤트' / 'logData' --> 발생한 로그를 서버에 전송 */
 
@@ -735,15 +736,14 @@ $(document).ready(function () {
     $targetDisplay.text(cameraLabels.join(", "));
   }
 
-    // 동영상 자동 재생 유지
-	$("video").each(function () {
-	  this.muted = true; // 비디오의 소리 제거
-	  this.play().catch((error) => {
-	    console.error("자동 재생이 차단되었습니다:", error);
-	  });
-	});
-
+  // 동영상 자동 재생 유지
+  $("video").each(function () {
+    this.muted = true; // 비디오의 소리 제거
+    this.play().catch((error) => {
+      console.error("자동 재생이 차단되었습니다:", error);
+    });
   });
+});
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)' */
