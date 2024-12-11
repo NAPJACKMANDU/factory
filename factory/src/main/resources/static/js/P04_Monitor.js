@@ -1,7 +1,6 @@
 /*
---0 ➡️➡️➡️'CAM-container' 이상•연기 AI탐지 --> '탐지 화면 프레이밍+깜빡임' && '프로토콜 버튼' 활성화 이벤트
---1 '로그 토글 버튼' 클릭 --> '.log-tuple이 on/off' 이벤트
---2 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트
+--1 ➡️➡️➡️'CAM-container' 이상•연기 AI탐지 --> '탐지 화면 프레이밍+깜빡임' && '프로토콜 버튼' 활성화 이벤트
+--2 '로그 토글 버튼' 클릭 --> '.log-tuple이 on/off' 이벤트
 --3 '헤더 버튼' 클릭 --> header의 자손 button 클릭 시 팝업창 띄우기 이벤트  
 --4 'CAM-container' 영상 새로고침 때마다 자동재생(네트워크 무관)
 --5 ➡️➡️➡️'addLog' --> '.log-tuple이 append 되는 이벤트'
@@ -14,7 +13,7 @@
 */
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --0 'CAM-container' 이상•연기 AI탐지 --> '탐지 화면 프레이밍+깜빡임' && '프로토콜 버튼' 활성화 이벤트 */
+/* --1 'CAM-container' 이상•연기 AI탐지 --> '탐지 화면 프레이밍+깜빡임' && '프로토콜 버튼' 활성화 이벤트 */
 
 // AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
 $(document).ready(function () {
@@ -100,7 +99,7 @@ $(document).ready(function () {
 });
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --1 '로그 토글' 버튼 클릭 --> '.log-tuple이 on/off' 이벤트 */
+/* --2 '로그 토글' 버튼 클릭 --> '.log-tuple이 on/off' 이벤트 */
 
 // let clickCount = 0;
 // $(function () {
@@ -116,232 +115,6 @@ $(document).ready(function () {
 //     }
 //   });
 // });
-
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --2 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트 */
-
-let selectedVideoElement = null; // 현재 선택된 비디오 요소
-let mediaRecorder;
-let recordedChunks = [];
-let isRecording = false; // 녹화 상태 확인
-let selectedCameraIdx = null;
-let maxCount;
-
-$(document).ready(function () {
-  let isExpanded = false; // 확장 상태 확인
-  let expandedElement = null; // 확대된 CAM-container 추적
-  let pressTimer; // 클릭 시간 확인을 위한 타이머 변수
-  const excludedCameras = new Set(); // 화면 제외된 CAM-container 저장
-
-  //드래그 이벤트로 카메라 선택
-  $(".video-item").on("dragstart", function (e) {
-    // 드래그된 요소의 value 속성 값을 가져옴
-    selectedCameraIndex = $(this).attr("value");
-    e.originalEvent.dataTransfer.setData("text/plain", selectedCameraIndex);
-    console.log("카메라 :", selectedCameraIndex);
-  });
-
-  $(".CAM-container")
-    .on("mousedown", function (event) {
-      const $this = $(this);
-
-      // 마우스 좌클릭인지 확인 (event.button === 0)
-      if (event.button === 0) {
-        pressTimer = setTimeout(() => {
-          pressTimer = null;
-        }, 300);
-      }
-    })
-    .on("mouseup", function (event) {
-      if (event.button !== 0) return;
-
-      if (pressTimer) {
-        clearTimeout(pressTimer);
-
-        const $MArea = $(".M-area");
-        const $clickedItem = $(this);
-
-        if (!isExpanded) {
-          $MArea.css({ display: "block", width: "100%" });
-
-          $clickedItem
-            .addClass("expanded")
-            .css({
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%) scale(1.5)",
-              zIndex: 10,
-            })
-            .siblings(".CAM-container")
-            .filter(function () {
-              const camId = $(this).attr("id");
-              return !excludedCameras.has(camId);
-            })
-            .hide();
-
-          $("body").css("overflow", "hidden");
-
-          // 클릭된 CAM-container에서 기존 비디오 요소를 참조
-          selectedVideoElement = $clickedItem.find("video")[0];
-          if (selectedVideoElement) {
-            const stream = selectedVideoElement.captureStream();
-            mediaRecorder = new MediaRecorder(stream);
-
-            mediaRecorder.ondataavailable = (e) => {
-              if (e.data.size > 0) {
-                recordedChunks.push(e.data);
-              }
-            };
-          } else {
-            console.error("비디오 요소를 찾을 수 없습니다.");
-          }
-
-          isExpanded = !isExpanded;
-        } else {
-          $MArea.css({ display: "grid", width: "99%" });
-
-          $(".CAM-container").each(function () {
-            const camId = $(this).attr("id");
-            console.log("camId  :  " + camId);
-
-            if (!excludedCameras.has(camId)) {
-              $(this).show().css({
-                position: "static",
-                top: "auto",
-                left: "auto",
-                transform: "scale(1)",
-                Index: 1,
-              });
-            }
-          });
-
-          $clickedItem.removeClass("expanded");
-          $("body").css("overflow", "");
-          isExpanded = !isExpanded;
-        }
-      }
-    })
-    .on("mouseleave", function () {
-      clearTimeout(pressTimer);
-    });
-
-  // 's' 키로 녹화 시작
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "s" && selectedVideoElement && !isRecording) {
-      if (!mediaRecorder) {
-        console.error("미디어 녹화기가 초기화되지 않았습니다.");
-        return;
-      }
-      mediaRecorder.start();
-      isRecording = true;
-
-      console.log("녹화가 시작되었습니다. 선택된 카메라:", selectedCameraIndex);
-      console.log(mediaRecorder);
-    }
-  });
-
-  document.addEventListener("keydown", async (event) => {
-    if (event.key === "e" && mediaRecorder && isRecording) {
-      mediaRecorder.stop();
-      mediaRecorder.onstop = async () => {
-        console.log("녹화가 종료되었습니다.");
-
-        const blob = new Blob(recordedChunks, { type: "video/webm" });
-        const formData = new FormData();
-
-        formData.append("file", blob, "recorded-video.webm");
-
-        // 선택된 카메라 인덱스를 추가
-        if (selectedCameraIndex) {
-          formData.append("cameraIndex", selectedCameraIndex);
-        } else {
-          console.error("선택된 카메라 인덱스가 없습니다.");
-          return;
-        }
-
-        try {
-          const response = await fetch("/videos/upload", {
-            method: "POST",
-            body: formData,
-          });
-
-          if (response.ok) {
-            console.log("동영상이 성공적으로 업로드되었습니다.");
-          } else {
-            console.error("동영상 업로드에 실패했습니다.", response.statusText);
-          }
-        } catch (error) {
-          console.error("동영상 업로드 중 오류가 발생했습니다:", error);
-        }
-
-        recordedChunks = [];
-        isRecording = false;
-      };
-    }
-  });
-  selectedCameraIndex = null; // 업로드 후 선택 초기화
-
-  // #cam-sel 버튼 클릭 시 제외 처리
-  // $("#cam-sel").on("click", function () {
-  //   isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
-
-  //   // 제외 처리
-  //   $(".CAM-container").each(function () {
-  //     const $this = $(this);
-  //     const camId = $this.attr("id");
-
-  //     if ($this.css("border-color") === "rgb(0, 128, 0)") {
-  //       // 녹색 border인 CAM-container만 제외
-  //       excludedCameras.add(camId);
-  //       $this.fadeOut(300, function () {
-  //         $this.css({
-  //           border: "5px solid #4a4a4a", // 기본 border 복원
-  //           display: "none",
-  //         });
-  //       });
-  //     }
-  //   });
-  // });
-
-  // #cam-all 버튼 클릭 시 모든 CAM-container 표시
-  // $("#cam-all").on("click", function () {
-  //   // 🌟 모든 화면 다시 표시
-  //   excludedCameras.clear(); // 제외된 화면 목록 초기화
-  //   $(".CAM-container").fadeIn(300, function () {
-  //     $(this).css({
-  //       border: "5px solid #4a4a4a", // 기본 border 복원
-  //     });
-  //   });
-  //   isCamSelClicked = false; // 초기 상태로 복구
-  // });
-
-  // 새로고침 시 제외 상태 유지
-  $(window).on("load", function () {
-    if (!isCamSelClicked) {
-      // 🌟 #cam-sel 클릭 전 상태 유지
-      $(".CAM-container").css({
-        border: "5px solid #4a4a4a", // 기본 border 복원
-      });
-    } else {
-      // 🌟 #cam-sel 클릭 후, 제외된 화면 숨기기
-      $(".CAM-container").each(function () {
-        const camId = $(this).attr("id");
-        if (excludedCameras.has(camId)) {
-          $(this).hide();
-        }
-      });
-    }
-  });
-
-  // 초기 상태 설정: 확대/축소 이벤트가 제외된 화면에는 영향을 미치지 않도록
-  $(".CAM-container").each(function () {
-    const camId = $(this).attr("id");
-    if (excludedCameras.has(camId)) {
-      $(this).hide(); // 제외된 화면 숨기기
-    }
-  });
-});
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --3 '헤더 버튼' 클릭 --> header의 자손 button 클릭 시 팝업창 띄우기 이벤트  */
