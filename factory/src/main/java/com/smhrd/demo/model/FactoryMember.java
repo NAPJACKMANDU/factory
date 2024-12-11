@@ -40,6 +40,7 @@ public class FactoryMember {
 	@UpdateTimestamp
 	private Timestamp created_at; // 생성 일자S
 
+	@Column(nullable = false)
 	private int companyIdx; // 회사 식별자
 
 	@Column(nullable = false)

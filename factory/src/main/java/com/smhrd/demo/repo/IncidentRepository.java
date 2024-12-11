@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.smhrd.demo.model.IncidentModel;
 
 @Repository
-public interface IncidentRepository  extends JpaRepository<IncidentModel, Long>{
+public interface IncidentRepository extends JpaRepository<IncidentModel, Long>{
 
 	boolean existsByClipIdx(Long clipIdx);
 
