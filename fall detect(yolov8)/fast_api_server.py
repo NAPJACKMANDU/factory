@@ -16,6 +16,35 @@ import json
 # FastAPI 앱 생성
 app = FastAPI()
 
+websocket_connection = None  # 전역 변수로 웹소켓 연결을 저장
+
+# 웹소켓 연결 유지
+async def maintain_websocket():
+    global websocket_connection
+    try:
+        # 웹소켓 연결을 처음 한번만 시도
+        websocket_connection = await websockets.connect('ws://172.30.1.54:8095/res')
+        print("웹소켓 연결됨.")
+        while True:
+            await asyncio.sleep(3600)  # 연결을 계속 유지
+    except Exception as e:
+        print(f"웹소켓 연결 오류: {e}")
+
+async def send_res_bool(res):
+    global websocket_connection
+    if websocket_connection is None:
+        print("웹소켓 연결이 열리지 않았습니다.")
+        return
+
+    try:
+        # Boolean 값을 JSON 형식으로 변환
+        message = json.dumps({"result": res})
+        await websocket_connection.send(message)
+        print(f"낙상 결과 전송 성공: {message}")
+    except Exception as e:
+        print(f"웹소켓 전송 오류: {e}")
+
+
 @app.websocket("/signal")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -45,7 +74,7 @@ async def send_frame():
         print("오류: 웹캡을 열 수 없습니다.")
         return
 
-    fps = 10  # 목표 FPS
+    fps =   10# 목표 FPS
     delay = 1 / fps
 
     try:
@@ -82,12 +111,13 @@ async def send_frame():
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
-CONFIDENCE_THRESHOLD = 0.3  # Confidence threshold 낮추기
+CONFIDENCE_THRESHOLD = 0.5  # Confidence threshold 낮추기
 GREEN = (0, 255, 0)
 WHITE = (255, 255, 255)
 
 #model = YOLO('fall_det_1.pt')
-model = YOLO('yolov8n-pose.pt')
+model = YOLO('yolo11n-pose.pt')
+#model = YOLO('yolov8n-pose.pt')
 import collections
 
 # 이전 20초 데이터를 유지할 deque
@@ -133,8 +163,7 @@ lock = Lock()
 
 # 낙상 결과를 전송하는 비동기 함수
 
-
-async def send_res_bool(res):
+""" async def send_res_bool(res):
     uri = 'ws://172.30.1.54:8095/res'
     try:
         print(f"웹소켓 연결 시도: {uri}")
@@ -144,7 +173,7 @@ async def send_res_bool(res):
             await websocket.send(message)
             print(f"낙상 결과 전송 성공: {message}")
     except Exception as e:
-        print(f"웹소켓 연결 중 오류 발생: {e}")
+        print(f"웹소켓 연결 중 오류 발생: {e}") """
 
 # detect 함수 수정
 def detect(cap):
@@ -219,6 +248,7 @@ def run_fastapi():
 
 async def main():
     threading.Thread(target=run_fastapi, daemon=True).start()
+    asyncio.create_task(maintain_websocket())
     await send_frame()
 
 if __name__ == "__main__":
