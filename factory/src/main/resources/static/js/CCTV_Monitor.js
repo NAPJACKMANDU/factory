@@ -1,3 +1,20 @@
+/**
+ * --💡 CCTV_Monitor.js ◼️◼️◼️◼️◼️
+ *
+ * --1 드래그 앤 드롭
+ * --2 우클릭 시 드롭존 초기화
+ * --3 드래그 앤 드롭 및 레이아웃 옵션
+ * --4 이상 탐지 로그 자동 추가
+ * --5 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기
+ * --6 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
+ * --7 119신고 + 상황 종료 버튼 활성화
+ * --8 비상 대응 지침 브라우저 팝업
+ */
+
+// ==========================================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --1 드래그 앤 드롭 */
+
 document.addEventListener("DOMContentLoaded", () => {
   // 드래그 가능한 항목 선택
   const items = document.querySelectorAll(".sub-category li");
@@ -163,7 +180,10 @@ document.addEventListener("DOMContentLoaded", () => {
     //    });
     // --------------------------------------------------------------
 
-    // 우클릭 시 드롭존 초기화
+    // ==========================================================
+    /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+    /* --2 우클릭 시 드롭존 초기화 */
+
     zone.addEventListener("contextmenu", (e) => {
       e.preventDefault(); // 기본 우클릭 메뉴 방지
       const existingNumber = zone.querySelector(".camera-number");
@@ -212,42 +232,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ==========================================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --11 드래그 앤 드롭 및 레이아웃 옵션 */
+/* --3 드래그 앤 드롭 및 레이아웃 옵션 */
+
 $(document).ready(function () {
-  // 드래그 앤 드롭
+  // Layout 설정의 최대 카메라 수 저장
+  let maxCount = 4; // 초기값: 4개의 카메라 (grid-4 레이아웃)
+
+  // 💡 드래그 앤 드롭 이벤트 설정
   $(".CAM-container").draggable({
-    revert: "invalid",
-    zIndex: 100,
+    revert: "invalid", // 잘못된 드롭 위치에 놓으면 원래 위치로 돌아감
+    zIndex: 100, // 드래그 중인 요소가 다른 요소 위에 표시되도록 설정
   });
 
   $("#category-list .category").droppable({
-    accept: ".CAM-container",
+    accept: ".CAM-container", // 드롭 가능한 대상 설정
     drop: function (event, ui) {
-      const droppedItem = ui.draggable;
-      $(this).append(droppedItem);
+      const droppedItem = ui.draggable; // 드롭된 CAM-container 가져오기
+      $(this).append(droppedItem); // 현재 카테고리에 추가
     },
   });
 
-  // 레이아웃 옵션
+  // 💡 레이아웃 변경 버튼 클릭 이벤트 설정
   $(".layout-btn").on("click", function () {
-    const layout = $(this).data("layout");
-    const $Marea = $(".M-area");
+    const layout = $(this).data("layout"); // 버튼에 지정된 레이아웃 값 가져오기
+    const $Marea = $(".M-area"); // 레이아웃이 적용될 영역 선택
 
+    // 레이아웃에 따라 grid 설정 및 maxCount 값 변경
     if (layout === "grid-4") {
       $Marea.css("grid-template-columns", "repeat(4, 1fr)");
+      maxCount = 4; // 4개 카메라 허용
     } else if (layout === "grid-2") {
       $Marea.css("grid-template-columns", "repeat(2, 1fr)");
+      maxCount = 2; // 2개 카메라 허용
     } else if (layout === "grid-1") {
       $Marea.css("grid-template-columns", "1fr");
+      maxCount = 1; // 1개 카메라 허용
     }
+
+    // 선택한 레이아웃 값과 maxCount를 콘솔에 출력 (디버깅용)
+    console.log("선택된 레이아웃:", layout);
+    console.log("최대 카메라 수:", maxCount);
   });
+
+  // 💡 maxCount 값을 반환하는 함수 (다른 스크립트에서 사용 가능)
+  window.getMaxCount = function () {
+    return maxCount;
+  };
 });
 
 // ==========================================================
-
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --6 이상 탐지 로그 자동 추가 */
-/* --7 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
+/* --4 이상 탐지 로그 자동 추가 */
+/* --5 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
 
 $(document).ready(function () {
   /**
@@ -291,9 +327,6 @@ $(document).ready(function () {
     // 부드러운 전환 애니메이션 적용
     newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
 
-    // 로그 상태에 따라 토글 버튼 상태 변경
-    updateLogToggleButton();
-
     // 🌟 addLog 실행 시 휴지통 버튼 표시
     $trashButton.fadeIn(300);
 
@@ -317,19 +350,6 @@ $(document).ready(function () {
         console.error("로그 저장 실패:", error);
       },
     });
-  }
-
-  /**
-   * 로그 상태에 따라 로그 토글 버튼 이모지 변경
-   */
-  function updateLogToggleButton() {
-    const logCount = $(".log-tuple").length;
-    const newEmoji = logCount > 0 ? "✅" : "🔕";
-    $('button[alt="로그 토글 버튼"]')
-      .fadeOut(200, function () {
-        $(this).text(newEmoji);
-      })
-      .fadeIn(200);
   }
 
   // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
@@ -395,8 +415,9 @@ $(document).ready(function () {
 });
 
 // ==============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --6 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용 */
 
-// AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
 $(document).ready(function () {
   let blinkInterval = null; // 깜빡임 제어 변수
   let warningTriggered = false; // #btn-warning 클릭 상태 확인
@@ -483,6 +504,8 @@ $(document).ready(function () {
 });
 
 // ==============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --7 119신고 + 상황 종료 버튼 활성화 */
 
 $(document).ready(function () {
   const $reportContainer = $(".report-container"); // 신고 컨테이너
@@ -551,42 +574,8 @@ $(document).ready(function () {
 });
 
 // ==============================================
-
-$(document).ready(function () {
-  const $protocolModal = $("#protocol-modal"); // Protocol modal
-  const $closeProtocolModal = $(".close-protocol-modal"); // 닫기 버튼
-
-  // Protocol modal 열기 함수
-  function showProtocolModal() {
-    $protocolModal.removeClass("hidden").fadeIn(300);
-  }
-
-  // Protocol modal 닫기 함수
-  function hideProtocolModal() {
-    $protocolModal.fadeOut(300, function () {
-      $protocolModal.addClass("hidden");
-    });
-  }
-
-  // #blink-start-danger 버튼 클릭 시 Protocol modal 표시
-  $("#blink-start-danger").on("click", function () {
-    showProtocolModal();
-  });
-
-  // Protocol modal 닫기 버튼 클릭 이벤트
-  $closeProtocolModal.on("click", function () {
-    hideProtocolModal();
-  });
-
-  // Protocol modal 외부 영역 클릭 시 닫기
-  $protocolModal.on("click", function (event) {
-    if ($(event.target).is("#protocol-modal")) {
-      hideProtocolModal();
-    }
-  });
-});
-
-// ===============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --8 비상 대응 지침 브라우저 팝업 */
 
 $(document).ready(function () {
   /**
