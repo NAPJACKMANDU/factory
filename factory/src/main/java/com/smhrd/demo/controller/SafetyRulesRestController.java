@@ -26,13 +26,10 @@ public class SafetyRulesRestController {
 	SafetyRulesService service ;
 	
 	
-	@GetMapping("/SaftyRules")
-	public List<SafetyRulesModel> getAllCall(Model model) {
-		return service.getAllSafetyRules() ;
-		 
-		 
-	}
-	
+		@GetMapping("/SaftyRules")
+		public List<SafetyRulesModel> getAllCall(Model model) {
+			return service.getAllSafetyRules() ;
+		}
 	
 	@PostMapping("/SafetyForm")
 	public SafetyRulesModel SafetyRulesUpdate(@RequestBody SafetyRulesModel safetyRule, HttpSession session) {

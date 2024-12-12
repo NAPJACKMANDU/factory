@@ -100,8 +100,11 @@ $(document).ready(function () {
         console.log("데이터 가져오기 시작");
         $.ajax({
             url: "/SaftyRules",
-            type: "Post",
-            success: printList(data),
+            type: "Get",
+            success:  function(data) {
+            	console.log(data);
+                printList(data);
+            },
             error: function() {
                 alert("통신 실패");
             }

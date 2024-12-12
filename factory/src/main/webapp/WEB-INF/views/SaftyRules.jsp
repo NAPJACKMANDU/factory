@@ -49,21 +49,14 @@
         <caption>수칙 테이블</caption>
         <br>
         <thead>
-        
             <tr>
-            <input type = "hidden" id = "sr_idx" value = "${member.companyIdx}">
-                <th class = "f_fire" name = "sr_title">수칙 제목</th>
-                <th class = "sr_desc" name = "sr_desc">수칙 분류</th>
-                <th class = "sr_date" name = "created_at">수칙 등록일자</th>
+                <input type="hidden" id="sr_idx" value="${member.companyIdx}">
+                <th class="f_fire" name="sr_title">수칙 제목</th>
+                <th class="sr_desc" name="sr_desc">수칙 분류</th>
+                <th class="sr_date" name="created_at">수칙 등록일자</th>
             </tr>
         </thead>
-       <tbody id="list">
-            <tr>
-	                <td>예시 제목 1</td>
-	                <td>예시 분류 1</td>
-	                <td>2024-12-11</td>
-            </tr>
-           
+        <tbody id="list">
         </tbody>
     </table>
 </body>
