@@ -226,7 +226,7 @@ def detect(cap):
         # 낙상 신호 전송
         asyncio.create_task(send_res_bool(fall_detected))
 
-    # 낙상 후 20초 저장
+    # 낙상 후 10초 저장
     if is_saving:
         frames_to_save.append(frame)
         if len(frames_to_save) >= BUFFER_SIZE:
