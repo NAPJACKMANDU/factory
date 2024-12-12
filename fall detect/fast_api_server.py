@@ -107,7 +107,59 @@ async def send_frame():
         cap.release()
 #############################################
 
+import MySQLdb
 
+# MySQL 서버에 연결
+
+
+def save_db(file_name):
+    # 커서 생성
+
+    conn = MySQLdb.connect(
+    host='project-db-campus.smhrd.com',
+    user='seocho_DCX_DB_p3_3',
+    passwd='smhrd3',
+    db='seocho_DCX_DB_p3_3',
+    port=3312  # 포트 번호 추가
+)
+    cursor = conn.cursor()
+
+    # 파라미터화된 쿼리 실행
+    sql_query = """
+        INSERT INTO tb_clip ( 
+            clip_name,
+            clip_size, 
+            camera_idx, 
+            created_at, 
+            clip_path, 
+            company_idx, 
+            clip_ext
+        ) VALUES (%s, %s ,%s, NOW(6), %s, %s, %s)
+    """
+    data = (
+        f'{file_name}',  # clip_name
+        0, #clip_size
+        1,  # camera_idx
+        fr'C:\Users\smhrd\Desktop\Spring\factory\fall detect\saved_videos\{file_name}',  # clip_path
+        1,  # company_idx
+        '.webm'  # clip_ext
+    )
+
+    try:
+        # 쿼리 실행
+        cursor.execute(sql_query, data)
+        # 변경사항 커밋
+        conn.commit()
+        print("Data inserted successfully.")
+    except MySQLdb.Error as e:
+        print("Error while inserting data:", e)
+    finally:
+        # 연결과 커서 닫기
+        cursor.close()
+        conn.close()
+
+
+###################################################
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
@@ -132,24 +184,25 @@ import os
 from datetime import datetime
 
 def save_video(frames, fps=10):
-    """프레임 목록을 MP4로 저장"""
+    """프레임 목록을 webm로 저장"""
     if not frames:
         print("저장할 프레임이 없습니다.")
         return
 
     # 현재 스크립트와 동일한 위치에 저장 디렉토리 생성
     script_directory = os.path.dirname(os.path.abspath(__file__))
-    save_directory = os.path.join(script_directory, "saved_videos")
+    save_directory = os.path.join(script_directory, "../factory/src/main/resources/static/videos")
     os.makedirs(save_directory, exist_ok=True)
 
     # 파일명 생성
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"fall_detected_{current_time}.mp4"
+    filename = f"fall_detected_{current_time}.webm"
+    save_db(filename)
     path = os.path.join(save_directory, filename)
 
     # 영상 저장
     height, width, _ = frames[0].shape
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # MP4 코덱
+    fourcc = cv2.VideoWriter_fourcc(*'VP80')  # MP4 코덱
     out = cv2.VideoWriter(path, fourcc, fps, (width, height))
 
     for frame in frames:
@@ -222,7 +275,7 @@ def detect(cap):
     # 낙상 감지 처리
     if fall_detected and not is_saving:
         is_saving = True
-        frames_to_save = list(frame_buffer)  # 이전 20초 데이터 복사
+        frames_to_save = list(frame_buffer)  # 이전 10초 데이터 복사
         # 낙상 신호 전송
         asyncio.create_task(send_res_bool(fall_detected))
 
