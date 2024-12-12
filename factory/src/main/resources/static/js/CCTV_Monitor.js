@@ -236,10 +236,26 @@ document.addEventListener("DOMContentLoaded", () => {
 /* --3 드래그 앤 드롭 및 레이아웃 옵션 */
 
 $(document).ready(function () {
-  // Layout 설정의 최대 카메라 수 저장
-  let maxCount = 4; // 초기값: 4개의 카메라 (grid-4 레이아웃)
+  let maxCount = 2; // 초기 열 수 (grid-4 레이아웃)
+  let rowCount = 2; // 초기 행 수
 
-  // 💡 드래그 앤 드롭 이벤트 설정
+  /**
+   * 💡 행(rowCount)과 열(maxCount)을 업데이트하는 함수
+   * - 현재 CAM-container 개수를 기준으로 행(rowCount)을 동적으로 계산
+   * - maxCount는 현재 레이아웃 설정에 따라 변경됨
+   */
+  function updateCounts() {
+    const totalItems = $(".CAM-container").length; // 현재 화면에 있는 CAM-container 개수
+    rowCount = Math.ceil(totalItems / maxCount); // 총 항목 수를 열 수로 나눈 뒤 올림하여 행 수 계산
+    console.log("Updated maxCount:", maxCount);
+    console.log("Updated rowCount:", rowCount);
+  }
+
+  /**
+   * 💡 드래그 앤 드롭 이벤트 설정
+   * - CAM-container를 드래그 가능하게 설정
+   * - category-list의 category에 드롭 가능하게 설정
+   */
   $(".CAM-container").draggable({
     revert: "invalid", // 잘못된 드롭 위치에 놓으면 원래 위치로 돌아감
     zIndex: 100, // 드래그 중인 요소가 다른 요소 위에 표시되도록 설정
@@ -250,10 +266,15 @@ $(document).ready(function () {
     drop: function (event, ui) {
       const droppedItem = ui.draggable; // 드롭된 CAM-container 가져오기
       $(this).append(droppedItem); // 현재 카테고리에 추가
+      updateCounts(); // 드롭 후 행(rowCount) 및 열(maxCount) 정보 업데이트
     },
   });
 
-  // 💡 레이아웃 변경 버튼 클릭 이벤트 설정
+  /**
+   * 💡 레이아웃 변경 버튼 클릭 이벤트 설정
+   * - grid-4, grid-2, grid-1 레이아웃으로 전환
+   * - maxCount를 변경하고 updateCounts를 호출하여 rowCount도 동기화
+   */
   $(".layout-btn").on("click", function () {
     const layout = $(this).data("layout"); // 버튼에 지정된 레이아웃 값 가져오기
     const $Marea = $(".M-area"); // 레이아웃이 적용될 영역 선택
@@ -270,18 +291,25 @@ $(document).ready(function () {
       maxCount = 1; // 1개 카메라 허용
     }
 
+    updateCounts(); // 레이아웃 변경 후 행(rowCount) 및 열(maxCount) 정보 업데이트
+
     // 선택한 레이아웃 값과 maxCount를 콘솔에 출력 (디버깅용)
     console.log("선택된 레이아웃:", layout);
     console.log("최대 카메라 수:", maxCount);
   });
 
-  // 💡 maxCount 값을 반환하는 함수 (다른 스크립트에서 사용 가능)
-  window.getMaxCount = function () {
-    return maxCount;
-  };
+  /**
+   * 💡 전역 함수로 maxCount와 rowCount 제공
+   * - 다른 스크립트에서 레이아웃 정보를 활용할 수 있도록 함
+   */
+  window.getMaxCount = () => maxCount;
+  window.getRowCount = () => rowCount;
+
+  // 페이지 로드 시 초기 updateCounts 호출
+  updateCounts();
 });
 
-// ==========================================================
+// ======================================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --4 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트 */
 
@@ -453,38 +481,38 @@ $(document).ready(function () {
   selectedCameraIndex = null; // 업로드 후 선택 초기화
 
   // #cam-sel 버튼 클릭 시 제외 처리
-  // $("#cam-sel").on("click", function () {
-  //   isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
+  $("#cam-sel").on("click", function () {
+    isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
 
-  //   // 제외 처리
-  //   $(".CAM-container").each(function () {
-  //     const $this = $(this);
-  //     const camId = $this.attr("id");
+    // 제외 처리
+    $(".CAM-container").each(function () {
+      const $this = $(this);
+      const camId = $this.attr("id");
 
-  //     if ($this.css("border-color") === "rgb(0, 128, 0)") {
-  //       // 녹색 border인 CAM-container만 제외
-  //       excludedCameras.add(camId);
-  //       $this.fadeOut(300, function () {
-  //         $this.css({
-  //           border: "5px solid #4a4a4a", // 기본 border 복원
-  //           display: "none",
-  //         });
-  //       });
-  //     }
-  //   });
-  // });
+      if ($this.css("border-color") === "rgb(0, 128, 0)") {
+        // 녹색 border인 CAM-container만 제외
+        excludedCameras.add(camId);
+        $this.fadeOut(300, function () {
+          $this.css({
+            border: "5px solid #4a4a4a", // 기본 border 복원
+            display: "none",
+          });
+        });
+      }
+    });
+  });
 
   // #cam-all 버튼 클릭 시 모든 CAM-container 표시
-  // $("#cam-all").on("click", function () {
-  //   // 🌟 모든 화면 다시 표시
-  //   excludedCameras.clear(); // 제외된 화면 목록 초기화
-  //   $(".CAM-container").fadeIn(300, function () {
-  //     $(this).css({
-  //       border: "5px solid #4a4a4a", // 기본 border 복원
-  //     });
-  //   });
-  //   isCamSelClicked = false; // 초기 상태로 복구
-  // });
+  $("#cam-all").on("click", function () {
+    // 🌟 모든 화면 다시 표시
+    excludedCameras.clear(); // 제외된 화면 목록 초기화
+    $(".CAM-container").fadeIn(300, function () {
+      $(this).css({
+        border: "5px solid #4a4a4a", // 기본 border 복원
+      });
+    });
+    isCamSelClicked = false; // 초기 상태로 복구
+  });
 
   // 새로고침 시 제외 상태 유지
   $(window).on("load", function () {
@@ -853,4 +881,53 @@ $(document).ready(function () {
   $("#blink-start-danger").on("click", function () {
     openProtocolPopup(); // 팝업 열기 함수 호출
   });
+});
+
+// ==============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+// 드롭존 클릭 이벤트에 대한 방어 코드
+// 빈 드롭존 클릭 시 이벤트를 차단하여 레이아웃 깨짐 방지
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 모든 드롭존 요소를 선택
+  const dropzones = document.querySelectorAll(".drop-zone");
+
+  // 각 드롭존에 클릭 이벤트 추가
+  dropzones.forEach((dropzone) => {
+    dropzone.addEventListener("click", (event) => {
+      // 드롭존 내부에 드래그된 요소가 없는 경우를 확인
+      const hasContent = dropzone.querySelector(".camera-feed") || dropzone.querySelector("video");
+
+      // 드롭존이 비어있다면 클릭 이벤트를 차단
+      if (!hasContent) {
+        event.stopPropagation(); // 이벤트 버블링 방지
+        event.preventDefault(); // 기본 동작 차단
+
+        // 사용자에게 시각적 피드백 제공 (선택 사항)
+        dropzone.classList.add("empty-zone-warning");
+        setTimeout(() => {
+          dropzone.classList.remove("empty-zone-warning");
+        }, 500); // 500ms 후 경고 클래스 제거
+
+        console.warn("빈 드롭존은 클릭할 수 없습니다."); // 콘솔 로그 출력
+      }
+    });
+  });
+
+  // 빈 드롭존 시각적 경고를 위한 스타일 추가 (선택 사항)
+  const style = document.createElement("style");
+  style.textContent = `
+    .empty-zone-warning {
+      border: 2px solid red;
+      animation: shake 0.3s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+  `;
+  document.head.appendChild(style);
 });

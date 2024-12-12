@@ -290,7 +290,7 @@ function addLog(cameraNumber, status, icon) {
 }
 
 $(function () {
-  const logToggleButton = $('button[alt="로그 토글 버튼"]'); // 로그 토글 버튼
+  // const logToggleButton = $('button[alt="로그 토글 버튼"]'); // 로그 토글 버튼
   const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
   const $protocolContainer = $("#on-the-case"); // 프로토콜 버튼 컨테이너
   const $stopBlinkButton = $("#stop-blink"); // 상황 종료 버튼
@@ -330,19 +330,19 @@ $(function () {
   /**
    * 로그 상태에 따라 로그 토글 버튼 이모지 변경
    */
-  function updateLogToggleButton() {
-    const logCount = $(".log-tuple").length; // 현재 로그 개수 확인
-    const newEmoji = logCount > 0 ? "✅" : "🔕"; // 로그 상태에 따른 이모지
-    logToggleButton
-      .fadeOut(200, function () {
-        $(this).text(newEmoji); // 이모지 변경
-      })
-      .fadeIn(200); // 부드러운 전환
-  }
+  // function updateLogToggleButton() {
+  //   const logCount = $(".log-tuple").length; // 현재 로그 개수 확인
+  //   const newEmoji = logCount > 0 ? "✅" : "🔕"; // 로그 상태에 따른 이모지
+  //   logToggleButton
+  //     .fadeOut(200, function () {
+  //       $(this).text(newEmoji); // 이모지 변경
+  //     })
+  //     .fadeIn(200); // 부드러운 전환
+  // }
 
   // 초기 상태 설정
-  logToggleButton.text("🔕");
-  updateLogToggleButton();
+  // logToggleButton.text("🔕");
+  // updateLogToggleButton();
 });
 
 //* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
