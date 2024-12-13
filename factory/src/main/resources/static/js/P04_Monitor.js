@@ -16,18 +16,18 @@
 /* --1 'CAM-container' 이상•연기 AI탐지 --> '탐지 화면 프레이밍+깜빡임' && '프로토콜 버튼' 활성화 이벤트 */
 
 // AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
-$(document).ready(function () {
+/*$(document).ready(function () {
   let blinkInterval = null; // 깜빡임 제어 변수
   let warningActive = false; // #blink-start-warning 클릭 상태 확인
 
   // 초기 CAM-container 테두리 색상 설정
   $(".CAM-container").css({ borderColor: "#34495e" });
 
-  /**
+  *
    * 깜빡임 시작 함수
    * @param {Array} targets - 대상 CAM-container ID 리스트
    * @param {string} color - 깜빡임 색상
-   */
+   
   function startBlink(targets, color) {
     blinkInterval = setInterval(() => {
       targets.forEach(({ id }) => {
@@ -48,10 +48,10 @@ $(document).ready(function () {
     }, 350);
   }
 
-  /**
+  *
    * 깜빡임 중지 함수
    * @param {Array} targets - 대상 CAM-container ID 리스트
-   */
+   
   function stopBlink(targets) {
     clearInterval(blinkInterval);
     targets.forEach(({ id }) => {
@@ -63,9 +63,9 @@ $(document).ready(function () {
     blinkInterval = null;
   }
 
-  /**
+  *
    * #blink-start-warning 버튼 클릭 이벤트
-   */
+   
   $("#blink-start-warning").on("click", function () {
     const targetId = $("#targetId").val();
     warningActive = true; // #blink-start-warning 활성화 상태
@@ -73,31 +73,30 @@ $(document).ready(function () {
     startBlink([{ id: targetId }], "#ff8c00"); // 주황색 테두리 깜빡임 시작
   });
 
-  /**
+  *
    * #blink-start-danger 버튼 클릭 이벤트
-   */
-function warning() {
-    /*if (!warningActive) {
+   
+  $("#blink-start-danger").on("click", function () {
+    if (!warningActive) {
       // #blink-start-warning 클릭 선행 조건 확인
       alert("먼저 '이상 확인 중' 버튼을 클릭하세요."); // 사용자 알림
       return;
-    }*/
+    }
     const targetId = $("#targetId").val();
-	warningActive = true; // #blink-start-warning 활성화 상태
     stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
     startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
-    /*warningActive = false; // #blink-start-warning 상태 초기화*/
-  };
+    warningActive = false; // #blink-start-warning 상태 초기화
+  });
 
-  /**
+  *
    * #stop-blink 버튼 클릭 이벤트
-   */
+   
   $("#stop-blink").on("click", function () {
     const targetId = $("#targetId").val();
     stopBlink([{ id: targetId }]); // 깜빡임 제거
     warningActive = false; // 상태 초기화
   });
-});
+});*/
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --2 '로그 토글' 버튼 클릭 --> '.log-tuple이 on/off' 이벤트 */
@@ -239,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param {string} status - '경고' 또는 '위험'
  * @param {string} icon - 상태 아이콘
  */
-function addLog(cameraNumber, status, icon) {
+/*function addLog(cameraNumber, status, icon) {
   const timestamp = getFormattedTimestamp();
   const newLog = $(`
     <section alt="로그-튜플" class="log-tuple" style="opacity: 0; transform: translateY(-10px);">
@@ -327,7 +326,7 @@ $(function () {
       }
     }, 50); // 애니메이션 시간보다 빠르게 설정
   });
-
+*/
   /**
    * 로그 상태에 따라 로그 토글 버튼 이모지 변경
    */
@@ -344,7 +343,7 @@ $(function () {
   // 초기 상태 설정
   // logToggleButton.text("🔕");
   // updateLogToggleButton();
-});
+//});
 
 //* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --8 제외할 '개별 화면 컨테이너' 선택('화면 제외 실행') && 노출 화면 초기화 */
@@ -522,50 +521,3 @@ $(document).ready(function () {
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 ➡️➡️➡️'로그 추가 이벤트' 시 로그 발생 시점부터 '녹화 시작' && 'DB에 로그 저장(txt•video)' */
 /* -10 ➡️➡️➡️'저장된 로그' 탭 클릭 시 '녹화•저장된 로그(txt•video)' 조회 : 녹화 영상은 페이지 이동  */
-// 결과 값 가져오는 웹소킷
-
-let socket2;
-let ctx;
-
-function connectWebSockets() {
-
-    // 두 번째 WebSocket: 낙상 감지 데이터
-    socket2 = new WebSocket('ws://172.30.1.54:8095/res');
-
-    socket2.onopen = () => {
-        console.log('Socket2(WebSocket for fall detection) 연결됨');
-    };
-
-    socket2.onmessage = (event) => {
-        try {
-			console.log('온메세지 이벤트 발생')
-            const data = JSON.parse(event.data);
-            console.log('수신한 데이터:', data);
-
-            if (data.fallDetected !== undefined) {
-				
-				// data.fallDetected가 참이면 현재 시간으로 로그 띄우기
-				if(data.fallDetected){ 
-					warning()
-				}
-                
-            } else {
-                console.error('데이터에 fallDetected 속성이 없습니다:', data);
-            }
-        } catch (error) {
-            console.error('WebSocket 메시지 처리 오류:', error);
-        }
-    };
-
-    socket2.onerror = (error) => {
-        console.error('Socket2(WebSocket for fall detection) 에러:', error);
-    };
-
-    socket2.onclose = () => {
-        console.log('Socket2(WebSocket for fall detection) 닫힘');
-    };
-}
-
-window.onload = () => {
-    connectWebSockets();
-};

@@ -501,5 +501,6 @@
     <script src="/js/P04_Monitor.js"></script>
     <script src="/js/calendar.js"></script>
     <script src="/js/CCTV_Monitor.js"></script>
+    <script src="/js/log.js"></script>
   </body>
 </html>
