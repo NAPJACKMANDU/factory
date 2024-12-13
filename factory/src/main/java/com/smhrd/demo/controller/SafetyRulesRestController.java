@@ -47,7 +47,7 @@ public class SafetyRulesRestController {
 
 	    // 3. srTitle이 없다면 새 데이터 저장
 	    service.safetyRulesdata(safetyRule, session);
-	    
+	    System.out.println(safetyRule);
 	    return safetyRule;  // 저장된 데이터 반환
 	}
 	
