@@ -13,6 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 카메라 그리드 컨테이너
   const cameraGrid = document.getElementById("cameraGrid");
+  
+  //----------------------------------------------------
+  
+  
+  
+  //----------------------------------------------------
 
   // 카테고리 클릭 이벤트 처리
   const categories = document.querySelectorAll(".category > span");
@@ -34,7 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.dataTransfer.setData("image", item.dataset.img);
       } else if (item.dataset.video) {
         e.dataTransfer.setData("video", item.dataset.video);
-      }
+      } else if (item.dataset.src) {
+		e.dataTransfer.setData("jsp", item.dataset.src);
+	  }
     });
   });
 
@@ -57,6 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // 드래그 데이터에서 이미지 또는 비디오 경로 가져오기
       const imgSrc = e.dataTransfer.getData("image");
       const videoSrc = e.dataTransfer.getData("video");
+	  // 드래그한 JSP 경로 가져오기
+	  const jspPath = e.dataTransfer.getData("jsp");
 
       // 기존 내용 제거
       const existingNumber = zone.querySelector(".camera-number"); // 기존 번호 확인
@@ -84,10 +94,28 @@ document.addEventListener("DOMContentLoaded", () => {
         zone.appendChild(video); // 드롭존에 비디오 추가
       }
 
+	  if (jspPath) {
+	    // 기존 내용 제거
+	    const existingNumber = zone.querySelector(".camera-number");
+	    zone.innerHTML = "";
+
+	    // JSP를 iframe으로 로드
+	    const iframe = document.createElement("iframe");
+	    iframe.src = jspPath;
+	    iframe.width = "100%";
+	    iframe.height = "100%";
+	    iframe.frameBorder = "0";
+	    zone.appendChild(iframe);
+	  }
       // 기존 번호 유지
       if (existingNumber) {
         zone.appendChild(existingNumber);
       }
+	  
+	  
+	  
+
+
     });
     // --------------------------------------------------------------
     //
