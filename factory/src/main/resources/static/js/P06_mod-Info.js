@@ -83,8 +83,8 @@ $(document).ready(function () {
   // 안전수칙 PDF 미리보기 기능
   $("#previewButton_1").click(function () {
     if (safetyRuleUrl) {
-      window.open(safetyRuleUrl, "_blank"); // 안전수칙 PDF URL을 새 탭에서 열기
-    } else {
+      window.open(safetyRuleUrl, ""); // 안전수칙 PDF URL을 새 탭에서 열기
+    } else {_blank
       alert("안전수칙 파일을 등록해주세요."); // URL이 없는 경우 알림
     }
   });
@@ -97,53 +97,55 @@ $(document).ready(function () {
       alert("비상 대응 파일을 등록해주세요."); // URL이 없는 경우 알림
     }
   });
-  
-//안전수칙 파일의 파일명을 출력하고 키워드를 추출하는 기능
-  $("#addSafetyRuleButton").click(function () {
-      const fileInput = $("#safetyRuleFile")[0]; // 파일 입력 필드 참조
-      const file = fileInput && fileInput.files ? fileInput.files[0] : null; // 업로드된 파일 객체 가져오기
 
-      if (file) {
-          const fileName = file.name; // 업로드된 파일명
-          $("#safetyRuleFile").text(fileName); // 파일명을 화면에 출력
+   $("#addSafetyRuleButton").click(function () {
+	    const fileInput = $("#safetyRuleFile")[0]; // 파일 입력 필드 참조
+	    const file = fileInput && fileInput.files ? fileInput.files[0] : null; // 업로드된 파일 객체 가져오기
 
-          // 키워드 리스트 정의
-          const keywords = ["화재", "낙상", "실신"];
+	    if (file) {
+	        const fileName = file.name; // 업로드된 파일명
+	        $("#safetyRuleFile").text(fileName); // 파일명을 화면에 출력
 
-          // 파일명에서 키워드 추출
-          const extractedKeyword = keywords.find(keyword => fileName.includes(keyword));
+	        // 키워드 리스트 정의
+	        const keywords = ["화재", "낙상", "실신"];
 
-          if (extractedKeyword) {
-              console.log("추출된 키워드:", extractedKeyword); // 콘솔에 출력
-          	// JSON 객체 생성
-          	const datamodel = {
-          	  srTitle : fileName,
-          	  srDesc  : extractedKeyword,
-          	safetyPath : safetyRuleUrl,
-          	};
-          	
-          	console.log(datamodel);
-    
-              // AJAX를 이용해 키워드를 서버로 전송
-              $.ajax({
-                  url: "/SafetyForm", 
-                  type: "POST",
-                  data: JSON.stringify(datamodel),
-                  contentType: "application/json",
-                  success: function (data) {
-                	  console.log("키워드 저장 완료");
-                  },
-                  error: function (error) {
-                      console.error("키워드 저장 중 오류 발생:", error);
-                  }
-              });
-          } else {
-              alert("파일명에 키워드가 없습니다.");
-          }
-      } else {
-          alert("파일을 등록해주세요.");
-      }
-  });
-  
-  
+	        // 파일명에서 키워드 추출
+	        const extractedKeyword = keywords.find(keyword => fileName.includes(keyword));
+
+	        if (extractedKeyword) {
+	            console.log("추출된 키워드:", extractedKeyword);
+
+	            // FormData 객체 생성
+	            const formData = new FormData();
+	            formData.append("file", file); // 파일 추가
+	            formData.append("srTitle", fileName); // 제목 추가
+	            formData.append("srDesc", extractedKeyword); // 키워드 추가
+
+	            console.log("전송 데이터:", fileName, extractedKeyword);
+
+	            // AJAX를 이용해 데이터를 서버로 전송
+	            $.ajax({
+	                url: "/SafetyForm",
+	                type: "POST",
+	                data: formData,
+	                processData: false, // FormData를 문자열로 변환하지 않음
+	                contentType: false, // 멀티파트 전송을 위한 Content-Type 설정
+	                success: function (data) {
+	                    console.log("키워드 저장 완료:", data);
+	                  
+	                },
+	                error: function (error) {
+	                    console.error("키워드 저장 중 오류 발생:", error);
+	                    alert("파일 업로드 중 오류가 발생했습니다.");
+	                }
+	            });
+	        } else {
+	            // 키워드를 찾지 못한 경우 기본 값을 설정하거나 경고 메시지를 표시
+	            alert("파일명에 키워드가 없습니다.");
+	        }
+	    } else {
+	        alert("파일을 등록해주세요.");
+	    }
+	});
+
 });

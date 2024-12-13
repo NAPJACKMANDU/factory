@@ -25,7 +25,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
 				</div>
 				<div class="vertical-line"></div>
 				<div alt="a 컨테이너">
-					<a href="#" style="font-size: 11.8pt">안전수칙</a>
+					<a href="SafetyRules" style="font-size: 11.8pt">안전수칙</a>
 				</div>
 				<div class="vertical-line"></div>
 

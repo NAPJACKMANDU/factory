@@ -51,9 +51,9 @@ public class FactoryMainController {
 	
 	@GetMapping("/SafetyRules")
 	public String getAllCall(Model model) {
-	    List<SafetyRulesModel> list = service.getAllSafetyRules();
+        List<SafetyRulesModel> list = service.getAllSafetyRules();
 	    model.addAttribute("list", list);  // 데이터를 모델에 추가
-	    System.out.println("list : "+ model);
+ 	    System.out.println("list : "+ model);
 	    return "SafetyRules";  
 	}
 

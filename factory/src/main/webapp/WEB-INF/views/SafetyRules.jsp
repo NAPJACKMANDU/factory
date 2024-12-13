@@ -59,18 +59,26 @@ caption {
 				<th>수칙 등록일자</th>
 			</tr>
 		</thead>
-			<c:forEach var="item" items="${list}">
-				<tr>
-					<td>${item.srIdx}</td>
-					<!-- 순번 -->
-					<td>${item.srTitle}</td>
-					<!-- 수칙 제목 -->
-					<td>${item.srDesc}</td>
-					<!-- 수칙 분류 -->
-					<td><fmt:formatDate value="${item.createdAt}" pattern="yyyy-MM-dd HH:mm" /></td>
-					<!-- 등록일 -->
-				</tr>
-			</c:forEach>
+		<c:forEach var="item" items="${list}">
+			<tr>
+				<td>${item.srIdx}</td>
+				<!-- 순번 -->
+				<td><a href="javascript:void(0);"
+					onclick="openPdf('${item.safetyPath}');">${item.srTitle}</a></td>
+
+				<%-- javascript:void(0);는 클릭할 때 페이지가 새로고침되지 않도록 하는 역할을 한다..
+					 openPdf('${item.safetyPath}')는 item.safetyPath에 저장된 파일 경로를 openPdf 함수에 전달하고
+ 					 해당 경로에 있는 PDF 파일을 새 탭에서 열도록 한다. --%>
+
+				<!-- 수칙 제목 -->
+				<td>${item.srDesc}</td>
+				<!-- 수칙 분류 -->
+				<td><fmt:formatDate value="${item.createdAt}"
+						pattern="yyyy-MM-dd HH:mm" /></td>
+				<!-- 등록일 -->
+			</tr>
+		</c:forEach>
 	</table>
+	<script src="/js/SafetyRules.js"></script>
 </body>
 </html>
