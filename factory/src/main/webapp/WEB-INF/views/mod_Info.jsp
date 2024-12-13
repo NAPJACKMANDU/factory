@@ -72,7 +72,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
 				<h2>안전 사고 대응책</h2>
 				<!-- ✅ 자료등록 ✅ -->
 				<!--  📢 일반 안전수칙 등록 -->
-				<form id="safetyRuleForm" action="#" method="post">
+				<form id="safetyRuleForm" method="post">
 					<div class="form-group">
 						<label for="#">안전수칙</label> <input type="file" id="safetyRuleFile"
 							name="safetyRuleFile" />

@@ -22,13 +22,11 @@ public class FactoryIdService {
 		rep.save(member) ;
 	}
 
-
 	public FactoryMember Login(FactoryMember member) {
 		System.out.println("아이디 비번: " + member.getId() + member.getPw());
 		return rep.findByIdAndPw(member.getId(), member.getPw()) ;
 		
 	}
-	
 	
 	public List<FactoryMember> allcallbord() {
 		return rep.findAll() ;

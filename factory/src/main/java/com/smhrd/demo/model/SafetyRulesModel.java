@@ -34,8 +34,8 @@ public class SafetyRulesModel {
     private Timestamp createdAt; // 수칙 등록일자
     @Column(nullable = false)
     private int companyIdx; // 회사 식별자
-    
-    
+    @Column(nullable = true)
+    private String safetyPath ;
     
 	public Long getSrIdx() {
 		return srIdx;
@@ -66,6 +66,12 @@ public class SafetyRulesModel {
 	}
 	public void setCompanyIdx(int companyIdx) {
 		this.companyIdx = companyIdx;
+	}
+	public String getSafetyPath() {
+		return safetyPath;
+	}
+	public void setSafetyPath(String safetyPath) {
+		this.safetyPath = safetyPath;
 	}
 
     
