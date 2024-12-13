@@ -37,14 +37,6 @@ public class FactoryMemberService {
 	 rep.deleteById(idx);
 		
 	}
-
-	public void updatemember(FactoryMember member) {
-		Optional<FactoryMember> result = rep.findById(member.getIdx()) ;
-		result.get().setName(member.getName());
-		result.get().setPw(member.getPw());
-		result.get().setPhone(member.getPhone());
-		rep.save(result.get());
-	}
 	
 	
 }

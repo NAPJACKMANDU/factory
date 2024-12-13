@@ -206,14 +206,6 @@
 							<li draggable="true" data-img="/imgs/c10.jpg">Camera 15</li>
 							<li draggable="true" data-img="/imgs/c9.jpg">Camera 16</li>
 						</ul></li>
-						
-					<!-- 실시간 스트리밍 카테고리 -->
-                    <li class="category">
-                        <span>Live Streams</span>
-                        <ul class="sub-category">
-                            <li draggable="true" data-src="/d">Live Stream 1</li>
-                        </ul>
-                    </li>
 				</ul>
 			</section>
 			<!-- 저장된 로그 조회 구역 -->
@@ -408,10 +400,10 @@
             <a alt="연락망" href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="/SaftyRules">안전수칙</a>
+            <a href="#">안전수칙</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="/modInfo">정보 등록</a>
+            <a href="#">정보 등록</a>
           </div>
         </nav>
       </aside>

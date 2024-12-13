@@ -1,3 +1,21 @@
+/**
+ * --💡 CCTV_Monitor.js ◼️◼️◼️◼️◼️
+ *
+ * --1 드래그 앤 드롭
+ * --2 우클릭 시 드롭존 초기화
+ * --3 드래그 앤 드롭 및 레이아웃 옵션
+ * --4 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트
+ * --5 이상 탐지 로그 자동 추가
+ * --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기
+ * --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
+ * --8 119신고 + 상황 종료 버튼 활성화
+ * --9 비상 대응 지침 브라우저 팝업
+ */
+
+// ==========================================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --1 드래그 앤 드롭 */
+
 document.addEventListener("DOMContentLoaded", () => {
   // 드래그 가능한 항목 선택
   const items = document.querySelectorAll(".sub-category li");
@@ -13,12 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 카메라 그리드 컨테이너
   const cameraGrid = document.getElementById("cameraGrid");
-  
-  //----------------------------------------------------
-  
-  
-  
-  //----------------------------------------------------
 
   // 카테고리 클릭 이벤트 처리
   const categories = document.querySelectorAll(".category > span");
@@ -40,9 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.dataTransfer.setData("image", item.dataset.img);
       } else if (item.dataset.video) {
         e.dataTransfer.setData("video", item.dataset.video);
-      } else if (item.dataset.src) {
-		e.dataTransfer.setData("jsp", item.dataset.src);
-	  }
+      }
     });
   });
 
@@ -65,8 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // 드래그 데이터에서 이미지 또는 비디오 경로 가져오기
       const imgSrc = e.dataTransfer.getData("image");
       const videoSrc = e.dataTransfer.getData("video");
-	  // 드래그한 JSP 경로 가져오기
-	  const jspPath = e.dataTransfer.getData("jsp");
 
       // 기존 내용 제거
       const existingNumber = zone.querySelector(".camera-number"); // 기존 번호 확인
@@ -94,28 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
         zone.appendChild(video); // 드롭존에 비디오 추가
       }
 
-	  if (jspPath) {
-	    // 기존 내용 제거
-	    const existingNumber = zone.querySelector(".camera-number");
-	    zone.innerHTML = "";
-
-	    // JSP를 iframe으로 로드
-	    const iframe = document.createElement("iframe");
-	    iframe.src = jspPath;
-	    iframe.width = "100%";
-	    iframe.height = "100%";
-	    iframe.frameBorder = "0";
-	    zone.appendChild(iframe);
-	  }
       // 기존 번호 유지
       if (existingNumber) {
         zone.appendChild(existingNumber);
       }
-	  
-	  
-	  
-
-
     });
     // --------------------------------------------------------------
     //
@@ -191,7 +181,10 @@ document.addEventListener("DOMContentLoaded", () => {
     //    });
     // --------------------------------------------------------------
 
-    // 우클릭 시 드롭존 초기화
+    // ==========================================================
+    /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+    /* --2 우클릭 시 드롭존 초기화 */
+
     zone.addEventListener("contextmenu", (e) => {
       e.preventDefault(); // 기본 우클릭 메뉴 방지
       const existingNumber = zone.querySelector(".camera-number");
@@ -240,42 +233,318 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ==========================================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --11 드래그 앤 드롭 및 레이아웃 옵션 */
+/* --3 드래그 앤 드롭 및 레이아웃 옵션 */
+
 $(document).ready(function () {
-  // 드래그 앤 드롭
+  let maxCount = 2; // 초기 열 수 (grid-4 레이아웃)
+  let rowCount = 2; // 초기 행 수
+
+  /**
+   * 💡 행(rowCount)과 열(maxCount)을 업데이트하는 함수
+   * - 현재 CAM-container 개수를 기준으로 행(rowCount)을 동적으로 계산
+   * - maxCount는 현재 레이아웃 설정에 따라 변경됨
+   */
+  function updateCounts() {
+    const totalItems = $(".CAM-container").length; // 현재 화면에 있는 CAM-container 개수
+    rowCount = Math.ceil(totalItems / maxCount); // 총 항목 수를 열 수로 나눈 뒤 올림하여 행 수 계산
+    console.log("Updated maxCount:", maxCount);
+    console.log("Updated rowCount:", rowCount);
+  }
+
+  /**
+   * 💡 드래그 앤 드롭 이벤트 설정
+   * - CAM-container를 드래그 가능하게 설정
+   * - category-list의 category에 드롭 가능하게 설정
+   */
   $(".CAM-container").draggable({
-    revert: "invalid",
-    zIndex: 100,
+    revert: "invalid", // 잘못된 드롭 위치에 놓으면 원래 위치로 돌아감
+    zIndex: 100, // 드래그 중인 요소가 다른 요소 위에 표시되도록 설정
   });
 
   $("#category-list .category").droppable({
-    accept: ".CAM-container",
+    accept: ".CAM-container", // 드롭 가능한 대상 설정
     drop: function (event, ui) {
-      const droppedItem = ui.draggable;
-      $(this).append(droppedItem);
+      const droppedItem = ui.draggable; // 드롭된 CAM-container 가져오기
+      $(this).append(droppedItem); // 현재 카테고리에 추가
+      updateCounts(); // 드롭 후 행(rowCount) 및 열(maxCount) 정보 업데이트
     },
   });
 
-  // 레이아웃 옵션
+  /**
+   * 💡 레이아웃 변경 버튼 클릭 이벤트 설정
+   * - grid-4, grid-2, grid-1 레이아웃으로 전환
+   * - maxCount를 변경하고 updateCounts를 호출하여 rowCount도 동기화
+   */
   $(".layout-btn").on("click", function () {
-    const layout = $(this).data("layout");
-    const $Marea = $(".M-area");
+    const layout = $(this).data("layout"); // 버튼에 지정된 레이아웃 값 가져오기
+    const $Marea = $(".M-area"); // 레이아웃이 적용될 영역 선택
 
+    // 레이아웃에 따라 grid 설정 및 maxCount 값 변경
     if (layout === "grid-4") {
       $Marea.css("grid-template-columns", "repeat(4, 1fr)");
+      maxCount = 4; // 4개 카메라 허용
     } else if (layout === "grid-2") {
       $Marea.css("grid-template-columns", "repeat(2, 1fr)");
+      maxCount = 2; // 2개 카메라 허용
     } else if (layout === "grid-1") {
       $Marea.css("grid-template-columns", "1fr");
+      maxCount = 1; // 1개 카메라 허용
+    }
+
+    updateCounts(); // 레이아웃 변경 후 행(rowCount) 및 열(maxCount) 정보 업데이트
+
+    // 선택한 레이아웃 값과 maxCount를 콘솔에 출력 (디버깅용)
+    console.log("선택된 레이아웃:", layout);
+    console.log("최대 카메라 수:", maxCount);
+  });
+
+  /**
+   * 💡 전역 함수로 maxCount와 rowCount 제공
+   * - 다른 스크립트에서 레이아웃 정보를 활용할 수 있도록 함
+   */
+  window.getMaxCount = () => maxCount;
+  window.getRowCount = () => rowCount;
+
+  // 페이지 로드 시 초기 updateCounts 호출
+  updateCounts();
+});
+
+// ======================================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --4 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트 */
+
+let selectedVideoElement = null; // 현재 선택된 비디오 요소
+let mediaRecorder;
+let recordedChunks = [];
+let isRecording = false; // 녹화 상태 확인
+let selectedCameraIdx = null;
+let maxCount;
+
+$(document).ready(function () {
+  let isExpanded = false; // 확장 상태 확인
+  let expandedElement = null; // 확대된 CAM-container 추적
+  let pressTimer; // 클릭 시간 확인을 위한 타이머 변수
+  const excludedCameras = new Set(); // 화면 제외된 CAM-container 저장
+
+  // 💡 maxCount 값을 반환하는 함수 (다른 스크립트에서 사용 가능)
+  window.getMaxCount = function () {
+    return maxCount;
+  };
+
+  //드래그 이벤트로 카메라 선택
+  $(".video-item").on("dragstart", function (e) {
+    // 드래그된 요소의 value 속성 값을 가져옴
+    selectedCameraIndex = $(this).attr("value");
+    e.originalEvent.dataTransfer.setData("text/plain", selectedCameraIndex);
+    console.log("카메라 :", selectedCameraIndex);
+  });
+
+  $(".CAM-container")
+    .on("mousedown", function (event) {
+      const $this = $(this);
+
+      // 마우스 좌클릭인지 확인 (event.button === 0)
+      if (event.button === 0) {
+        pressTimer = setTimeout(() => {
+          pressTimer = null;
+        }, 300);
+      }
+    })
+    .on("mouseup", function (event) {
+      if (event.button !== 0) return;
+
+      if (pressTimer) {
+        clearTimeout(pressTimer);
+
+        const $MArea = $(".M-area");
+        const $clickedItem = $(this);
+
+        if (!isExpanded) {
+          $MArea.css({ display: "block", width: "100%" });
+
+          $clickedItem
+            .addClass("expanded")
+            .css({
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%) scale(1.5)",
+              zIndex: 10,
+            })
+            .siblings(".CAM-container")
+            .filter(function () {
+              const camId = $(this).attr("id");
+              return !excludedCameras.has(camId);
+            })
+            .hide();
+
+          $("body").css("overflow", "hidden");
+
+          // 클릭된 CAM-container에서 기존 비디오 요소를 참조
+          selectedVideoElement = $clickedItem.find("video")[0];
+          if (selectedVideoElement) {
+            const stream = selectedVideoElement.captureStream();
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (e) => {
+              if (e.data.size > 0) {
+                recordedChunks.push(e.data);
+              }
+            };
+          } else {
+            console.error("비디오 요소를 찾을 수 없습니다.");
+          }
+
+          isExpanded = !isExpanded;
+        } else {
+          $MArea.css({ display: "grid", width: "99%" });
+
+          $(".CAM-container").each(function () {
+            const camId = $(this).attr("id");
+            console.log("camId  :  " + camId);
+
+            if (!excludedCameras.has(camId)) {
+              $(this).show().css({
+                position: "static",
+                top: "auto",
+                left: "auto",
+                transform: "scale(1)",
+                Index: 1,
+              });
+            }
+          });
+
+          $clickedItem.removeClass("expanded");
+          $("body").css("overflow", "");
+          isExpanded = !isExpanded;
+        }
+      }
+    })
+    .on("mouseleave", function () {
+      clearTimeout(pressTimer);
+    });
+
+  // 's' 키로 녹화 시작
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "s" && selectedVideoElement && !isRecording) {
+      if (!mediaRecorder) {
+        console.error("미디어 녹화기가 초기화되지 않았습니다.");
+        return;
+      }
+      mediaRecorder.start();
+      isRecording = true;
+
+      console.log("녹화가 시작되었습니다. 선택된 카메라:", selectedCameraIndex);
+      console.log(mediaRecorder);
+    }
+  });
+
+  document.addEventListener("keydown", async (event) => {
+    if (event.key === "e" && mediaRecorder && isRecording) {
+      mediaRecorder.stop();
+      mediaRecorder.onstop = async () => {
+        console.log("녹화가 종료되었습니다.");
+
+        const blob = new Blob(recordedChunks, { type: "video/webm" });
+        const formData = new FormData();
+
+        formData.append("file", blob, "recorded-video.webm");
+
+        // 선택된 카메라 인덱스를 추가
+        if (selectedCameraIndex) {
+          formData.append("cameraIndex", selectedCameraIndex);
+        } else {
+          console.error("선택된 카메라 인덱스가 없습니다.");
+          return;
+        }
+
+        try {
+          const response = await fetch("/videos/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            console.log("동영상이 성공적으로 업로드되었습니다.");
+          } else {
+            console.error("동영상 업로드에 실패했습니다.", response.statusText);
+          }
+        } catch (error) {
+          console.error("동영상 업로드 중 오류가 발생했습니다:", error);
+        }
+
+        recordedChunks = [];
+        isRecording = false;
+      };
+    }
+  });
+  selectedCameraIndex = null; // 업로드 후 선택 초기화
+
+  // #cam-sel 버튼 클릭 시 제외 처리
+  $("#cam-sel").on("click", function () {
+    isCamSelClicked = true; // #cam-sel 버튼 클릭 상태 기록
+
+    // 제외 처리
+    $(".CAM-container").each(function () {
+      const $this = $(this);
+      const camId = $this.attr("id");
+
+      if ($this.css("border-color") === "rgb(0, 128, 0)") {
+        // 녹색 border인 CAM-container만 제외
+        excludedCameras.add(camId);
+        $this.fadeOut(300, function () {
+          $this.css({
+            border: "5px solid #4a4a4a", // 기본 border 복원
+            display: "none",
+          });
+        });
+      }
+    });
+  });
+
+  // #cam-all 버튼 클릭 시 모든 CAM-container 표시
+  $("#cam-all").on("click", function () {
+    // 🌟 모든 화면 다시 표시
+    excludedCameras.clear(); // 제외된 화면 목록 초기화
+    $(".CAM-container").fadeIn(300, function () {
+      $(this).css({
+        border: "5px solid #4a4a4a", // 기본 border 복원
+      });
+    });
+    isCamSelClicked = false; // 초기 상태로 복구
+  });
+
+  // 새로고침 시 제외 상태 유지
+  $(window).on("load", function () {
+    if (!isCamSelClicked) {
+      // 🌟 #cam-sel 클릭 전 상태 유지
+      $(".CAM-container").css({
+        border: "5px solid #4a4a4a", // 기본 border 복원
+      });
+    } else {
+      // 🌟 #cam-sel 클릭 후, 제외된 화면 숨기기
+      $(".CAM-container").each(function () {
+        const camId = $(this).attr("id");
+        if (excludedCameras.has(camId)) {
+          $(this).hide();
+        }
+      });
+    }
+  });
+
+  // 초기 상태 설정: 확대/축소 이벤트가 제외된 화면에는 영향을 미치지 않도록
+  $(".CAM-container").each(function () {
+    const camId = $(this).attr("id");
+    if (excludedCameras.has(camId)) {
+      $(this).hide(); // 제외된 화면 숨기기
     }
   });
 });
 
 // ==========================================================
-
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --6 이상 탐지 로그 자동 추가 */
-/* --7 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
+/* --5 이상 탐지 로그 자동 추가 */
+/* --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
 
 $(document).ready(function () {
   /**
@@ -319,9 +588,6 @@ $(document).ready(function () {
     // 부드러운 전환 애니메이션 적용
     newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
 
-    // 로그 상태에 따라 토글 버튼 상태 변경
-    updateLogToggleButton();
-
     // 🌟 addLog 실행 시 휴지통 버튼 표시
     $trashButton.fadeIn(300);
 
@@ -345,19 +611,6 @@ $(document).ready(function () {
         console.error("로그 저장 실패:", error);
       },
     });
-  }
-
-  /**
-   * 로그 상태에 따라 로그 토글 버튼 이모지 변경
-   */
-  function updateLogToggleButton() {
-    const logCount = $(".log-tuple").length;
-    const newEmoji = logCount > 0 ? "✅" : "🔕";
-    $('button[alt="로그 토글 버튼"]')
-      .fadeOut(200, function () {
-        $(this).text(newEmoji);
-      })
-      .fadeIn(200);
   }
 
   // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
@@ -423,8 +676,9 @@ $(document).ready(function () {
 });
 
 // ==============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용 */
 
-// AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
 $(document).ready(function () {
   let blinkInterval = null; // 깜빡임 제어 변수
   let warningTriggered = false; // #btn-warning 클릭 상태 확인
@@ -511,6 +765,8 @@ $(document).ready(function () {
 });
 
 // ==============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --8 119신고 + 상황 종료 버튼 활성화 */
 
 $(document).ready(function () {
   const $reportContainer = $(".report-container"); // 신고 컨테이너
@@ -579,42 +835,8 @@ $(document).ready(function () {
 });
 
 // ==============================================
-
-$(document).ready(function () {
-  const $protocolModal = $("#protocol-modal"); // Protocol modal
-  const $closeProtocolModal = $(".close-protocol-modal"); // 닫기 버튼
-
-  // Protocol modal 열기 함수
-  function showProtocolModal() {
-    $protocolModal.removeClass("hidden").fadeIn(300);
-  }
-
-  // Protocol modal 닫기 함수
-  function hideProtocolModal() {
-    $protocolModal.fadeOut(300, function () {
-      $protocolModal.addClass("hidden");
-    });
-  }
-
-  // #blink-start-danger 버튼 클릭 시 Protocol modal 표시
-  $("#blink-start-danger").on("click", function () {
-    showProtocolModal();
-  });
-
-  // Protocol modal 닫기 버튼 클릭 이벤트
-  $closeProtocolModal.on("click", function () {
-    hideProtocolModal();
-  });
-
-  // Protocol modal 외부 영역 클릭 시 닫기
-  $protocolModal.on("click", function (event) {
-    if ($(event.target).is("#protocol-modal")) {
-      hideProtocolModal();
-    }
-  });
-});
-
-// ===============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* --9 비상 대응 지침 브라우저 팝업 */
 
 $(document).ready(function () {
   /**
@@ -659,4 +881,53 @@ $(document).ready(function () {
   $("#blink-start-danger").on("click", function () {
     openProtocolPopup(); // 팝업 열기 함수 호출
   });
+});
+
+// ==============================================
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+// 드롭존 클릭 이벤트에 대한 방어 코드
+// 빈 드롭존 클릭 시 이벤트를 차단하여 레이아웃 깨짐 방지
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 모든 드롭존 요소를 선택
+  const dropzones = document.querySelectorAll(".drop-zone");
+
+  // 각 드롭존에 클릭 이벤트 추가
+  dropzones.forEach((dropzone) => {
+    dropzone.addEventListener("click", (event) => {
+      // 드롭존 내부에 드래그된 요소가 없는 경우를 확인
+      const hasContent = dropzone.querySelector(".camera-feed") || dropzone.querySelector("video");
+
+      // 드롭존이 비어있다면 클릭 이벤트를 차단
+      if (!hasContent) {
+        event.stopPropagation(); // 이벤트 버블링 방지
+        event.preventDefault(); // 기본 동작 차단
+
+        // 사용자에게 시각적 피드백 제공 (선택 사항)
+        dropzone.classList.add("empty-zone-warning");
+        setTimeout(() => {
+          dropzone.classList.remove("empty-zone-warning");
+        }, 500); // 500ms 후 경고 클래스 제거
+
+        console.warn("빈 드롭존은 클릭할 수 없습니다."); // 콘솔 로그 출력
+      }
+    });
+  });
+
+  // 빈 드롭존 시각적 경고를 위한 스타일 추가 (선택 사항)
+  const style = document.createElement("style");
+  style.textContent = `
+    .empty-zone-warning {
+      border: 2px solid red;
+      animation: shake 0.3s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+  `;
+  document.head.appendChild(style);
 });

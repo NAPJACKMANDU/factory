@@ -39,7 +39,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
 			<!-- 회원 정보 변경 -->
 			<div class="mod-container">
 				<h2>내 정보 변경</h2>
-				<form id="info_frm" onsubmit="update(event)">
+				<form id="info_frm" onsubmit="update(event)" >
 					<input type = "hidden" id = "info_idx" value = '${member.idx}'>
 					<div class="form-group">
 						<label for="name">이름</label> <input type="text" id="if_name"
@@ -72,12 +72,12 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
 				<h2>안전 사고 대응책</h2>
 				<!-- ✅ 자료등록 ✅ -->
 				<!--  📢 일반 안전수칙 등록 -->
-				<form id="safetyRuleForm" method="post">
+				<form id="safetyRuleForm" action="#" method="post">
 					<div class="form-group">
 						<label for="#">안전수칙</label> <input type="file" id="safetyRuleFile"
 							name="safetyRuleFile" />
 						<div alt="프로토콜 자료 등록 버튼 컨테이너">
-							<button type="button" id="addSafetyRuleButton" onclick = "SafetyForm()">자료 추가</button>
+							<button type="button" id="addSafetyRuleButton">자료 추가</button>
 							<button type="button" id="previewButton_1">pdf 미리보기</button>
 						</div>
 					</div>
@@ -122,7 +122,6 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
 						</tr>
 					</table>
 				</div>
-
 			</div>
 		</main>
 	</div>
