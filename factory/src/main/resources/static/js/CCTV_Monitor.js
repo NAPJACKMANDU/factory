@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.dataTransfer.setData("image", item.dataset.img);
       } else if (item.dataset.video) {
         e.dataTransfer.setData("video", item.dataset.video);
-      }
+      } else if (item.dataset.src) {
+		e.dataTransfer.setData("jsp", item.dataset.src);
+	  } 
     });
   });
 
@@ -75,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // 드래그 데이터에서 이미지 또는 비디오 경로 가져오기
       const imgSrc = e.dataTransfer.getData("image");
       const videoSrc = e.dataTransfer.getData("video");
+	  // 드래그한 JSP 경로 가져오기
+	  const jspPath = e.dataTransfer.getData("jsp");
 
       // 기존 내용 제거
       const existingNumber = zone.querySelector(".camera-number"); // 기존 번호 확인
@@ -101,6 +105,20 @@ document.addEventListener("DOMContentLoaded", () => {
         video.style.height = "100%";
         zone.appendChild(video); // 드롭존에 비디오 추가
       }
+	  
+	  if (jspPath) {
+	  	    // 기존 내용 제거
+	  	const existingNumber = zone.querySelector(".camera-number");
+	  	zone.innerHTML = "";
+
+	  	// JSP를 iframe으로 로드
+	  	const iframe = document.createElement("iframe");
+	  	iframe.src = jspPath;
+	  	iframe.width = "100%";
+	  	iframe.height = "100%";
+	  	iframe.frameBorder = "0";
+	  	zone.appendChild(iframe);
+	  }
 
       // 기존 번호 유지
       if (existingNumber) {
@@ -546,11 +564,11 @@ $(document).ready(function () {
 /* --5 이상 탐지 로그 자동 추가 */
 /* --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
 
-$(document).ready(function () {
-  /**
+/*$(document).ready(function () {
+  *
    * 현재 시각을 YY-MM-DD HH24:MI:SS 형식으로 반환
    * @returns {string} - 포맷된 타임스탬프
-   */
+   
   function getFormattedTimestamp() {
     const now = new Date();
     const year = String(now.getFullYear()).slice(-2);
@@ -567,12 +585,12 @@ $(document).ready(function () {
   // 🌟 초기 상태에서 휴지통 버튼 숨김
   $trashButton.hide();
 
-  /**
+  *
    * 로그를 추가하고 부드러운 전환 애니메이션 적용
    * @param {string} cameraLabel - 카메라 라벨 (예: 카메라 1)
    * @param {string} status - '경고' 또는 '위험'
    * @param {string} icon - 상태 아이콘
-   */
+   
   function addLog(cameraLabel, status, icon) {
     const timestamp = getFormattedTimestamp();
     const newLog = $(`
@@ -636,9 +654,9 @@ $(document).ready(function () {
       borderColor: "transparent", // 초기 borderColor 설정
     });
 
-    /**
+    *
      * 프로토콜 버튼 컨테이너를 부드럽게 나타내기
-     */
+     
     function showProtocolContainer() {
       if ($protocolContainer.is(":hidden")) {
         $protocolContainer.stop(true, true).show().animate(
@@ -676,8 +694,8 @@ $(document).ready(function () {
 });
 
 // ==============================================
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용 */
+ 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ 
+ --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용 
 
 $(document).ready(function () {
   let blinkInterval = null; // 깜빡임 제어 변수
@@ -686,11 +704,11 @@ $(document).ready(function () {
   // 초기 CAM-container 테두리 색상 설정
   $(".CAM-container").css({ borderColor: "#4a4a4a" });
 
-  /**
+  *
    * 깜빡임 시작 함수
    * @param {Array} targets - 대상 CAM-container ID 리스트
    * @param {string} color - 깜빡임 색상
-   */
+   
   function startBlink(targets, color) {
     blinkInterval = setInterval(() => {
       targets.forEach(({ id }) => {
@@ -711,10 +729,10 @@ $(document).ready(function () {
     }, 350);
   }
 
-  /**
+  *
    * 깜빡임 중지 함수
    * @param {Array} targets - 대상 CAM-container ID 리스트
-   */
+   
   function stopBlink(targets) {
     clearInterval(blinkInterval);
     targets.forEach(({ id }) => {
@@ -726,10 +744,10 @@ $(document).ready(function () {
     blinkInterval = null;
   }
 
-  /**
+  *
    * #btn-warning 버튼 클릭 이벤트
    * "이상 확인 중" 상태로 변경하고 주황색 테두리로 깜빡임
-   */
+   
   $("#btn-warning").on("click", function () {
     const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
     warningTriggered = true; // #btn-warning 활성화 상태 설정
@@ -737,26 +755,21 @@ $(document).ready(function () {
     startBlink([{ id: targetId }], "#ff8c00"); // 주황색 테두리 깜빡임 시작
   });
 
-  /**
+  *
    * #btn-danger 버튼 클릭 이벤트
    * "이상 발생" 상태로 빨간색 테두리로 깜빡임
-   */
+   
   $("#btn-danger").on("click", function () {
-    if (!warningTriggered) {
-      // #btn-warning 클릭 선행 조건 확인
-      alert("먼저 '이상 확인 중' 버튼을 클릭하세요."); // 사용자 알림
-      return;
-    }
     const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
+	warningTriggered = true;
     stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
     startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
-    warningTriggered = false; // #btn-warning 상태 초기화
   });
 
-  /**
+  *
    * #btn-stop 버튼 클릭 이벤트
    * 모든 깜빡임 효과 중지
-   */
+   
   $("#btn-stop").on("click", function () {
     const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
     stopBlink([{ id: targetId }]); // 깜빡임 제거
@@ -765,8 +778,8 @@ $(document).ready(function () {
 });
 
 // ==============================================
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --8 119신고 + 상황 종료 버튼 활성화 */
+ 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ 
+ --8 119신고 + 상황 종료 버튼 활성화 
 
 $(document).ready(function () {
   const $reportContainer = $(".report-container"); // 신고 컨테이너
@@ -778,9 +791,9 @@ $(document).ready(function () {
     transform: "translateY(-10px)",
   });
 
-  /**
+  *
    * .report-container를 부드럽게 나타내기
-   */
+   
   function showReportContainer() {
     if ($reportContainer.is(":hidden")) {
       $reportContainer.stop(true, true).show().animate(
@@ -793,9 +806,9 @@ $(document).ready(function () {
     }
   }
 
-  /**
+  *
    * .report-container를 숨기기
-   */
+   
   function hideReportContainer() {
     $reportContainer.stop(true, true).animate(
       {
@@ -809,16 +822,16 @@ $(document).ready(function () {
     );
   }
 
-  /**
+  *
    * blink 이벤트 트리거 시 .report-container 표시
-   */
+   
   $("#blink-start-warning, #blink-start-danger").on("click", function () {
     showReportContainer(); // 신고 컨테이너 표시
   });
 
-  /**
+  *
    * #stop-blink 버튼 클릭 시 .report-container와 .sb-container 숨기기
-   */
+   
   $("#stop-blink").on("click", function () {
     hideReportContainer(); // 신고 컨테이너 숨기기
     $protocolContainer.stop(true, true).animate(
@@ -833,7 +846,7 @@ $(document).ready(function () {
     );
   });
 });
-
+*/
 // ==============================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 비상 대응 지침 브라우저 팝업 */

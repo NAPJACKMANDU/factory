@@ -32,7 +32,7 @@ function connectWebSockets() {
         console.log('Socket1(WebSocket for image) 닫힘');
     };
 
-    // 두 번째 WebSocket: 낙상 감지 데이터
+    /*// 두 번째 WebSocket: 낙상 감지 데이터
     socket2 = new WebSocket('ws://172.30.1.54:8095/res');
 
     socket2.onopen = () => {
@@ -46,14 +46,12 @@ function connectWebSockets() {
             console.log('수신한 데이터:', data);
 
             if (data.fallDetected !== undefined) {
-                // JSP 화면에 표시
-                const statusElement = document.getElementById('fallStatus');
-                if (statusElement) {
-                    statusElement.innerText = 
-                        data.fallDetected ? '낙상이 감지되었습니다!' : '정상 상태입니다.';
-                } else {
-                    console.error('fallStatus 요소를 찾을 수 없습니다!');
-                }
+				
+				// data.fallDetected가 참이면 현재 시간으로 로그 띄우기
+				if(data.fallDetected){ 
+					
+				}
+                
             } else {
                 console.error('데이터에 fallDetected 속성이 없습니다:', data);
             }
@@ -68,7 +66,7 @@ function connectWebSockets() {
 
     socket2.onclose = () => {
         console.log('Socket2(WebSocket for fall detection) 닫힘');
-    };
+    };*/
 }
 
 window.onload = () => {
