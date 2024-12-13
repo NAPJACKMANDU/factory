@@ -83,7 +83,9 @@ $(document).ready(function () {
                   type: "POST",
                   data: JSON.stringify(datamodel),
                   contentType: "application/json",
-                  success: getAllCall(),
+                  success: function(data) {
+                	  
+                  },
                   error: function (error) {
                       console.error("키워드 저장 중 오류 발생:", error);
                   }
@@ -96,33 +98,6 @@ $(document).ready(function () {
       }
   });
   
-	function getAllCall() {
-        console.log("데이터 가져오기 시작");
-        $.ajax({
-            url: "/SaftyRules",
-            type: "Post",
-            success: printList(data),
-            error: function() {
-                alert("통신 실패");
-            }
-        });
-    }
-  
-  function printList(data) {
-      var code = "";
-      for (var i = 0; i < data.length; i++) {
-      if (data[i].companyIdx == `${member.companyIdx}`) {
-          code += "<tr style='background-color: #f9f9f9;'>";
-          code += "<td>" +  (i+1) + "</td>";
-          code += "<td>" + data[i].srTitle + "</td>";
-          code += "<td>" + data[i].srDesc + "</td>";
-          code += "<td>" + data[i].createdAt + "</td>";
-          code += "</tr>";
-      }
-      }
-      $("#list").html(code); // tbody에 새 코드 삽입
-  }
-
               	
   // PDF 파일 URL 변수
   let safetyRuleUrl = null;
