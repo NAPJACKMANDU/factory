@@ -26,13 +26,10 @@ public class SafetyRulesRestController {
 	SafetyRulesService service ;
 	
 	
-	@GetMapping("/SaftyRules")
-	public List<SafetyRulesModel> getAllCall(Model model) {
-		return service.getAllSafetyRules() ;
-		 
-		 
-	}
-	
+		@GetMapping("/SaftyRules")
+		public List<SafetyRulesModel> getAllCall(Model model) {
+			return service.getAllSafetyRules() ;
+		}
 	
 	@PostMapping("/SafetyForm")
 	public SafetyRulesModel SafetyRulesUpdate(@RequestBody SafetyRulesModel safetyRule, HttpSession session) {
@@ -50,7 +47,7 @@ public class SafetyRulesRestController {
 
 	    // 3. srTitle이 없다면 새 데이터 저장
 	    service.safetyRulesdata(safetyRule, session);
-	    
+	    System.out.println(safetyRule);
 	    return safetyRule;  // 저장된 데이터 반환
 	}
 	

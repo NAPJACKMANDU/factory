@@ -28,6 +28,38 @@ $(document).ready(function () {
     }
   });
 
+          if (extractedKeyword) {
+              console.log("추출된 키워드:", extractedKeyword); // 콘솔에 출력
+          	// JSON 객체 생성
+          	const datamodel = {
+          	  srTitle : fileName,
+          	  srDesc  : extractedKeyword,
+          	};
+          	
+          	console.log(datamodel);
+    
+              // AJAX를 이용해 키워드를 서버로 전송
+              $.ajax({
+                  url: "/SafetyForm", 
+                  type: "POST",
+                  data: JSON.stringify(datamodel),
+                  contentType: "application/json",
+                  success: function(data) {
+                	  
+                  },
+                  error: function (error) {
+                      console.error("키워드 저장 중 오류 발생:", error);
+                  }
+              });
+          } else {
+              alert("파일명에 키워드가 없습니다.");
+          }
+      } else {
+          alert("파일을 등록해주세요.");
+      }
+  });
+  
+              	
   // PDF 파일 URL 변수
   let safetyRuleUrl = null;
   let emergencyFileUrl = null;
