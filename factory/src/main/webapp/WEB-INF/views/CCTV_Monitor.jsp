@@ -400,10 +400,10 @@
             <a alt="연락망" href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">안전수칙</a>
+            <a href="/SafetyRules">안전수칙</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">정보 등록</a>
+            <a href="/mod_Info">정보 등록</a>
           </div>
         </nav>
       </aside>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,6 @@ import com.smhrd.demo.model.IncidentModel;
 import com.smhrd.demo.model.SafetyRulesModel;
 import com.smhrd.demo.service.SafetyRulesService;
 
-import ch.qos.logback.core.model.Model;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -24,12 +24,6 @@ public class SafetyRulesRestController {
 	
 	@Autowired
 	SafetyRulesService service ;
-	
-	
-		@GetMapping("/SaftyRules")
-		public List<SafetyRulesModel> getAllCall(Model model) {
-			return service.getAllSafetyRules() ;
-		}
 	
 	@PostMapping("/SafetyForm")
 	public SafetyRulesModel SafetyRulesUpdate(@RequestBody SafetyRulesModel safetyRule, HttpSession session) {

@@ -9,6 +9,7 @@ import com.smhrd.demo.model.FactoryMember;
 import com.smhrd.demo.model.SafetyRulesModel;
 import com.smhrd.demo.repo.SafetyRulesRepository;
 
+import ch.qos.logback.core.model.Model;
 import jakarta.servlet.http.HttpSession;
 
 @Service
@@ -18,7 +19,6 @@ public class SafetyRulesService {
 	SafetyRulesRepository rep ;
 	
 		public void safetyRulesdata(SafetyRulesModel safety, HttpSession session) {
-		
 		FactoryMember member = (FactoryMember)session.getAttribute("member") ;
 		safety.setCompanyIdx(member.getCompanyIdx()) ;
 			rep.save(safety) ;
