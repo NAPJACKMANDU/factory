@@ -5,11 +5,6 @@
  * --2 우클릭 시 드롭존 초기화
  * --3 드래그 앤 드롭 및 레이아웃 옵션
  * --4 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트
- * --5 이상 탐지 로그 자동 추가
- * --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기
- * --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
- * --8 119신고 + 상황 종료 버튼 활성화
- * --9 비상 대응 지침 브라우저 팝업
  */
 
 // ==========================================================
@@ -53,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (item.dataset.video) {
         e.dataTransfer.setData("video", item.dataset.video);
       } else if (item.dataset.src) {
-		e.dataTransfer.setData("jsp", item.dataset.src);
-	  } 
+        e.dataTransfer.setData("jsp", item.dataset.src);
+      }
     });
   });
 
@@ -77,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // 드래그 데이터에서 이미지 또는 비디오 경로 가져오기
       const imgSrc = e.dataTransfer.getData("image");
       const videoSrc = e.dataTransfer.getData("video");
-	  // 드래그한 JSP 경로 가져오기
-	  const jspPath = e.dataTransfer.getData("jsp");
+      // 드래그한 JSP 경로 가져오기
+      const jspPath = e.dataTransfer.getData("jsp");
 
       // 기존 내용 제거
       const existingNumber = zone.querySelector(".camera-number"); // 기존 번호 확인
@@ -105,20 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
         video.style.height = "100%";
         zone.appendChild(video); // 드롭존에 비디오 추가
       }
-	  
-	  if (jspPath) {
-	  	    // 기존 내용 제거
-	  	const existingNumber = zone.querySelector(".camera-number");
-	  	zone.innerHTML = "";
 
-	  	// JSP를 iframe으로 로드
-	  	const iframe = document.createElement("iframe");
-	  	iframe.src = jspPath;
-	  	iframe.width = "100%";
-	  	iframe.height = "100%";
-	  	iframe.frameBorder = "0";
-	  	zone.appendChild(iframe);
-	  }
+      if (jspPath) {
+        // 기존 내용 제거
+        const existingNumber = zone.querySelector(".camera-number");
+        zone.innerHTML = "";
+
+        // JSP를 iframe으로 로드
+        const iframe = document.createElement("iframe");
+        iframe.src = jspPath;
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.frameBorder = "0";
+        zone.appendChild(iframe);
+      }
 
       // 기존 번호 유지
       if (existingNumber) {
@@ -559,342 +554,7 @@ $(document).ready(function () {
   });
 });
 
-// ==========================================================
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --5 이상 탐지 로그 자동 추가 */
-/* --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
 
-/*$(document).ready(function () {
-  *
-   * 현재 시각을 YY-MM-DD HH24:MI:SS 형식으로 반환
-   * @returns {string} - 포맷된 타임스탬프
-   
-  function getFormattedTimestamp() {
-    const now = new Date();
-    const year = String(now.getFullYear()).slice(-2);
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-
-    return `[${hours}:${minutes}]<br><span class="small-font">${year}-${month}-${day}</span>`;
-  }
-
-  const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
-
-  // 🌟 초기 상태에서 휴지통 버튼 숨김
-  $trashButton.hide();
-
-  *
-   * 로그를 추가하고 부드러운 전환 애니메이션 적용
-   * @param {string} cameraLabel - 카메라 라벨 (예: 카메라 1)
-   * @param {string} status - '경고' 또는 '위험'
-   * @param {string} icon - 상태 아이콘
-   
-  function addLog(cameraLabel, status, icon) {
-    const timestamp = getFormattedTimestamp();
-    const newLog = $(`
-      <section alt="로그-튜플" class="log-tuple" style="opacity: 0; transform: translateY(-10px);">
-      <p class="log-timestamp">${timestamp}</p>
-      <p alt="로그 콘텐츠" class="log-content">${cameraLabel}</p>
-      <span class="log-content">${icon}</span>
-      </section>
-    `);
-
-    $("#log-tuple-container").prepend(newLog);
-
-    // 부드러운 전환 애니메이션 적용
-    newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
-
-    // 🌟 addLog 실행 시 휴지통 버튼 표시
-    $trashButton.fadeIn(300);
-
-    // 서버로 로그 데이터 전송
-    const logData = {
-      cameraLabel,
-      status,
-      icon,
-      timestamp,
-    };
-
-    $.ajax({
-      url: "/saveLog",
-      method: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(logData),
-      success: function (response) {
-        console.log("로그 저장 성공:", response);
-      },
-      error: function (error) {
-        console.error("로그 저장 실패:", error);
-      },
-    });
-  }
-
-  // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
-  $("#blink-start-warning").on("click", function () {
-    const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
-    addLog(cameraLabel, "경고", "⚠️");
-  });
-
-  // 🚨 '이상 발생' 버튼 클릭 시 위험 로그 추가
-  $("#blink-start-danger").on("click", function () {
-    const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
-    addLog(cameraLabel, "위험", "🚨");
-  });
-
-  $(document).ready(function () {
-    const $protocolContainer = $("#on-the-case");
-    let pressTimer; // CAM-container 꾹 누르기 타이머
-
-    // 초기 상태에서 프로토콜 버튼 컨테이너 숨기기
-    $protocolContainer.hide().css({
-      opacity: 0,
-      transform: "translateY(-10px)",
-      borderColor: "transparent", // 초기 borderColor 설정
-    });
-
-    *
-     * 프로토콜 버튼 컨테이너를 부드럽게 나타내기
-     
-    function showProtocolContainer() {
-      if ($protocolContainer.is(":hidden")) {
-        $protocolContainer.stop(true, true).show().animate(
-          {
-            opacity: 1,
-            transform: "translateY(0)",
-          },
-          150
-        );
-      }
-    }
-
-    // ⚠️🚨 '.btn-onTheCase' 버튼 클릭 시 프로토콜 버튼 컨테이너 표시 🌟🌟🌟🌟🌟➡️➡️➡️ 추후 통신 이벤트로 변경
-    $(".btn-onTheCase").on("click", function () {
-      showProtocolContainer();
-    });
-
-    // 상황 종료 버튼 클릭 시 프로토콜 버튼 컨테이너 숨기기
-    $("#stop-blink").on("click", function () {
-      $protocolContainer.stop(true, true).animate(
-        {
-          opacity: 0,
-          transform: "translateY(-10px)",
-        },
-        350,
-        function () {
-          $(this).hide(); // 애니메이션 완료 후 숨기기
-        }
-      );
-    });
-  });
-
-  // 초기 버튼 상태 설정
-  updateLogToggleButton();
-});
-
-// ==============================================
- 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ 
- --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용 
-
-$(document).ready(function () {
-  let blinkInterval = null; // 깜빡임 제어 변수
-  let warningTriggered = false; // #btn-warning 클릭 상태 확인
-
-  // 초기 CAM-container 테두리 색상 설정
-  $(".CAM-container").css({ borderColor: "#4a4a4a" });
-
-  *
-   * 깜빡임 시작 함수
-   * @param {Array} targets - 대상 CAM-container ID 리스트
-   * @param {string} color - 깜빡임 색상
-   
-  function startBlink(targets, color) {
-    blinkInterval = setInterval(() => {
-      targets.forEach(({ id }) => {
-        const $target = $(id);
-        if ($target.length) {
-          const currentColor = $target.css("border-color");
-          $target.css({
-            borderColor:
-              currentColor === "rgba(0, 0, 0, 0)" ||
-              currentColor === "transparent"
-                ? color
-                : "rgba(0, 0, 0, 0)",
-          });
-        } else {
-          console.warn(`ID: ${id}가 존재하지 않습니다.`);
-        }
-      });
-    }, 350);
-  }
-
-  *
-   * 깜빡임 중지 함수
-   * @param {Array} targets - 대상 CAM-container ID 리스트
-   
-  function stopBlink(targets) {
-    clearInterval(blinkInterval);
-    targets.forEach(({ id }) => {
-      const $target = $(id);
-      if ($target.length) {
-        $target.css({ borderColor: "#4a4a4a" });
-      }
-    });
-    blinkInterval = null;
-  }
-
-  *
-   * #btn-warning 버튼 클릭 이벤트
-   * "이상 확인 중" 상태로 변경하고 주황색 테두리로 깜빡임
-   
-  $("#btn-warning").on("click", function () {
-    const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
-    warningTriggered = true; // #btn-warning 활성화 상태 설정
-    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거
-    startBlink([{ id: targetId }], "#ff8c00"); // 주황색 테두리 깜빡임 시작
-  });
-
-  *
-   * #btn-danger 버튼 클릭 이벤트
-   * "이상 발생" 상태로 빨간색 테두리로 깜빡임
-   
-  $("#btn-danger").on("click", function () {
-    const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
-	warningTriggered = true;
-    stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
-    startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
-  });
-
-  *
-   * #btn-stop 버튼 클릭 이벤트
-   * 모든 깜빡임 효과 중지
-   
-  $("#btn-stop").on("click", function () {
-    const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
-    stopBlink([{ id: targetId }]); // 깜빡임 제거
-    warningTriggered = false; // 상태 초기화
-  });
-});
-
-// ==============================================
- 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ 
- --8 119신고 + 상황 종료 버튼 활성화 
-
-$(document).ready(function () {
-  const $reportContainer = $(".report-container"); // 신고 컨테이너
-  const $protocolContainer = $(".sb-container"); // 상황 종료 컨테이너
-
-  // 초기 상태에서 .report-container 숨기기
-  $reportContainer.hide().css({
-    opacity: 0,
-    transform: "translateY(-10px)",
-  });
-
-  *
-   * .report-container를 부드럽게 나타내기
-   
-  function showReportContainer() {
-    if ($reportContainer.is(":hidden")) {
-      $reportContainer.stop(true, true).show().animate(
-        {
-          opacity: 1,
-          transform: "translateY(0)",
-        },
-        150
-      );
-    }
-  }
-
-  *
-   * .report-container를 숨기기
-   
-  function hideReportContainer() {
-    $reportContainer.stop(true, true).animate(
-      {
-        opacity: 0,
-        transform: "translateY(-10px)",
-      },
-      350,
-      function () {
-        $(this).hide(); // 애니메이션 완료 후 숨기기
-      }
-    );
-  }
-
-  *
-   * blink 이벤트 트리거 시 .report-container 표시
-   
-  $("#blink-start-warning, #blink-start-danger").on("click", function () {
-    showReportContainer(); // 신고 컨테이너 표시
-  });
-
-  *
-   * #stop-blink 버튼 클릭 시 .report-container와 .sb-container 숨기기
-   
-  $("#stop-blink").on("click", function () {
-    hideReportContainer(); // 신고 컨테이너 숨기기
-    $protocolContainer.stop(true, true).animate(
-      {
-        opacity: 0,
-        transform: "translateY(-10px)",
-      },
-      350,
-      function () {
-        $(this).hide(); // 애니메이션 완료 후 숨기기
-      }
-    );
-  });
-});
-*/
-// ==============================================
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --9 비상 대응 지침 브라우저 팝업 */
-
-$(document).ready(function () {
-  /**
-   * 새로운 브라우저 팝업 열기 함수
-   * - 팝업 URL, 이름, 창 특성을 설정하고 동적으로 HTML 콘텐츠를 로드합니다.
-   */
-  function openProtocolPopup() {
-    const popupUrl = "about:blank"; // 팝업 URL, 초기값 설정 (동적 로드 전)
-    const popupName = "ProtocolPopup"; // 팝업 창 이름 (고유)
-    const popupFeatures = "width=800,height=600,scrollbars=yes,resizable=yes"; // 팝업 창 특성
-
-    // 팝업 창 열기
-    const popupWindow = window.open(popupUrl, popupName, popupFeatures);
-
-    // 팝업이 정상적으로 열렸는지 확인
-    if (popupWindow) {
-      // AJAX를 통해 외부 HTML 파일 로드
-      $.get("protocol-popup.html")
-        .done(function (htmlContent) {
-          // HTML 콘텐츠를 팝업 창에 삽입
-          popupWindow.document.open(); // 팝업 창의 문서 초기화
-          popupWindow.document.write(htmlContent); // 외부 HTML 삽입
-          popupWindow.document.close(); // 문서 작성 완료
-
-          // 스타일 및 스크립트 적용 확인 (예: CSS 파일 경로)
-          const styleLink = popupWindow.document.createElement("link");
-          styleLink.rel = "stylesheet";
-          styleLink.href = "protocol-popup.css"; // CSS 파일 경로
-          popupWindow.document.head.appendChild(styleLink);
-        })
-        .fail(function () {
-          // HTML 파일 로드 실패 시 경고
-          alert("팝업 콘텐츠를 로드하지 못했습니다. 경로를 확인하세요.");
-        });
-    } else {
-      // 팝업 차단 경고
-      alert("팝업이 차단되었습니다. 팝업 차단 설정을 확인해주세요.");
-    }
-  }
-
-  // 이벤트 등록: 특정 버튼 클릭 시 팝업 열기
-  $("#blink-start-danger").on("click", function () {
-    openProtocolPopup(); // 팝업 열기 함수 호출
-  });
-});
 
 // ==============================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
@@ -909,7 +569,9 @@ document.addEventListener("DOMContentLoaded", () => {
   dropzones.forEach((dropzone) => {
     dropzone.addEventListener("click", (event) => {
       // 드롭존 내부에 드래그된 요소가 없는 경우를 확인
-      const hasContent = dropzone.querySelector(".camera-feed") || dropzone.querySelector("video");
+      const hasContent =
+        dropzone.querySelector(".camera-feed") ||
+        dropzone.querySelector("video");
 
       // 드롭존이 비어있다면 클릭 이벤트를 차단
       if (!hasContent) {
