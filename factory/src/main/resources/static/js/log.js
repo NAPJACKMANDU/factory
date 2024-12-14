@@ -95,8 +95,9 @@ function plusLog(cameraId, status, icon) {
   newLog.style.opacity = 0; // 초기 투명도 설정
   newLog.style.transform = "translateY(-10px)"; // 초기 위치 설정
 
+  // p태그에 직접 style 걸기 - 로그 폰트 작게(타임스탬프프)
   newLog.innerHTML = `
-	        <p class="log-timestamp">${timestamp}</p>
+	        <p class="log-timestamp" style="font-size: small;">${timestamp}</p>
 	        <p alt="로그 콘텐츠" class="log-content">${cameraId}</p>
 	        <span class="log-content">${icon}</span>
 	    `;
