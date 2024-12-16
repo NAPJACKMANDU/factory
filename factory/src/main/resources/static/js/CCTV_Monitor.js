@@ -5,11 +5,6 @@
  * --2 우클릭 시 드롭존 초기화
  * --3 드래그 앤 드롭 및 레이아웃 옵션
  * --4 'CAM-container' 화면 클릭 --> '선택 화면 확대/축소' 이벤트 & '화면 제외' 이벤트
- * --5 이상 탐지 로그 자동 추가
- * --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기
- * --7 AI 탐지 이벤트 시 강조 및 깜빡임 효과 적용
- * --8 119신고 + 상황 종료 버튼 활성화
- * --9 비상 대응 지침 브라우저 팝업
  */
 
 // ==========================================================
@@ -53,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (item.dataset.video) {
         e.dataTransfer.setData("video", item.dataset.video);
       } else if (item.dataset.src) {
-		e.dataTransfer.setData("jsp", item.dataset.src);
-	  } 
+        e.dataTransfer.setData("jsp", item.dataset.src);
+      }
     });
   });
 
@@ -77,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // 드래그 데이터에서 이미지 또는 비디오 경로 가져오기
       const imgSrc = e.dataTransfer.getData("image");
       const videoSrc = e.dataTransfer.getData("video");
-	  // 드래그한 JSP 경로 가져오기
-	  const jspPath = e.dataTransfer.getData("jsp");
+      // 드래그한 JSP 경로 가져오기
+      const jspPath = e.dataTransfer.getData("jsp");
 
       // 기존 내용 제거
       const existingNumber = zone.querySelector(".camera-number"); // 기존 번호 확인
@@ -105,20 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
         video.style.height = "100%";
         zone.appendChild(video); // 드롭존에 비디오 추가
       }
-	  
-	  if (jspPath) {
-	  	    // 기존 내용 제거
-	  	const existingNumber = zone.querySelector(".camera-number");
-	  	zone.innerHTML = "";
 
-	  	// JSP를 iframe으로 로드
-	  	const iframe = document.createElement("iframe");
-	  	iframe.src = jspPath;
-	  	iframe.width = "100%";
-	  	iframe.height = "100%";
-	  	iframe.frameBorder = "0";
-	  	zone.appendChild(iframe);
-	  }
+      if (jspPath) {
+        // 기존 내용 제거
+        const existingNumber = zone.querySelector(".camera-number");
+        zone.innerHTML = "";
+
+        // JSP를 iframe으로 로드
+        const iframe = document.createElement("iframe");
+        iframe.src = jspPath;
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.frameBorder = "0";
+        zone.appendChild(iframe);
+      }
 
       // 기존 번호 유지
       if (existingNumber) {
@@ -560,10 +555,6 @@ $(document).ready(function () {
   });
 });
 
-// ==========================================================
-/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-/* --5 이상 탐지 로그 자동 추가 */
-/* --6 '로그 추가 이벤트' 시 '프로토콜 버튼 컨테이너' 표시 및 상황 종료 시 숨기기 */
 
 /*$(document).ready(function () {
   *
@@ -911,7 +902,9 @@ document.addEventListener("DOMContentLoaded", () => {
   dropzones.forEach((dropzone) => {
     dropzone.addEventListener("click", (event) => {
       // 드롭존 내부에 드래그된 요소가 없는 경우를 확인
-      const hasContent = dropzone.querySelector(".camera-feed") || dropzone.querySelector("video");
+      const hasContent =
+        dropzone.querySelector(".camera-feed") ||
+        dropzone.querySelector("video");
 
       // 드롭존이 비어있다면 클릭 이벤트를 차단
       if (!hasContent) {
