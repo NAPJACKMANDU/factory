@@ -30,11 +30,6 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
 #secondary-modal.hidden {
     display: none;
 }
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCTV Monitor</title>
-    <style type="text/css">
       /* Secondary Modal Styles */
       /* Secondary Modal Styles */
       #secondary-modal {
@@ -524,6 +519,101 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
           <button class="layout-btn" data-layout="1">1</button>
           <button class="reset-btn">Reset</button>
         </section>
+
+		<!-- 메인 화면 -->
+		<main class="monitor M-area">
+			<div class="camera-grid" id="cameraGrid">
+				<!-- 16 카메라 화면 -->
+				<div class="CAM-container camera dropzone" id="cam1">
+					<span class="camera-number">1번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam2">
+					<span class="camera-number">2번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam3">
+					<span class="camera-number">3번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam4">
+					<span class="camera-number">4번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam5">
+					<span class="camera-number">5번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam6">
+					<span class="camera-number">6번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam7">
+					<span class="camera-number">7번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam8">
+					<span class="camera-number">8번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam9">
+					<span class="camera-number">9번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam10">
+					<span class="camera-number">10번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam11">
+					<span class="camera-number">11번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam12">
+					<span class="camera-number">12번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam13">
+					<span class="camera-number">13번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam14">
+					<span class="camera-number">14번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam15">
+					<span class="camera-number">15번</span>
+				</div>
+				<div class="CAM-container camera dropzone" id="cam16">
+					<span class="camera-number">16번</span>
+				</div>
+			</div>
+			<!-- <temp class="temp"> //탐지 대상 지정
+			<div alt="탐지대상드롭다운" class="blink-controls">
+				<label for="targetId">이상 탐지 대상 선택</label> <select id="targetId">
+					<option value="#cam1">1</option>
+					<option value="#cam2">2</option>
+					<option value="#cam3">3</option>
+					<option value="#cam4">4</option>
+					<option value="#cam5">5</option>
+					<option value="#cam6">6</option>
+					<option value="#cam7">7</option>
+					<option value="#cam8">8</option>
+					<option value="#cam9">9</option>
+					<option value="#cam10">10</option>
+					<option value="#cam11">11</option>
+					<option value="#cam12">12</option>
+					<option value="#cam13">13</option>
+					<option value="#cam14">14</option>
+					<option value="#cam15">15</option>
+					<option value="#cam16">16</option>
+				</select>
+				<div alt="탭 세로선" class="vertical-line"></div>
+				<button id="blink-start-warning" class="btn-onTheCase">이상
+					확인 중</button>
+				<button id="blink-start-danger" class="btn-onTheCase">이상 발생
+				</button>
+			</div>
+			</temp> -->
+		</main>
+
+		<!-- 우측 사이드바 -->
+		<aside class="right-sidebar">
+			<!-- 레이아웃 옵션 -->
+			<h2>
+				Layout<br />Options
+			</h2>
+			<section alt="레이아웃옵션-컨테이너">
+				<button class="layout-btn" data-layout="16">16</button>
+				<button class="layout-btn" data-layout="4">4</button>
+				<button class="layout-btn" data-layout="1">1</button>
+				<button class="reset-btn">Reset</button>
+			</section>
 
         <!-- 로그 탐지 사이드 바 -->
         <aside alt="실시간 모니터링 로그 구역-사이드 바">

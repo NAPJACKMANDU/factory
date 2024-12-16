@@ -556,6 +556,96 @@ $(document).ready(function () {
 });
 
 
+/*$(document).ready(function () {
+  *
+   * 현재 시각을 YY-MM-DD HH24:MI:SS 형식으로 반환
+   * @returns {string} - 포맷된 타임스탬프
+   
+  function getFormattedTimestamp() {
+    const now = new Date();
+    const year = String(now.getFullYear()).slice(-2);
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+
+    return `[${hours}:${minutes}]<br><span class="small-font">${year}-${month}-${day}</span>`;
+  }
+
+  const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
+
+  // 🌟 초기 상태에서 휴지통 버튼 숨김
+  $trashButton.hide();
+
+  *
+   * 로그를 추가하고 부드러운 전환 애니메이션 적용
+   * @param {string} cameraLabel - 카메라 라벨 (예: 카메라 1)
+   * @param {string} status - '경고' 또는 '위험'
+   * @param {string} icon - 상태 아이콘
+   
+  function addLog(cameraLabel, status, icon) {
+    const timestamp = getFormattedTimestamp();
+    const newLog = $(`
+      <section alt="로그-튜플" class="log-tuple" style="opacity: 0; transform: translateY(-10px);">
+      <p class="log-timestamp">${timestamp}</p>
+      <p alt="로그 콘텐츠" class="log-content">${cameraLabel}</p>
+      <span class="log-content">${icon}</span>
+      </section>
+    `);
+
+    $("#log-tuple-container").prepend(newLog);
+
+    // 부드러운 전환 애니메이션 적용
+    newLog.animate({ opacity: 1, transform: "translateY(0)" }, 300);
+
+    // 🌟 addLog 실행 시 휴지통 버튼 표시
+    $trashButton.fadeIn(300);
+
+    // 서버로 로그 데이터 전송
+    const logData = {
+      cameraLabel,
+      status,
+      icon,
+      timestamp,
+    };
+
+    $.ajax({
+      url: "/saveLog",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(logData),
+      success: function (response) {
+        console.log("로그 저장 성공:", response);
+      },
+      error: function (error) {
+        console.error("로그 저장 실패:", error);
+      },
+    });
+  }
+
+  // ⚠️ '이상 확인 중' 버튼 클릭 시 경고 로그 추가
+  $("#blink-start-warning").on("click", function () {
+    const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
+    addLog(cameraLabel, "경고", "⚠️");
+  });
+
+  // 🚨 '이상 발생' 버튼 클릭 시 위험 로그 추가
+  $("#blink-start-danger").on("click", function () {
+    const cameraLabel = $("#targetId option:selected").text(); // 선택된 옵션의 텍스트 가져오기
+    addLog(cameraLabel, "위험", "🚨");
+  });
+
+  $(document).ready(function () {
+    const $protocolContainer = $("#on-the-case");
+    let pressTimer; // CAM-container 꾹 누르기 타이머
+
+    // 초기 상태에서 프로토콜 버튼 컨테이너 숨기기
+    $protocolContainer.hide().css({
+      opacity: 0,
+      transform: "translateY(-10px)",
+      borderColor: "transparent", // 초기 borderColor 설정
+    });
+
     *
      * 프로토콜 버튼 컨테이너를 부드럽게 나타내기
      
