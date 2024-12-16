@@ -411,7 +411,7 @@
         <aside alt="실시간 모니터링 로그 구역-사이드 바">
           <!-- 로그 비우기 -->
           <div alt="로그 비우기 컨테이너" class="log-toggle">
-            <button alt="로그 비우기 버튼">🗑️</button>
+            <button alt="로그 비우기 버튼" onclick="trashcan()">🗑️</button>
             <!-- 프로토콜 버튼(1) : 상황 종료 -->
             <div
               alt="프로토콜 버튼 컨테이너"
@@ -432,13 +432,13 @@
         <nav alt="부가기능 탭">
           <!-- 팝업 animate() Script {location 이동 없음!} -->
           <div alt="a 컨테이너">
-            <a alt="연락망" href="#">연락망</a>
+            <a alt="연락망" href="/call">연락망</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">안전수칙</a>
+            <a href="/SafetyRules">안전수칙</a>
           </div>
           <div alt="a 컨테이너">
-            <a href="#">정보 등록</a>
+            <a href="/mod_Info">정보 등록</a>
           </div>
         </nav>
       </aside>
@@ -528,5 +528,25 @@
     <script src="/src/main/resources/static/js/P04_Monitor.js"></script>
     <script src="/src/main/resources/static/js/calendar.js"></script>
     <script src="/src/main/resources/static/js/CCTV_Monitor.js"></script>
+    <script src="/src/main/resources/static//js/log.js"></script>
+    <script>
+      function trashcan() {
+        const $trashButton = $('button[alt="로그 비우기 버튼"]'); // 🌟 휴지통 버튼
+
+        // 🗑️ 버튼 클릭 시 모든 로그 비우기
+        $trashButton.click(function () {
+          const $logContainer = $("#log-tuple-container");
+
+          // 로그 전체에 페이드 아웃 애니메이션 적용
+          $logContainer.children(".log-tuple").animate(
+            {
+              opacity: 0,
+              margin: 0, // 여백 제거로 완전 축소
+            },
+            300 // 애니메이션 지속 시간
+          );
+        });
+      }
+    </script>
   </body>
 </html>
