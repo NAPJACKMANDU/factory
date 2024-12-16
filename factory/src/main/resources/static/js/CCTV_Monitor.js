@@ -484,6 +484,7 @@ $(document).ready(function () {
 
           if (response.ok) {
             console.log("동영상이 성공적으로 업로드되었습니다.");
+            selectedCameraIndex = null; 
           } else {
             console.error("동영상 업로드에 실패했습니다.", response.statusText);
           }
@@ -850,12 +851,12 @@ $(document).ready(function () {
 // ==============================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* --9 비상 대응 지침 브라우저 팝업 */
-
+/*
 $(document).ready(function () {
-  /**
+  *//**
    * 새로운 브라우저 팝업 열기 함수
    * - 팝업 URL, 이름, 창 특성을 설정하고 동적으로 HTML 콘텐츠를 로드합니다.
-   */
+   *//*
   function openProtocolPopup() {
     const popupUrl = "about:blank"; // 팝업 URL, 초기값 설정 (동적 로드 전)
     const popupName = "ProtocolPopup"; // 팝업 창 이름 (고유)
@@ -895,6 +896,7 @@ $(document).ready(function () {
     openProtocolPopup(); // 팝업 열기 함수 호출
   });
 });
+*/
 
 // ==============================================
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */

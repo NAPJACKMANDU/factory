@@ -15,6 +15,8 @@
 <style type="text/css">
 /* Secondary Modal Styles */
 /* Secondary Modal Styles */
+
+
 #secondary-modal {
     position: fixed;
     top: 0;
@@ -338,7 +340,7 @@
 					<span class="camera-number">16번</span>
 				</div>
 			</div>
-			<temp class="temp"> //탐지 대상 지정
+			<!-- <temp class="temp"> //탐지 대상 지정
 			<div alt="탐지대상드롭다운" class="blink-controls">
 				<label for="targetId">이상 탐지 대상 선택</label> <select id="targetId">
 					<option value="#cam1">1</option>
@@ -364,7 +366,7 @@
 				<button id="blink-start-danger" class="btn-onTheCase">이상 발생
 				</button>
 			</div>
-			</temp>
+			</temp> -->
 		</main>
 
 		<!-- 우측 사이드바 -->

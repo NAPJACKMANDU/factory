@@ -132,6 +132,7 @@ $(document).ready(function () {
 	                contentType: false, // 멀티파트 전송을 위한 Content-Type 설정
 	                success: function (data) {
 	                    console.log("키워드 저장 완료:", data);
+	                    alert("파일 업로드가 완료되었습니다.");
 	                  
 	                },
 	                error: function (error) {

@@ -3,6 +3,7 @@ package com.smhrd.demo.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.smhrd.demo.model.ClipModel;
 import com.smhrd.demo.service.ClipService;
 
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
