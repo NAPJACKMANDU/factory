@@ -42,11 +42,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               required
             />
           </div>
-          <button type="submit" class="login-btn">Login</button>
+          <button type="submit" class="login-btn">로그인</button>
         </form>
-        <button>
-          <a href="P03_Join" class="login-btn"><span>회원가입</span></a>
-        </button>
+          <section alt="로그인 페이지 a태그 컨테이너">
+        <div>
+          <span>로그인 계정이 없으신가요?</span>
+          <a href="/P03_Join"><span>회원가입</span></a>
+        </div>
+      </section>
       </div>
     </div>
     <script src="<c:url value='/js/login-scripts.js' />"></script>

@@ -11,6 +11,8 @@ import com.smhrd.demo.model.FactoryMember;
 public interface FactoryRepository extends JpaRepository<FactoryMember, Long> {
 
 	public FactoryMember findByIdAndPw(String id, String pw);
+
+	public boolean existsById(String id);
 	
 
 }
