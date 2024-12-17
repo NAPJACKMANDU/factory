@@ -36,9 +36,11 @@ body div[alt="call-container"] {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-* {
+div[alt="call-container"] > table {
   /* Scrollbar Styling */
+  border: none !important;
 }
+
 * ::-webkit-scrollbar {
   width: 8px;
   background-color: #34495e;
@@ -185,12 +187,20 @@ td {
   text-align: center;
   padding: 15px;
   font-size: 16px;
-  border: 1px solid #7f8c8d;
+  border-bottom: 1px solid #7f8c8d;
+}
+
+.th-border {
+  border-right: 1px solid #242424;
 }
 
 td {
-  color: #ddd;
-  background-color: #34495e;
+  color: #1d2b36;
+  background-color: #fff;
+}
+
+.td-border {
+  border-right: 1px solid #ddd;
 }
 
 tbody {
