@@ -188,52 +188,36 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
             <li class="category">
               <span>Category 1</span>
               <ul class="sub-category">
+                <li draggable="true" data-img="/imgs/construction2.jpg">Camera 1</li>
+                <li draggable="true" data-img="/imgs/construction1.jpg">Camera 2</li>
                 <li
                   class="video-item"
                   draggable="true"
-                  value="1"
+                  value="3"
                   data-video="/video/TN1.mp4"
                 >
-                  Camera 1
+                  Camera 3
                 </li>
                 <li
                   class="video-item"
                   draggable="true"
-                  value="2"
+                  value="4"
                   data-video="/video/TN2.mp4"
                 >
-                  Camera 2
+                  Camera 4
                 </li>
-                <li draggable="true" data-img="/imgs/category3/img3.png">
-                  Camera 3
-                </li>
-                <li draggable="true" data-img="/imgs/c12.jpg">Camera 4</li>
               </ul>
             </li>
             <li class="category">
               <span>Category 2</span>
               <ul class="sub-category">
-                <li
-                  class="video-item"
-                  draggable="true"
-                  value="5"
-                  data-video="/video/TN3.mp4"
-                >
-                  Camera 5
-                </li>
-                <li
-                  class="video-item"
-                  draggable="true"
-                  value="6"
-                  data-video="/video/TARO1.mp4"
-                >
-                  Camera 6
-                </li>
+               <li draggable="true" data-img="/imgs/construction7.jpg">Camera 5</li>
+                <li draggable="true" data-img="/imgs/construction8.jpg">Camera 6</li>
                 <li
                   class="video-item"
                   draggable="true"
                   value="7"
-                  data-video="/video/thon4.mp4"
+                  data-video="/video/TN3.mp4"
                 >
                   Camera 7
                 </li>
@@ -241,7 +225,7 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
                   class="video-item"
                   draggable="true"
                   value="8"
-                  data-video="/video/sch1.mp4"
+                  data-video="/video/TARO1.mp4"
                 >
                   Camera 8
                 </li>
@@ -251,19 +235,19 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
             <li class="category">
               <span>Category 3</span>
               <ul class="sub-category">
-                <li draggable="true" data-img="/imgs/c13.jpg">Camera 9</li>
-                <li draggable="true" data-img="/imgs/c14.jpg">Camera 10</li>
-                <li draggable="true" data-img="/imgs/c15.jpg">Camera 11</li>
-                <li draggable="true" data-img="/imgs/c16.jpg">Camera 12</li>
+                <li draggable="true" data-img="/imgs/construction9.jpg">Camera 9</li>
+                <li draggable="true" data-img="/imgs/construction10.jpg">Camera 10</li>
+                <li draggable="true" data-img="/imgs/construction11.jpg">Camera 11</li>
+                <li draggable="true" data-img="/imgs/construction12.jpg">Camera 12</li>
               </ul>
             </li>
             <li class="category">
               <span>Category 4</span>
               <ul class="sub-category">
-                <li draggable="true" data-img="/imgs/c12.jpg">Camera 13</li>
-                <li draggable="true" data-img="/imgs/c11.jpg">Camera 14</li>
-                <li draggable="true" data-img="/imgs/c10.jpg">Camera 15</li>
-                <li draggable="true" data-img="/imgs/c9.jpg">Camera 16</li>
+                <li draggable="true" data-img="/imgs/construction3.jpg">Camera 13</li>
+                <li draggable="true" data-img="/imgs/construction4.jpg">Camera 14</li>
+                <li draggable="true" data-img="/imgs/construction5.jpg">Camera 15</li>
+                <li draggable="true" data-img="/imgs/construction6.jpg">Camera 16</li>
               </ul>
             </li>
 
