@@ -5,39 +5,12 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CCTV Monitor</title>
-<style type="text/css">
-/* Secondary Modal Styles */
-/* Secondary Modal Styles */
-
-
-#secondary-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.42);
-    z-index: 2000;
-}
-
-#secondary-modal.hidden {
-    display: none;
-}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CCTV Monitor</title>
-    <style type="text/css">
-      /* Secondary Modal Styles */
-      /* Secondary Modal Styles */
-      #secondary-modal {
+    <style>
+      .secondary-modal {
         position: fixed;
         top: 0;
         left: 0;
@@ -46,71 +19,78 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.42);
+        background-color: rgba(0, 0, 0, 0.6); /* 진한 반투명 블랙 오버레이 */
         z-index: 2000;
-      }
 
-      #secondary-modal.hidden {
-        display: none;
-      }
+        &.hidden {
+          display: none;
+        }
 
-      #secondary-modal .secondary-modal-content {
-        background-color: #34495edc;
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        width: 700px;
-        height: 450px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        animation: fadeIn 0.3s ease;
-      }
+        .secondary-modal-content {
+          background-color: rgba(32, 33, 36, 0.95); /* 반투명 다크모드 배경 */
+          color: #e8eaed; /* 밝은 텍스트 색상 */
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* 진한 그림자 */
+          min-width: 700px;
+          max-width: 700px;
+          height: 450px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          animation: fadeIn 0.3s ease;
 
-      #secondary-modal .secondary-modal-content h2 {
-        margin-bottom: 7px;
-        border-bottom: 2px solid #1abc9c;
-        padding-bottom: 10px;
-        width: 80%;
-        color: white;
-      }
+          h2 {
+            margin-bottom: 7px;
+            border-bottom: 2px solid whitesmoke; /* 강조 색상: 구글 블루 */
+            padding-bottom: 10px;
+            width: 80%;
+            color: #e8eaed;
+          }
 
-      #secondary-modal .secondary-modal-content article {
-        overflow-y: auto;
-        width: 100%;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-      }
+          article[alt="2차 모달 스크롤 발생"] {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
 
-      #secondary-modal .secondary-modal-content table {
-        width: 80%;
-        border: 1px solid whitesmoke;
-        border-radius: 5px;
-        text-align: center;
-      }
+          table {
+            width: 80%;
+            border: 1px solid #5f6368; /* 테두리 색상 */
+            border-radius: 5px;
+            text-align: center;
 
-      #secondary-modal .secondary-modal-content table .th {
-        background-color: #243447;
-        padding: 10px;
-        color: white;
-      }
+            .th {
+              background-color: #3c4043; /* 다크모드 테이블 헤더 */
+              padding: 10px;
+              height: 25px;
+              color: #e8eaed;
+            }
 
-      #secondary-modal .secondary-modal-content table .content {
-        height: 35px;
-        color: black;
-      }
+            .content {
+              height: 35px;
+              color: #e8eaed;
+            }
+          }
 
-      #secondary-modal .secondary-modal-content .close-secondary-modal {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-        cursor: pointer;
+          .close-secondary-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #9aa0a6; /* 중간 밝기의 회색 */
+            &:hover {
+              color: #8ab4f8; /* 강조 색상 호버 */
+            }
+          }
+        }
       }
 
       @keyframes fadeIn {
@@ -122,37 +102,6 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
           opacity: 1;
           transform: scale(1);
         }
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      #secondary-modal-video {
-        position: fixed; /* 화면을 기준으로 위치 */
-        top: 50%; /* 화면의 세로 중간 */
-        left: 50%; /* 화면의 가로 중간 */
-        transform: translate(-50%, -50%); /* 중심을 맞추기 위해 이동 */
-        z-index: 9999; /* 다른 요소들보다 위에 위치하도록 더 높은 값으로 설정 */
-        padding: 20px; /* 여백 */
-        width: 100%; /* 모달의 너비를 화면의 %로 설정 (필요에 따라 조정) */
-        max-width: 1000px; /* 최대 너비 설정 */
-      }
-
-      .modal-contents {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* 자식 요소를 중앙 정렬 */
-        justify-content: center;
-        overflow: hidden; /* 비디오가 모달 영역을 넘어가지 않도록 */
-        position: relative; /* 비디오 위치 조정을 위해 */
-        height: 550px; /* 고정된 높이 설정 (필요에 따라 조정) */
-      }
-
-      #video-player {
-        width: 100%; /* 비디오의 너비를 사각형의 너비에 맞춤 */
-        height: 100%; /* 비디오의 높이를 사각형의 높이에 맞춤 */
-        object-fit: cover; /* 비디오가 영역을 완전히 채우도록 설정 */
       }
     </style>
     <!-- 전역 style -->
@@ -346,60 +295,60 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
         </div>
       </div>
 
-		<!-- 메인 화면 -->
-		<main class="monitor M-area">
-			<div class="camera-grid" id="cameraGrid">
-				<!-- 16 카메라 화면 -->
-				<div class="CAM-container camera dropzone" id="cam1">
-					<span class="camera-number">1번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam2">
-					<span class="camera-number">2번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam3">
-					<span class="camera-number">3번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam4">
-					<span class="camera-number">4번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam5">
-					<span class="camera-number">5번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam6">
-					<span class="camera-number">6번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam7">
-					<span class="camera-number">7번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam8">
-					<span class="camera-number">8번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam9">
-					<span class="camera-number">9번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam10">
-					<span class="camera-number">10번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam11">
-					<span class="camera-number">11번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam12">
-					<span class="camera-number">12번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam13">
-					<span class="camera-number">13번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam14">
-					<span class="camera-number">14번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam15">
-					<span class="camera-number">15번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam16">
-					<span class="camera-number">16번</span>
-				</div>
-			</div>
-			<!-- <temp class="temp"> //탐지 대상 지정
+      <!-- 메인 화면 -->
+      <main class="monitor M-area">
+        <div class="camera-grid" id="cameraGrid">
+          <!-- 16 카메라 화면 -->
+          <div class="CAM-container camera dropzone" id="cam1">
+            <span class="camera-number">1번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam2">
+            <span class="camera-number">2번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam3">
+            <span class="camera-number">3번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam4">
+            <span class="camera-number">4번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam5">
+            <span class="camera-number">5번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam6">
+            <span class="camera-number">6번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam7">
+            <span class="camera-number">7번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam8">
+            <span class="camera-number">8번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam9">
+            <span class="camera-number">9번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam10">
+            <span class="camera-number">10번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam11">
+            <span class="camera-number">11번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam12">
+            <span class="camera-number">12번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam13">
+            <span class="camera-number">13번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam14">
+            <span class="camera-number">14번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam15">
+            <span class="camera-number">15번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam16">
+            <span class="camera-number">16번</span>
+          </div>
+        </div>
+        <!-- <temp class="temp"> //탐지 대상 지정
 			<div alt="탐지대상드롭다운" class="blink-controls">
 				<label for="targetId">이상 탐지 대상 선택</label> <select id="targetId">
 					<option value="#cam1">1</option>
@@ -426,7 +375,7 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
 				</button>
 			</div>
 			</temp> -->
-		</main>
+      </main>
 
       <!-- 우측 사이드바 -->
       <aside class="right-sidebar">

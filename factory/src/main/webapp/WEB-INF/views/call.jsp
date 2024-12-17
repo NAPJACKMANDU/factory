@@ -14,7 +14,27 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%>
     <link rel="stylesheet" href="/style/call.css" />
   </head>
   <body>
-    <!-- <div class="input-form-container">
+    <!-- view -->
+    <div alt="call-container" id="globals-container">
+      <!-- header -->
+      <header alt="헤더" style="background-color: #0b0c0cd8; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);;">
+        <!-- 부가기능 탭 -->
+        <nav alt="부가기능 탭">
+          <div alt="a 컨테이너">
+            <a href="/CCTV_Monitor" style="font-size: 11.8pt">CCTV모니터</a>
+          </div>
+          <div class="vertical-line"></div>
+          <div alt="a 컨테이너">
+            <a href="/SafetyRules" style="font-size: 11.8pt">안전수칙</a>
+          </div>
+          <div class="vertical-line"></div>
+
+          <div alt="a 컨테이너">
+            <a href="/mod_Info" style="font-size: 11.8pt">정보 등록</a>
+          </div>
+        </nav>
+      </header>
+      <!-- <div class="input-form-container">
       <h2>새 연락처 추가</h2>
       <div class="input-group">
         <input type="text" id="name" placeholder="이름" required />
