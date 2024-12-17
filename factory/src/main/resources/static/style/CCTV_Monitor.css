@@ -66,6 +66,23 @@ body *::-webkit-scrollbar-thumb {
 body *::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
 }
+.log-tuple {
+  display: flex; /* 요소를 가로로 나열 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: space-between; /* 양 끝 정렬 */
+  padding: 5px 10px; /* 상하, 좌우 패딩 */
+  border-bottom: 1px solid #ccc; /* 구분선 추가 */
+  font-size: 14px; /* 폰트 크기 설정 */
+  width: 100%; /* 부모 컨테이너에 맞게 늘어나도록 설정 */
+  box-sizing: border-box; /* padding이 width에 포함되도록 */
+}
+
+.log-tuple p {
+  margin: 0; /* 기본 마진 제거 */
+  white-space: nowrap; /* 텍스트가 잘리지 않도록 설정 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 오버플로우된 텍스트는 생략(...) 처리 */
+}
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* Container */
