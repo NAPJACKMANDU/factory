@@ -11,11 +11,11 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
     <title>수칙 테이블</title>
     <link
       rel="stylesheet"
-      href="/src/main/resources/static/style/globals.css"
+      href="style/globals.css"
     />
     <link
       rel="stylesheet"
-      href="/src/main/resources/static/style/saftyRules.css"
+      href="style/saftyRules.css"
     />
   </head>
   <body>
