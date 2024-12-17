@@ -22,14 +22,6 @@
 /* 모달 그림자 */
 /* 기본 텍스트 색상 */
 /* 요일 헤더 배경 */
-/* 모달 배경 */
-/* 테이블 헤더 배경 */
-/* 기본 텍스트 색상 */
-/* 강조 색상 */
-/* 모달 오버레이 배경 */
-/* 테두리 색상 */
-/* 버튼 호버 색상 */
-/* 신고 버튼 배경 */
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* General Styles */
 body {
@@ -183,7 +175,7 @@ section {
   color: white;
   padding: 10px;
   overflow: hidden;
-  border-right: 2px solid #ddd;
+  border-right: 2px solid #333;
   /* 카테고리 컨테이너 */
 }
 .left-sidebar section[alt=카테고리-컨테이너] {
@@ -350,7 +342,7 @@ section {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
-  border-left: 2px solid #ddd;
+  border-left: 2px solid #333;
   -webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
   transition: max-height 0.5s ease, opacity 0.5s ease;
   /* 레이아웃 옵션 토글 버튼 */
@@ -592,7 +584,7 @@ section {
   overflow: hidden;
 }
 .calendar .calendar-header {
-  background-color: #f4f4f4;
+  background-color: #333;
   padding: 5px;
   height: 20px;
   width: 142px;
@@ -625,7 +617,7 @@ section {
 .calendar .calendar-table td {
   font-size: 0.25em;
   padding: 2px;
-  border: 1px solid #ddd;
+  border: 1px solid #333;
   word-wrap: break-word;
 }
 .calendar .calendar-table th {
@@ -645,7 +637,7 @@ section {
   transition: background 0.3s ease;
 }
 .calendar .calendar-table td:hover {
-  background-color: rgba(211, 6, 6, 0.61);
+  background-color: #333;
   color: #ffa500;
 }
 
@@ -719,6 +711,14 @@ footer .modal.fade-out {
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* ✨ 2차 모달 스타일 */
 /* 🎨 색상 변수 설정 */
+/* 모달 배경 */
+/* 테이블 헤더 배경 */
+/* 기본 텍스트 색상 */
+/* 강조 색상 */
+/* 모달 오버레이 배경 */
+/* 테두리 색상 */
+/* 버튼 호버 색상 */
+/* 신고 버튼 배경 */
 .secondary-modal {
   position: fixed;
   top: 0;
@@ -742,7 +742,7 @@ footer .modal.fade-out {
 }
 .secondary-modal .secondary-modal-content {
   background-color: rgba(52, 73, 94, 0.86);
-  color: #000000;
+  color: white;
   padding: 20px;
   border-radius: 10px;
   -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -795,7 +795,7 @@ footer .modal.fade-out {
 }
 .secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table {
   margin-bottom: 0;
-  border: 1px solid #ddd;
+  border: 1px solid whitesmoke;
   border-radius: 5px;
   width: 80%;
   text-align: center;
@@ -875,7 +875,7 @@ footer .modal.fade-out {
   background-color: darkred;
   border: none;
   border-radius: 15px;
-  color: #ddd;
+  color: whitesmoke;
   width: 100%;
   min-height: 65px;
   cursor: pointer;
