@@ -8,32 +8,32 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   height: 100vh;
 }
-body div[alt=call-container] {
+body div[alt="call-container"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   place-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: #1abc9c;
   border-radius: 10px;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -63,11 +63,11 @@ nav[alt="부가기능 탭"] {
   display: flex;
   place-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
 }
 nav[alt="부가기능 탭"] div[alt="a 컨테이너"] {
@@ -80,11 +80,11 @@ nav[alt="부가기능 탭"] div[alt="a 컨테이너"] {
   display: flex;
   place-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
   width: 100%;
@@ -100,15 +100,15 @@ nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   /* 폰트 설정 */
   font-weight: bolder;
   font-size: medium;
@@ -135,26 +135,27 @@ input {
 }
 
 .contact-table-container {
+  padding: 15px;
   width: 100%;
   max-width: 1200px;
   background: #2c3e50;
   border-radius: 15px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 h1 {
@@ -176,7 +177,7 @@ table {
 thead {
   background-color: rgba(11, 12, 12, 0.8470588235);
   color: white;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
 }
 
 th,
@@ -190,6 +191,10 @@ td {
 td {
   color: #ddd;
   background-color: #34495e;
+}
+
+tbody {
+  border-radius: 0 0 5px 5px;
 }
 
 tbody tr:nth-child(even) {
@@ -257,7 +262,7 @@ tbody tr:hover {
 /* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* ◽🔹 최상위 부모 요소 🔹◽ */
   /* ◽🔸 첫째 자식 요소 🔸◽ */
   /* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
@@ -275,8 +280,8 @@ tbody tr:hover {
   display: flexbox; /* 자식 요소 top,left 사용 가능하게 */
   place-items: center; /* 수평과 수직 중앙 정렬 */
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   /* 임의 설정 */
 }
 * html *,
@@ -296,8 +301,8 @@ tbody tr:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; /* 위아래로 쌓이는 구조 */
+  -ms-flex-direction: column;
+  flex-direction: column; /* 위아래로 쌓이는 구조 */
   position: absolute;
   top: 0; /* 부모의 상단에 붙임 */
   left: 0; /* 부모의 왼쪽에 붙임 */
@@ -312,7 +317,7 @@ tbody tr:hover {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap; /* 요소가 한 줄에 고정되도록 설정 */
+  flex-wrap: nowrap; /* 요소가 한 줄에 고정되도록 설정 */
   overflow: hidden; /* 스크롤 없이 화면 고정 */
 }
 * main > * {
@@ -334,7 +339,7 @@ tbody tr:hover {
   background-color: rgba(11, 12, 12, 0.8470588235);
   border: none;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 0 !important;
   padding: 0 8%; /* 헤더 좌우 패딩 */
   height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
@@ -344,11 +349,11 @@ tbody tr:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   gap: 15%; /* 헤더 요소 간격 */
   overflow: hidden;
   /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
@@ -368,11 +373,11 @@ tbody tr:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 * header section[alt="로고 컨테이너"] * {
   margin: 0;
@@ -408,7 +413,7 @@ tbody tr:hover {
   margin: 0;
   height: 65px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 * header nav {
   /* 임의 설정 */
@@ -420,8 +425,8 @@ tbody tr:hover {
   display: flex;
   place-items: center;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   gap: 5%;
   /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 }
@@ -445,11 +450,11 @@ tbody tr:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   /* 폰트 설정 */
   font-weight: bolder;
   font-size: medium;
