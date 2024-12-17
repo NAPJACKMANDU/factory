@@ -1,45 +1,69 @@
 @charset "UTF-8";
-/* 🎨 색상 변수 */
+/* 🎨 색상 변수 (구글 다크모드 적용) */
 /* 전체 배경색 */
 /* 기본 텍스트 색상 */
 /* 스크롤바 배경색 */
 /* 스크롤바 썸 색상 */
 /* 스크롤바 트랙 색상 */
-/* 깜빡임 버튼 기본 배경색 */
-/* 깜빡임 버튼 호버 시 배경색 */
-/* 깜빡임 컨트롤 배경색 */
+/* 깜빡임 버튼 기본 배경색 (유지) */
+/* 깜빡임 버튼 호버 시 배경색 (유지) */
+/* 깜빡임 컨트롤 배경색 (유지) */
 /* 버튼 텍스트 색상 */
 /* 깜빡임 투명도 */
+/* 사이드바 배경 */
+/* 테두리 색상 */
+/* 카테고리 배경 */
+/* 카테고리 호버 배경 */
+/* 카테고리 호버 텍스트 */
+/* 카테고리 텍스트 */
+/* 모니터 영역 배경 */
+/* 카메라 영역 배경 */
+/* 카메라 테두리 */
+/* 카메라 호버 배경 */
+/* 카메라 호버 테두리 */
+/* 카메라 숫자 배경 */
+/* 카메라 텍스트 */
+/* 테두리 강조 색상 */
+/* 버튼 테두리 */
+/* 버튼 호버 배경 */
+/* 버튼 기본 배경 */
+/* 버튼 호버 텍스트 */
+/* 로그 배경 */
+/* 로그 텍스트 */
+/* 호버 하이라이트 */
+/* 링크 호버 색상 */
+/* 흰색을 다크모드 톤으로 변경 */
+/* 🎨 색상 변수 (구글 다크모드 모달 스타일) */
 /* 캘린더 배경색 */
 /* 캘린더 헤더 배경색 */
 /* 셀 호버 배경색 */
 /* 셀 테두리 색상 */
-/* 헤더 텍스트 색상 */
-/* 일요일 텍스트 색상 */
-/* 토요일 텍스트 색상 */
-/* 호버 시 텍스트 색상 */
+/* 헤더 텍스트 색상 (유지) */
+/* 일요일 텍스트 색상 (유지) */
+/* 토요일 텍스트 색상 (구글 블루톤) */
+/* 호버 시 텍스트 색상 (유지) */
 /* 모달 배경색 */
 /* 모달 그림자 */
 /* 기본 텍스트 색상 */
-/* 요일 헤더 배경 */
+/* 요일 헤더 배경 (유지) */
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* General Styles */
 body {
-  background-color: #1d2b36;
+  background-color: #202124;
   margin: 0;
   padding: 0;
   min-width: 100%;
   min-height: 100%;
   overflow: hidden;
   font-family: "Arial", sans-serif;
-  color: white;
+  color: #e8eaed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   /* 스크롤바 스타일 */
 }
 body #globals-container {
-  background-color: #1d2b36 !important; /* 배경색 기본 */
+  background-color: #202124 !important; /* 배경색 기본 */
   margin: 0; /* 여백 제거 */
   padding: 0;
   height: 100vh; /* 뷰포트 전체 높이 */
@@ -57,14 +81,14 @@ body #globals-container {
 }
 body *::-webkit-scrollbar {
   width: 8px;
-  background-color: #34495e;
+  background-color: #3c4043;
 }
 body *::-webkit-scrollbar-thumb {
-  background-color: #1abc9c;
+  background-color: #5f6368;
   border-radius: 4px;
 }
 body *::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #292a2d;
 }
 .log-tuple {
   display: flex; /* 요소를 가로로 나열 */
@@ -150,7 +174,7 @@ body *::-webkit-scrollbar-track {
   margin-bottom: 10px;
   padding: 8px 16px;
   background-color: #007bff;
-  color: white;
+  color: #e8eaed;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -188,11 +212,11 @@ section {
   margin-top: 30px;
   height: 105vh;
   width: 12.5%;
-  background-color: #243447;
-  color: white;
+  background-color: #292a2d;
+  color: #e8eaed;
   padding: 10px;
   overflow: hidden;
-  border-right: 2px solid #333;
+  border-right: 2px solid #36393a;
   /* 카테고리 컨테이너 */
 }
 .left-sidebar section[alt=카테고리-컨테이너] {
@@ -204,19 +228,19 @@ section {
 }
 .left-sidebar section[alt=카테고리-컨테이너]::-webkit-scrollbar {
   width: 8px;
-  background-color: #34495e;
+  background-color: #3c4043;
 }
 .left-sidebar section[alt=카테고리-컨테이너]::-webkit-scrollbar-thumb {
-  background-color: #1abc9c;
+  background-color: #5f6368;
   border-radius: 4px;
 }
 .left-sidebar section[alt=카테고리-컨테이너]::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #292a2d;
 }
 .left-sidebar section[alt=카테고리-컨테이너] h2 {
   font-size: 18px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #5f6368;
   padding-bottom: 10px;
 }
 .left-sidebar section[alt=카테고리-컨테이너] ul {
@@ -237,16 +261,16 @@ section {
 .left-sidebar section[alt=카테고리-컨테이너] .category .sub-category li {
   margin: 5px 0;
   padding: 10px;
-  background-color: #34495e;
-  color: white;
+  background-color: #3c4043;
+  color: #e8eaed;
   cursor: -webkit-grab;
   cursor: grab;
   border-radius: 5px;
-  border: 1px solid #1abc9c;
+  border: 1px solid #5f6368;
 }
 .left-sidebar section[alt=카테고리-컨테이너] .category .sub-category li:hover {
-  background-color: #1abc9c;
-  color: black;
+  background-color: #8ab4f8;
+  color: #202124;
 }
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
@@ -258,7 +282,7 @@ section {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: #2c3e50;
+  background-color: #292a2d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -273,8 +297,6 @@ section {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
-  border-left: 2px solid #1abc9c;
-  border-right: 2px solid #1abc9c;
   /* 카메라 그리드 */
 }
 .monitor .camera-grid {
@@ -288,8 +310,8 @@ section {
 }
 .monitor .camera-grid .camera {
   position: relative;
-  background-color: #34495e;
-  border: 2px dashed #7f8c8d;
+  background-color: #3c4043;
+  border: 2px dashed #5f6368;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,7 +321,7 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: white;
+  color: #e8eaed;
   aspect-ratio: 16/9;
   border-radius: 8px;
   overflow: hidden;
@@ -308,8 +330,8 @@ section {
   /* 카메라 넘버 스타일 */
 }
 .monitor .camera-grid .camera.drag-over {
-  background-color: #1abc9c;
-  border-color: #16a085;
+  background-color: #8ab4f8;
+  border-color: #aecbfa;
 }
 .monitor .camera-grid .camera img,
 .monitor .camera-grid .camera video {
@@ -328,7 +350,7 @@ section {
   top: 8px;
   left: 8px;
   font-size: 12px;
-  color: white;
+  color: #e8eaed;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 2px 6px;
   border-radius: 4px;
@@ -341,13 +363,13 @@ section {
 /* 🎨 색상 변수 */
 /* 📌 Right Sidebar 설정 */
 .right-sidebar {
-  background-color: #243447;
+  background-color: #292a2d;
   padding-bottom: 0;
   margin-top: 20px;
   height: 105vh;
   min-width: 7.5%;
   max-width: 10%;
-  color: #fff;
+  color: #e8eaed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -359,7 +381,7 @@ section {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
-  border-left: 2px solid #333;
+  border-left: 2px solid #36393a;
   -webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
   transition: max-height 0.5s ease, opacity 0.5s ease;
   /* 레이아웃 옵션 토글 버튼 */
@@ -370,7 +392,7 @@ section {
 .right-sidebar button[alt=레이아웃옵션-토글] {
   margin: 0;
   padding: 0;
-  border: 1px solid #1abc9c;
+  border: 1px solid #8ab4f8;
   border-radius: 5px;
   font-weight: bold;
   -webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
@@ -383,13 +405,13 @@ section {
 }
 .right-sidebar button[alt=레이아웃옵션-토글]:hover {
   cursor: pointer;
-  background-color: #086553;
-  color: black;
+  background-color: #aecbfa;
+  color: #202124;
 }
 .right-sidebar button[alt=레이아웃옵션-토글] h2 {
   font-size: 18px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #8ab4f8;
   padding-bottom: 10px;
 }
 .right-sidebar section[alt=레이아웃옵션-컨테이너] {
@@ -413,9 +435,9 @@ section {
 .right-sidebar section[alt=레이아웃옵션-컨테이너] .reset-btn {
   margin: 10px 0;
   padding: 10px;
-  background-color: #34495e;
-  color: #fff;
-  border: 1px solid #1abc9c;
+  background-color: #3c4043;
+  color: #e8eaed;
+  border: 1px solid #8ab4f8;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
@@ -425,15 +447,15 @@ section {
 }
 .right-sidebar section[alt=레이아웃옵션-컨테이너] .layout-btn:hover,
 .right-sidebar section[alt=레이아웃옵션-컨테이너] .reset-btn:hover {
-  background-color: #1abc9c;
-  color: black;
+  background-color: #8ab4f8;
+  color: #202124;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] {
   margin: 15px 0 -15px 0;
   height: 420px;
   min-width: 100%;
   width: 133%;
-  background-color: rgba(11, 12, 12, 0.847);
+  background-color: #303134;
   border-radius: 5px;
   padding: 5px;
   overflow-y: auto;
@@ -449,7 +471,8 @@ section {
   transition: z-index 0.3s ease;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple {
-  color: rgba(11, 12, 12, 0.847);
+  color: white;
+  background-color: #202124;
   text-align: center;
   padding: 5px;
   height: 30px;
@@ -462,6 +485,7 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple .log-timestamp {
   padding-top: 3px;
   min-width: 60px;
+  color: #f5f570;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-tuple .small-font {
   font-size: 0.7em;
@@ -513,10 +537,10 @@ section {
   width: 230px;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section * {
-  color: #201f1f;
+  color: #bdc1c6;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container button {
-  background-color: #1abc9c;
+  background-color: #8ab4f8;
   -webkit-box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
           box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
   border: none;
@@ -527,7 +551,7 @@ section {
   height: 34px;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container button:hover {
-  background-color: rgba(218, 165, 32, 0.823);
+  background-color: #8ab4f8;
   -webkit-box-shadow: 2px -6px 6px rgba(0, 0, 0, 0.2) inset;
           box-shadow: 2px -6px 6px rgba(0, 0, 0, 0.2) inset;
   -webkit-transition: background-color 0.25s;
@@ -558,14 +582,14 @@ section {
           justify-content: center;
   font-weight: bolder;
   font-size: medium;
-  color: #fff;
+  color: #e8eaed;
   text-decoration: none;
 }
 .right-sidebar nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
   cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
-  color: #48f1cf;
+  color: #8ab4f8;
   font-weight: bolder;
 }
 
@@ -573,12 +597,12 @@ section {
 .left-sidebar::-webkit-scrollbar,
 .right-sidebar::-webkit-scrollbar {
   width: 8px;
-  background-color: #34495e;
+  background-color: #3c4043;
 }
 
 .left-sidebar::-webkit-scrollbar-thumb,
 .right-sidebar::-webkit-scrollbar-thumb {
-  background-color: #1abc9c;
+  background-color: #5f6368;
   border-radius: 4px;
 }
 
@@ -587,7 +611,7 @@ section {
 /* 🎨 색상 변수 설정 */
 /* ✨ 달력 스타일 */
 .calendar {
-  background-color: #262626;
+  background-color: #36393a;
   margin: 0px -5% 0 0;
   padding: 0.1px 5px 0 5px;
   padding-top: 3px;
@@ -595,13 +619,13 @@ section {
   height: auto;
   border-radius: 5px;
   font-family: Arial, sans-serif;
-  color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: #e8eaed;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 .calendar .calendar-header {
-  background-color: #333;
+  background-color: #3c4043;
   padding: 5px;
   height: 20px;
   width: 142px;
@@ -634,7 +658,7 @@ section {
 .calendar .calendar-table td {
   font-size: 0.25em;
   padding: 2px;
-  border: 1px solid #333;
+  border: 1px solid #36393a;
   word-wrap: break-word;
 }
 .calendar .calendar-table th {
@@ -646,7 +670,7 @@ section {
   color: #ff4500;
 }
 .calendar .calendar-table .saturday {
-  color: #1e90ff;
+  color: #8ab4f8;
 }
 .calendar .calendar-table td {
   cursor: pointer;
@@ -654,7 +678,7 @@ section {
   transition: background 0.3s ease;
 }
 .calendar .calendar-table td:hover {
-  background-color: #333;
+  background-color: #5f6368;
   color: #ffa500;
 }
 
@@ -683,11 +707,11 @@ footer .modal {
   height: 110px;
   font-size: 0.2em;
   display: none;
-  background-color: #282828;
-  color: #fff;
+  background-color: #303134;
+  color: #e8eaed;
   border-radius: 15px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   padding: 15px;
   z-index: 1000;
   opacity: 0;
@@ -727,15 +751,18 @@ footer .modal.fade-out {
 
 /* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 /* ✨ 2차 모달 스타일 */
-/* 🎨 색상 변수 설정 */
-/* 모달 배경 */
+/* 🎨 구글 다크모드 반투명 모달용 색상 변수 */
+/* 모달 배경 (진한 반투명) */
 /* 테이블 헤더 배경 */
 /* 기본 텍스트 색상 */
-/* 강조 색상 */
+/* 강조 색상 (구글 블루톤) */
 /* 모달 오버레이 배경 */
 /* 테두리 색상 */
 /* 버튼 호버 색상 */
+/* 버튼 호버 색상 */
 /* 신고 버튼 배경 */
+/* 모달 그림자 */
+/* 인셋 그림자 */
 .secondary-modal {
   position: fixed;
   top: 0;
@@ -751,19 +778,19 @@ footer .modal.fade-out {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(0, 0, 0, 0.42);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 2000;
 }
 .secondary-modal.hidden {
   display: none;
 }
 .secondary-modal .secondary-modal-content {
-  background-color: rgba(52, 73, 94, 0.86);
-  color: white;
+  background-color: rgba(32, 33, 36, 0.95);
+  color: #e8eaed;
   padding: 20px;
   border-radius: 10px;
-  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   min-width: 700px;
   max-width: 700px;
   height: 450px;
@@ -786,7 +813,7 @@ footer .modal.fade-out {
 }
 .secondary-modal .secondary-modal-content h2 {
   margin-bottom: 7px;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #e8eaed;
   padding-bottom: 10px;
   width: 80%;
 }
@@ -812,13 +839,13 @@ footer .modal.fade-out {
 }
 .secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table {
   margin-bottom: 0;
-  border: 1px solid whitesmoke;
+  border: 1px solid #5f6368;
   border-radius: 5px;
   width: 80%;
   text-align: center;
 }
 .secondary-modal .secondary-modal-content article[alt="2차 모달 스크롤 발생"] table #list .th {
-  background-color: #243447;
+  background-color: #3c4043;
   border-radius: 3px;
   padding: 10px;
   height: 25px;
@@ -866,8 +893,8 @@ footer .modal.fade-out {
   right: 0.5%;
   z-index: 2000;
   background-color: darkred;
-  -webkit-box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2);
-          box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   margin-top: 7px;
   min-width: 5%;
@@ -900,8 +927,8 @@ footer .modal.fade-out {
 }
 .report-container button:hover {
   background-color: rgba(211, 6, 6, 0.61);
-  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.2);
-          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px -8px 8px rgba(0, 0, 0, 0.3);
   -webkit-transition: background-color 0.25s;
   transition: background-color 0.25s;
 }

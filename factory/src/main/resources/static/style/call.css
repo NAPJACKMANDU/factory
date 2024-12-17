@@ -5,17 +5,17 @@
 }
 *::-webkit-scrollbar {
   width: 8px;
-  background-color: #34495e;
+  background-color: #3c4043;
   border-radius: 25px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(26, 188, 156, 0.686);
+  background-color: #9aa0a6;
   border-radius: 4px;
 }
 
 body {
   font-family: "Arial", sans-serif;
-  background-color: #1d2b36;
+  background-color: #202124;
   margin: 0;
   padding: 0;
   display: -webkit-box;
@@ -43,7 +43,7 @@ body div[alt=call-container] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1abc9c;
+  background-color: #f5f570;
   border-radius: 10px;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -54,6 +54,7 @@ body div[alt=call-container] > table {
 
 nav[alt="부가기능 탭"] {
   margin-top: 15px;
+  margin-bottom: 15px;
   width: 100%;
   gap: 9%;
   display: -webkit-box;
@@ -99,14 +100,15 @@ nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
           flex-direction: column;
   font-weight: bolder;
   font-size: medium;
-  color: #ffffff;
+  color: lightblue;
   text-decoration: none;
+  color: #e8eaed;
 }
 nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
   cursor: pointer;
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
-  color: #1abc9c;
+  color: lightblue;
 }
 nav[alt="부가기능 탭"] .vertical-line {
   border: 0.005px solid darkgray;
@@ -116,15 +118,16 @@ nav[alt="부가기능 탭"] .vertical-line {
 
 input {
   font-size: 14px;
-  border: 1px solid #7f8c8d;
-  background-color: #34495e;
-  color: #ffffff;
+  border: 1px solid #5f6368;
+  background-color: #3c4043;
+  color: #e8eaed;
 }
 
 .contact-table-container {
   padding: 15px;
+  padding-bottom: 25px;
   max-width: 1200px;
-  background: #2c3e50;
+  background: #292a2d;
   border-radius: 15px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -141,42 +144,57 @@ input {
           align-items: center;
 }
 .contact-table-container h1 {
-  color: #ffffff;
+  color: #e8eaed;
   margin-bottom: 20px;
   padding-bottom: 10px;
   width: 65%;
   text-align: center;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #e8eaed;
   font-size: 24px;
 }
 .contact-table-container table {
   width: 100%;
   border-collapse: collapse;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 .contact-table-container table thead {
-  background-color: rgba(11, 12, 12, 0.847);
-  color: #ffffff;
+  background-color: #202124;
+  color: #e8eaed;
+  border-bottom: 1px solid #5f6368;
 }
 .contact-table-container table th,
 .contact-table-container table td {
   text-align: center;
   padding: 15px;
   font-size: 16px;
-  border-bottom: 1px solid #7f8c8d;
 }
 .contact-table-container table th.th-border,
 .contact-table-container table td.th-border {
-  border-right: 1px solid #242424;
+  border-right: 1px solid #9aa0a6;
 }
 .contact-table-container table th.td-border,
 .contact-table-container table td.td-border {
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #5f6368;
+  background-color: #3c4043;
+}
+.contact-table-container table th.button-cell,
+.contact-table-container table td.button-cell {
+  background-color: #3c4043;
+}
+.contact-table-container table td {
+  background-color: #3c4043;
+  color: #e8eaed;
+}
+.contact-table-container table tbody {
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 .contact-table-container table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #3c4043;
 }
 .contact-table-container table tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: #3c4043;
 }
 
 .add-contact,
@@ -184,8 +202,9 @@ input {
   display: inline-block;
   padding: 8px 15px;
   font-size: 14px;
-  color: #ffffff;
+  color: #e8eaed;
   border-radius: 5px;
+  font-weight: 500;
   border: none;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
@@ -193,21 +212,21 @@ input {
 }
 
 .add-contact {
-  background-color: #1abc9c;
+  background-color: #202124;
 }
 .add-contact:hover {
-  background-color: rgba(11, 12, 12, 0.847);
+  background-color: #bdc1c6;
 }
 
 .delete-button {
-  background-color: rgba(11, 12, 12, 0.847);
+  background-color: #202124;
 }
 .delete-button:hover {
-  background-color: #c0392b;
+  background-color: #bdc1c6;
 }
 
 #globals-container {
-  background-color: #1d2b36;
+  background-color: #202124;
   height: 100vh;
   width: 100vw;
   display: -webkit-box;
@@ -242,7 +261,7 @@ header {
   position: absolute;
   top: 0;
   z-index: 2000;
-  background-color: rgba(11, 12, 12, 0.847);
+  background-color: #202124;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 0 8%;
