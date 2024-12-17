@@ -1,4 +1,18 @@
 @charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  background-color: #34495e;
+  border-radius: 25px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(26, 188, 156, 0.686);
+  border-radius: 4px;
+}
+
 body {
   font-family: "Arial", sans-serif;
   background-color: #1d2b36;
@@ -8,120 +22,91 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
 }
-body div[alt="call-container"] {
+body div[alt=call-container] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  place-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #1abc9c;
   border-radius: 10px;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
-div[alt="call-container"] > table {
-  /* Scrollbar Styling */
+body div[alt=call-container] > table {
   border: none !important;
 }
 
-* ::-webkit-scrollbar {
-  width: 8px;
-  background-color: #34495e;
-  border-radius: 25px;
-}
-* ::-webkit-scrollbar-thumb {
-  background-color: rgba(26, 188, 156, 0.6862745098);
-  border-radius: 4px;
-}
-
 nav[alt="부가기능 탭"] {
-  /* 임의 설정 */
   margin-top: 15px;
-  margin-left: 0;
-  padding: 0;
-  padding-bottom: 0;
-  top: 0;
-  width: 100%; /* 탭 가로 사이즈 */
+  width: 100%;
   gap: 9%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  place-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 nav[alt="부가기능 탭"] div[alt="a 컨테이너"] {
-  /* 임의 설정 */
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  place-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a {
-  width: 100%;
-  height: 5px;
-  place-items: center;
-  border: none;
-  background: rgba(0, 0, 0, 0);
-  text-decoration: none;
-  padding-right: 10px;
   width: 100px;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  /* 폰트 설정 */
+      -ms-flex-direction: column;
+          flex-direction: column;
   font-weight: bolder;
   font-size: medium;
-  color: white;
+  color: #ffffff;
+  text-decoration: none;
 }
 nav[alt="부가기능 탭"] div[alt="a 컨테이너"] a:hover {
   cursor: pointer;
   -webkit-transition: color 0.2s;
-  transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-  color: #2ae7c1;
-  font-weight: bolder;
+  transition: color 0.2s;
+  color: #1abc9c;
 }
 nav[alt="부가기능 탭"] .vertical-line {
   border: 0.005px solid darkgray;
@@ -133,35 +118,30 @@ input {
   font-size: 14px;
   border: 1px solid #7f8c8d;
   background-color: #34495e;
-  color: white;
+  color: #ffffff;
 }
 
 .contact-table-container {
   padding: 15px;
-  width: 100%;
   max-width: 1200px;
   background: #2c3e50;
   border-radius: 15px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-
-h1 {
-  color: white;
+.contact-table-container h1 {
+  color: #ffffff;
   margin-bottom: 20px;
   padding-bottom: 10px;
   width: 65%;
@@ -169,318 +149,130 @@ h1 {
   border-bottom: 2px solid #1abc9c;
   font-size: 24px;
 }
-
-table {
+.contact-table-container table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 5px;
 }
-
-thead {
-  background-color: rgba(11, 12, 12, 0.8470588235);
-  color: white;
-  border-radius: 5px 5px 0 0;
+.contact-table-container table thead {
+  background-color: rgba(11, 12, 12, 0.847);
+  color: #ffffff;
 }
-
-th,
-td {
+.contact-table-container table th,
+.contact-table-container table td {
   text-align: center;
   padding: 15px;
   font-size: 16px;
   border-bottom: 1px solid #7f8c8d;
 }
-
-.th-border {
+.contact-table-container table th.th-border,
+.contact-table-container table td.th-border {
   border-right: 1px solid #242424;
 }
-
-td {
-  color: #1d2b36;
-  background-color: #fff;
-}
-
-.td-border {
+.contact-table-container table th.td-border,
+.contact-table-container table td.td-border {
   border-right: 1px solid #ddd;
 }
-
-tbody {
-  border-radius: 0 0 5px 5px;
-}
-
-tbody tr:nth-child(even) {
+.contact-table-container table tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-
-tbody tr:hover {
+.contact-table-container table tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-.editable {
-  cursor: pointer;
-}
-
-.editable:focus {
-  outline: none;
-  border: 1px solid #000;
-  background-color: rgb(64, 128, 128);
-}
-
-.add-contact {
-  display: inline-block;
-  padding: 8px 15px;
-  font-size: 14px;
-  text-align: center;
-  color: white;
-  background-color: #1abc9c; /* 수정 버튼 기본 색상 */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.add-contact:hover {
-  background-color: rgba(11, 12, 12, 0.8470588235);
-}
-
+.add-contact,
 .delete-button {
   display: inline-block;
   padding: 8px 15px;
   font-size: 14px;
-  text-align: center;
-  color: white;
-  background-color: rgba(11, 12, 12, 0.8470588235); /* 삭제 버튼 기본 색상 */
-  border: none;
+  color: #ffffff;
   border-radius: 5px;
+  border: none;
   cursor: pointer;
-  text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
+.add-contact {
+  background-color: #1abc9c;
+}
+.add-contact:hover {
+  background-color: rgba(11, 12, 12, 0.847);
+}
+
+.delete-button {
+  background-color: rgba(11, 12, 12, 0.847);
+}
 .delete-button:hover {
-  background-color: #c0392b; /* hover 시 어두운 빨간색 */
+  background-color: #c0392b;
 }
 
-.button-cell {
-  text-align: center;
-  padding: 10px 0;
-}
-
-/* 💡 '반응형 웹' globals  */
-/* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  /* ◽🔹 최상위 부모 요소 🔹◽ */
-  /* ◽🔸 첫째 자식 요소 🔸◽ */
-  /* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
-  /* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
-  /* ✨ 'RWD' - 'Semantic Tags' 설정 ✨ */
-  /* 💡 '시맨틱 태그' header */
-  /* ◼️◼️◼️◼️◼️◼️ 헤더 설정 ◼️◼️◼️◼️◼️◼️ */
-  /* ◽🔸 Main 페이지 (한정) 🔸◽ */
-}
-* html,
-* body {
-  margin: 0 !important; /* 여백 제거 */
-  padding: 0 !important;
-  height: 100%; /* 전체 브라우저 높이 */
-  display: flexbox; /* 자식 요소 top,left 사용 가능하게 */
-  place-items: center; /* 수평과 수직 중앙 정렬 */
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  /* 임의 설정 */
-}
-* html *,
-* body * {
-  /* 임의 설정 */
-  margin: 5px;
-}
-* #globals-container {
-  /* 임의 설정 */
-  background-color: #1d2b36; /* 배경색 기본 */
-  margin: 0; /* 여백 제거 */
-  padding: 0px;
-  height: 100vh; /* 뷰포트 전체 높이 */
-  width: 100vw; /* 뷰포트 전체 너비 */
+#globals-container {
+  background-color: #1d2b36;
+  height: 100vh;
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column; /* 위아래로 쌓이는 구조 */
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: absolute;
-  top: 0; /* 부모의 상단에 붙임 */
-  left: 0; /* 부모의 왼쪽에 붙임 */
+  top: 0;
+  left: 0;
 }
-* #globals-container > * {
+#globals-container > * {
   margin: 0;
 }
-* main {
-  /* 임의 설정 */
+
+main {
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap; /* 요소가 한 줄에 고정되도록 설정 */
-  overflow: hidden; /* 스크롤 없이 화면 고정 */
+      flex-wrap: nowrap;
+  overflow: hidden;
 }
-* main > * {
+main > * {
   gap: 5px;
 }
-* input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-* header {
+
+header {
   position: absolute;
   top: 0;
   z-index: 2000;
-  /* 임의 설정 */
-  background-color: rgba(11, 12, 12, 0.8470588235);
-  border: none;
+  background-color: rgba(11, 12, 12, 0.847);
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 0 !important;
-  padding: 0 8%; /* 헤더 좌우 패딩 */
-  height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 8%;
+  height: 10vh;
   min-height: 70px;
-  width: 100vw; /* 마진 없는 가로 사이즈 */
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  gap: 15%; /* 헤더 요소 간격 */
-  overflow: hidden;
-  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15%;
 }
-* header * {
-  overflow: hidden;
-  margin-top: 0;
-}
-* header section[alt="로고 컨테이너"] {
-  /* 임의 설정 */
-  padding: 1%;
-  min-width: 70px;
-  width: 200px;
-  max-height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-* header section[alt="로고 컨테이너"] * {
-  margin: 0;
-  padding: 0;
-  border: none;
-  place-items: center;
-}
-* header section[alt="로고 컨테이너"] *:hover {
-  cursor: pointer;
-}
-* header section[alt="로고 컨테이너"] form {
-  /* 임의 설정 */
-  padding: 0;
-  width: 200px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-}
-* header section[alt="로고 컨테이너"] form button {
-  padding: 0;
-  margin-top: 3%;
-  margin-left: 50%;
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  place-items: center;
-}
-* header section[alt="로고 컨테이너"] form button img {
-  margin: 0;
-  height: 65px;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-* header nav {
-  /* 임의 설정 */
+header nav {
   margin-top: 10px;
-  padding: 0;
-  width: 100%; /* 탭 가로 사이즈 */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  gap: 5%;
-  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
-}
-* header nav div button {
-  /* location 이동 없음, show() 스크립트 */
   width: 100%;
-  height: 50px;
-  place-items: center;
-  border: none;
-  background: rgba(0, 0, 0, 0);
-}
-* header nav div button:hover {
-  cursor: pointer;
-}
-* header nav div span {
-  /* 임의 설정 */
-  padding-right: 10px;
-  width: 100px;
-  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  /* 폰트 설정 */
-  font-weight: bolder;
-  font-size: medium;
-  color: white;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 5%;
 }
-* header nav div span:hover {
-  -webkit-transition: color 0.2s;
-  transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-  color: #1abc9c;
-  font-weight: bolder;
-}
-* header nav .vertical-line {
+header nav .vertical-line {
   border: 0.005px solid darkgray;
   height: 55px;
   width: 0.5px;
-}
-* .h-a-container a {
-  text-decoration-line: none;
 }

@@ -1,40 +1,55 @@
+@charset "UTF-8";
+/* 🎨 색상 변수 설정 */
+/* 바디 배경색 */
+/* 스크롤바 배경색 */
+/* 스크롤바 썸 색상 */
+/* 스크롤바 트랙 색상 */
+/* 프로토콜 콘텐츠 배경색 */
+/* 프로토콜 콘텐츠 텍스트 색상 */
+/* 그림자 색상 */
+/* 강조 색상 */
+/* 닫기 버튼 색상 */
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+/* Body 스타일 */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex; /* Flexbox 레이아웃 적용 */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
+          justify-content: center; /* 수평 중앙 정렬 */
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
-  height: 100vh;
-  background-color: rgba(52, 73, 94, 0.862745098);
+          align-items: center; /* 수직 중앙 정렬 */
+  height: 100vh; /* 전체 화면 높이 */
+  background-color: rgba(52, 73, 94, 0.86);
+  /* 스크롤바 커스터마이징 */
 }
 body *::-webkit-scrollbar {
   width: 8px;
   background-color: #34495e;
 }
 body *::-webkit-scrollbar-thumb {
-  background-color: rgba(26, 188, 156, 0.6862745098);
+  background-color: rgba(26, 188, 156, 0.686);
   border-radius: 4px;
 }
 body *::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ 프로토콜 콘텐츠 영역 ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 .protocol-content {
-  background-color: whitesmoke;
-  color: black;
-  padding: 20px;
-  border-radius: 10px;
+  background-color: whitesmoke; /* 콘텐츠 배경색 */
+  color: black; /* 텍스트 색상 */
+  padding: 20px; /* 내부 여백 */
+  border-radius: 10px; /* 테두리 둥글게 */
   -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 700px;
-  height: 450px;
-  text-align: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  width: 700px; /* 콘텐츠 너비 */
+  height: 450px; /* 콘텐츠 높이 */
+  text-align: center; /* 텍스트 중앙 정렬 */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,42 +63,41 @@ body *::-webkit-scrollbar-track {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /* 제목 스타일 */
+  /* 이미지 스타일 */
+  /* 내부 스크롤 컨테이너 */
 }
-
 .protocol-content h2 {
-  margin-bottom: 20px;
-  border-bottom: 2px solid #1abc9c;
-  padding-bottom: 10px;
-  width: 80%;
+  margin-bottom: 20px; /* 하단 여백 */
+  border-bottom: 2px solid #1abc9c; /* 하단 테두리 강조 */
+  padding-bottom: 10px; /* 텍스트와 테두리 간격 */
+  width: 80%; /* 너비 설정 */
 }
-
-.protocol-innercontainer {
-  margin-top: 0px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
 .protocol-content img {
-  margin-top: 0px;
-  margin-right: 5px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  /* object-fit: contain; */
+  margin-top: 0;
+  margin-right: 5px; /* 우측 여백 */
+  max-width: 100%; /* 너비 최적화 */
+  height: auto; /* 비율 유지 */
+  border-radius: 10px; /* 이미지 둥글게 처리 */
+}
+.protocol-content .protocol-innercontainer {
+  margin-top: 0;
+  overflow-y: scroll; /* 세로 스크롤 */
+  overflow-x: hidden; /* 가로 스크롤 제거 */
 }
 
+/* 💡◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ 닫기 버튼 스타일 ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
+  position: absolute; /* 절대 위치 */
+  top: 10px; /* 상단 여백 */
+  right: 10px; /* 우측 여백 */
+  font-size: 20px; /* 폰트 크기 */
+  font-weight: bold; /* 굵은 폰트 */
+  color: white; /* 버튼 색상 */
+  background: none; /* 배경 제거 */
+  border: none; /* 테두리 제거 */
+  cursor: pointer; /* 클릭 커서 */
 }
-
 .close-button:hover {
-  color: #1abc9c;
+  color: #1abc9c; /* 호버 시 색상 변경 */
 }

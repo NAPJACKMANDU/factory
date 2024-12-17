@@ -1,30 +1,28 @@
-@charset "UTF-8";
 body *::-webkit-scrollbar {
   width: 8px;
-  background-color: #34495e;
+  background-color: #f5f7f9;
 }
 body *::-webkit-scrollbar-thumb {
-  background-color: rgba(26, 188, 156, 0.6862745098);
+  background-color: #9fbfcf;
   border-radius: 4px;
 }
 body *::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 #globals-container {
-  /* 임의 설정 */
-  background-color: #1d2b36; /* 배경색 기본 */
-  margin: 0; /* 여백 제거 */
-  padding: 0px;
-  height: 100vh; /* 뷰포트 전체 높이 */
-  width: 100vw; /* 뷰포트 전체 너비 */
+  background-color: #f5f7f9;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column; /* 위아래로 쌓이는 구조 */
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -38,13 +36,13 @@ body *::-webkit-scrollbar-track {
 #globals-container #sr-container {
   width: 60%;
   max-width: 60%;
-  background-color: #2c3e50;
+  background-color: #eaf1f5;
   padding: 20px;
   border-radius: 12px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: white;
+  color: #2c3e50;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,8 +63,9 @@ body *::-webkit-scrollbar-track {
   width: 40%;
   min-width: 380px;
   font-size: 24px;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #6c93b1;
   padding-bottom: 10px;
+  color: #6c93b1;
 }
 
 table {
@@ -76,54 +75,55 @@ table {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 15px !important;
-  color: #1d2b36;
+  color: #2c3e50;
 }
 table * {
   padding: 15px;
 }
 table th,
 table td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #d9e2e8;
 }
 table thead {
   border-radius: 15px 15px 0 0;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #d9e2e8;
 }
 table thead .th {
-  background-color: rgba(11, 12, 12, 0.8470588235);
+  background-color: #6c93b1;
+  color: #ffffff;
   border-radius: 15px;
 }
 table thead .th #th-init {
-  border-right: 1px solid #242424;
+  border-right: 1px solid #517a99;
 }
 table thead .th #th-tl {
-  border-right: 1px solid #242424;
+  border-right: 1px solid #517a99;
 }
 table thead .th #th-end {
-  border-left: 1px solid #242424;
+  border-left: 1px solid #517a99;
 }
 table thead .th th {
   font-weight: bold;
-  color: #f4f4f4;
 }
 table tbody {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 0 0 15px 15px;
-  text-align: le;
+  text-align: left;
 }
 table tbody #td-init {
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #d9e2e8;
 }
 table tbody #td-tl {
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #d9e2e8;
 }
 table tbody #td-end {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #d9e2e8;
 }
 
 caption {
   margin: 10px 0;
   font-size: 1.2em;
   font-weight: bold;
+  color: #2c3e50;
 }

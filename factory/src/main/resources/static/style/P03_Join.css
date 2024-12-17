@@ -218,4 +218,23 @@ section[alt="회원가입 정보 제출 컨테이너"] * {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+}======================
+   회원가입 입력 컨테이너 설정
+============================= */
+div[alt="회원가입input_선택>직책"] table,
+div[alt="회원가입input_선택>직무"] table {
+  border: 3px solid black;
+  display: grid;
+  grid-template-columns: repeat(100%);
+  width: 100%;
+}
+
+section[alt="회원가입 정보 제출 컨테이너"] * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }

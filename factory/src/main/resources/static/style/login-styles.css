@@ -1,95 +1,122 @@
-/* 로그인 페이지 스타일 */
+@charset "UTF-8";
+/* =========================
+   로그인 페이지 스타일 SCSS
+   - 색상 및 디자인 유지
+   - 색상 변수화로 관리 용이
+   ========================= */
+/* =========================
+   기본 설정
+========================= */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #1d2b36;
+  background-color: #1d2b36; /* 페이지 전체 배경 색상 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100vh;
 }
 
+/* =========================
+   로그인 컨테이너
+========================= */
 .login-container {
   width: 100%;
-  max-width: 400px;
-  background-color: #2c3e50;
+  max-width: 400px; /* 컨테이너 최대 너비 */
+  background-color: #2c3e50; /* 컨테이너 배경 색상 */
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* 둥근 테두리 */
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   text-align: center;
-  color: white;
+  color: white; /* 기본 텍스트 색상 */
 }
 
+/* =========================
+   로그인 박스 제목
+========================= */
 .login-box h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #1abc9c; /* 하이라이트 색상 */
   padding-bottom: 10px;
 }
 
+/* =========================
+   입력 필드 그룹
+========================= */
 .form-group {
   margin-bottom: 15px;
   text-align: left;
 }
-
 .form-group label {
   display: block;
   margin-bottom: 5px;
   font-size: 14px;
 }
-
 .form-group input {
-  width: 95%;
+  width: 95%; /* 입력 필드 너비 */
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #7f8c8d;
-  border-radius: 5px;
-  background-color: #34495e;
-  color: white;
+  border: 1px solid #7f8c8d; /* 테두리 색상 */
+  border-radius: 5px; /* 둥근 테두리 */
+  background-color: #34495e; /* 입력 필드 배경 색상 */
+  color: white; /* 텍스트 색상 */
 }
-
 .form-group input:focus {
   outline: none;
-  border-color: #1abc9c;
+  border-color: #1abc9c; /* 포커스 상태 색상 */
 }
 
+/* =========================
+   로그인 버튼 스타일
+========================= */
 .login-btn {
   width: 100%;
   padding: 15px;
   font-size: 16px;
-  color: white;
-  background-color: #0b0c0cd8;
+  color: white; /* 버튼 텍스트 색상 */
+  background-color: rgba(11, 12, 12, 0.8470588235); /* 버튼 배경 색상 */
   border: none;
-  border-radius: 6px;
+  border-radius: 6px; /* 둥근 테두리 */
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
 }
-
 .login-btn:hover {
-  background-color: #1abc9c;
+  background-color: #1abc9c; /* hover 상태 색상 */
 }
 
+/* =========================
+   링크 컨테이너 스타일
+========================= */
 section[alt="로그인 페이지 a태그 컨테이너"] {
-  /* "로그인 페이지 a태그 컨테이너" */
-  /* background-color: aqua; */
   margin-top: 25px;
   margin-left: -10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 11pt;
   gap: 5px;
-
-  color: #7f8c8d;
+  color: #7f8c8d; /* 보조 텍스트 색상 */
 }
+
 a {
-  /* 임의설정 */
-  /* // background-color: azure; */
-  /* //'아이디/비밀번호 찾기','회원가입' */
   text-decoration: none;
-  color: #1abc9c;
+  color: #1abc9c; /* 링크 색상 */
   margin-left: 10px;
   font-weight: 500;
-  /* // color: #4a4a4a; */
 }
