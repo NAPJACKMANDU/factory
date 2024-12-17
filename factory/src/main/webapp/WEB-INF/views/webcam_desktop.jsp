@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- <h1>실시간 비디오 스트림</h1> -->
-    <canvas id="videoCanvas" width="640" height="480"></canvas>
+    <canvas id="videoCanvas" width="500" height="265"></canvas>
     <!-- <br> -->
     <!-- <h1>낙상 감지 시스템</h1>
     <p id="fallStatus">상태를 확인 중...</p> -->

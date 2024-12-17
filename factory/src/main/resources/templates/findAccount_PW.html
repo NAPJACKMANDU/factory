@@ -1,0 +1,105 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P00_findAccount_PW</title>
+    <!-- 지역 style -->
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/P00_findAccount_PW.css"
+    />
+    <!-- 전역 style -->
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/globals.css"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/style/header.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/style/footer.css" />
+  </head>
+  <body>
+    <!-- View -->
+    <div alt="전역 컨테이너" id="globals-container">
+      <!-- header -->
+      <header alt="헤더">
+        <section alt="로고 컨테이너">
+          <form action="#" method="get">
+            <button alt="P01_Main으로 이동" type="submit">
+              <img
+                alt="로고 이미지"
+                src="/src/main/resources/static/imgs/Logo.jpg"
+              />
+            </button>
+          </form>
+        </section>
+      </header>
+
+      <!-- main -->
+      <main alt="메인콘텐츠">
+        <h1>로그인 정보 찾기</h1>
+        <br />
+
+        <!-- 찾을 정보 입력 구역 -->
+        <form
+          alt="PW찾기 페이지 컨테이너-form"
+          action="#"
+          method="post"
+          id="findAccount_PW"
+          class="enterForm"
+        >
+          <p>
+            비밀번호를 찾고자하는 <br />
+            아이디를 입력해주세요.
+          </p>
+
+          <section alt="PW찾기 input 컨테이너">
+            <input
+              alt="PW찾기 input"
+              type="text"
+              placeholder="아이디를 입력하세요"
+            />
+
+            <section alt="PW찾기 버튼 컨테이너">
+              <button alt="PW찾기submit 컨테이너">
+                <input alt="PW찾기submit" type="submit" value="다음" />
+              </button>
+            </section>
+          </section>
+
+          <section alt="PW찾기 페이지 a태그 컨테이너">
+            <p>
+              <span>아이디가 기억나지 않는다면?</span>
+              <a href="#">아이디 찾기</a>
+            </p>
+          </section>
+        </form>
+      </main>
+
+      <!-- footer -->
+      <footer alt="하단 바">
+        <!-- 뒤로가기 버튼, 고정됨 -->
+        <section alt="뒤로가기 버튼 컨테이너">
+          <button id="btn-back">
+            <span alt="뒤로가기 버튼">⬅️</span>
+          </button>
+        </section>
+        <span>씨See콜Call</span>
+      </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="/src/main/resources/static/js/jquery-3.6.0.js"></script>
+    <!-- <script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.scrolly.min.js"></script>
+	<script src="/js/jquery.scrollex.min.js"></script>
+	<script src="/js/skel.min.js"></script>
+	<script src="/js/util.js"></script> -->
+
+    <!-- Scripts -->
+    <!-- <script src="#"></script> -->
+    <script src="/src/main/resources/static/js/P02_Login.js"></script>
+    <script src="/src/main/resources/static/js/globals.js"></script>
+  </body>
+</html>

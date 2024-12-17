@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calendar-1</title>
+
+    <!-- 지역 style -->
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/style/calendar.css"
+    />
+  </head>
+  <body>
+    <!-- 달력 컨테이너 -->
+    <div class="calendar">
+      <!-- 달력 헤더 -->
+      <div class="calendar-header">
+        <button id="prev-month" class="arrow small-arrow">◀</button>
+        <span id="current-month"></span>
+        <button id="next-month" class="arrow small-arrow">▶</button>
+      </div>
+      <table class="calendar-table">
+        <thead>
+          <!-- 요일 헤더 -->
+          <tr class="calendar-weekdays">
+            <th class="weekend">일</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+            <th class="saturday">토</th>
+          </tr>
+        </thead>
+        <tbody class="calendar-days">
+          <!-- 날짜가 JavaScript로 동적으로 추가됩니다. -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 모달 창 -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <!-- 모달 닫기 버튼 -->
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-date">날짜 정보</h2>
+        <div id="modal-data">데이터를 로드 중...</div>
+      </div>
+    </div>
+
+    <script src="/src/main/resources/static/js/calendar.js"></script>
+  </body>
+</html>
