@@ -185,42 +185,48 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
         <section alt="카테고리-컨테이너">
           <h2>Camera Categories</h2>
           <ul>
+           <li class="category">
+              <span>Live Streams</span>
+              <ul class="sub-category">
+                <li draggable="true" data-src="/d">Live Stream 1</li>
+              </ul>
+            </li>
             <li class="category">
               <span>Category 1</span>
               <ul class="sub-category">
-                <li draggable="true" data-img="/imgs/construction2.jpg">Camera 1</li>
-                <li draggable="true" data-img="/imgs/construction1.jpg">Camera 2</li>
-                <li
+                    <li
+                  class="video-item"
+                  draggable="true"
+                  value="1"
+                  data-video="/video/construction15.mp4"
+                >
+                  Camera 1
+                </li>
+                 <li
+                  class="video-item"
+                  draggable="true"
+                  value="2"
+                  data-video="/video/construction16.mp4"
+                >
+                  Camera 2
+                </li>
+                 <li
                   class="video-item"
                   draggable="true"
                   value="3"
-                  data-video="/video/TN1.mp4"
+                  data-video="/video/construction17.mp4"
                 >
                   Camera 3
                 </li>
-                <li
-                  class="video-item"
-                  draggable="true"
-                  value="4"
-                  data-video="/video/TN2.mp4"
-                >
-                  Camera 4
-                </li>
+              <li draggable="true" data-img="/imgs/construction1.jpg">Camera 4</li>
               </ul>
             </li>
             <li class="category">
               <span>Category 2</span>
               <ul class="sub-category">
                <li draggable="true" data-img="/imgs/construction7.jpg">Camera 5</li>
-                <li draggable="true" data-img="/imgs/construction8.jpg">Camera 6</li>
-                <li
-                  class="video-item"
-                  draggable="true"
-                  value="7"
-                  data-video="/video/TN3.mp4"
-                >
-                  Camera 7
-                </li>
+               <li draggable="true" data-img="/imgs/construction8.jpg">Camera 6</li>
+               <li draggable="true" data-img="/imgs/construction14.jpg">Camera 7</li>
                 <li
                   class="video-item"
                   draggable="true"
@@ -252,12 +258,12 @@ uri="http://java.sun.com/jsp/jstl/core"%> <%@ page isELIgnored="false"%>
             </li>
 
             <!-- 실시간 스트리밍 카테고리 -->
-            <li class="category">
+         <!--    <li class="category">
               <span>Live Streams</span>
               <ul class="sub-category">
                 <li draggable="true" data-src="/d">Live Stream 1</li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </section>
         <!-- 저장된 로그 조회 구역 -->
