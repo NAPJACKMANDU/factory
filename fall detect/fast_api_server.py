@@ -1,3 +1,6 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 import cv2
 import asyncio
 import websockets
@@ -6,13 +9,16 @@ from fastapi import FastAPI, WebSocket
 import threading
 import uvicorn
 import time
-import os
 from ultralytics import YOLO
 import math
 from torchvision import transforms
 import torch
 from asyncio import Lock
 import json
+import atexit
+from datetime import datetime
+
+
 # FastAPI 앱 생성
 app = FastAPI()
 
@@ -74,7 +80,7 @@ async def send_frame():
         print("오류: 웹캡을 열 수 없습니다.")
         return
 
-    fps =   10# 목표 FPS
+    fps =   20# 목표 FPS
     delay = 1 / fps
 
     try:
@@ -82,7 +88,7 @@ async def send_frame():
             while True:
                 start_time = time.time()    
 
-                result_frame, fall = detect(cap)
+                result_frame, fall = await detect(cap)
                 await send_res_bool(fall)
                 
                 # 해상도 축소
@@ -108,23 +114,20 @@ async def send_frame():
 #############################################
 
 import MySQLdb
+from MySQLdb.cursors import DictCursor
 
 # MySQL 서버에 연결
-
-
-def save_db(file_name):
-    # 커서 생성
-
-    conn = MySQLdb.connect(
-    host='project-db-campus.smhrd.com',
+conn = MySQLdb.connect(
+    host='project-db-cgi.smhrd.com',
     user='seocho_DCX_DB_p3_3',
     passwd='smhrd3',
     db='seocho_DCX_DB_p3_3',
-    port=3312  # 포트 번호 추가
+    port=3307,
+    cursorclass=DictCursor
 )
-    cursor = conn.cursor()
+cursor = conn.cursor()
 
-    # 파라미터화된 쿼리 실행
+async def save_db(file_name):
     sql_query = """
         INSERT INTO tb_clip ( 
             clip_name,
@@ -138,7 +141,7 @@ def save_db(file_name):
     """
     data = (
         f'{file_name}',  # clip_name
-        0, #clip_size
+        0,  # clip_size
         1,  # camera_idx
         fr'C:\Users\smhrd\Desktop\Spring\factory\fall detect\saved_videos\{file_name}',  # clip_path
         1,  # company_idx
@@ -146,63 +149,58 @@ def save_db(file_name):
     )
 
     try:
-        # 쿼리 실행
-        cursor.execute(sql_query, data)
-        # 변경사항 커밋
+        await asyncio.to_thread(cursor.execute, sql_query, data)
         conn.commit()
-        print("Data inserted successfully.")
+        print("DB 저장 성공")
     except MySQLdb.Error as e:
-        print("Error while inserting data:", e)
-    finally:
-        # 연결과 커서 닫기
-        cursor.close()
-        conn.close()
+        print("디비 오류:", e)
+        conn.rollback()
 
+def close_db_connection():
+    cursor.close()
+    conn.close()
+    print("Database connection closed.")
+
+atexit.register(close_db_connection)
 
 ###################################################
 
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
-CONFIDENCE_THRESHOLD = 0.5  # Confidence threshold 낮추기
+
+CONFIDENCE_THRESHOLD = 0.3  # Confidence threshold 낮추기
 GREEN = (0, 255, 0)
 WHITE = (255, 255, 255)
 
 #model = YOLO('fall_det_1.pt')
-model = YOLO('yolo11n-pose.pt')
+model = YOLO('yolo11s-pose.pt').cuda()
 #model = YOLO('yolov8n-pose.pt')
 import collections
 
-# 이전 20초 데이터를 유지할 deque
-BUFFER_SIZE = 100  # 초당 10fps, 20초를 저장 (10fps * 20초)
-frame_buffer = collections.deque(maxlen=BUFFER_SIZE)
 
 # 저장 상태 관리 변수
-is_saving = False
-frames_to_save = []
+# 이전 10초 데이터를 유지할 deque
+BUFFER_SIZE = 100  # 초당 10fps, 10초를 저장 (10fps * 10초)
+POST_BUFFER_SIZE = 100  # 탐지 후 10초를 추가로 저장
 
-import os
-from datetime import datetime
+frame_buffer = collections.deque(maxlen=BUFFER_SIZE)
 
-def save_video(frames, fps=10):
+async def save_video(frames, fps=10):
     """프레임 목록을 webm로 저장"""
     if not frames:
         print("저장할 프레임이 없습니다.")
         return
 
-    # 현재 스크립트와 동일한 위치에 저장 디렉토리 생성
     script_directory = os.path.dirname(os.path.abspath(__file__))
     save_directory = os.path.join(script_directory, "../factory/src/main/resources/static/videos")
     os.makedirs(save_directory, exist_ok=True)
 
-    # 파일명 생성
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"fall_detected_{current_time}.webm"
-    save_db(filename)
+    await save_db(filename)
     path = os.path.join(save_directory, filename)
 
-    # 영상 저장
     height, width, _ = frames[0].shape
-    fourcc = cv2.VideoWriter_fourcc(*'VP80')  # MP4 코덱
+    fourcc = cv2.VideoWriter_fourcc(*'VP80')
     out = cv2.VideoWriter(path, fourcc, fps, (width, height))
 
     for frame in frames:
@@ -211,8 +209,8 @@ def save_video(frames, fps=10):
     print(f"영상이 저장되었습니다: {path}")
 
 
-# Global lock for thread safety
-lock = Lock()
+
+
 
 # 낙상 결과를 전송하는 비동기 함수
 
@@ -229,8 +227,11 @@ lock = Lock()
         print(f"웹소켓 연결 중 오류 발생: {e}") """
 
 # detect 함수 수정
-def detect(cap):
-    global is_saving, frames_to_save
+is_saving = False  # 낙상 저장 상태
+lock = asyncio.Lock()  # 동시성 문제를 방지할 Lock 객체
+
+async def detect(cap):
+    global is_saving, frames_to_save, frame_buffer
 
     fall_detected = False
     success, frame = cap.read()
@@ -261,6 +262,7 @@ def detect(cap):
                 cv2.rectangle(frame, (int(xmin), int(ymin)), (int(xmax), int(ymax)), color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
                 cv2.putText(frame, 'Person Fell down', (11, 100), 0, 1, [0, 0, 2550], thickness=3, lineType=cv2.LINE_AA)
                 fall_detected = True
+
         # 키포인트 그리기
         cv2.circle(frame, (int(left_shoulder_x), int(left_shoulder_y)), 5, (0, 255, 0), -1)
         cv2.circle(frame, (int(right_shoulder_x), int(right_shoulder_y)), 5, (0, 255, 0), -1)
@@ -273,19 +275,28 @@ def detect(cap):
     frame_buffer.append(frame)
 
     # 낙상 감지 처리
-    if fall_detected and not is_saving:
-        is_saving = True
-        frames_to_save = list(frame_buffer)  # 이전 10초 데이터 복사
-        # 낙상 신호 전송
-        asyncio.create_task(send_res_bool(fall_detected))
+    if fall_detected:
+        async with lock:  # is_saving 변경을 동기화
+            if not is_saving:
+                is_saving = True
+                frames_to_save = list(frame_buffer)  # 이전 10초 데이터 복사
+                asyncio.create_task(send_res_bool(fall_detected))
 
-    # 낙상 후 10초 저장
-    if is_saving:
-        frames_to_save.append(frame)
-        if len(frames_to_save) >= BUFFER_SIZE:
-            save_video(frames_to_save)
-            frames_to_save.clear()
-            is_saving = False
+                # 탐지 후 10초 저장 처리
+                async def post_save_task():
+                    for _ in range(POST_BUFFER_SIZE):
+                        success, post_frame = cap.read()
+                        if not success:
+                            break
+                        frames_to_save.append(post_frame)
+                        await asyncio.sleep(1 / 10)  # 10fps 기준
+
+                    await save_video(frames_to_save)
+                    frames_to_save.clear()
+                    async with lock:
+                        is_saving = False  # 저장이 끝나면 상태 변경
+
+                asyncio.create_task(post_save_task())
 
     return frame, fall_detected
 
