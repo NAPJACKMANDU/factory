@@ -50,31 +50,31 @@ uri="http://java.sun.com/jsp/jstl/fmt"%> <%@ page isELIgnored="false"%> -->
         <table>
           <thead>
             <tr>
-              <th>번호</th>
-              <th>이름</th>
-              <th>직위</th>
-              <th>전화번호</th>
-              <th>비고</th>
-              <th>수정</th>
+              <th class="th-border">번호</th>
+              <th class="th-border">이름</th>
+              <th class="th-border">직위</th>
+              <th class="th-border">전화번호</th>
+              <th class="th-border">비고</th>
+              <th class="th-border">수정</th>
               <th>삭제</th>
             </tr>
           </thead>
           <tbody id="list">
            <c:forEach items="${allcall}" var="a">
             <tr id="callall" style="background-color: #f9f9f9">
-              <td>${a.idx}</td>
-              <td>${a.name}</td>
-              <td>${a.role}</td>
-              <td>${a.phone}</td>
+              <td class="td-border">${a.idx}</td>
+              <td class="td-border">${a.name}</td>
+              <td class="td-border">${a.role}</td>
+              <td class="td-border">${a.phone}</td>
               <td
-                class="editable"
+                class="editable td-border"
                 contenteditable="true"
                 data-id="${a.idx}"
                 data-field="note"
               >
                 ${a.note}
               </td>
-              <td class="button-cell">
+              <td class="button-cell td-border">
                 <button
                   type="button"
                   class="add-contact"
