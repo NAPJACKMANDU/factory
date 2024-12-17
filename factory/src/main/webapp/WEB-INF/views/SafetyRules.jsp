@@ -8,15 +8,9 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>수칙 테이블</title>
-    <link
-      rel="stylesheet"
-      href="style/globals.css"
-    />
-    <link
-      rel="stylesheet"
-      href="style/saftyRules.css"
-    />
+    <title>P05_safetyRules</title>
+    <link rel="stylesheet" href="style/globals.css" />
+    <link rel="stylesheet" href="style/saftyRules.css" />
   </head>
   <body>
     <div id="globals-container">

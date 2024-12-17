@@ -1,8 +1,15 @@
 @charset "UTF-8";
-/* 전체 레이아웃 */
+/* =============================
+   회원가입 페이지 스타일 SCSS
+   - 색상 및 디자인 유지
+   - 색상 변수화로 관리 용이
+============================= */
+/* =============================
+   전체 레이아웃
+============================= */
 body {
   font-family: "Arial", sans-serif;
-  background-color: #1d2b36;
+  background-color: #202124; /* 전체 배경 색상 */
   margin: 0;
   padding: 0;
   display: -webkit-box;
@@ -17,16 +24,19 @@ body {
 }
 body input {
   font-size: 14px;
-  border: 1px solid #7f8c8d;
-  background-color: #34495e;
-  color: white;
+  border: 1px solid #5f6368;
+  background-color: #3c4043; /* 입력 필드 배경 색상 */
+  color: #e8eaed;
 }
 
+/* =============================
+   회원가입 컨테이너
+============================= */
 .signup-container {
-  background: #2c3e50;
+  background: #292a2d; /* 컨테이너 배경 색상 */
   border-radius: 10px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   margin: 25px 0;
   padding: 30px 25px;
   width: 100%;
@@ -34,15 +44,21 @@ body input {
   height: 100%;
 }
 
+/* =============================
+   제목 스타일
+============================= */
 h2 {
-  color: white;
+  color: #e8eaed;
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
-  border-bottom: 2px solid #1abc9c;
+  border-bottom: 2px solid #e8eaed;
   padding-bottom: 10px;
 }
 
+/* =============================
+   입력 필드 및 그룹
+============================= */
 .form-group {
   margin-bottom: 20px;
 }
@@ -51,7 +67,7 @@ label {
   display: block;
   font-size: 14px;
   margin-bottom: 8px;
-  color: whitesmoke;
+  color: #e8eaed;
 }
 
 input,
@@ -73,27 +89,29 @@ select:focus {
 
 .form-group span {
   font-size: 12px;
-  color: goldenrod;
+  color: lightblue;
   margin-top: 5px;
   display: block;
 }
 
+/* =============================
+   버튼 스타일
+============================= */
 button {
   width: 100%;
   padding: 15px;
   font-size: 16px;
-  color: white;
+  color: #e8eaed;
   font-weight: bold;
-  background-color: rgba(11, 12, 12, 0.8470588235);
+  background-color: #171717;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
-
 button:hover {
-  background-color: #1abc9c;
+  background-color: #8ab4f8;
 }
 
 #idCheckButton {
@@ -101,7 +119,9 @@ button:hover {
   margin-left: 54%;
 }
 
-/* 관리자 및 일반 사용자 선택 디자인 */
+/* =============================
+   관리자 및 일반 사용자 선택
+============================= */
 .role-selection {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -128,7 +148,7 @@ button:hover {
   width: 40%;
   padding: 20px;
   border-radius: 10px;
-  background-color: #a4a1a1;
+  background-color: #3c4043; /* 옵션 기본 색상 */
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -139,39 +159,34 @@ input[type=radio] {
 }
 
 input[type=radio]:checked + .role-option {
-  background-color: #1abc9c;
-  color: whitesmoke;
+  background-color: lightblue; /* 활성화 색상 */
+  color: #e8eaed;
   font-weight: bold;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* =============================
+   푸터 스타일
+============================= */
 footer {
   text-align: center;
   margin-top: 25px;
   font-size: 14px;
-  color: whitesmoke;
+  color: #bdc1c6;
 }
 
 footer a {
-  color: #1abc9c;
+  color: lightblue; /* 링크 색상 */
   text-decoration: none;
 }
-
 footer a:hover {
   text-decoration: underline;
 }
 
-/* ✨ 'dashBoard','postData' - 'P02_Login' 설정 ✨ */
-/* 💡 '❓대시보드','데이터 전송' 위주 로그인 페이지 */
-/* "id체크 컨테이너","회원가입 버튼" 버튼 스타일 */
-button {
-  /* 임의 설정 */
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽🔹◽🔸◽ */
+/* =============================
+   글로벌 및 메인 콘텐츠 설정
+============================= */
 #globals-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -181,9 +196,8 @@ button {
   margin: 0px;
 }
 #globals-container main {
-  /* 임의 설정 */
   border: none;
-  background-color: white;
+  background-color: #e8eaed;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 0;
@@ -193,37 +207,15 @@ button {
   gap: 1%;
 }
 #globals-container main * {
-  /* 임의 설정 */
-  border: 1px solid black;
+  border: 1px solid #5f6368; /* 테이블 테두리 */
 }
 
-div [alt="회원가입input_선택>직책"],
-div[alt="회원가입input_선택>직무"] {
-  /* 임의 설정 */
-}
-div [alt="회원가입input_선택>직책"] table,
-div[alt="회원가입input_선택>직무"] table {
-  /* 임의 설정 */
-  border: 3px solid black;
-  display: grid;
-  grid-template-columns: repeat(100%);
-  width: 100%;
-}
-
-section[alt="회원가입 정보 제출 컨테이너"] * {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}======================
+/* =============================
    회원가입 입력 컨테이너 설정
 ============================= */
 div[alt="회원가입input_선택>직책"] table,
 div[alt="회원가입input_선택>직무"] table {
-  border: 3px solid black;
+  border: 3px solid #5f6368;
   display: grid;
   grid-template-columns: repeat(100%);
   width: 100%;

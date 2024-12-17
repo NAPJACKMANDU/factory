@@ -10,7 +10,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #1d2b36; /* 페이지 전체 배경 색상 */
+  background-color: #202124; /* 페이지 전체 배경 색상 */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,13 +29,13 @@ body {
 .login-container {
   width: 100%;
   max-width: 400px; /* 컨테이너 최대 너비 */
-  background-color: #2c3e50; /* 컨테이너 배경 색상 */
+  background-color: #292a2d; /* 컨테이너 배경 색상 */
   padding: 20px;
   border-radius: 10px; /* 둥근 테두리 */
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   text-align: center;
-  color: white; /* 기본 텍스트 색상 */
+  color: #e8eaed; /* 기본 텍스트 색상 */
 }
 
 /* =========================
@@ -44,7 +44,7 @@ body {
 .login-box h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  border-bottom: 2px solid #1abc9c; /* 하이라이트 색상 */
+  border-bottom: 2px solid #e8eaed; /* 하이라이트 색상 */
   padding-bottom: 10px;
 }
 
@@ -64,14 +64,14 @@ body {
   width: 95%; /* 입력 필드 너비 */
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #7f8c8d; /* 테두리 색상 */
+  border: 1px solid #5f6368; /* 테두리 색상 */
   border-radius: 5px; /* 둥근 테두리 */
-  background-color: #34495e; /* 입력 필드 배경 색상 */
-  color: white; /* 텍스트 색상 */
+  background-color: #3c4043; /* 입력 필드 배경 색상 */
+  color: #e8eaed; /* 텍스트 색상 */
 }
 .form-group input:focus {
   outline: none;
-  border-color: #1abc9c; /* 포커스 상태 색상 */
+  border-color: lightblue; /* 포커스 상태 색상 */
 }
 
 /* =========================
@@ -79,19 +79,22 @@ body {
 ========================= */
 .login-btn {
   width: 100%;
+  margin-top: 10px;
   padding: 15px;
   font-size: 16px;
-  color: white; /* 버튼 텍스트 색상 */
-  background-color: rgba(11, 12, 12, 0.8470588235); /* 버튼 배경 색상 */
+  color: #e8eaed; /* 버튼 텍스트 색상 */
+  background-color: #202124; /* 버튼 배경 색상 */
   border: none;
   border-radius: 6px; /* 둥근 테두리 */
   cursor: pointer;
   font-weight: bold;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 .login-btn:hover {
-  background-color: #1abc9c; /* hover 상태 색상 */
+  background-color: #8ab4f8; /* hover 상태 색상 */
 }
 
 /* =========================
@@ -111,12 +114,12 @@ section[alt="로그인 페이지 a태그 컨테이너"] {
           justify-content: center;
   font-size: 11pt;
   gap: 5px;
-  color: #7f8c8d; /* 보조 텍스트 색상 */
+  color: #9aa0a6; /* 보조 텍스트 색상 */
 }
 
 a {
   text-decoration: none;
-  color: #1abc9c; /* 링크 색상 */
+  color: lightblue; /* 링크 색상 */
   margin-left: 10px;
   font-weight: 500;
 }

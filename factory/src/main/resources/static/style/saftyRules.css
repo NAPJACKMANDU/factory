@@ -1,17 +1,22 @@
+@charset "UTF-8";
+/* 🌐 전역 스타일 */
 body *::-webkit-scrollbar {
   width: 8px;
-  background-color: #f5f7f9;
+  background-color: #202124;
 }
 body *::-webkit-scrollbar-thumb {
-  background-color: #9fbfcf;
+  background-color: #3c4043;
   border-radius: 4px;
 }
 body *::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+body a {
+  color: lightblue;
 }
 
 #globals-container {
-  background-color: #f5f7f9;
+  background-color: #202124;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -33,16 +38,20 @@ body *::-webkit-scrollbar-track {
 #globals-container > * {
   margin: 0;
 }
+#globals-container #sr-header {
+  position: absolute;
+  top: 0;
+}
 #globals-container #sr-container {
   width: 60%;
   max-width: 60%;
-  background-color: #eaf1f5;
-  padding: 20px;
+  background-color: #292a2d;
+  padding: 20px 0px;
   border-radius: 12px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   text-align: center;
-  color: #2c3e50;
+  color: #e8eaed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,67 +72,64 @@ body *::-webkit-scrollbar-track {
   width: 40%;
   min-width: 380px;
   font-size: 24px;
-  border-bottom: 2px solid #6c93b1;
+  border-bottom: 2px solid #e8eaed;
   padding-bottom: 10px;
-  color: #6c93b1;
+  color: #e8eaed;
 }
 
+/* 📋 테이블 스타일 */
 table {
   width: 95%;
   margin: 20px auto;
   border-collapse: collapse;
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 15px !important;
-  color: #2c3e50;
+  color: #e8eaed;
 }
 table * {
   padding: 15px;
 }
-table th,
-table td {
-  border-bottom: 1px solid #d9e2e8;
+table th {
+  border-bottom: 1px solid #5f6368;
 }
 table thead {
   border-radius: 15px 15px 0 0;
   text-align: center;
-  border-bottom: 1px solid #d9e2e8;
+  border-bottom: 1px solid #5f6368;
 }
 table thead .th {
-  background-color: #6c93b1;
-  color: #ffffff;
+  background-color: #202124;
+  color: #e8eaed;
   border-radius: 15px;
 }
-table thead .th #th-init {
-  border-right: 1px solid #517a99;
-}
+table thead .th #th-init,
 table thead .th #th-tl {
-  border-right: 1px solid #517a99;
+  border-right: 1px solid #7f878e;
 }
 table thead .th #th-end {
-  border-left: 1px solid #517a99;
+  border-left: 1px solid #7f878e;
 }
 table thead .th th {
   font-weight: bold;
 }
 table tbody {
-  background-color: #ffffff;
+  background-color: #3c4043;
   border-radius: 0 0 15px 15px;
   text-align: left;
 }
-table tbody #td-init {
-  border-right: 1px solid #d9e2e8;
-}
+table tbody #td-init,
 table tbody #td-tl {
-  border-right: 1px solid #d9e2e8;
+  border-right: 1px solid #5f6368;
 }
 table tbody #td-end {
-  border-left: 1px solid #d9e2e8;
+  border-left: 1px solid #5f6368;
 }
 
+/* 📌 캡션 스타일 */
 caption {
   margin: 10px 0;
   font-size: 1.2em;
   font-weight: bold;
-  color: #2c3e50;
+  color: #9aa0a6;
 }

@@ -4,20 +4,21 @@
    - 색상 변수화로 관리 용이
 ============================= */
 
-// 🎨 색상 변수 설정
-$primary-bg: #1d2b36; // 전체 페이지 배경 색상
-$container-bg: #2c3e50; // 회원가입 컨테이너 배경 색상
-$border-color: #7f8c8d; // 입력 필드 테두리 색상
-$input-bg: #34495e; // 입력 필드 배경 색상
-$highlight-color: #1abc9c; // 강조 및 포커스 색상
-$button-bg: #0b0c0cd8; // 버튼 기본 색상
-$hover-color: #1abc9c; // 버튼 hover 색상
-$secondary-text: whitesmoke; // 보조 텍스트 색상
-$footer-text: whitesmoke; // 푸터 텍스트 색상
-$role-option-bg: #a4a1a1; // 사용자 선택 옵션 기본 색상
-$role-option-active: #1abc9c; // 사용자 선택 옵션 활성화 색상
-$shadow-color: rgba(0, 0, 0, 0.2);
-$table-border: black; // 테이블 테두리 색상
+// 🎨 색상 변수 설정 (구글 다크모드 스타일)
+$primary-bg: #202124; // 전체 페이지 배경 색상
+$container-bg: #292a2d; // 회원가입 컨테이너 배경 색상
+$border-color: #5f6368; // 입력 필드 테두리 색상
+$input-bg: #3c4043; // 입력 필드 배경 색상
+$highlight-color: lightblue; // 강조 및 포커스 색상
+$button-bg: #171717; // 버튼 기본 색상
+$hover-color: #8ab4f8; // 버튼 hover 색상 (연한 블루)
+$secondary-text: #e8eaed; // 보조 텍스트 색상
+$footer-text: #bdc1c6; // 푸터 텍스트 색상
+$role-option-bg: #3c4043; // 사용자 선택 옵션 기본 색상
+$role-option-active: lightblue; // 사용자 선택 옵션 활성화 색상
+$shadow-color: rgba(0, 0, 0, 0.5); // 그림자 색상
+$table-border: #5f6368; // 테이블 테두리 색상
+$color-primary: #f5f570; // 강조 색상 (형광 노란색)
 
 /* =============================
    전체 레이아웃
@@ -61,7 +62,7 @@ h2 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
-  border-bottom: 2px solid $highlight-color;
+  border-bottom: 2px solid $secondary-text;
   padding-bottom: 10px;
 }
 
@@ -97,7 +98,7 @@ select:focus {
 
 .form-group span {
   font-size: 12px;
-  color: goldenrod;
+  color: lightblue;
   margin-top: 5px;
   display: block;
 }
