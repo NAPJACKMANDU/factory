@@ -1,39 +1,42 @@
+/* =============================
+   헤더 설정 SCSS
+   - 색상 변수화로 관리 용이
+   - 기존 디자인 및 주석 스타일 유지
+============================= */
+
+// 🎨 색상 변수 설정
+$header-bg: #0b0c0cd8; // 헤더 배경 색상
+$logo-hover-color: #1abc9c; // 로고 및 버튼 hover 강조 색상
+$tab-border-color: darkgray; // 세로선 테두리 색상
+$tab-text-color: white; // 기본 탭 텍스트 색상
+$tab-hover-color: #1abc9c; // 탭 hover 시 색상
+$shadow-color: rgba(0, 0, 0, 0.1);
+
 /* ✨ 'RWD' - 'Semantic Tags' 설정 ✨ */
 /* 💡 '시맨틱 태그' header */
 
 /* ◼️◼️◼️◼️◼️◼️ 헤더 설정 ◼️◼️◼️◼️◼️◼️ */
 header {
-  /* 임의 설정 */
-  background-color: #0b0c0cd8;
+  background-color: $header-bg; /* 헤더 배경 색상 */
   border: none;
-  //"헤더"
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px $shadow-color; /* 헤더 그림자 효과 */
   margin-top: 0 !important;
   padding: 0 8%; /* 헤더 좌우 패딩 */
-
-  height: 10vh; /* 헤더 높이 10% (적절히 조정 가능) */
+  height: 10vh; /* 헤더 높이 */
   min-height: 70px;
-  width: 100vw; /* 마진 없는 가로 사이즈 */
-
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15%; /* 헤더 요소 간격 */
-
   overflow: hidden;
 
   * {
-    // 'header 내부 모든 요소'
     overflow: hidden;
     margin-top: 0;
   }
 
-  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
   section[alt="로고 컨테이너"] {
-    /* 임의 설정 */
-    // background-color: aquamarine;
-
-    // margin-left: 15%;
     padding: 1%;
     min-width: 70px;
     width: 200px;
@@ -43,20 +46,17 @@ header {
     justify-content: flex-start;
 
     * {
-      // '로고 컨테이너 내부 모든 요소'
       margin: 0;
       padding: 0;
       border: none;
       place-items: center;
+
       &:hover {
         cursor: pointer;
       }
     }
-    form {
-      /* 임의 설정 */
-      // border: 2px solid black;
 
-      //"/Main" 으로 이동하는 GET form
+    form {
       padding: 0;
       width: 200px;
       height: fit-content;
@@ -64,7 +64,6 @@ header {
       place-items: center;
 
       button {
-        //"P001_Main으로 이동" Submit
         padding: 0;
         margin-top: 3%;
         margin-left: 50%;
@@ -74,7 +73,6 @@ header {
         place-items: center;
 
         img {
-          //"로고 이미지"
           margin: 0;
           height: 65px;
           object-fit: cover;
@@ -83,64 +81,52 @@ header {
     }
   }
 
-  /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
+  /* =============================
+     부가기능 탭 설정
+  ============================= */
   nav {
-    /* 임의 설정 */
-    // background-color: lightcoral;
-    //"부가기능 탭"
     margin-top: 10px;
     padding: 0;
-    width: 100%; /* 탭 가로 사이즈 */
+    width: 100%;
     display: flex;
     place-items: center;
     justify-content: flex-start;
     gap: 5%;
 
     div {
-      //"button 컨테이너", "헤더 탭 세로선"
-
       button {
-        /* location 이동 없음, show() 스크립트 */
         width: 100%;
         height: 50px;
         place-items: center;
         border: none;
-        background: rgba(
-          /* 내부 요소 제외, 배경만 투명 */ $color: #000000,
-          $alpha: 0
-        );
+        background: transparent;
+
         &:hover {
           cursor: pointer;
         }
       }
 
       span {
-        /* 임의 설정 */
-        // background-color: lightcyan;
-        // 헤더 탭 버튼 내 span
         padding-right: 10px;
         width: 100px;
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* 폰트 설정 */
         font-weight: bolder;
         font-size: medium;
-        color: white;
+        color: $tab-text-color;
+
         &:hover {
-          transition: color 0.2s; /* 부드러운 전환 효과 추가 */
-          color: #1abc9c;
-          // color: goldenrod;
+          transition: color 0.2s ease;
+          color: $tab-hover-color; /* Hover 시 강조 색상 */
           font-weight: bolder;
         }
       }
     }
 
-    /* ◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️◼️ */
     .vertical-line {
-      //"탭 세로선"
-      border: 0.005px solid darkgray;
+      border: 0.005px solid $tab-border-color; /* 세로선 색상 */
       height: 55px;
       width: 0.5px;
     }
@@ -149,7 +135,6 @@ header {
 
 /* ◽🔸 Main 페이지 (한정) 🔸◽ */
 .h-a-container {
-  //"헤더 a태그 컨테이너"
   a {
     text-decoration-line: none;
   }

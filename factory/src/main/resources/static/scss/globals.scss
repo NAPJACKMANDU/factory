@@ -1,4 +1,13 @@
-/* ✨ 'RWD' - '전역 컨테이너' 설정 ✨ */
+@charset "UTF-8";
+
+// 🎨 색상 변수 설정
+$color-background: #1d2b36; // 기본 배경색
+$color-input-border: #ccc; // 인풋 필드 테두리 색상
+$color-input-bg: #ffffff; // 인풋 필드 배경색
+$color-container-bg: #1d2b36; // 전역 컨테이너 배경색
+$color-main-bg: cadetblue; // 메인 콘텐츠 배경색 (주석으로 유지)
+
+// ✨ 'RWD' - '전역 컨테이너' 설정 ✨
 /* 💡 '반응형 웹' globals  */
 
 * {
@@ -10,7 +19,6 @@ html,
 body {
   margin: 0 !important; /* 여백 제거 */
   padding: 0 !important;
-
   height: 100%; /* 전체 브라우저 높이 */
   display: flexbox; /* 자식 요소 top,left 사용 가능하게 */
   place-items: center; /* 수평과 수직 중앙 정렬 */
@@ -18,10 +26,10 @@ body {
 
   /* 임의 설정 */
   // background-color: lightyellow;
+
   * {
     /* 임의 설정 */
-    // border: 1px solid black;
-    // 'body내부 모든 요소'
+    // border: 1px solid black;  /* body 내부 모든 요소 */
     margin: 5px;
   }
 }
@@ -30,7 +38,7 @@ body {
 #globals-container {
   /* 임의 설정 */
   //"전역 컨테이너"
-  background-color: #1d2b36; /* 배경색 기본 */
+  background-color: $color-container-bg; /* 배경색 기본 */
   margin: 0; /* 여백 제거 */
   padding: 0px;
   height: 100vh; /* 뷰포트 전체 높이 */
@@ -51,7 +59,7 @@ body {
 
 main {
   /* 임의 설정 */
-  // background-color: cadetblue;
+  // background-color: $color-main-bg;
   //"메인콘텐츠"
   height: 100vh;
   display: flex;
@@ -71,7 +79,8 @@ input {
   width: 100%; // 입력 필드 너비
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid $color-input-border;
+  background-color: $color-input-bg;
   border-radius: 5px;
   font-size: 14px;
 }
