@@ -412,7 +412,7 @@ $(document).ready(function () {
         } else {
           $MArea.css({ display: "grid", width: "99%" });
 
-          $(".CAM-container").each(function () {
+     /*     $(".CAM-container").each(function () {
             const camId = $(this).attr("id");
             console.log("camId  :  " + camId);
 
@@ -425,7 +425,7 @@ $(document).ready(function () {
                 Index: 1,
               });
             }
-          });
+          });*/
 
           $clickedItem.removeClass("expanded");
           $("body").css("overflow", "");
