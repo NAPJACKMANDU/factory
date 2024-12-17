@@ -15,10 +15,6 @@ public class FactoryMemberService {
 	@Autowired
     private FactoryMemberRepository rep;
 
-    // 아이디 중복 여부 확인 메서드
-    public boolean isIdTaken(String id) {
-        return rep.existsById(id); // JPA 메서드로 아이디 존재 여부 확인
-    }
 
 	public void callbyupdate(FactoryMember member) {
 		// 1. 가져온 후 2. 수정하고 3. 저장하기
@@ -37,6 +33,10 @@ public class FactoryMemberService {
 	 rep.deleteById(idx);
 		
 	}
-	
+	  // 아이디 중복 여부 확인 메서드
+    public boolean isIdTaken(String id) {
+    	System.out.println("id : " + id);
+        return rep.existsById(id); 
+    }
 	
 }

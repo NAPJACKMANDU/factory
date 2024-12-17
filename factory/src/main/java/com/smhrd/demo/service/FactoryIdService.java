@@ -31,7 +31,8 @@ public class FactoryIdService {
 	public List<FactoryMember> allcallbord() {
 		return rep.findAll() ;
  	}
-	
+
+
 	
 	}
 	
