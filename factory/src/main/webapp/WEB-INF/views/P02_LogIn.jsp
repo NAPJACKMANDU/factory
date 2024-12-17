@@ -14,7 +14,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <body>
     <div class="login-container">
       <div class="login-box">
-        <h2>Login to Security System</h2>
+        <h2>씨씨콜콜</h2>
         <form
           alt="로그인 페이지 컨테이너-form"
           id="logInForm"
@@ -23,22 +23,22 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           class="enterForm"
         >
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">아이디</label>
             <input
               type="text"
               id="username"
               name="id"
-              placeholder="Enter username"
+              placeholder="아이디를 입력해 주세요"
               required
             />
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">비밀번호</label>
             <input
               type="password"
               id="password"
               name="pw"
-              placeholder="Enter password"
+              placeholder="비밀번호를 입력해 주세요"
               required
             />
           </div>
