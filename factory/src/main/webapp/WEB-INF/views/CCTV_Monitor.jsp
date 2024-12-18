@@ -8,6 +8,98 @@ charset=UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCTV Monitor</title>
+    <style>
+      .secondary-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6); /* 진한 반투명 블랙 오버레이 */
+        z-index: 2000;
+      }
+
+      .secondary-modal.hidden {
+        display: none;
+      }
+
+      .secondary-modal .secondary-modal-content {
+        background-color: rgba(32, 33, 36, 0.95); /* 반투명 다크모드 배경 */
+        color: #e8eaed; /* 밝은 텍스트 색상 */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* 진한 그림자 */
+        min-width: 700px;
+        max-width: 700px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .secondary-modal .secondary-modal-content h2 {
+        margin-bottom: 7px;
+        border-bottom: 2px solid whitesmoke; /* 강조 색상 */
+        padding-bottom: 10px;
+        width: 80%;
+        color: #e8eaed;
+      }
+
+      .secondary-modal
+        .secondary-modal-content
+        article[alt="2차 모달 스크롤 발생"] {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .secondary-modal .secondary-modal-content article table {
+        width: 80%;
+        border: 1px solid #5f6368; /* 테두리 색상 */
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .secondary-modal .secondary-modal-content article table .th {
+        background-color: #3c4043; /* 다크모드 테이블 헤더 */
+        padding: 10px;
+        height: 25px;
+        color: #e8eaed;
+      }
+
+      .secondary-modal .secondary-modal-content article table .content {
+        height: 35px;
+        color: #e8eaed;
+      }
+
+      .secondary-modal .secondary-modal-content .close-secondary-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #9aa0a6; /* 중간 밝기의 회색 */
+      }
+
+      .secondary-modal .secondary-modal-content .close-secondary-modal:hover {
+        color: #8ab4f8; /* 강조 색상 호버 */
+      }
+=======
 
 <head>
 <meta charset="UTF-8" />
@@ -161,6 +253,7 @@ video::-webkit-media-controls {
 </style>
 <!-- 전역 style -->	
 <%--
+>>>>>>> 5187749ad8248e00e1742c5fc268910bd9ab93e5
 
     <link rel="stylesheet" href="<c:url value='/style/globals.css' />" />
     <link rel="stylesheet" href="<c:url value='/style/header.css'/>" />
@@ -448,6 +541,12 @@ video::-webkit-media-controls {
 		</aside>
 	</div>
 
+<<<<<<< HEAD
+    <!-- 119 신고 버튼 -->
+    <div alt="프로토콜 버튼 컨테이너" class="report-container">
+      <button alt="신고 문자 발송" id="report">119 신고</button>
+    </div>
+=======
 	<!-- Protocol modal -->
 	<!-- <div id="protocol-modal" class="secondary-modal hidden">
       <div class="secondary-modal-content">
@@ -525,6 +624,7 @@ video::-webkit-media-controls {
 	<div alt="프로토콜 버튼 컨테이너" class="report-container">
 		<button alt="신고 문자 발송" id="report">119 신고</button>
 	</div>
+>>>>>>> 5187749ad8248e00e1742c5fc268910bd9ab93e5
 
 	<!-- jQuery -->
 	<script src="/js/jquery-3.6.0.js"></script>
