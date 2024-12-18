@@ -230,8 +230,13 @@ async def save_video(frames, fps=10):
 is_saving = False  # 낙상 저장 상태
 lock = asyncio.Lock()  # 동시성 문제를 방지할 Lock 객체
 
+import time
+
+fall_start_time = None  # 낙상 시작 시간을 기록
+FALL_CONFIRMATION_TIME = 3  # 낙상으로 확정하기 위한 시간(초)
+
 async def detect(cap):
-    global is_saving, frames_to_save, frame_buffer
+    global is_saving, frames_to_save, frame_buffer, fall_start_time
 
     fall_detected = False
     success, frame = cap.read()
@@ -256,12 +261,23 @@ async def detect(cap):
         right_hip_x, right_hip_y = detection.keypoints.xy[0][12]
         left_ankle_x, left_ankle_y = detection.keypoints.xy[0][15]
         right_ankle_x, right_ankle_y = detection.keypoints.xy[0][16]
+
         len_factor = math.sqrt(((left_shoulder_y - left_hip_y) ** 2 + (left_shoulder_x - left_hip_x) ** 2))
         if left_shoulder_x > 0 and right_shoulder_x > 0 and left_hip_x > 0 and right_hip_x > 0:
             if left_shoulder_y > left_ankle_y - len_factor and left_hip_y > left_ankle_y - (len_factor / 2) and left_shoulder_y > left_hip_y - (len_factor / 2):
-                cv2.rectangle(frame, (int(xmin), int(ymin)), (int(xmax), int(ymax)), color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
-                cv2.putText(frame, 'Person Fell down', (11, 100), 0, 1, [0, 0, 2550], thickness=3, lineType=cv2.LINE_AA)
-                fall_detected = True
+                # 낙상 시작 시간 기록
+                if fall_start_time is None:
+                    fall_start_time = time.time()
+
+                # 낙상이 지속되고 있는지 확인
+                elapsed_time = time.time() - fall_start_time
+                if elapsed_time >= FALL_CONFIRMATION_TIME:
+                    cv2.rectangle(frame, (int(xmin), int(ymin)), (int(xmax), int(ymax)), color=(0, 0, 255), thickness=5, lineType=cv2.LINE_AA)
+                    cv2.putText(frame, 'Person Fell down', (11, 100), 0, 1, [0, 0, 2550], thickness=3, lineType=cv2.LINE_AA)
+                    fall_detected = True
+            else:
+                # 조건이 만족되지 않으면 초기화
+                fall_start_time = None
 
         # 키포인트 그리기
         cv2.circle(frame, (int(left_shoulder_x), int(left_shoulder_y)), 5, (0, 255, 0), -1)

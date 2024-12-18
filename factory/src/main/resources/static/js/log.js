@@ -20,6 +20,7 @@
 /* --0 웹소켓 트리거 이벤트 */
 
 let socket2;
+let blinkInterval = null; // 깜빡임 타이머 변수	
 
 function connectWebSockets() {
   // 두 번째 WebSocket: 낙상 감지 데이터
@@ -97,10 +98,10 @@ function plusLog(cameraId, status, icon) {
 
   // p태그에 직접 style 걸기 - 로그 폰트 작게(타임스탬프프)
   newLog.innerHTML = `
-           <p class="log-timestamp" style="font-size: small;">${timestamp}</p>
-           <p alt="로그 콘텐츠" class="log-content">${cameraId}</p>
-           <span class="log-content">${icon}</span>
-       `;
+	        <p class="log-timestamp" style="font-size: small;">${timestamp}</p>
+	        <p alt="로그 콘텐츠" class="log-content">${cameraId}</p>
+	        <span class="log-content">${icon}</span>
+	    `;
 
   // 로그 컨테이너에 추가
   logContainer.prepend(newLog);
@@ -129,11 +130,18 @@ function blink(targetId, color) {
 
   let isRed = false; // 빨간색 여부를 토글하기 위한 변수
 
+  // 기존 blinkInterval이 있다면 먼저 중지
+  if (blinkInterval) {
+    clearInterval(blinkInterval);
+  }
+
+  // 깜빡임 시작
   blinkInterval = setInterval(() => {
     isRed = !isRed;
     $target.style.borderColor = isRed ? color : "transparent";
-  }, 350); // 350ms 간격으로 깜빡임
+  }, 350);
 }
+
 
 /**
  * 깜빡임 중지 함수
@@ -146,10 +154,14 @@ function blinkStop(targetId) {
     return;
   }
 
-  clearInterval(blinkInterval); // 깜빡임 멈추기
-  $target.style.borderColor = ""; // 테두리 기본값으로 초기화
-  blinkInterval = null;
+  if (blinkInterval !== null) {
+    clearInterval(blinkInterval); // 타이머 중지
+    blinkInterval = null; // 타이머 변수 초기화
+  }
+
+  $target.style.borderColor = "transparent"; // 테두리 색상 초기화
 }
+
 
 //-----------------------------------------------------------------------------------
 //신고, 상황종료
@@ -197,6 +209,8 @@ function showProtocolContainer() {
  */
 
 $("#stop-blink").on("click", function () {
+  console.log("상황 종료 버튼 클릭됨"); // 클릭 이벤트 확인
+  blinkStop("cam1"); // 깜빡임 중지 함수 호출
   hideReportContainer(); // 신고 컨테이너 숨기기
   $protocolContainer.stop(true, true).animate(
     {
@@ -209,6 +223,7 @@ $("#stop-blink").on("click", function () {
     }
   );
 });
+
 
 function hideReportContainer() {
   $reportContainer.stop(true, true).animate(
@@ -234,6 +249,7 @@ window.onload = () => {
 // =========================================================================================
 // =========================================================================================
 // =========================================================================================
+
 
 /* --1 'CAM-container' 이상•연기 AI탐지 --> '탐지 화면 프레이밍+깜빡임' && '프로토콜 버튼' 활성화 이벤트 */
 

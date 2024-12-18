@@ -8,7 +8,7 @@ charset=UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -99,7 +99,6 @@ charset=UTF-8"
       .secondary-modal .secondary-modal-content .close-secondary-modal:hover {
         color: #8ab4f8; /* 강조 색상 호버 */
       }
-=======
 
 <head>
 <meta charset="UTF-8" />
@@ -466,33 +465,6 @@ video::-webkit-media-controls {
             <span class="camera-number">16번</span>
           </div>
         </div>
-        <!-- <temp class="temp"> //탐지 대상 지정
-			<div alt="탐지대상드롭다운" class="blink-controls">
-				<label for="targetId">이상 탐지 대상 선택</label> <select id="targetId">
-					<option value="#cam1">1</option>
-					<option value="#cam2">2</option>
-					<option value="#cam3">3</option>
-					<option value="#cam4">4</option>
-					<option value="#cam5">5</option>
-					<option value="#cam6">6</option>
-					<option value="#cam7">7</option>
-					<option value="#cam8">8</option>
-					<option value="#cam9">9</option>
-					<option value="#cam10">10</option>
-					<option value="#cam11">11</option>
-					<option value="#cam12">12</option>
-					<option value="#cam13">13</option>
-					<option value="#cam14">14</option>
-					<option value="#cam15">15</option>
-					<option value="#cam16">16</option>
-				</select>
-				<div alt="탭 세로선" class="vertical-line"></div>
-				<button id="blink-start-warning" class="btn-onTheCase">이상
-					확인 중</button>
-				<button id="blink-start-danger" class="btn-onTheCase">이상 발생
-				</button>
-			</div>
-			</temp> -->
       </main>
 
 		<!-- 우측 사이드바 -->
@@ -541,90 +513,15 @@ video::-webkit-media-controls {
 		</aside>
 	</div>
 
-<<<<<<< HEAD
     <!-- 119 신고 버튼 -->
     <div alt="프로토콜 버튼 컨테이너" class="report-container">
       <button alt="신고 문자 발송" id="report">119 신고</button>
     </div>
-=======
-	<!-- Protocol modal -->
-	<!-- <div id="protocol-modal" class="secondary-modal hidden">
-      <div class="secondary-modal-content">
-        <span class="close-protocol-modal">&times;</span>
-        <h2><span class="detected">화재</span> 초동 대응 지침</h2>
-        <br />
-        <article alt="프로토콜 모달 스크롤 발생">
-          <table>
-            <tr alt="프로토콜 조회 테이블 헤더">
-              <td class="th"><span>단계</span></td>
-              <td class="th"><span>주요 조치 및 행동 요령</span></td>
-            </tr>
-            <tr alt="프로토콜 조회 테이블 컨텐츠">
-              <td class="content"><span>1단계: 화재 신고</span></td>
-              <td class="content">
-                <span
-                  >- 화재 발생 장소 및 종류를 상세히 119에 신고<br />- 유관기관,
-                  협력업체 등에도 화재 사실 전파</span
-                >
-              </td>
-            </tr>
-            <tr alt="프로토콜 조회 테이블 컨텐츠">
-              <td class="content"><span>2단계: 초기 대응</span></td>
-              <td class="content">
-                <span
-                  >- 자위소방대 운영: 팀별 업무 지시, 초기소화<br />- 화재 사실
-                  전파 및 대피 유도</span
-                >
-              </td>
-            </tr>
-            <tr alt="프로토콜 조회 테이블 컨텐츠">
-              <td class="content"><span>3단계: 피난 유도</span></td>
-              <td class="content">
-                <span
-                  >- 1차 수평대피, 2차 수직대피 원칙<br />- 엘리베이터 금지,
-                  계단 이용 권장<br />- 연기 속 대피 시 낮은 자세 유지</span
-                >
-              </td>
-            </tr>
-            <tr alt="프로토콜 조회 테이블 컨텐츠">
-              <td class="content"><span>4단계: 피난 시 주의사항</span></td>
-              <td class="content">
-                <span
-                  >- 문 닫아 화재 확산 방지<br />- 불길 통과 시 물에 적신 옷,
-                  담요 사용<br />- 대피 중 불안감 최소화 위해 침착하게
-                  행동</span
-                >
-              </td>
-            </tr>
-            <tr alt="프로토콜 조회 테이블 컨텐츠">
-              <td class="content"><span>5단계: 금지 행위</span></td>
-              <td class="content">
-                <span>- 피난 후 건물 재진입 금지<br />- 승강기 사용 금지</span>
-              </td>
-            </tr>
-          </table>
-        </article>
-      </div>
-    </div> -->
-	<!-- <div id="protocol-modal" class="secondary-modal hidden">
-      <div class="secondary-modal-content">
-        <span class="close-protocol-modal">&times;</span>
-        <h2><span class="detected">낙상 초동 대응 지침</h2>
-        <br />
-        <article alt="프로토콜 모달 스크롤 발생">
-          <img
-            src="/src/main/resources/static/imgs/추락 전도 낙상 대응 지침.png"
-            alt=""
-          />
-        </article>
-      </div>
-    </div> -->
 
 	<!-- 119 신고 버튼 -->
 	<div alt="프로토콜 버튼 컨테이너" class="report-container">
 		<button alt="신고 문자 발송" id="report">119 신고</button>
 	</div>
->>>>>>> 5187749ad8248e00e1742c5fc268910bd9ab93e5
 
 	<!-- jQuery -->
 	<script src="/js/jquery-3.6.0.js"></script>
