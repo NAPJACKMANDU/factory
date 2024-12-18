@@ -8,6 +8,7 @@ charset=UTF-8"
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -160,6 +161,7 @@ video::-webkit-media-controls {
 </style>
 <!-- 전역 style -->	
 <%--
+
     <link rel="stylesheet" href="<c:url value='/style/globals.css' />" />
     <link rel="stylesheet" href="<c:url value='/style/header.css'/>" />
     <!-- 지역 style -->
@@ -318,60 +320,60 @@ video::-webkit-media-controls {
 			</div>
 		</div>
 
-		<!-- 메인 화면 -->
-		<main class="monitor M-area">
-			<div class="camera-grid" id="cameraGrid">
-				<!-- 16 카메라 화면 -->
-				<div class="CAM-container camera dropzone" id="cam1">
-					<span class="camera-number">1번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam2">
-					<span class="camera-number">2번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam3">
-					<span class="camera-number">3번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam4">
-					<span class="camera-number">4번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam5">
-					<span class="camera-number">5번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam6">
-					<span class="camera-number">6번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam7">
-					<span class="camera-number">7번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam8">
-					<span class="camera-number">8번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam9">
-					<span class="camera-number">9번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam10">
-					<span class="camera-number">10번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam11">
-					<span class="camera-number">11번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam12">
-					<span class="camera-number">12번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam13">
-					<span class="camera-number">13번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam14">
-					<span class="camera-number">14번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam15">
-					<span class="camera-number">15번</span>
-				</div>
-				<div class="CAM-container camera dropzone" id="cam16">
-					<span class="camera-number">16번</span>
-				</div>
-			</div>
-			<!-- <temp class="temp"> //탐지 대상 지정
+      <!-- 메인 화면 -->
+      <main class="monitor M-area">
+        <div class="camera-grid" id="cameraGrid">
+          <!-- 16 카메라 화면 -->
+          <div class="CAM-container camera dropzone" id="cam1">
+            <span class="camera-number">1번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam2">
+            <span class="camera-number">2번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam3">
+            <span class="camera-number">3번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam4">
+            <span class="camera-number">4번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam5">
+            <span class="camera-number">5번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam6">
+            <span class="camera-number">6번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam7">
+            <span class="camera-number">7번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam8">
+            <span class="camera-number">8번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam9">
+            <span class="camera-number">9번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam10">
+            <span class="camera-number">10번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam11">
+            <span class="camera-number">11번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam12">
+            <span class="camera-number">12번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam13">
+            <span class="camera-number">13번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam14">
+            <span class="camera-number">14번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam15">
+            <span class="camera-number">15번</span>
+          </div>
+          <div class="CAM-container camera dropzone" id="cam16">
+            <span class="camera-number">16번</span>
+          </div>
+        </div>
+        <!-- <temp class="temp"> //탐지 대상 지정
 			<div alt="탐지대상드롭다운" class="blink-controls">
 				<label for="targetId">이상 탐지 대상 선택</label> <select id="targetId">
 					<option value="#cam1">1</option>
@@ -398,7 +400,7 @@ video::-webkit-media-controls {
 				</button>
 			</div>
 			</temp> -->
-		</main>
+      </main>
 
 		<!-- 우측 사이드바 -->
 		<aside class="right-sidebar">
