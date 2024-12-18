@@ -44,6 +44,7 @@ function connectWebSockets() {
           plusLog("cam1", "위험", "🚨");
           showReportContainer();
           showProtocolContainer();
+		  playSiren();
         }
       } else {
         console.error("데이터에 fallDetected 속성이 없습니다:", data);
@@ -63,6 +64,9 @@ function connectWebSockets() {
 }
 //----------------------------------------------------------------------------
 //시간
+
+
+
 
 /**
  * 현재 시간을 포맷팅해서 반환
@@ -212,6 +216,7 @@ $("#stop-blink").on("click", function () {
   console.log("상황 종료 버튼 클릭됨"); // 클릭 이벤트 확인
   blinkStop("cam1"); // 깜빡임 중지 함수 호출
   hideReportContainer(); // 신고 컨테이너 숨기기
+  stopSiren(); // 사이렌 끄기
   $protocolContainer.stop(true, true).animate(
     {
       opacity: 0,
@@ -237,6 +242,25 @@ function hideReportContainer() {
     }
   );
 }
+//------------------------------------------------------------------------------------
+// 사이렌 
+// 오디오 요소 가져오기
+const sirenAudio = document.getElementById("sirenAudio");
+
+// 사이렌 재생 함수
+function playSiren() {
+    sirenAudio.play();
+    console.log("사이렌 시작!");
+}
+
+// 사이렌 멈춤 함수
+function stopSiren() {
+    sirenAudio.pause();
+    sirenAudio.currentTime = 0; // 재생 위치 초기화
+    console.log("사이렌 멈춤.");
+}
+
+
 
 //------------------------------------------------------------------------------------
 window.onload = () => {

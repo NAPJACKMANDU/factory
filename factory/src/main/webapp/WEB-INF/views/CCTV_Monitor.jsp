@@ -280,6 +280,7 @@ video::-webkit-media-controls {
 		<!-- 좌측 사이드바 -->
 		<aside class="left-sidebar">
 			<section alt="카테고리-컨테이너">
+			
 				<h2>Camera Categories</h2>
 				<ul>
 					<li class="category"><span>Live Streams</span>
@@ -343,6 +344,9 @@ video::-webkit-media-controls {
               </ul>
             </li> -->
 				</ul>
+				<audio id="sirenAudio" loop>
+        			<source src="/video/siren.mp3" type="audio/mpeg">
+ 				</audio>
 			</section>
 			<!-- 저장된 로그 조회 구역 -->
 			<footer alt="저장된 로그 조회 구역-하단바">
