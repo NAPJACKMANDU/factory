@@ -440,7 +440,7 @@ section {
   width: 133%;
   background-color: #303134;
   border-radius: 5px;
-  padding: 5px;
+  padding: 1px;
   overflow-y: auto;
   overflow-x: hidden;
   display: -webkit-box;
@@ -457,6 +457,7 @@ section {
   color: white;
   background-color: #202124;
   text-align: center;
+  margin-left: -2px;
   padding: 5px;
   height: 30px;
   width: 140px;
@@ -475,7 +476,7 @@ section {
   color: gray;
 }
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .log-toggle {
-  margin: -40px -8% 15px 0;
+  margin: -45px -2% 25px 0;
   padding-top: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -522,7 +523,19 @@ section {
 .right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] > article section * {
   color: #bdc1c6;
 }
-.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container button {
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] #on-the-case {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] #on-the-case .sb-container button,
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] #on-the-case #stop-blink {
   background-color: #8ab4f8;
   -webkit-box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
           box-shadow: 2px -4px 8px rgba(0, 0, 0, 0.3) inset;
@@ -530,10 +543,12 @@ section {
   border-radius: 10px;
   color: whitesmoke;
   margin: -5% -5% 0 0;
-  width: 90px;
+  margin-bottom: -20px;
+  width: 100px;
   height: 34px;
 }
-.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] .sb-container button:hover {
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] #on-the-case .sb-container button:hover,
+.right-sidebar aside[alt="실시간 모니터링 로그 구역-사이드 바"] #on-the-case #stop-blink:hover {
   background-color: #8ab4f8;
   -webkit-box-shadow: 2px -6px 6px rgba(0, 0, 0, 0.2) inset;
           box-shadow: 2px -6px 6px rgba(0, 0, 0, 0.2) inset;
@@ -872,16 +887,17 @@ footer .modal.fade-out {
 /* 🚨 119 신고 버튼 스타일 */
 .report-container {
   position: absolute;
-  top: 27.3%;
+  top: 67%;
   right: 0.5%;
   z-index: 2000;
   background-color: darkred;
   -webkit-box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.3);
           box-shadow: 2px -6px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 15px;
+  border-radius: 2px 2px 15px 15px;
   margin-top: 7px;
-  min-width: 5%;
-  min-height: 65px;
+  margin-right: -5px;
+  min-width: 10%;
+  min-height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -901,10 +917,10 @@ footer .modal.fade-out {
 .report-container button {
   background-color: darkred;
   border: none;
-  border-radius: 15px;
+  border-radius: 2px 2px 15px 15px;
   color: whitesmoke;
   width: 100%;
-  min-height: 65px;
+  min-height: 30px;
   cursor: pointer;
   padding: 2.5px 0 5px;
 }
