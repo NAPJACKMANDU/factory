@@ -752,7 +752,7 @@ $(document).ready(function () {
    
   $("#btn-danger").on("click", function () {
     const targetId = $("#selectedCamera").val(); // 선택된 카메라 ID 가져오기
-	warningTriggered = true;
+   warningTriggered = true;
     stopBlink([{ id: targetId }]); // 기존 깜빡임 제거 (중첩 방지)
     startBlink([{ id: targetId }], "#8B0000"); // 빨간색 테두리 깜빡임 시작
   });

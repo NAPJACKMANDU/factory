@@ -276,6 +276,7 @@ async def detect(cap):
 
     # 낙상 감지 처리
     if fall_detected:
+        await kakao()
         async with lock:  # is_saving 변경을 동기화
             if not is_saving:
                 is_saving = True
@@ -304,8 +305,52 @@ async def detect(cap):
 
 
 ###############################################
+## 카카오톡 연결
+async def kakao() :
+    import requests
+    import json
 
 
+    with open("kakao_code.json","r") as fp:
+        tokens = json.load(fp)
+        
+
+
+    url= "https://kapi.kakao.com/v2/api/talk/memo/send"
+    friend_url = "https://kapi.kakao.com/v1/api/talk/friends"
+    send_url = "https://kapi.kakao.com/v1/api/talk/friends/message/default/send"
+
+    template_id = 115355
+
+
+    # kapi.kakao.com/v2/api/talk/memo/default/send 
+    #	https://kapi.kakao.com/v1/api/talk/friends/message/default/send 
+
+    headers={
+        "Authorization" : "Bearer " + tokens["access_token"]
+        
+    }
+
+
+    data={
+        "template_id": template_id
+    }
+
+
+
+    response = requests.post(url, headers=headers, data=data)
+
+    print(response.json())
+    response.status_code
+
+
+    print(response.status_code)
+    if response.json().get('result_code') == 0:
+        print('메시지를 성공적으로 보냈습니다.')
+    else:
+        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
+
+#############################################
 
 def run_fastapi():
     uvicorn.run(app, host="0.0.0.0", port=8096)

@@ -205,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
       var code = "";
       for (var i = 0; i < data.length; i++) {
         var date = data[i].year + "-" + data[i].month + "-" + data[i].day;
-        console.log(date);
         if (date == `${year}-${month + 1}-${day}`) {
           // 영상 이름 처리
           var fullName = data[i].incidentName; // 예: "1733573900572_recorded-video.webm"
