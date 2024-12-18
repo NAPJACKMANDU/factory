@@ -97,10 +97,10 @@ function plusLog(cameraId, status, icon) {
 
   // p태그에 직접 style 걸기 - 로그 폰트 작게(타임스탬프프)
   newLog.innerHTML = `
-	        <p class="log-timestamp" style="font-size: small;">${timestamp}</p>
-	        <p alt="로그 콘텐츠" class="log-content">${cameraId}</p>
-	        <span class="log-content">${icon}</span>
-	    `;
+           <p class="log-timestamp" style="font-size: small;">${timestamp}</p>
+           <p alt="로그 콘텐츠" class="log-content">${cameraId}</p>
+           <span class="log-content">${icon}</span>
+       `;
 
   // 로그 컨테이너에 추가
   logContainer.prepend(newLog);
