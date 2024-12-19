@@ -2,9 +2,9 @@
 import requests
 
 url = 'https://kauth.kakao.com/oauth/token'
-rest_api_key = 'ab79f921d2419ee1d45008d9a7aa65a7'
+rest_api_key = '키 값값'
 redirect_uri = 'https://example.com/oauth'
-authorize_code = 'Udnva_tjTPIfXmrqmYU5stIy6ZxxPNhuqdbqb4zvZynwC0hlD3nyLAAAAAQKPXRoAAABk9MUOmKm1x-HnlkNwQ'
+authorize_code = '주소소'
 
 data = {
     'grant_type':'authorization_code',

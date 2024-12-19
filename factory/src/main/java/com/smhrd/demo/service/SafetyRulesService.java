@@ -23,7 +23,7 @@ public class SafetyRulesService {
     SafetyRulesRepository rep;
 
     // 파일이 저장될 디렉토리 경로
-    private final String UPLOAD_DIR = "C:/Users/smhrd1/Desktop/Spring/factory/factory/src/main/resources/static/file/";
+    private final String UPLOAD_DIR = "주소";
     private String file1 = "file/" ;
     
     public List<SafetyRulesModel> getAllSafetyRules() {

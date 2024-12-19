@@ -2,10 +2,10 @@ import MySQLdb
 
 # MySQL 서버에 연결
 conn = MySQLdb.connect(
-    host='project-db-campus.smhrd.com',
-    user='seocho_DCX_DB_p3_3',
-    passwd='smhrd3',
-    db='seocho_DCX_DB_p3_3',
+    host='',
+    user='',
+    passwd='',
+    db='',
     port=3312  # 포트 번호 추가
 )
 
@@ -28,7 +28,7 @@ data = (
     'fall_detected_20241209_175021.webm',  # clip_name
     0, #clip_size
     1,  # camera_idx
-    r'C:\Users\smhrd\Desktop\Spring\factory\fall detect\saved_videos\fall_detected_20241209_175021.webm',  # clip_path
+    r'클립 저장 위치치',  # clip_path
     1,  # company_idx
     '.mp4'  # clip_ext
 )

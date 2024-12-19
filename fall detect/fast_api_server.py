@@ -29,7 +29,7 @@ async def maintain_websocket():
     global websocket_connection
     try:
         # 웹소켓 연결을 처음 한번만 시도
-        websocket_connection = await websockets.connect('ws://172.30.1.54:8095/res')
+        websocket_connection = await websockets.connect('웹소켓주소')
         print("웹소켓 연결됨.")
         while True:
             await asyncio.sleep(3600)  # 연결을 계속 유지
@@ -84,7 +84,7 @@ async def send_frame():
     delay = 1 / fps
 
     try:
-        async with websockets.connect('ws://172.30.1.54:8095/signal') as websocket:
+        async with websockets.connect('웹소킷 주소') as websocket:
             while True:
                 start_time = time.time()    
 
@@ -118,16 +118,17 @@ from MySQLdb.cursors import DictCursor
 
 # MySQL 서버에 연결
 conn = MySQLdb.connect(
-    host='project-db-cgi.smhrd.com',
-    user='seocho_DCX_DB_p3_3',
-    passwd='smhrd3',
-    db='seocho_DCX_DB_p3_3',
-    port=3307,
+    host='',
+    user='',
+    passwd='',
+    db='',
+    port= #포트번호,
     cursorclass=DictCursor
 )
 cursor = conn.cursor()
 
 async def save_db(file_name):
+    await kakao()
     sql_query = """
         INSERT INTO tb_clip ( 
             clip_name,
@@ -143,7 +144,7 @@ async def save_db(file_name):
         f'{file_name}',  # clip_name
         0,  # clip_size
         1,  # camera_idx
-        fr'C:\Users\smhrd\Desktop\Spring\factory\fall detect\saved_videos\{file_name}',  # clip_path
+        fr'파일 저장 경로\{file_name}',  # clip_path
         1,  # company_idx
         '.webm'  # clip_ext
     )
@@ -185,17 +186,18 @@ POST_BUFFER_SIZE = 100  # 탐지 후 10초를 추가로 저장
 frame_buffer = collections.deque(maxlen=BUFFER_SIZE)
 
 async def save_video(frames, fps=10):
+    
     """프레임 목록을 webm로 저장"""
     if not frames:
         print("저장할 프레임이 없습니다.")
         return
 
     script_directory = os.path.dirname(os.path.abspath(__file__))
-    save_directory = os.path.join(script_directory, "../factory/src/main/resources/static/videos")
+    save_directory = os.path.join(script_directory, "파일 저장 경로")
     os.makedirs(save_directory, exist_ok=True)
 
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"fall_detected_{current_time}.webm"
+    filename = f"파일명명_{current_time}.webm"
     await save_db(filename)
     path = os.path.join(save_directory, filename)
 
@@ -214,17 +216,6 @@ async def save_video(frames, fps=10):
 
 # 낙상 결과를 전송하는 비동기 함수
 
-""" async def send_res_bool(res):
-    uri = 'ws://172.30.1.54:8095/res'
-    try:
-        print(f"웹소켓 연결 시도: {uri}")
-        async with websockets.connect(uri) as websocket:
-            # Boolean 값을 JSON 형식으로 변환
-            message = json.dumps({"result": res})
-            await websocket.send(message)
-            print(f"낙상 결과 전송 성공: {message}")
-    except Exception as e:
-        print(f"웹소켓 연결 중 오류 발생: {e}") """
 
 # detect 함수 수정
 is_saving = False  # 낙상 저장 상태
@@ -292,7 +283,7 @@ async def detect(cap):
 
     # 낙상 감지 처리
     if fall_detected:
-        await kakao()
+        
         async with lock:  # is_saving 변경을 동기화
             if not is_saving:
                 is_saving = True
@@ -336,11 +327,8 @@ async def kakao() :
     friend_url = "https://kapi.kakao.com/v1/api/talk/friends"
     send_url = "https://kapi.kakao.com/v1/api/talk/friends/message/default/send"
 
-    template_id = 115355
+    template_id = #템플릿 id
 
-
-    # kapi.kakao.com/v2/api/talk/memo/default/send 
-    #	https://kapi.kakao.com/v1/api/talk/friends/message/default/send 
 
     headers={
         "Authorization" : "Bearer " + tokens["access_token"]

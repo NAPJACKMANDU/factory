@@ -310,7 +310,7 @@ video::-webkit-media-controls {
 							<li draggable="true" data-img="/imgs/construction14.jpg">Camera
 								7</li>
 							<li class="video-item" draggable="true" value="8"
-								data-video="/video/TARO1.mp4">Camera 8</li>
+								data-video="/vi	deo/TARO1.mp4">Camera 8</li>
 						</ul></li>
 
 					<li class="category"><span>Category 3</span>
