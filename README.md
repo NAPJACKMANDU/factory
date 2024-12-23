@@ -1,7 +1,7 @@
 # 🎥 SEESEECALLCALL
 
 <img width="719" alt="image" src="https://github.com/user-attachments/assets/f70384cf-d9e7-4e4e-9656-3a6b68823b12" />
-<br>
+
 # 👀 서비스 소개
 
 * **서비스명:** AI 활용 CCTV 실시간 안전 모니터링 솔루션
@@ -20,7 +20,7 @@
 **2024.11.27 ~ 2024.12.19** (약 4주)
 
 <br>
----
+
 
 ## ⛏ 기술 스택
 <table>
@@ -87,7 +87,7 @@
   </tr>
 </table>
 <br>
----
+
 
 ## ⚙ 화면 설계서
 ![image](https://github.com/user-attachments/assets/c170c387-28ee-40f3-99ea-6b9c8e5d8a3c)
@@ -104,7 +104,7 @@
 ## 📌 ER다이어그램
 ![image](https://github.com/user-attachments/assets/22b8e389-bb4f-4913-b849-bc658af290de)
 
---- <br>
+<br>
 
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
