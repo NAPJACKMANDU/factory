@@ -1,7 +1,7 @@
 # 🎥 SEESEECALLCALL
 
 <img width="719" alt="image" src="https://github.com/user-attachments/assets/f70384cf-d9e7-4e4e-9656-3a6b68823b12" />
-
+<br>
 # 👀 서비스 소개
 
 * **서비스명:** AI 활용 CCTV 실시간 안전 모니터링 솔루션
@@ -10,11 +10,16 @@
   이 서비스는 **YOLO11n-Pose 모델**을 활용하여 낙상 상황을 즉시 인지하며 해당 영상을 자동으로 저장하고 관리자에게 알림을 전송합니다.  
   이를 통해 작업장의 안전을 강화하고 사고 대응 속도를 높이는 데 기여합니다.
 
+<br>
+
 <img width="718" alt="image" src="https://github.com/user-attachments/assets/53ecea38-d4e8-4d63-81d1-5145d45e8398" />
+
+<br>
 
 # 📅 프로젝트 기간
 **2024.11.27 ~ 2024.12.19** (약 4주)
 
+<br>
 ---
 
 ## ⛏ 기술 스택
@@ -81,7 +86,7 @@
     </td>
   </tr>
 </table>
-
+<br>
 ---
 
 ## ⚙ 화면 설계서
@@ -89,17 +94,17 @@
 
 ![image](https://github.com/user-attachments/assets/a08cc3de-ee0b-4f9e-b3d6-096d02ac74ff)
 
----
+<br>
 
 ## 📌 유스케이스
 ![image](https://github.com/user-attachments/assets/f7f76fa2-a82a-41fd-8900-e48221880e86)
 
----
+<br>
 
 ## 📌 ER다이어그램
 ![image](https://github.com/user-attachments/assets/22b8e389-bb4f-4913-b849-bc658af290de)
 
----
+--- <br>
 
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
