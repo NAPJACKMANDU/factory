@@ -5,7 +5,7 @@
 # 👀 서비스 소개
 
 * <b>서비스명 :</b> AI 활용 CCTV 실시간 안전 모니터링 솔루션
-* <b>서비스설명 :</b> 산업 현장에서 발생하는 낙상 사고를 실시간으로 감지하고 대응할 수 있는 서비스  </b> 이 서비스는 YOLO11n-Pose 모델을 활용하여 낙상 상황을 즉시 인지하며 해당 영상을 자동으로 저장하고 관리자에게 알림을 전송합니다. 이를 통해 작업장의 안전을 강화하고 사고 대응 속도를 높이는 데 기여합니다.
+* <b>서비스설명 :</b> 산업 현장에서 발생하는 낙상 사고를 실시간으로 감지하고 대응할 수 있는 서비스  <br> 이 서비스는 YOLO11n-Pose 모델을 활용하여 낙상 상황을 즉시 인지하며 해당 영상을 자동으로 저장하고 관리자에게 알림을 전송합니다. 이를 통해 작업장의 안전을 강화하고 사고 대응 속도를 높이는 데 기여합니다.
 <br>
 
  <img width="718" alt="image" src="https://github.com/user-attachments/assets/53ecea38-d4e8-4d63-81d1-5145d45e8398" />
@@ -24,11 +24,9 @@
 
 ## ⚙ 화면 설계서
 ![image](https://github.com/user-attachments/assets/c170c387-28ee-40f3-99ea-6b9c8e5d8a3c)
-</b>
-![image](https://github.com/user-attachments/assets/a08cc3de-ee0b-4f9e-b3d6-096d02ac74ff)
 
-## 활용 기술
-<img width="532" alt="image" src="https://github.com/user-attachments/assets/70ec1205-23b7-49c7-aae6-7d63a81f884b" />
+<br>
+![image](https://github.com/user-attachments/assets/a08cc3de-ee0b-4f9e-b3d6-096d02ac74ff)
 
 <br>
 
@@ -46,42 +44,4 @@
 
 
 
-
-## 👨‍👩‍👦‍👦 팀원 역할
-<table>
-  <tr>
-    <td align="center"><img src="![image](https://github.com/user-attachments/assets/24d8c7b5-6109-44e5-afb4-4e2925957af7)
-" width="100" height="100"/></td>
-    <td align="center"><img src="![image](https://github.com/user-attachments/assets/78df9d46-e713-43aa-9e7a-22edd8efa161)
-" width="100" height="100"/></td>
-    <td align="center"><img src="![image](https://github.com/user-attachments/assets/d47112d8-f9b1-4b1a-ab45-26a212d50278)
-" width="100" height="100"/></td>![image](https://github.com/user-attachments/assets/374b88d5-2b6a-4878-8305-aa4ebc27400f)
-" width="100" height="100"/></td>
-    <td align="center"><img src="![image](https://github.com/user-attachments/assets/da8caec3-3e57-43f9-95c0-9205c25c43b1)
-
-" width="100" height="100"/></td>
-  </tr>
-  <tr>
-    <td align="center"><strong>홍성우</strong></td>
-    <td align="center"><strong>남윤서</strong></td>
-    <td align="center"><strong>박준형</strong></td>
-    <td align="center"><strong>송근주</strong></td>
-    <td align="center"><strong>윤한빛</strong></td>
-  </tr>
-  <tr>
-    <td align="center"><b>PM / System Design</b></td>
-    <td align="center"><b>Back-end / SQL</b></td>
-    <td align="center"><b>System Design / <br> Network Architecture</b></td>
-    <td align="center"><b> Data-modeling</b></td>
-    <td align="center"><b>Frontend</b></td>
-    
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/bicyclesung" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/NAPJACKMANDU" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/wnsgud6707" target='_blank'>github</a></td>
-     <td align="center"><a href="https://github.com/capcat47" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/yoon-vit" target='_blank'>github</a></td>
-  </tr>
-</table>
-
+<table> <tr> <td align="center"> <img src="https://github.com/user-attachments/assets/24d8c7b5-6109-44e5-afb4-4e2925957af7" width="100" height="100" alt="홍성우 프로필"/> <br><b>홍성우</b> <br>PM / System Design <br><a href="https://github.com/bicyclesung" target="_blank">GitHub</a> </td> <td align="center"> <img src="https://github.com/user-attachments/assets/78df9d46-e713-43aa-9e7a-22edd8efa161" width="100" height="100" alt="남윤서 프로필"/> <br><b>남윤서</b> <br>Back-end / SQL <br><a href="https://github.com/NAPJACKMANDU" target="_blank">GitHub</a> </td> <td align="center"> <img src="https://github.com/user-attachments/assets/d47112d8-f9b1-4b1a-ab45-26a212d50278" width="100" height="100" alt="박준형 프로필"/> <br><b>박준형</b> <br>System Design / Network Architecture <br><a href="https://github.com/wnsgud6707" target="_blank">GitHub</a> </td> <td align="center"> <img src="https://github.com/user-attachments/assets/374b88d5-2b6a-4878-8305-aa4ebc27400f" width="100" height="100" alt="송근주 프로필"/> <br><b>송근주</b> <br>Data Modeling <br><a href="https://github.com/capcat47" target="_blank">GitHub</a> </td> <td align="center"> <img src="https://github.com/user-attachments/assets/da8caec3-3e57-43f9-95c0-9205c25c43b1" width="100" height="100" alt="윤한빛 프로필"/> <br><b>윤한빛</b> <br>Frontend <br><a href="https://github.com/yoon-vit" target="_blank">GitHub</a> </td> </tr> </table>
