@@ -1,5 +1,5 @@
 # SEESEECALLCALL🎥 
-![스크린샷 2024-12-23 190949](https://github.com/user-attachments/assets/bda630fa-0d3c-4c5a-96dc-c9e18603658e)
+<img width="539" alt="image" src="https://github.com/user-attachments/assets/14a7045f-9599-4d9a-ba7c-6b8f5be136bb" />
 
 
 # 👀 서비스 소개
@@ -25,7 +25,6 @@
 ## ⚙ 화면 설계서
 ![image](https://github.com/user-attachments/assets/c170c387-28ee-40f3-99ea-6b9c8e5d8a3c)
 
-<br>
 ![image](https://github.com/user-attachments/assets/a08cc3de-ee0b-4f9e-b3d6-096d02ac74ff)
 
 <br>
