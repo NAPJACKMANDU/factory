@@ -1,6 +1,6 @@
 # 🎥 SEESEECALLCALL
 
-<img width="539" alt="image" src="https://github.com/user-attachments/assets/14a7045f-9599-4d9a-ba7c-6b8f5be136bb" />
+<img width="719" alt="image" src="https://github.com/user-attachments/assets/f70384cf-d9e7-4e4e-9656-3a6b68823b12" />
 
 # 👀 서비스 소개
 
