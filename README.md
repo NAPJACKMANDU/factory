@@ -5,8 +5,7 @@
 <br>
 
 # ⭐ 자세한 구현 기술 
-<p><a href="https://napjackmandu.tistory.com/entry/2-CCTV-%ED%99%9C%EC%9A%A9-AI-%EA%B8%B0%EB%B0%98-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%95%88%EC%A0%84-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%EC%86%94%EB%A3%A8%EC%85%98">프로젝트 최종 정리</a></p>
-
+<p><a href="https://napjackmandu.tistory.com/entry/FIN-CCTV-%ED%99%9C%EC%9A%A9-AI-%EA%B8%B0%EB%B0%98-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%95%88%EC%A0%84-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%EC%86%94%EB%A3%A8%EC%85%98">프로젝트 최종 정리</a></p>
 
 <br>
 
