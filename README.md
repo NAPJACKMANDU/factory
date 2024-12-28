@@ -2,6 +2,15 @@
 
 <img width="719" alt="image" src="https://github.com/user-attachments/assets/f70384cf-d9e7-4e4e-9656-3a6b68823b12" />
 
+<br>
+
+# ⭐ 자세한 구현 기술 
+<p><a href="https://napjackmandu.tistory.com/entry/2-CCTV-%ED%99%9C%EC%9A%A9-AI-%EA%B8%B0%EB%B0%98-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%95%88%EC%A0%84-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%EC%86%94%EB%A3%A8%EC%85%98">프로젝트 최종 정리</a></p>
+
+
+<br>
+
+
 # 👀 서비스 소개
 
 * **서비스명:** AI 활용 CCTV 실시간 안전 모니터링 솔루션
@@ -20,9 +29,6 @@
 **2024.11.27 ~ 2024.12.19** (약 4주)
 
 <br>
-
-# 자세한 구현 기술 
-<p><a href="https://napjackmandu.tistory.com/entry/2-CCTV-%ED%99%9C%EC%9A%A9-AI-%EA%B8%B0%EB%B0%98-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%95%88%EC%A0%84-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%EC%86%94%EB%A3%A8%EC%85%98">프로젝트 최종 정리</a></p>
 
 ## ⛏ 기술 스택
 <table>
